@@ -37,8 +37,13 @@
 			</array>
 		</dict>
 	</array>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Utilisé pour communiquer avec ta montre Garmin</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Utilisé pour recevoir les données d'entraînement de ta montre Garmin</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>gcm-ciq</string>
 		<string>com.garmin.connect.mobile</string>
 	</array>
 </dict>

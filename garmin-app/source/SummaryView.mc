@@ -135,18 +135,16 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Envoie les données vers l'app iPhone via URL scheme (baskettrainer://)
-    // Garmin Connect reçoit l'URL et ouvre l'app iPhone automatiquement
+    // Envoie les données vers l'app iPhone via Bluetooth (SDK Connect IQ)
+    // Reçu automatiquement par GarminManager.receivedMessage() sans confirmation
     private function sendToPhone() as Void {
-        var resultStr = "";
-        for (var i = 0; i < _session.results.size(); i++) {
-            resultStr = resultStr + (_session.results[i] ? "1" : "0");
-        }
-        var url = "baskettrainer://s?e=" + _session.exerciseId.toString()
-                + "&t=" + _session.totalShots.toString()
-                + "&m=" + _session.madeShots.toString()
-                + "&s=" + _session.startTime.toString()
-                + "&r=" + resultStr;
-        Communications.openWebPage(url, null, null);
+        var data = _session.toDictionary();
+        Communications.transmit(data, null, new TransmitDelegate());
     }
+}
+
+class TransmitDelegate extends Communications.ConnectionListener {
+    function initialize() { Communications.ConnectionListener.initialize(); }
+    function onComplete() as Void {}
+    function onError() as Void {}
 }

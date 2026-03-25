@@ -1,70 +1,48 @@
+import ConnectIQ
 import Foundation
 import Combine
 
 // ─────────────────────────────────────────────────
-// GARMIN MANAGER — Reçoit les données de la montre
-// via URL scheme baskettrainer://s?e=0&t=10&m=7&s=...&r=1101001010
-// La montre envoie l'URL via Communications.openWebPage()
-// Garmin Connect la transfère automatiquement à cette app
+// GARMIN MANAGER — Communication Bluetooth native
+// via le SDK officiel Connect IQ (SPM)
+// Données reçues automatiquement, sans confirmation utilisateur
 // ─────────────────────────────────────────────────
 
 class GarminManager: NSObject, ObservableObject {
     static let shared = GarminManager()
 
-    @Published var isConnected: Bool = false
-    @Published var lastError: String?
+    private let appUUID      = UUID(uuidString: "a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a")!
+    private let deviceCacheKey = "garmin_cached_device"
 
+    @Published var isConnected:   Bool = false
+    @Published var isDeviceSetup: Bool = false
+
+    private var device: IQDevice?
+    private var iqApp:  IQApp?
     private let store = SessionStore.shared
 
+    // ── Initialisation au lancement ──
     func setup() {
-        print("[GarminManager] Prêt — en attente URL baskettrainer://")
+        ConnectIQ.sharedInstance().initialize(withUrlScheme: "baskettrainer",
+                                              uiOverrideDelegate: nil)
+        restoreCachedDevice()
     }
 
-    // ── Appelé depuis BasketTrainerApp quand l'URL baskettrainer:// arrive ──
+    // ── Ouvre Garmin Connect pour choisir la montre (setup 1 fois) ──
+    func selectDevice() {
+        ConnectIQ.sharedInstance().showConnectIQDeviceSelection()
+    }
+
+    // ── Appelé depuis onOpenURL quand Garmin Connect renvoie vers l'app ──
     func handleIncomingURL(_ url: URL) {
-        guard url.scheme == "baskettrainer",
-              url.host == "s",
-              let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
-              let queryItems = components.queryItems else { return }
-
-        var exerciseId = 0
-        var totalShots = 0
-        var madeShots  = 0
-        var startTime  = 0
-        var results    = [Bool]()
-
-        for item in queryItems {
-            switch item.name {
-            case "e": exerciseId = Int(item.value ?? "") ?? 0
-            case "t": totalShots = Int(item.value ?? "") ?? 0
-            case "m": madeShots  = Int(item.value ?? "") ?? 0
-            case "s": startTime  = Int(item.value ?? "") ?? 0
-            case "r": results    = (item.value ?? "").map { $0 == "1" }
-            default:  break
-            }
-        }
-
-        let dict: [String: Any] = [
-            "exerciseId": exerciseId,
-            "totalShots": totalShots,
-            "madeShots":  madeShots,
-            "startTime":  startTime,
-            "results":    results
-        ]
-
-        let session = WorkoutSession(fromGarmin: dict)
-        DispatchQueue.main.async {
-            self.store.add(session)
-            self.isConnected = true
-        }
+        guard let devices = ConnectIQ.sharedInstance()
+                .parseDeviceSelectionResponse(from: url) as? [IQDevice],
+              let first = devices.first else { return }
+        configure(device: first)
+        cacheDevice(first)
     }
 
-    // ── Envoi config vers la montre (non utilisé avec URL scheme) ──
-    func sendWorkoutConfig(exerciseId: Int, totalShots: Int) {
-        print("[GarminManager] Config ignorée — communication montre→iPhone uniquement")
-    }
-
-    // ── Simulation — ajoute une fausse séance pour tester l'UI ──
+    // ── Simulation — ajoute une séance de test ──
     func addMockSession() {
         let results = (0..<10).map { _ in Bool.random() }
         let made    = results.filter { $0 }.count
@@ -75,5 +53,67 @@ class GarminManager: NSObject, ObservableObject {
             results:      results
         )
         store.add(session)
+    }
+
+    // ── Envoi config vers montre (optionnel) ──
+    func sendWorkoutConfig(exerciseId: Int, totalShots: Int) {
+        guard let app = iqApp else { return }
+        let payload: [String: Any] = ["exerciseId": exerciseId, "totalShots": totalShots]
+        ConnectIQ.sharedInstance().sendMessage(payload, to: app, progress: nil) { _ in }
+    }
+
+    // ─────────────────────────────────────────────────
+    // PRIVATE
+    // ─────────────────────────────────────────────────
+
+    private func configure(device: IQDevice) {
+        if self.device != nil {
+            ConnectIQ.sharedInstance().unregisterForAllDeviceEvents(self)
+            ConnectIQ.sharedInstance().unregisterForAllAppMessages(self)
+        }
+        self.device = device
+        self.iqApp  = IQApp(uuid: appUUID, device: device)
+
+        ConnectIQ.sharedInstance().register(forDeviceEvents: device, delegate: self)
+        ConnectIQ.sharedInstance().register(forAppMessages: iqApp!, delegate: self)
+
+        DispatchQueue.main.async { self.isDeviceSetup = true }
+    }
+
+    private func cacheDevice(_ device: IQDevice) {
+        if let data = try? NSKeyedArchiver.archivedData(withRootObject: device,
+                                                         requiringSecureCoding: false) {
+            UserDefaults.standard.set(data, forKey: deviceCacheKey)
+        }
+    }
+
+    private func restoreCachedDevice() {
+        guard let data = UserDefaults.standard.data(forKey: deviceCacheKey),
+              let device = try? NSKeyedUnarchiver.unarchivedObject(ofClass: IQDevice.self,
+                                                                    from: data)
+        else { return }
+        configure(device: device)
+    }
+}
+
+// ─────────────────────────────────────────────────
+// DELEGATES SDK
+// ─────────────────────────────────────────────────
+
+extension GarminManager: IQDeviceEventDelegate {
+    func deviceStatusChanged(_ device: IQDevice, status: IQDeviceStatus) {
+        DispatchQueue.main.async {
+            self.isConnected = (status == .connected)
+        }
+    }
+}
+
+extension GarminManager: IQAppMessageDelegate {
+    func receivedMessage(_ message: Any, from app: IQApp) {
+        guard let dict = message as? [String: Any] else { return }
+        let session = WorkoutSession(fromGarmin: dict)
+        DispatchQueue.main.async {
+            self.store.add(session)
+        }
     }
 }

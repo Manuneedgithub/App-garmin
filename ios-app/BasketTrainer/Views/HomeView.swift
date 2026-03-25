@@ -112,14 +112,19 @@ struct HomeView: View {
     }
 
     private var connectionBadge: some View {
-        HStack(spacing: 4) {
-            Circle()
-                .fill(garmin.isConnected ? .green : .gray)
-                .frame(width: 8, height: 8)
-            Text(garmin.isConnected ? "Connectée" : "Hors ligne")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+        Button {
+            if !garmin.isDeviceSetup { garmin.selectDevice() }
+        } label: {
+            HStack(spacing: 4) {
+                Circle()
+                    .fill(garmin.isConnected ? Color.green : (garmin.isDeviceSetup ? Color.orange : Color.gray))
+                    .frame(width: 8, height: 8)
+                Text(garmin.isConnected ? "Connectée" : (garmin.isDeviceSetup ? "En veille" : "Configurer ›"))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
         }
+        .buttonStyle(.plain)
     }
 }
 
