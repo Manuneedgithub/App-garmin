@@ -135,16 +135,23 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Envoie les données vers l'app iPhone via Bluetooth (SDK Connect IQ)
-    // Reçu automatiquement par GarminManager.receivedMessage() sans confirmation
+    // Sauvegarde localement + tente l'envoi Bluetooth immédiat
+    // Si le phone est absent → reste en storage, envoyé au prochain lancement
     private function sendToPhone() as Void {
         var data = _session.toDictionary();
+        savePendingSession(data);                          // stockage local d'abord
         Communications.transmit(data, null, new TransmitDelegate());
     }
 }
 
 class TransmitDelegate extends Communications.ConnectionListener {
     function initialize() { Communications.ConnectionListener.initialize(); }
-    function onComplete() as Void {}
-    function onError() as Void {}
+
+    function onComplete() as Void {
+        removeFirstPending(); // envoi réussi → on retire du stockage
+    }
+
+    function onError() as Void {
+        // Session déjà en storage → sera renvoyée au prochain lancement
+    }
 }
