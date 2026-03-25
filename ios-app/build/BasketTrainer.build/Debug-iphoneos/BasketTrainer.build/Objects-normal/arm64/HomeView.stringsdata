@@ -1,0 +1,72 @@
+{
+  "source": "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/HomeView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Basket Trainer",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Bonjour 👋",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "Prêt à s'entraîner ?",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "Nouvel entraînement",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Récentes",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Connectée",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 119
+        }
+      },
+      {
+        "comment": "",
+        "key": "Hors ligne",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 119
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld/%lld",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 182
+        }
+      }
+    ]
+  },
+  "version": 1
+}

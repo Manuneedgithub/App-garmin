@@ -1,0 +1,118 @@
+{
+  "" : {
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainer-master.dia",
+    "emit-module-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainer-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainer-master-emit-module.dia",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainer-master.swiftdeps"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/BasketTrainerApp.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/BasketTrainerApp~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Managers/GarminManager.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GarminManager~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Models/Models.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/Models~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Models/SessionStore.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionStore~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/ContentView.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/HistoryView.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HistoryView~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/HomeView.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/HomeView~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/SessionDetailView.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/SessionDetailView~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/StatsView.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/StatsView~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/WorkoutConfigView.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/WorkoutConfigView~partial.swiftmodule"
+  },
+  "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/manu/Documents/GitHub/App-garmin/ios-app/build/BasketTrainer.build/Debug-iphonesimulator/BasketTrainer.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

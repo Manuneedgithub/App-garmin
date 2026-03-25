@@ -1,0 +1,32 @@
+{
+  "source": "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Accueil",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 9
+        }
+      },
+      {
+        "comment": "",
+        "key": "Historique",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 14
+        }
+      },
+      {
+        "comment": "",
+        "key": "Stats",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 19
+        }
+      }
+    ]
+  },
+  "version": 1
+}

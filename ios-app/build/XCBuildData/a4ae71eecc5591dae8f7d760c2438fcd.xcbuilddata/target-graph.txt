@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+Target 'BasketTrainer' in project 'BasketTrainer' (no dependencies)

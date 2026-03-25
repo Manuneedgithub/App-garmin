@@ -1,0 +1,120 @@
+{
+  "source": "/Users/manu/Documents/GitHub/App-garmin/ios-app/BasketTrainer/Views/StatsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Statistiques",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "Progression (15 dernières séances)",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "Objectif",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "Séance",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 85
+        }
+      },
+      {
+        "comment": "",
+        "key": "Réussite",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "Séance",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "Réussite",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "Séance",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "Réussite",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 106
+        }
+      },
+      {
+        "comment": "",
+        "key": "70%",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 117
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "Par exercice",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "Lance des séances pour voir tes stats ici.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld séance%@ · %lld tirs",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 220
+        }
+      }
+    ]
+  },
+  "version": 1
+}
