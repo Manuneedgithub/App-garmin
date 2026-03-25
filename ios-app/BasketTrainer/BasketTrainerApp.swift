@@ -15,11 +15,13 @@ struct BasketTrainerApp: App {
             ContentView()
                 .environmentObject(store)
                 .environmentObject(garmin)
+                .onOpenURL { url in
+                    garmin.handleIncomingURL(url)
+                }
         }
     }
 
     private func customizeAppearance() {
-        // Barre de navigation semi-transparente
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.titleTextAttributes    = [.foregroundColor: UIColor.white]

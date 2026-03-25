@@ -135,25 +135,18 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Envoie les données de la session vers l'app iPhone via Bluetooth
-    // Si la montre n'est pas connectée, onError() est appelé silencieusement
+    // Envoie les données vers l'app iPhone via URL scheme (baskettrainer://)
+    // Garmin Connect reçoit l'URL et ouvre l'app iPhone automatiquement
     private function sendToPhone() as Void {
-        var data = _session.toDictionary();
-        Communications.transmit(data, null, new TransmitDelegate());
-    }
-}
-
-// Listener de retour pour l'envoi Bluetooth (optionnel, gère les erreurs)
-class TransmitDelegate extends Communications.ConnectionListener {
-    function initialize() {
-        Communications.ConnectionListener.initialize();
-    }
-
-    function onComplete() as Void {
-        // Envoi réussi — on pourrait afficher une confirmation
-    }
-
-    function onError() as Void {
-        // Erreur réseau — la session sera perdue côté iPhone mais la montre continue
+        var resultStr = "";
+        for (var i = 0; i < _session.results.size(); i++) {
+            resultStr = resultStr + (_session.results[i] ? "1" : "0");
+        }
+        var url = "baskettrainer://s?e=" + _session.exerciseId.toString()
+                + "&t=" + _session.totalShots.toString()
+                + "&m=" + _session.madeShots.toString()
+                + "&s=" + _session.startTime.toString()
+                + "&r=" + resultStr;
+        Communications.openWebPage(url, null, null);
     }
 }
