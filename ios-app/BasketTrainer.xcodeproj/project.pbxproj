@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32FD5D262F74916F00C25CD6 /* ConnectIQ in Frameworks */ = {isa = PBXBuildFile; productRef = 32FD5D252F74916F00C25CD6 /* ConnectIQ */; };
 		AA00000000000000000000D1 /* BasketTrainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C1 /* BasketTrainerApp.swift */; };
 		AA00000000000000000000D2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C2 /* Models.swift */; };
 		AA00000000000000000000D3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C3 /* SessionStore.swift */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32FD5D262F74916F00C25CD6 /* ConnectIQ in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +163,9 @@
 				Base,
 			);
 			mainGroup = AA00000000000000000000A1;
+			packageReferences = (
+				32FD5D242F74916F00C25CD6 /* XCRemoteSwiftPackageReference "connectiq-companion-app-sdk-ios" */,
+			);
 			productRefGroup = AA00000000000000000000A2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -335,6 +340,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonnom.baskettrainer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -359,6 +365,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tonnom.baskettrainer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -389,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32FD5D242F74916F00C25CD6 /* XCRemoteSwiftPackageReference "connectiq-companion-app-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/garmin/connectiq-companion-app-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32FD5D252F74916F00C25CD6 /* ConnectIQ */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32FD5D242F74916F00C25CD6 /* XCRemoteSwiftPackageReference "connectiq-companion-app-sdk-ios" */;
+			productName = ConnectIQ;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA000000000000000000FFFF /* Project object */;
 }

@@ -30,7 +30,7 @@ class GarminManager: NSObject, ObservableObject {
 
     // ── Ouvre Garmin Connect pour choisir la montre (setup 1 fois) ──
     func selectDevice() {
-        ConnectIQ.sharedInstance().showConnectIQDeviceSelection()
+        ConnectIQ.sharedInstance().showDeviceSelection()
     }
 
     // ── Appelé depuis onOpenURL quand Garmin Connect renvoie vers l'app ──
@@ -68,11 +68,11 @@ class GarminManager: NSObject, ObservableObject {
 
     private func configure(device: IQDevice) {
         if self.device != nil {
-            ConnectIQ.sharedInstance().unregisterForAllDeviceEvents(self)
-            ConnectIQ.sharedInstance().unregisterForAllAppMessages(self)
+            ConnectIQ.sharedInstance().unregister(forAllDeviceEvents: self)
+            ConnectIQ.sharedInstance().unregister(forAllAppMessages: self)
         }
         self.device = device
-        self.iqApp  = IQApp(uuid: appUUID, device: device)
+        self.iqApp  = IQApp(uuid: appUUID, store: appUUID, device: device)
 
         ConnectIQ.sharedInstance().register(forDeviceEvents: device, delegate: self)
         ConnectIQ.sharedInstance().register(forAppMessages: iqApp!, delegate: self)
