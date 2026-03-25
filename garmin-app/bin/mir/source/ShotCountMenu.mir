@@ -1,0 +1,236 @@
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 8; @symbol_classdef = [ShotCountMenuView,8,6,23]; @symbol_extends<0> = [WatchUi,8,32,39]; @symbol_extends<1> = [Menu2,8,40,45]; ]
+class ShotCountMenuView extends WatchUi.Menu2 {
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 8; ]
+    <init> {
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 8; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; @symbol_param<0> = [exerciseId,10,24,34]; @symbol_param<0>_type<0> = [Number,10,38,44]; ]
+    function initialize(exerciseId as Number) as Void {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_10_46_21_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 12 8 ]
+        symbol [ Menu2 %tmp.2 12 8 13 ];
+        %tmp.2 = getv ? :Menu2;
+        symbol [ initialize %tmp.3 12 14 24 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        %tmp.4 = newd 1;
+        %tmp.6 = const :title;
+        symbol [ title %tmp.6 12 27 32 const ];
+        %tmp.7 = self;
+        symbol [ getExerciseName %tmp.8 12 36 51 ];
+        %tmp.8 = getv function %tmp.7 :getExerciseName;
+        %tmp.9 = lgetv %exerciseId;
+        symbol [ exerciseId %tmp.9 12 52 62 ];
+        %tmp.10 = invoke %tmp.7 %tmp.8(%tmp.9);
+        %tmp.11 = dup %tmp.4;
+        %tmp.12 = aputv %tmp.11 %tmp.6 %tmp.10;
+        invoke %tmp.2 %tmp.3(%tmp.12);
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 15 8 ]
+        %tmp.13 = self;
+        symbol [ addItem %tmp.14 15 8 15 ];
+        %tmp.14 = getv function %tmp.13 :addItem;
+        symbol [ WatchUi %tmp.17 15 20 27 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.18 15 28 36 ];
+        %tmp.18 = getv function ? %tmp.17 :MenuItem;
+        %tmp.19 = "5 tirs";
+        %tmp.20 = null;
+        %tmp.21 = 5;
+        %tmp.22 = null;
+        %tmp.15 = newc %tmp.18 (%tmp.19, %tmp.20, %tmp.21, %tmp.22);
+        invoke %tmp.13 %tmp.14(%tmp.15);
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 16 8 ]
+        %tmp.23 = self;
+        symbol [ addItem %tmp.24 16 8 15 ];
+        %tmp.24 = getv function %tmp.23 :addItem;
+        symbol [ WatchUi %tmp.27 16 20 27 ];
+        %tmp.27 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.28 16 28 36 ];
+        %tmp.28 = getv function ? %tmp.27 :MenuItem;
+        %tmp.29 = "10 tirs";
+        %tmp.30 = null;
+        %tmp.31 = 10;
+        %tmp.32 = null;
+        %tmp.25 = newc %tmp.28 (%tmp.29, %tmp.30, %tmp.31, %tmp.32);
+        invoke %tmp.23 %tmp.24(%tmp.25);
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 17 8 ]
+        %tmp.33 = self;
+        symbol [ addItem %tmp.34 17 8 15 ];
+        %tmp.34 = getv function %tmp.33 :addItem;
+        symbol [ WatchUi %tmp.37 17 20 27 ];
+        %tmp.37 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.38 17 28 36 ];
+        %tmp.38 = getv function ? %tmp.37 :MenuItem;
+        %tmp.39 = "15 tirs";
+        %tmp.40 = null;
+        %tmp.41 = 15;
+        %tmp.42 = null;
+        %tmp.35 = newc %tmp.38 (%tmp.39, %tmp.40, %tmp.41, %tmp.42);
+        invoke %tmp.33 %tmp.34(%tmp.35);
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 18 8 ]
+        %tmp.43 = self;
+        symbol [ addItem %tmp.44 18 8 15 ];
+        %tmp.44 = getv function %tmp.43 :addItem;
+        symbol [ WatchUi %tmp.47 18 20 27 ];
+        %tmp.47 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.48 18 28 36 ];
+        %tmp.48 = getv function ? %tmp.47 :MenuItem;
+        %tmp.49 = "20 tirs";
+        %tmp.50 = null;
+        %tmp.51 = 20;
+        %tmp.52 = null;
+        %tmp.45 = newc %tmp.48 (%tmp.49, %tmp.50, %tmp.51, %tmp.52);
+        invoke %tmp.43 %tmp.44(%tmp.45);
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 19 8 ]
+        %tmp.53 = self;
+        symbol [ addItem %tmp.54 19 8 15 ];
+        %tmp.54 = getv function %tmp.53 :addItem;
+        symbol [ WatchUi %tmp.57 19 20 27 ];
+        %tmp.57 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.58 19 28 36 ];
+        %tmp.58 = getv function ? %tmp.57 :MenuItem;
+        %tmp.59 = "25 tirs";
+        %tmp.60 = null;
+        %tmp.61 = 25;
+        %tmp.62 = null;
+        %tmp.55 = newc %tmp.58 (%tmp.59, %tmp.60, %tmp.61, %tmp.62);
+        invoke %tmp.53 %tmp.54(%tmp.55);
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 20 8 ]
+        %tmp.63 = self;
+        symbol [ addItem %tmp.64 20 8 15 ];
+        %tmp.64 = getv function %tmp.63 :addItem;
+        symbol [ WatchUi %tmp.67 20 20 27 ];
+        %tmp.67 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.68 20 28 36 ];
+        %tmp.68 = getv function ? %tmp.67 :MenuItem;
+        %tmp.69 = "30 tirs";
+        %tmp.70 = null;
+        %tmp.71 = 30;
+        %tmp.72 = null;
+        %tmp.65 = newc %tmp.68 (%tmp.69, %tmp.70, %tmp.71, %tmp.72);
+        invoke %tmp.63 %tmp.64(%tmp.65);
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_10_46_21_4_stop:
+    }
+}
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 24; @symbol_classdef = [ShotCountMenuDelegate,24,6,27]; @symbol_extends<0> = [WatchUi,24,36,43]; @symbol_extends<1> = [Menu2InputDelegate,24,44,62]; ]
+class ShotCountMenuDelegate extends WatchUi.Menu2InputDelegate {
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 24; ]
+    <init> {
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 24; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 25; @position = 16; @symbol_vardef = [_exerciseId,25,16,27]; @symbol_type<0> = [Number,25,31,37]; ]
+    private
+    var _exerciseId as Number;
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 27; @symbol_functiondef = [initialize,27,13,23]; @symbol_param<0> = [exerciseId,27,24,34]; @symbol_param<0>_type<0> = [Number,27,38,44]; ]
+    function initialize(exerciseId as Number) as Void {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_27_46_30_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 28 8 ]
+        symbol [ Menu2InputDelegate %tmp.2 28 8 26 ];
+        %tmp.2 = getv ? :Menu2InputDelegate;
+        symbol [ initialize %tmp.3 28 27 37 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 29 8 ]
+        %tmp.4 = lgetv %exerciseId;
+        symbol [ exerciseId %tmp.4 29 22 32 ];
+        symbol [ _exerciseId ? 29 8 19 ];
+        putv self :_exerciseId %tmp.4;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_27_46_30_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 33; @symbol_functiondef = [onSelect,33,13,21]; @symbol_param<0> = [item,33,22,26]; @symbol_param<0>_type<0> = [WatchUi,33,30,37]; @symbol_param<0>_type<1> = [MenuItem,33,38,46]; ]
+    function onSelect(item as WatchUi.MenuItem) as Void {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 34 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_stop" ]
+        %totalShots.1 = local;
+        symbol [ totalShots %totalShots.1 34 12 22 ];
+        %tmp.1 = lgetv %item;
+        symbol [ item %tmp.1 34 25 29 ];
+        symbol [ getId %tmp.2 34 30 35 ];
+        %tmp.2 = getv function %tmp.1 :getId;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = as %tmp.3 Number;
+        symbol [ Number %tmp.4 34 41 47 ];
+        lputv %totalShots.1 %tmp.4;
+        symbol [ totalShots %totalShots.1 34 12 22 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 35 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_stop" ]
+        %session.2 = local;
+        symbol [ session %session.2 35 12 19 ];
+        symbol [ WorkoutSession %tmp.8 35 29 43 ];
+        %tmp.8 = getv ? :WorkoutSession;
+        symbol [ _exerciseId %tmp.10 35 44 55 ];
+        %tmp.10 = getv ? :_exerciseId;
+        %tmp.11 = lgetv %totalShots.1;
+        symbol [ totalShots %tmp.11 35 57 67 ];
+        %tmp.5 = newc %tmp.8 (%tmp.10, %tmp.11);
+        lputv %session.2 %tmp.5;
+        symbol [ session %session.2 35 12 19 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 36 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_stop" ]
+        %view.3 = local;
+        symbol [ view %view.3 36 12 16 ];
+        symbol [ WorkoutView %tmp.15 36 29 40 ];
+        %tmp.15 = getv ? :WorkoutView;
+        %tmp.16 = lgetv %session.2;
+        symbol [ session %tmp.16 36 41 48 ];
+        %tmp.12 = newc %tmp.15 (%tmp.16);
+        lputv %view.3 %tmp.12;
+        symbol [ view %view.3 36 12 16 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 37 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_stop" ]
+        %delegate.4 = local;
+        symbol [ delegate %delegate.4 37 12 20 ];
+        symbol [ WorkoutDelegate %tmp.20 37 29 44 ];
+        %tmp.20 = getv ? :WorkoutDelegate;
+        %tmp.21 = lgetv %session.2;
+        symbol [ session %tmp.21 37 45 52 ];
+        %tmp.22 = lgetv %view.3;
+        symbol [ view %tmp.22 37 54 58 ];
+        %tmp.17 = newc %tmp.20 (%tmp.21, %tmp.22);
+        lputv %delegate.4 %tmp.17;
+        symbol [ delegate %delegate.4 37 12 20 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 38 8 ]
+        symbol [ WatchUi %tmp.23 38 8 15 ];
+        %tmp.23 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.24 38 16 24 ];
+        %tmp.24 = getv function %tmp.23 :pushView;
+        %tmp.25 = lgetv %view.3;
+        symbol [ view %tmp.25 38 25 29 ];
+        %tmp.26 = lgetv %delegate.4;
+        symbol [ delegate %tmp.26 38 31 39 ];
+        symbol [ WatchUi %tmp.27 38 41 48 ];
+        %tmp.27 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.28 38 49 59 ];
+        %tmp.28 = getv %tmp.27 :SLIDE_LEFT;
+        invoke %tmp.23 %tmp.24(%tmp.25, %tmp.26, %tmp.28);
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_33_56_39_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 41; @symbol_functiondef = [onBack,41,13,19]; ]
+    function onBack() as Void {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_41_30_43_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc" 42 8 ]
+        symbol [ WatchUi %tmp.1 42 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 42 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 42 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 42 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+C__Users_manu_Desktop_App_garmin_garmin_app_source_ShotCountMenu_mc_41_30_43_4_stop:
+    }
+}
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\ShotCountMenu.mc"; @line = 1; ]
+<init> {
+}

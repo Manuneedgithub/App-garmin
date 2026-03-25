@@ -136,11 +136,10 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
     }
 
     // Envoie les données de la session vers l'app iPhone via Bluetooth
+    // Si la montre n'est pas connectée, onError() est appelé silencieusement
     private function sendToPhone() as Void {
-        if (Communications.getDeviceStatus().phoneConnected) {
-            var data = _session.toDictionary();
-            Communications.transmit(data, null, new TransmitDelegate());
-        }
+        var data = _session.toDictionary();
+        Communications.transmit(data, null, new TransmitDelegate());
     }
 }
 

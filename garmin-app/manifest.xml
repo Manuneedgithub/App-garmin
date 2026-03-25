@@ -3,7 +3,7 @@
     <iq:application
         entry="BasketApp"
         id="a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a"
-        launchLabel="Basket"
+        launcherIcon="@Drawables.LauncherIcon"
         minSdkVersion="3.4.0"
         name="@Strings.AppName"
         type="watch-app">

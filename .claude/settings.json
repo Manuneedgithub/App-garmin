@@ -1,5 +1,18 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(powershell -Command \":*)",
+      "Read(//c/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b/**)",
+      "Bash(grep -r \"phoneConnected\\\\|getDeviceStatus\\\\|PhoneConnected\" c:/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b/bin --include=*.xml --include=*.json -l)",
+      "Bash(grep -r phoneConnected c:/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b --include=*.mc --include=*.mj -l)",
+      "Bash(find c:/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b -name *.jungle)",
+      "Read(//c/Users/manu/AppData/Roaming/Garmin/ConnectIQ/**)",
+      "Bash(mkdir -p \"c:/Users/manu/AppData/Local/Temp/BasketApp\")",
+      "Bash(cp \"c:/Users/manu/Desktop/App garmin/garmin-app/bin/garminapp.prg\" \"c:/Users/manu/AppData/Local/Temp/BasketApp/garminapp.prg\")",
+      "Bash(powershell -Command \"echo ''help'' | & ''C:/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b/bin/shell.exe''\")",
+      "Bash(find c:/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b -name *.md -o -name README* -o -name *.txt)",
+      "Read(//c/Users/manu/.vscode/extensions/**)"
+    ],
     "additionalDirectories": [
       "c:\\Users\\manu\\Desktop\\App garmin\\garmin-app"
     ]

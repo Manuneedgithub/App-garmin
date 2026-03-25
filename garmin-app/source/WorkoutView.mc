@@ -43,7 +43,6 @@ class WorkoutView extends WatchUi.View {
 
     function onUpdate(dc as Graphics.Dc) as Void {
         var w = dc.getWidth();   // 260
-        var h = dc.getHeight();  // 260
         var cx = w / 2;
 
         // ── Fond noir ──
@@ -111,12 +110,10 @@ class WorkoutView extends WatchUi.View {
 // ─────────────────────────────────────────────────
 class WorkoutDelegate extends WatchUi.BehaviorDelegate {
     private var _session as WorkoutSession;
-    private var _view    as WorkoutView;
 
     function initialize(session as WorkoutSession, view as WorkoutView) {
         BehaviorDelegate.initialize();
         _session = session;
-        _view    = view;
     }
 
     // Bouton HAUT → Tir réussi ✅

@@ -6,20 +6,18 @@ import Toybox.Lang;
 // ─────────────────────────────────────────────────
 
 class ShotCountMenuView extends WatchUi.Menu2 {
-    private var _exerciseId as Number;
 
     function initialize(exerciseId as Number) {
-        _exerciseId = exerciseId;
         // Titre = nom de l'exercice choisi
-        Menu2.initialize({:title => exerciseName(exerciseId)});
+        Menu2.initialize({:title => getExerciseName(exerciseId)});
 
         // Options de nombre de tirs
-        addItem(new WatchUi.MenuItem("5 tirs",  null,  5, {}));
-        addItem(new WatchUi.MenuItem("10 tirs", null, 10, {}));
-        addItem(new WatchUi.MenuItem("15 tirs", null, 15, {}));
-        addItem(new WatchUi.MenuItem("20 tirs", null, 20, {}));
-        addItem(new WatchUi.MenuItem("25 tirs", null, 25, {}));
-        addItem(new WatchUi.MenuItem("30 tirs", null, 30, {}));
+        addItem(new WatchUi.MenuItem("5 tirs",  null,  5, null));
+        addItem(new WatchUi.MenuItem("10 tirs", null, 10, null));
+        addItem(new WatchUi.MenuItem("15 tirs", null, 15, null));
+        addItem(new WatchUi.MenuItem("20 tirs", null, 20, null));
+        addItem(new WatchUi.MenuItem("25 tirs", null, 25, null));
+        addItem(new WatchUi.MenuItem("30 tirs", null, 30, null));
     }
 }
 

@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<debugInfo>
+    <manifest filename="C:\Users\manu\Desktop\App garmin\garmin-app\manifest.xml"/>
+    <pcToLineNum>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="1" lineNum="27" parent="globals" pc="268435460" symbol="getApp"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="1" lineNum="28" parent="globals" pc="268435470" symbol="getApp"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="2" lineNum="111" parent="globals/WorkoutDelegate" pc="268435481" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="3" lineNum="8" parent="globals/ShotCountMenuView" pc="268435493" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="4" lineNum="6" parent="globals/BasketApp" pc="268435505" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="5" lineNum="49" parent="globals/ExerciseMenuDelegate" pc="268435517" symbol="&lt;init&gt;"/>
+        <entry filename="c:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\bin\\gen\\006-B3992-00\\source\\Rez.mcgen" id="6" lineNum="7" parent="globals/Rez" pc="268435529" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="7" lineNum="22" parent="globals/WorkoutView" pc="268435549" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="8" lineNum="147" parent="globals/TransmitDelegate" pc="268435561" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="9" lineNum="112" parent="globals/SummaryDelegate" pc="268435573" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="20" parent="globals" pc="268435585" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="21" parent="globals" pc="268435595" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="21" parent="globals" pc="268435602" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="22" parent="globals" pc="268435611" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="22" parent="globals" pc="268435619" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="23" parent="globals" pc="268435628" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="23" parent="globals" pc="268435636" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="24" parent="globals" pc="268435645" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="24" parent="globals" pc="268435653" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="25" parent="globals" pc="268435662" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="25" parent="globals" pc="268435670" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="26" parent="globals" pc="268435679" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="26" parent="globals" pc="268435687" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="27" parent="globals" pc="268435696" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="27" parent="globals" pc="268435704" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="28" parent="globals" pc="268435713" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="28" parent="globals" pc="268435721" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="29" parent="globals" pc="268435730" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="29" parent="globals" pc="268435738" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="10" lineNum="30" parent="globals" pc="268435747" symbol="getExerciseName"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="11" lineNum="23" parent="globals/SummaryView" pc="268435753" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="12" lineNum="34" parent="globals/ExerciseMenuView" pc="268435765" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="13" lineNum="24" parent="globals/ShotCountMenuDelegate" pc="268435777" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="14" lineNum="132" parent="globals/WorkoutDelegate" pc="268435789" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="14" lineNum="133" parent="globals/WorkoutDelegate" pc="268435791" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="14" lineNum="134" parent="globals/WorkoutDelegate" pc="268435806" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="15" lineNum="126" parent="globals/WorkoutDelegate" pc="268435808" symbol="onPreviousPage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="15" lineNum="127" parent="globals/WorkoutDelegate" pc="268435810" symbol="onPreviousPage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="15" lineNum="128" parent="globals/WorkoutDelegate" pc="268435820" symbol="onPreviousPage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="16" lineNum="137" parent="globals/WorkoutDelegate" pc="268435822" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="16" lineNum="138" parent="globals/WorkoutDelegate" pc="268435825" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="16" lineNum="140" parent="globals/WorkoutDelegate" pc="268435841" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="16" lineNum="142" parent="globals/WorkoutDelegate" pc="268435855" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="16" lineNum="143" parent="globals/WorkoutDelegate" pc="268435880" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="16" lineNum="144" parent="globals/WorkoutDelegate" pc="268435905" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="16" lineNum="147" parent="globals/WorkoutDelegate" pc="268435927" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="17" lineNum="114" parent="globals/WorkoutDelegate" pc="268435939" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="17" lineNum="115" parent="globals/WorkoutDelegate" pc="268435941" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="17" lineNum="116" parent="globals/WorkoutDelegate" pc="268435953" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="18" lineNum="120" parent="globals/WorkoutDelegate" pc="268435963" symbol="onNextPage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="18" lineNum="121" parent="globals/WorkoutDelegate" pc="268435965" symbol="onNextPage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="18" lineNum="122" parent="globals/WorkoutDelegate" pc="268435975" symbol="onNextPage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="10" parent="globals/ShotCountMenuView" pc="268435977" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="12" parent="globals/ShotCountMenuView" pc="268435979" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="15" parent="globals/ShotCountMenuView" pc="268436014" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="16" parent="globals/ShotCountMenuView" pc="268436054" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="17" parent="globals/ShotCountMenuView" pc="268436094" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="18" parent="globals/ShotCountMenuView" pc="268436134" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="19" parent="globals/ShotCountMenuView" pc="268436174" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="19" lineNum="20" parent="globals/ShotCountMenuView" pc="268436214" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="20" lineNum="12" parent="globals/BasketApp" pc="268436255" symbol="onStart"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="21" lineNum="19" parent="globals/BasketApp" pc="268436258" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="21" lineNum="20" parent="globals/BasketApp" pc="268436261" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="21" lineNum="21" parent="globals/BasketApp" pc="268436281" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="21" lineNum="22" parent="globals/BasketApp" pc="268436301" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="22" lineNum="8" parent="globals/BasketApp" pc="268436316" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="22" lineNum="9" parent="globals/BasketApp" pc="268436318" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\BasketApp.mc" id="23" lineNum="15" parent="globals/BasketApp" pc="268436331" symbol="onStop"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="24" lineNum="61" parent="globals/ExerciseMenuDelegate" pc="268436334" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="24" lineNum="62" parent="globals/ExerciseMenuDelegate" pc="268436336" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="25" lineNum="50" parent="globals/ExerciseMenuDelegate" pc="268436352" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="25" lineNum="51" parent="globals/ExerciseMenuDelegate" pc="268436354" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="26" lineNum="54" parent="globals/ExerciseMenuDelegate" pc="268436367" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="26" lineNum="55" parent="globals/ExerciseMenuDelegate" pc="268436370" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="26" lineNum="56" parent="globals/ExerciseMenuDelegate" pc="268436379" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="26" lineNum="57" parent="globals/ExerciseMenuDelegate" pc="268436401" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="26" lineNum="58" parent="globals/ExerciseMenuDelegate" pc="268436423" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="27" lineNum="28" parent="globals/WorkoutSession" pc="268436443" symbol="recordShot"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="27" lineNum="29" parent="globals/WorkoutSession" pc="268436445" symbol="recordShot"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="27" lineNum="30" parent="globals/WorkoutSession" pc="268436461" symbol="recordShot"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="27" lineNum="30" parent="globals/WorkoutSession" pc="268436466" symbol="recordShot"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="27" lineNum="31" parent="globals/WorkoutSession" pc="268436484" symbol="recordShot"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="28" lineNum="40" parent="globals/WorkoutSession" pc="268436500" symbol="percentage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="28" lineNum="41" parent="globals/WorkoutSession" pc="268436502" symbol="percentage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="28" lineNum="41" parent="globals/WorkoutSession" pc="268436512" symbol="percentage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="28" lineNum="42" parent="globals/WorkoutSession" pc="268436517" symbol="percentage"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="17" parent="globals/WorkoutSession" pc="268436532" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="18" parent="globals/WorkoutSession" pc="268436534" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="19" parent="globals/WorkoutSession" pc="268436543" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="20" parent="globals/WorkoutSession" pc="268436560" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="21" parent="globals/WorkoutSession" pc="268436569" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="22" parent="globals/WorkoutSession" pc="268436577" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="23" parent="globals/WorkoutSession" pc="268436585" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="29" lineNum="24" parent="globals/WorkoutSession" pc="268436594" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="30" lineNum="35" parent="globals/WorkoutSession" pc="268436618" symbol="isFinished"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="30" lineNum="36" parent="globals/WorkoutSession" pc="268436620" symbol="isFinished"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="31" lineNum="46" parent="globals/WorkoutSession" pc="268436632" symbol="toDictionary"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutSession.mc" id="31" lineNum="47" parent="globals/WorkoutSession" pc="268436634" symbol="toDictionary"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="81" parent="globals/WorkoutView" pc="268436718" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="82" parent="globals/WorkoutView" pc="268436721" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="83" parent="globals/WorkoutView" pc="268436739" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="83" parent="globals/WorkoutView" pc="268436746" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="86" parent="globals/WorkoutView" pc="268436750" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="87" parent="globals/WorkoutView" pc="268436767" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="90" parent="globals/WorkoutView" pc="268436774" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="91" parent="globals/WorkoutView" pc="268436781" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="93" parent="globals/WorkoutView" pc="268436794" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="94" parent="globals/WorkoutView" pc="268436805" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="95" parent="globals/WorkoutView" pc="268436823" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="96" parent="globals/WorkoutView" pc="268436842" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="98" parent="globals/WorkoutView" pc="268436852" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="99" parent="globals/WorkoutView" pc="268436866" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="102" parent="globals/WorkoutView" pc="268436882" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="32" lineNum="103" parent="globals/WorkoutView" pc="268436895" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="33" lineNum="40" parent="globals/WorkoutView" pc="268436922" symbol="onLayout"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="34" lineNum="35" parent="globals/WorkoutView" pc="268436925" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="34" lineNum="36" parent="globals/WorkoutView" pc="268436927" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="34" lineNum="37" parent="globals/WorkoutView" pc="268436939" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="44" parent="globals/WorkoutView" pc="268436949" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="45" parent="globals/WorkoutView" pc="268436952" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="46" parent="globals/WorkoutView" pc="268436961" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="49" parent="globals/WorkoutView" pc="268436968" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="50" parent="globals/WorkoutView" pc="268436980" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="53" parent="globals/WorkoutView" pc="268436988" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="54" parent="globals/WorkoutView" pc="268437005" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="58" parent="globals/WorkoutView" pc="268437032" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="59" parent="globals/WorkoutView" pc="268437073" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="60" parent="globals/WorkoutView" pc="268437090" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="64" parent="globals/WorkoutView" pc="268437110" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="65" parent="globals/WorkoutView" pc="268437135" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="66" parent="globals/WorkoutView" pc="268437152" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="70" parent="globals/WorkoutView" pc="268437173" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="73" parent="globals/WorkoutView" pc="268437189" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="74" parent="globals/WorkoutView" pc="268437206" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\WorkoutView.mc" id="35" lineNum="76" parent="globals/WorkoutView" pc="268437232" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="38" lineNum="148" parent="globals/TransmitDelegate" pc="268437259" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="38" lineNum="149" parent="globals/TransmitDelegate" pc="268437261" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="39" lineNum="131" parent="globals/SummaryDelegate" pc="268437278" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="39" lineNum="132" parent="globals/SummaryDelegate" pc="268437280" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="39" lineNum="133" parent="globals/SummaryDelegate" pc="268437295" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="39" lineNum="134" parent="globals/SummaryDelegate" pc="268437310" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="39" lineNum="135" parent="globals/SummaryDelegate" pc="268437325" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="40" lineNum="115" parent="globals/SummaryDelegate" pc="268437327" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="40" lineNum="116" parent="globals/SummaryDelegate" pc="268437329" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="40" lineNum="117" parent="globals/SummaryDelegate" pc="268437341" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="41" lineNum="140" parent="globals/SummaryDelegate" pc="268437351" symbol="&lt;globals/SummaryDelegate/&lt;&gt;sendToPhone&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="41" lineNum="141" parent="globals/SummaryDelegate" pc="268437354" symbol="&lt;globals/SummaryDelegate/&lt;&gt;sendToPhone&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="41" lineNum="142" parent="globals/SummaryDelegate" pc="268437367" symbol="&lt;globals/SummaryDelegate/&lt;&gt;sendToPhone&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="42" lineNum="121" parent="globals/SummaryDelegate" pc="268437402" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="42" lineNum="122" parent="globals/SummaryDelegate" pc="268437404" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="42" lineNum="124" parent="globals/SummaryDelegate" pc="268437411" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="42" lineNum="125" parent="globals/SummaryDelegate" pc="268437426" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="42" lineNum="126" parent="globals/SummaryDelegate" pc="268437441" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="42" lineNum="127" parent="globals/SummaryDelegate" pc="268437456" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="43" lineNum="38" parent="globals/SummaryView" pc="268437458" symbol="onLayout"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="44" lineNum="84" parent="globals/SummaryView" pc="268437461" symbol="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="44" lineNum="85" parent="globals/SummaryView" pc="268437463" symbol="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="44" lineNum="85" parent="globals/SummaryView" pc="268437471" symbol="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="44" lineNum="86" parent="globals/SummaryView" pc="268437479" symbol="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="44" lineNum="86" parent="globals/SummaryView" pc="268437487" symbol="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="44" lineNum="87" parent="globals/SummaryView" pc="268437496" symbol="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="45" lineNum="33" parent="globals/SummaryView" pc="268437502" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="45" lineNum="34" parent="globals/SummaryView" pc="268437504" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="45" lineNum="35" parent="globals/SummaryView" pc="268437516" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="41" parent="globals/SummaryView" pc="268437526" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="42" parent="globals/SummaryView" pc="268437529" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="43" parent="globals/SummaryView" pc="268437538" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="44" parent="globals/SummaryView" pc="268437545" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="47" parent="globals/SummaryView" pc="268437558" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="48" parent="globals/SummaryView" pc="268437570" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="51" parent="globals/SummaryView" pc="268437578" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="52" parent="globals/SummaryView" pc="268437595" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="56" parent="globals/SummaryView" pc="268437617" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="57" parent="globals/SummaryView" pc="268437634" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="61" parent="globals/SummaryView" pc="268437662" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="62" parent="globals/SummaryView" pc="268437703" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="63" parent="globals/SummaryView" pc="268437720" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="67" parent="globals/SummaryView" pc="268437740" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="68" parent="globals/SummaryView" pc="268437752" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="69" parent="globals/SummaryView" pc="268437766" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="73" parent="globals/SummaryView" pc="268437798" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="76" parent="globals/SummaryView" pc="268437816" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="77" parent="globals/SummaryView" pc="268437833" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="46" lineNum="79" parent="globals/SummaryView" pc="268437856" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="91" parent="globals/SummaryView" pc="268437880" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="92" parent="globals/SummaryView" pc="268437883" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="93" parent="globals/SummaryView" pc="268437888" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="94" parent="globals/SummaryView" pc="268437892" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="95" parent="globals/SummaryView" pc="268437902" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="98" parent="globals/SummaryView" pc="268437912" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="99" parent="globals/SummaryView" pc="268437928" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="102" parent="globals/SummaryView" pc="268437948" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="103" parent="globals/SummaryView" pc="268437955" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\SummaryView.mc" id="47" lineNum="104" parent="globals/SummaryView" pc="268437977" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="35" parent="globals/ExerciseMenuView" pc="268438001" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="36" parent="globals/ExerciseMenuView" pc="268438003" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="37" parent="globals/ExerciseMenuView" pc="268438033" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="38" parent="globals/ExerciseMenuView" pc="268438073" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="39" parent="globals/ExerciseMenuView" pc="268438114" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="40" parent="globals/ExerciseMenuView" pc="268438154" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="41" parent="globals/ExerciseMenuView" pc="268438195" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="42" parent="globals/ExerciseMenuView" pc="268438235" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="43" parent="globals/ExerciseMenuView" pc="268438275" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="44" parent="globals/ExerciseMenuView" pc="268438316" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ExerciseMenu.mc" id="48" lineNum="45" parent="globals/ExerciseMenuView" pc="268438357" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="49" lineNum="41" parent="globals/ShotCountMenuDelegate" pc="268438399" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="49" lineNum="42" parent="globals/ShotCountMenuDelegate" pc="268438401" symbol="onBack"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="50" lineNum="27" parent="globals/ShotCountMenuDelegate" pc="268438417" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="50" lineNum="28" parent="globals/ShotCountMenuDelegate" pc="268438419" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="50" lineNum="29" parent="globals/ShotCountMenuDelegate" pc="268438431" symbol="initialize"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="51" lineNum="33" parent="globals/ShotCountMenuDelegate" pc="268438441" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="51" lineNum="34" parent="globals/ShotCountMenuDelegate" pc="268438444" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="51" lineNum="35" parent="globals/ShotCountMenuDelegate" pc="268438453" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="51" lineNum="36" parent="globals/ShotCountMenuDelegate" pc="268438480" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="51" lineNum="37" parent="globals/ShotCountMenuDelegate" pc="268438502" symbol="onSelect"/>
+        <entry filename="C:\\Users\\manu\\Desktop\\App garmin\\garmin-app\\source\\ShotCountMenu.mc" id="51" lineNum="38" parent="globals/ShotCountMenuDelegate" pc="268438526" symbol="onSelect"/>
+    </pcToLineNum>
+    <symbolTable>
+        <entry id="8388639" module="true" symbol="Graphics"/>
+        <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
+        <entry id="35" method="true" symbol="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;"/>
+        <entry id="24" method="true" symbol="percentage"/>
+        <entry id="9" object="true" symbol="ShotCountMenuView"/>
+        <entry field="true" id="8388731" symbol="startTime"/>
+        <entry field="true" id="33" symbol="&lt;globals/SummaryView/&lt;&gt;_session&gt;"/>
+        <entry id="27" method="true" symbol="toDictionary"/>
+        <entry field="true" id="53" symbol="LblResult"/>
+        <entry field="true" id="55" symbol="LblSaved"/>
+        <entry field="true" id="8388611" module="true" symbol="Toybox"/>
+        <entry field="true" id="57" symbol="MenuShots"/>
+        <entry id="5" object="true" symbol="BasketApp"/>
+        <entry id="15" object="true" symbol="WorkoutView"/>
+        <entry id="6" object="true" symbol="ExerciseMenuDelegate"/>
+        <entry field="true" id="36" symbol="&lt;globals/ShotCountMenuDelegate/&lt;&gt;_exerciseId&gt;"/>
+        <entry field="true" id="38" symbol="AppName"/>
+        <entry field="true" id="28" symbol="totalShots"/>
+        <entry field="true" id="21" symbol="exerciseName"/>
+        <entry id="4" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="8388648" module="true" symbol="WatchUi"/>
+        <entry id="8389081" method="true" symbol="onBack"/>
+        <entry field="true" id="42" symbol="ExMidrangeCenter"/>
+        <entry id="7" object="true" symbol="ExerciseMenuView"/>
+        <entry id="2" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="17" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;_session&gt;"/>
+        <entry id="8389124" method="true" symbol="onUpdate"/>
+        <entry field="true" id="52" symbol="LblQuit"/>
+        <entry field="true" id="54" symbol="LblRetry"/>
+        <entry field="true" id="41" symbol="ExFreethrow"/>
+        <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry field="true" id="39" symbol="BtnDown"/>
+        <entry id="25" method="true" symbol="recordShot"/>
+        <entry id="8389079" method="true" symbol="onPreviousPage"/>
+        <entry id="8389275" method="true" symbol="getApp"/>
+        <entry field="true" id="51" symbol="LblMissed"/>
+        <entry id="8389122" method="true" symbol="onLayout"/>
+        <entry id="30" method="true" symbol="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;"/>
+        <entry id="8388637" module="true" symbol="Communications"/>
+        <entry field="true" id="40" symbol="BtnUp"/>
+        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
+        <entry field="true" id="43" symbol="ExMidrangeLeft"/>
+        <entry id="8388828" method="true" symbol="onError"/>
+        <entry id="18" method="true" symbol="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;"/>
+        <entry id="11" object="true" symbol="SummaryView"/>
+        <entry id="8389619" method="true" symbol="onSelect"/>
+        <entry id="8388645" module="true" symbol="Time"/>
+        <entry id="8388769" module="true" object="true" symbol="Rez"/>
+        <entry id="32" method="true" symbol="&lt;globals/SummaryDelegate/&lt;&gt;sendToPhone&gt;"/>
+        <entry field="true" id="56" symbol="MenuExercise"/>
+        <entry id="8388640" module="true" symbol="Lang"/>
+        <entry id="12" object="true" symbol="TransmitDelegate"/>
+        <entry id="13" object="true" symbol="WorkoutDelegate"/>
+        <entry field="true" id="46" symbol="ExThreeCornerLeft"/>
+        <entry field="true" id="47" symbol="ExThreeCornerRight"/>
+        <entry field="true" id="37" symbol="LauncherIcon"/>
+        <entry id="8388610" symbol="statics"/>
+        <entry id="10" object="true" symbol="SummaryDelegate"/>
+        <entry field="true" id="19" symbol="currentShot"/>
+        <entry id="8389350" module="true" symbol="globals"/>
+        <entry field="true" id="20" symbol="exerciseId"/>
+        <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry field="true" id="26" symbol="results"/>
+        <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="8389279" method="true" symbol="onStart"/>
+        <entry field="true" id="23" symbol="madeShots"/>
+        <entry id="8389280" method="true" symbol="getInitialView"/>
+        <entry id="8389281" method="true" symbol="onStop"/>
+        <entry field="true" id="29" symbol="&lt;globals/WorkoutView/&lt;&gt;_session&gt;"/>
+        <entry id="8388829" method="true" symbol="onComplete"/>
+        <entry id="14" object="true" symbol="WorkoutSession"/>
+        <entry field="true" id="31" symbol="&lt;globals/SummaryDelegate/&lt;&gt;_session&gt;"/>
+        <entry field="true" id="48" symbol="ExThreeLeft45"/>
+        <entry field="true" id="50" symbol="LblMade"/>
+        <entry field="true" id="45" symbol="ExThreeCenter"/>
+        <entry field="true" id="44" symbol="ExMidrangeRight"/>
+        <entry field="true" id="49" symbol="ExThreeRight45"/>
+        <entry id="34" method="true" symbol="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;"/>
+        <entry id="8389078" method="true" symbol="onNextPage"/>
+        <entry id="16" method="true" symbol="getExerciseName"/>
+        <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="8389642" symbol="title"/>
+        <entry id="22" method="true" symbol="isFinished"/>
+        <entry id="8" object="true" symbol="ShotCountMenuDelegate"/>
+    </symbolTable>
+    <localVars>
+        <entry arg="true" endPc="268435752" name="id" stackId="1" startPc="268435585"/>
+        <entry arg="true" endPc="268435938" name="made" stackId="1" startPc="268435822"/>
+        <entry endPc="268435923" name="summaryView" stackId="2" startPc="268435855"/>
+        <entry endPc="268435923" name="summaryDel" stackId="3" startPc="268435855"/>
+        <entry arg="true" endPc="268435962" name="session" stackId="1" startPc="268435939"/>
+        <entry arg="true" endPc="268435962" name="view" stackId="2" startPc="268435939"/>
+        <entry arg="true" endPc="268436254" name="exerciseId" stackId="1" startPc="268435977"/>
+        <entry endPc="268436315" name="menu" stackId="1" startPc="268436261"/>
+        <entry endPc="268436315" name="delegate" stackId="2" startPc="268436261"/>
+        <entry arg="true" endPc="268436442" name="item" stackId="1" startPc="268436367"/>
+        <entry endPc="268436441" name="exerciseId" stackId="2" startPc="268436370"/>
+        <entry endPc="268436441" name="nextMenu" stackId="3" startPc="268436370"/>
+        <entry endPc="268436441" name="nextDel" stackId="4" startPc="268436370"/>
+        <entry arg="true" endPc="268436499" name="made" stackId="1" startPc="268436443"/>
+        <entry arg="true" endPc="268436617" name="exId" stackId="1" startPc="268436532"/>
+        <entry arg="true" endPc="268436617" name="total" stackId="2" startPc="268436532"/>
+        <entry arg="true" endPc="268436921" name="dc" stackId="1" startPc="268436718"/>
+        <entry arg="true" endPc="268436921" name="cx" stackId="2" startPc="268436718"/>
+        <entry arg="true" endPc="268436921" name="cy" stackId="3" startPc="268436718"/>
+        <entry endPc="268436920" name="count" stackId="4" startPc="268436721"/>
+        <entry endPc="268436920" name="displayCount" stackId="5" startPc="268436721"/>
+        <entry endPc="268436920" name="startIdx" stackId="6" startPc="268436721"/>
+        <entry endPc="268436920" name="totalWidth" stackId="7" startPc="268436721"/>
+        <entry endPc="268436920" name="startX" stackId="8" startPc="268436721"/>
+        <entry endPc="268436920" name="i" stackId="9" startPc="268436805"/>
+        <entry endPc="268436910" name="made" stackId="10" startPc="268436805"/>
+        <entry endPc="268436910" name="color" stackId="11" startPc="268436805"/>
+        <entry endPc="268436910" name="x" stackId="12" startPc="268436805"/>
+        <entry arg="true" endPc="268436948" name="session" stackId="1" startPc="268436925"/>
+        <entry arg="true" endPc="268437258" name="dc" stackId="1" startPc="268436949"/>
+        <entry endPc="268437257" name="w" stackId="2" startPc="268436952"/>
+        <entry endPc="268437257" name="cx" stackId="3" startPc="268436952"/>
+        <entry endPc="268437257" name="shotText" stackId="4" startPc="268436952"/>
+        <entry endPc="268437257" name="pctText" stackId="5" startPc="268436952"/>
+        <entry arg="true" endPc="268437350" name="session" stackId="1" startPc="268437327"/>
+        <entry endPc="268437400" name="data" stackId="1" startPc="268437354"/>
+        <entry arg="true" endPc="268437501" name="pct" stackId="1" startPc="268437461"/>
+        <entry arg="true" endPc="268437525" name="session" stackId="1" startPc="268437502"/>
+        <entry arg="true" endPc="268437879" name="dc" stackId="1" startPc="268437526"/>
+        <entry endPc="268437878" name="w" stackId="2" startPc="268437529"/>
+        <entry endPc="268437878" name="cx" stackId="3" startPc="268437529"/>
+        <entry endPc="268437878" name="pct" stackId="4" startPc="268437529"/>
+        <entry endPc="268437878" name="scoreText" stackId="5" startPc="268437529"/>
+        <entry endPc="268437878" name="pctColor" stackId="6" startPc="268437529"/>
+        <entry arg="true" endPc="268438000" name="dc" stackId="1" startPc="268437880"/>
+        <entry arg="true" endPc="268438000" name="cx" stackId="2" startPc="268437880"/>
+        <entry arg="true" endPc="268438000" name="cy" stackId="3" startPc="268437880"/>
+        <entry arg="true" endPc="268438000" name="pct" stackId="4" startPc="268437880"/>
+        <entry endPc="268437999" name="barW" stackId="5" startPc="268437883"/>
+        <entry endPc="268437999" name="barH" stackId="6" startPc="268437883"/>
+        <entry endPc="268437999" name="x" stackId="7" startPc="268437883"/>
+        <entry endPc="268437999" name="filled" stackId="8" startPc="268437883"/>
+        <entry arg="true" endPc="268438440" name="exerciseId" stackId="1" startPc="268438417"/>
+        <entry arg="true" endPc="268438545" name="item" stackId="1" startPc="268438441"/>
+        <entry endPc="268438544" name="totalShots" stackId="2" startPc="268438444"/>
+        <entry endPc="268438544" name="session" stackId="3" startPc="268438444"/>
+        <entry endPc="268438544" name="view" stackId="4" startPc="268438444"/>
+        <entry endPc="268438544" name="delegate" stackId="5" startPc="268438444"/>
+    </localVars>
+    <deviceInfo deviceVersion="5c7ae9cf907f88c116a91dc4ffd75be9b5b7d2e9" partNumber="006-B3992-00"/>
+    <annotations>
+        <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExThreeCenter"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExMidrangeCenter"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LblMissed"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LblMade"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LblQuit"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExThreeCornerLeft"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExThreeCornerRight"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LblSaved"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="AppName"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExThreeLeft45"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="MenuShots"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LblResult"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExFreethrow"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="LblRetry"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExThreeRight45"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="MenuExercise"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="BtnUp"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExMidrangeRight"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="ExMidrangeLeft"/>
+        <annotationEntry annotation="initialized" class="Strings" module="globals/Rez" symbol="BtnDown"/>
+    </annotations>
+    <dataEntryOffsetMappings>
+        <dataEntry label="globals" offset="49" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/WorkoutDelegate" offset="206" parentId="globals" symbolId="WorkoutDelegate" type="class"/>
+        <dataEntry label="globals/ShotCountMenuView" offset="295" parentId="globals" symbolId="ShotCountMenuView" type="class"/>
+        <dataEntry label="globals/BasketApp" offset="339" parentId="globals" symbolId="BasketApp" type="class"/>
+        <dataEntry label="globals/ExerciseMenuDelegate" offset="410" parentId="globals" symbolId="ExerciseMenuDelegate" type="class"/>
+        <dataEntry label="globals/Rez" offset="472" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/WorkoutSession" offset="516" parentId="globals" symbolId="WorkoutSession" type="class"/>
+        <dataEntry label="globals/WorkoutView" offset="659" parentId="globals" symbolId="WorkoutView" type="class"/>
+        <dataEntry label="globals/TransmitDelegate" offset="739" parentId="globals" symbolId="TransmitDelegate" type="class"/>
+        <dataEntry label="globals/SummaryDelegate" offset="801" parentId="globals" symbolId="SummaryDelegate" type="class"/>
+        <dataEntry label="globals/SummaryView" offset="881" parentId="globals" symbolId="SummaryView" type="class"/>
+        <dataEntry label="globals/ExerciseMenuView" offset="970" parentId="globals" symbolId="ExerciseMenuView" type="class"/>
+        <dataEntry label="globals/ShotCountMenuDelegate" offset="1014" parentId="globals" symbolId="ShotCountMenuDelegate" type="class"/>
+        <dataEntry label="globals/Rez/Drawables" offset="1085" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="1120" parentId="Rez" symbolId="Strings" type="module"/>
+    </dataEntryOffsetMappings>
+    <functions>
+        <functionEntry accessMode="public" endPc="268435480" name="getApp" startPc="268435460">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435492" name="&lt;init&gt;" parent="WorkoutDelegate" startPc="268435481">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435504" name="&lt;init&gt;" parent="ShotCountMenuView" startPc="268435493">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435516" name="&lt;init&gt;" parent="BasketApp" startPc="268435505">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435528" name="&lt;init&gt;" parent="ExerciseMenuDelegate" startPc="268435517">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435548" name="&lt;init&gt;" parent="Rez" startPc="268435529">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="WorkoutSession">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435560" name="&lt;init&gt;" parent="WorkoutView" startPc="268435549">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435572" name="&lt;init&gt;" parent="TransmitDelegate" startPc="268435561">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435584" name="&lt;init&gt;" parent="SummaryDelegate" startPc="268435573">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435752" name="getExerciseName" startPc="268435585">
+            <param id="id"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435764" name="&lt;init&gt;" parent="SummaryView" startPc="268435753">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435776" name="&lt;init&gt;" parent="ExerciseMenuView" startPc="268435765">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435788" name="&lt;init&gt;" parent="ShotCountMenuDelegate" startPc="268435777">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435807" name="onBack" parent="WorkoutDelegate" startPc="268435789">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435821" name="onPreviousPage" parent="WorkoutDelegate" startPc="268435808">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268435938" name="&lt;globals/WorkoutDelegate/&lt;&gt;recordAndAdvance&gt;" parent="WorkoutDelegate" startPc="268435822">
+            <param id="made"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435962" name="initialize" parent="WorkoutDelegate" startPc="268435939">
+            <param id="session"/>
+            <param id="view"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435976" name="onNextPage" parent="WorkoutDelegate" startPc="268435963">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436254" name="initialize" parent="ShotCountMenuView" startPc="268435977">
+            <param id="exerciseId"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436257" name="onStart" parent="BasketApp" startPc="268436255">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436315" name="getInitialView" parent="BasketApp" startPc="268436258">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436330" name="initialize" parent="BasketApp" startPc="268436316">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436333" name="onStop" parent="BasketApp" startPc="268436331">
+            <param id="state"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436351" name="onBack" parent="ExerciseMenuDelegate" startPc="268436334">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436366" name="initialize" parent="ExerciseMenuDelegate" startPc="268436352">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436442" name="onSelect" parent="ExerciseMenuDelegate" startPc="268436367">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436499" name="recordShot" parent="WorkoutSession" startPc="268436443">
+            <param id="made"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436531" name="percentage" parent="WorkoutSession" startPc="268436500">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436617" name="initialize" parent="WorkoutSession" startPc="268436532">
+            <param id="exId"/>
+            <param id="total"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436631" name="isFinished" parent="WorkoutSession" startPc="268436618">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436717" name="toDictionary" parent="WorkoutSession" startPc="268436632">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268436921" name="&lt;globals/WorkoutView/&lt;&gt;drawResultDots&gt;" parent="WorkoutView" startPc="268436718">
+            <param id="dc"/>
+            <param id="cx"/>
+            <param id="cy"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436924" name="onLayout" parent="WorkoutView" startPc="268436922">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436948" name="initialize" parent="WorkoutView" startPc="268436925">
+            <param id="session"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437258" name="onUpdate" parent="WorkoutView" startPc="268436949">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onError" parent="TransmitDelegate">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="onComplete" parent="TransmitDelegate">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437277" name="initialize" parent="TransmitDelegate" startPc="268437259">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437326" name="onBack" parent="SummaryDelegate" startPc="268437278">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437350" name="initialize" parent="SummaryDelegate" startPc="268437327">
+            <param id="session"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268437401" name="&lt;globals/SummaryDelegate/&lt;&gt;sendToPhone&gt;" parent="SummaryDelegate" startPc="268437351">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437457" name="onSelect" parent="SummaryDelegate" startPc="268437402">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437460" name="onLayout" parent="SummaryView" startPc="268437458">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268437501" name="&lt;globals/SummaryView/&lt;&gt;scoreColor&gt;" parent="SummaryView" startPc="268437461">
+            <param id="pct"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437525" name="initialize" parent="SummaryView" startPc="268437502">
+            <param id="session"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437879" name="onUpdate" parent="SummaryView" startPc="268437526">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268438000" name="&lt;globals/SummaryView/&lt;&gt;drawProgressBar&gt;" parent="SummaryView" startPc="268437880">
+            <param id="dc"/>
+            <param id="cx"/>
+            <param id="cy"/>
+            <param id="pct"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438398" name="initialize" parent="ExerciseMenuView" startPc="268438001">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438416" name="onBack" parent="ShotCountMenuDelegate" startPc="268438399">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438440" name="initialize" parent="ShotCountMenuDelegate" startPc="268438417">
+            <param id="exerciseId"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438545" name="onSelect" parent="ShotCountMenuDelegate" startPc="268438441">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+    </functions>
+</debugInfo>

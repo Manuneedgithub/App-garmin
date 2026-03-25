@@ -16,7 +16,7 @@ class WorkoutSession {
 
     function initialize(exId as Number, total as Number) {
         exerciseId   = exId;
-        exerciseName = Toybox.Application.ExerciseMenu.exerciseName(exId);
+        exerciseName = getExerciseName(exId);
         totalShots   = total;
         currentShot  = 0;
         madeShots    = 0;
