@@ -6,12 +6,18 @@ import SwiftUI
 struct HistoryView: View {
     @EnvironmentObject var store: SessionStore
     @State private var filterType: ExerciseType? = nil
-    @State private var showFilterSheet = false
+    @State private var showFilterSheet  = false
+    @State private var showManualEntry  = false
 
     private var filteredSessions: [WorkoutSession] {
         let sorted = store.sessions.sorted { $0.date > $1.date }
         guard let filter = filterType else { return sorted }
-        return sorted.filter { $0.exerciseType == filter }
+        return sorted.filter { s in
+            if let series = s.series {
+                return series.contains { $0.exerciseType == filter }
+            }
+            return s.exerciseType == filter
+        }
     }
 
     var body: some View {
@@ -31,11 +37,22 @@ struct HistoryView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    filterButton
+                    HStack(spacing: 12) {
+                        Button {
+                            showManualEntry = true
+                        } label: {
+                            Image(systemName: "plus")
+                                .foregroundStyle(.orange)
+                        }
+                        filterButton
+                    }
                 }
             }
             .sheet(isPresented: $showFilterSheet) {
                 FilterSheet(selectedType: $filterType)
+            }
+            .sheet(isPresented: $showManualEntry) {
+                ManualSessionView()
             }
         }
     }
@@ -76,11 +93,26 @@ struct HistoryView: View {
                 .font(.title3.bold())
                 .foregroundStyle(.white)
             Text(filterType == nil
-                 ? "Lance un entraînement depuis la montre."
+                 ? "Lance un entraînement depuis la montre\nou ajoute-en une manuellement."
                  : "Aucune séance pour cet exercice.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
+
+            if filterType == nil {
+                Button {
+                    showManualEntry = true
+                } label: {
+                    Label("Ajouter manuellement", systemImage: "plus.circle.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.black)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 12)
+                        .background(.orange)
+                        .clipShape(Capsule())
+                }
+                .padding(.top, 8)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
@@ -89,14 +121,15 @@ struct HistoryView: View {
         Button {
             showFilterSheet = true
         } label: {
-            Image(systemName: filterType == nil ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
+            Image(systemName: filterType == nil
+                  ? "line.3.horizontal.decrease.circle"
+                  : "line.3.horizontal.decrease.circle.fill")
                 .foregroundStyle(.orange)
         }
     }
 
     // ── Logique ──
 
-    // Groupe les séances par date (format "Mardi 25 mars")
     private var groupedByDate: [String: [WorkoutSession]] {
         Dictionary(grouping: filteredSessions) { session in
             session.date.formatted(.dateTime.weekday(.wide).day().month(.wide))
@@ -122,7 +155,6 @@ struct FilterSheet: View {
                 Color.black.ignoresSafeArea()
 
                 List {
-                    // Option "Tous"
                     Button {
                         selectedType = nil
                         dismiss()

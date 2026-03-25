@@ -4,9 +4,40 @@ import Charts
 // ─────────────────────────────────────────────────
 // STATS — Vue globale par exercice
 // ─────────────────────────────────────────────────
+
+enum StatsPeriod: String, CaseIterable {
+    case all    = "Tout"
+    case month  = "Mois"
+    case week   = "Semaine"
+    case today  = "Auj"
+
+    func startDate() -> Date? {
+        let cal = Calendar.current
+        let now = Date()
+        switch self {
+        case .all:   return nil
+        case .month: return cal.date(from: cal.dateComponents([.year, .month], from: now))
+        case .week:  return cal.date(from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now))
+        case .today: return cal.startOfDay(for: now)
+        }
+    }
+}
+
 struct StatsView: View {
     @EnvironmentObject var store: SessionStore
-    @State private var selectedExercise: ExerciseType? = nil
+    @State private var period: StatsPeriod = .all
+
+    private var filteredSessions: [WorkoutSession] {
+        guard let start = period.startDate() else { return store.sessions }
+        return store.sessions.filter { $0.date >= start }
+    }
+
+    private var filteredTotalShots: Int { filteredSessions.reduce(0) { $0 + $1.totalShots } }
+    private var filteredOverallPct: Double {
+        let made  = filteredSessions.reduce(0) { $0 + $1.madeShots }
+        let total = filteredTotalShots
+        return total == 0 ? 0 : Double(made) / Double(total) * 100
+    }
 
     var body: some View {
         NavigationStack {
@@ -16,13 +47,19 @@ struct StatsView: View {
                 ScrollView {
                     VStack(spacing: 24) {
 
+                        // ── Sélecteur de période ──
+                        periodPicker
+
                         // ── Résumé global ──
                         globalSummary
 
                         // ── Graphique progression globale ──
-                        if store.sessions.count >= 2 {
+                        if filteredSessions.count >= 2 {
                             progressChart
                         }
+
+                        // ── Hot Zones ──
+                        HotZonesView(sessions: filteredSessions)
 
                         // ── Stats par exercice ──
                         exerciseStatsList
@@ -40,25 +77,34 @@ struct StatsView: View {
 
     // ── Composants ──
 
+    private var periodPicker: some View {
+        Picker("Période", selection: $period) {
+            ForEach(StatsPeriod.allCases, id: \.self) { p in
+                Text(p.rawValue).tag(p)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding(.top, 4)
+    }
+
     private var globalSummary: some View {
         VStack(spacing: 16) {
             HStack(spacing: 12) {
-                GlobalStatCard(value: "\(store.totalSessions)",
+                GlobalStatCard(value: "\(filteredSessions.count)",
                                label: "Séances",
                                icon: "figure.basketball",
                                color: .orange)
-                GlobalStatCard(value: "\(store.totalShots)",
+                GlobalStatCard(value: "\(filteredTotalShots)",
                                label: "Tirs totaux",
                                icon: "basketball",
                                color: .blue)
             }
             HStack(spacing: 12) {
-                let overall = store.overallPct
-                GlobalStatCard(value: String(format: "%.1f%%", overall),
+                GlobalStatCard(value: String(format: "%.1f%%", filteredOverallPct),
                                label: "Réussite globale",
                                icon: "percent",
-                               color: colorForPct(overall))
-                GlobalStatCard(value: "\(store.allStats().count)",
+                               color: colorForPct(filteredOverallPct))
+                GlobalStatCard(value: "\(store.allStats(from: filteredSessions).count)",
                                label: "Exercices pratiqués",
                                icon: "list.bullet",
                                color: .purple)
@@ -73,7 +119,7 @@ struct StatsView: View {
                 .font(.headline)
                 .foregroundStyle(.white)
 
-            let data = store.sessions
+            let data = filteredSessions
                 .sorted { $0.date < $1.date }
                 .suffix(15)
                 .enumerated()
@@ -143,15 +189,18 @@ struct StatsView: View {
                 .font(.headline)
                 .foregroundStyle(.white)
 
-            if store.allStats().isEmpty {
-                Text("Lance des séances pour voir tes stats ici.")
+            let stats = store.allStats(from: filteredSessions)
+            if stats.isEmpty {
+                Text(period == .all
+                     ? "Lance des séances pour voir tes stats ici."
+                     : "Aucune séance sur cette période.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .padding(.vertical, 20)
                     .frame(maxWidth: .infinity)
             } else {
-                ForEach(store.allStats(), id: \.exerciseType) { stats in
-                    ExerciseStatRow(stats: stats)
+                ForEach(stats, id: \.exerciseType) { s in
+                    ExerciseStatRow(stats: s)
                 }
             }
         }
@@ -161,6 +210,171 @@ struct StatsView: View {
         if pct >= 70 { return .green }
         if pct >= 50 { return .orange }
         return .red
+    }
+}
+
+// ─────────────────────────────────────────────────
+// HOT ZONES — Terrain de basket avec zones colorées
+// ─────────────────────────────────────────────────
+struct HotZonesView: View {
+    let sessions: [WorkoutSession]
+
+    private struct Zone {
+        let exercise: ExerciseType
+        let x: CGFloat
+        let y: CGFloat
+    }
+
+    private let zones: [Zone] = [
+        Zone(exercise: .freethrow,    x: 0.50, y: 0.54),
+        Zone(exercise: .midCenter,    x: 0.50, y: 0.68),
+        Zone(exercise: .midRight,     x: 0.71, y: 0.60),
+        Zone(exercise: .midLeft,      x: 0.29, y: 0.60),
+        Zone(exercise: .threeCenter,  x: 0.50, y: 0.26),
+        Zone(exercise: .threeRight45, x: 0.79, y: 0.43),
+        Zone(exercise: .threeLeft45,  x: 0.21, y: 0.43),
+        Zone(exercise: .threeCornerR, x: 0.91, y: 0.75),
+        Zone(exercise: .threeCornerL, x: 0.09, y: 0.75),
+    ]
+
+    private func pct(for ex: ExerciseType) -> Double? {
+        var total = 0, made = 0
+        for s in sessions {
+            if let series = s.series {
+                for ser in series where ser.exerciseType == ex {
+                    total += ser.totalShots
+                    made  += ser.madeShots
+                }
+            } else if s.exerciseType == ex {
+                total += s.totalShots
+                made  += s.madeShots
+            }
+        }
+        return total > 0 ? Double(made) / Double(total) * 100 : nil
+    }
+
+    private func zoneColor(_ p: Double?) -> Color {
+        guard let p else { return .white.opacity(0.18) }
+        switch p {
+        case 70...: return Color(red: 0.10, green: 0.82, blue: 0.25)
+        case 55...: return Color(red: 1.00, green: 0.78, blue: 0.00)
+        case 40...: return Color(red: 1.00, green: 0.45, blue: 0.00)
+        default:    return Color(red: 0.92, green: 0.15, blue: 0.15)
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Hot Zones")
+                .font(.headline)
+                .foregroundStyle(.white)
+
+            // Légende
+            HStack(spacing: 10) {
+                ForEach([
+                    ("≥70%", Color(red: 0.10, green: 0.82, blue: 0.25)),
+                    ("55%",  Color(red: 1.00, green: 0.78, blue: 0.00)),
+                    ("40%",  Color(red: 1.00, green: 0.45, blue: 0.00)),
+                    ("<40%", Color(red: 0.92, green: 0.15, blue: 0.15)),
+                ], id: \.0) { label, color in
+                    HStack(spacing: 4) {
+                        Circle().fill(color).frame(width: 8, height: 8)
+                        Text(label).font(.caption2).foregroundStyle(.secondary)
+                    }
+                }
+                Spacer()
+            }
+
+            // Terrain + zones
+            GeometryReader { geo in
+                let w = geo.size.width
+                let h = geo.size.height
+                ZStack {
+                    Canvas { ctx, size in drawCourt(ctx, size) }
+
+                    ForEach(zones, id: \.exercise) { zone in
+                        let p = pct(for: zone.exercise)
+                        ZStack {
+                            Circle()
+                                .fill(zoneColor(p).opacity(0.88))
+                                .frame(width: 38, height: 38)
+                            Circle()
+                                .strokeBorder(.white.opacity(0.3), lineWidth: 1)
+                                .frame(width: 38, height: 38)
+                            if let p {
+                                Text("\(Int(p))%")
+                                    .font(.system(size: 9.5, weight: .bold))
+                                    .foregroundColor(.white)
+                            } else {
+                                Image(systemName: "minus")
+                                    .font(.system(size: 8, weight: .bold))
+                                    .foregroundColor(.white.opacity(0.4))
+                            }
+                        }
+                        .position(x: zone.x * w, y: zone.y * h)
+                    }
+                }
+            }
+            .aspectRatio(50.0 / 47.0, contentMode: .fit)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .padding(16)
+        .background(Color.white.opacity(0.05))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+
+    // ── Dessin du terrain ──
+    private func drawCourt(_ ctx: GraphicsContext, _ sz: CGSize) {
+        let w = sz.width, h = sz.height
+        let line = GraphicsContext.Shading.color(Color.white.opacity(0.75))
+        let lw: CGFloat = 1.5
+
+        ctx.fill(Path(CGRect(origin: .zero, size: sz)),
+                 with: .color(Color(red: 0.68, green: 0.43, blue: 0.14)))
+
+        let baseline = h * 0.94
+        ctx.stroke(Path(CGRect(origin: .zero, size: sz)), with: line, lineWidth: lw)
+        var bl = Path(); bl.move(to: .init(x: 0, y: baseline)); bl.addLine(to: .init(x: w, y: baseline))
+        ctx.stroke(bl, with: line, lineWidth: lw)
+
+        let kx = w * 0.34, kw = w * 0.32, ftY = h * 0.56
+        var key = Path(); key.addRect(CGRect(x: kx, y: ftY, width: kw, height: baseline - ftY))
+        ctx.fill(key, with: .color(Color(red: 0.50, green: 0.28, blue: 0.08)))
+        ctx.stroke(key, with: line, lineWidth: lw)
+
+        let ftR = w * 0.16
+        ctx.stroke(Path(ellipseIn: .init(x: w*0.5-ftR, y: ftY-ftR, width: ftR*2, height: ftR*2)),
+                   with: line, lineWidth: lw)
+
+        let bx = w * 0.5, by = h * 0.86
+        let br: CGFloat = 7
+        ctx.stroke(Path(ellipseIn: .init(x: bx-br, y: by-br, width: br*2, height: br*2)),
+                   with: line, lineWidth: 2)
+        var bb = Path(); bb.move(to: .init(x: bx-w*0.08, y: by-13)); bb.addLine(to: .init(x: bx+w*0.08, y: by-13))
+        ctx.stroke(bb, with: line, lineWidth: 2.5)
+
+        let arcR = w * 0.46
+        let cxL = w * 0.055, cxR = w * 0.945
+        let dx  = cxL - bx
+        let arcMeetY = by - sqrt(max(0, arcR*arcR - dx*dx))
+
+        var cL = Path(); cL.move(to: .init(x: cxL, y: baseline)); cL.addLine(to: .init(x: cxL, y: arcMeetY))
+        ctx.stroke(cL, with: line, lineWidth: lw)
+        var cR = Path(); cR.move(to: .init(x: cxR, y: baseline)); cR.addLine(to: .init(x: cxR, y: arcMeetY))
+        ctx.stroke(cR, with: line, lineWidth: lw)
+
+        let aStart = Angle.radians(atan2(Double(arcMeetY - by), Double(cxL - bx)))
+        let aEnd   = Angle.radians(atan2(Double(arcMeetY - by), Double(cxR - bx)))
+        var arc = Path()
+        arc.addArc(center: .init(x: bx, y: by), radius: arcR,
+                   startAngle: aStart, endAngle: aEnd, clockwise: false)
+        ctx.stroke(arc, with: line, lineWidth: lw)
+
+        let raR = w * 0.08
+        var ra = Path()
+        ra.addArc(center: .init(x: bx, y: by), radius: raR,
+                  startAngle: .degrees(180), endAngle: .degrees(0), clockwise: true)
+        ctx.stroke(ra, with: line, lineWidth: lw)
     }
 }
 

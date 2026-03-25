@@ -112,19 +112,14 @@ struct HomeView: View {
     }
 
     private var connectionBadge: some View {
-        Button {
-            if !garmin.isDeviceSetup { garmin.selectDevice() }
-        } label: {
-            HStack(spacing: 4) {
-                Circle()
-                    .fill(garmin.isConnected ? Color.green : (garmin.isDeviceSetup ? Color.orange : Color.gray))
-                    .frame(width: 8, height: 8)
-                Text(garmin.isConnected ? "Connectée" : (garmin.isDeviceSetup ? "En veille" : "Configurer ›"))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
+        HStack(spacing: 4) {
+            Circle()
+                .fill(garmin.isConnected ? Color.green : Color.gray)
+                .frame(width: 8, height: 8)
+            Text(garmin.isConnected ? "Connectée" : "Hors ligne")
+                .font(.caption)
+                .foregroundStyle(.secondary)
         }
-        .buttonStyle(.plain)
     }
 }
 
@@ -164,7 +159,7 @@ struct SessionRowView: View {
     var body: some View {
         HStack(spacing: 14) {
             // Icône exercice
-            Text(session.exerciseType.emoji)
+            Text(session.displayEmoji)
                 .font(.title2)
                 .frame(width: 44, height: 44)
                 .background(Color.white.opacity(0.07))
@@ -172,9 +167,21 @@ struct SessionRowView: View {
 
             // Infos
             VStack(alignment: .leading, spacing: 3) {
-                Text(session.exerciseType.name)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
+                HStack(spacing: 6) {
+                    Text(session.displayName)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                    if session.isComplex {
+                        Text("Complexe")
+                            .font(.caption2.weight(.medium))
+                            .foregroundStyle(.orange)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.orange.opacity(0.15))
+                            .clipShape(Capsule())
+                    }
+                }
                 Text(session.date.formatted(.dateTime.day().month().hour().minute()))
                     .font(.caption)
                     .foregroundStyle(.secondary)

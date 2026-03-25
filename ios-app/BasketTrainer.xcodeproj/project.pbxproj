@@ -18,6 +18,8 @@
 		AA00000000000000000000D8 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C8 /* HistoryView.swift */; };
 		AA00000000000000000000D9 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C9 /* SessionDetailView.swift */; };
 		AA00000000000000000000DA /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CA /* StatsView.swift */; };
+		AA00000000000000000000DD /* ManualSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CF /* ManualSessionView.swift */; };
+		AA00000000000000000000DE /* EditSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000D0 /* EditSessionView.swift */; };
 		AA00000000000000000000DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CB /* Assets.xcassets */; };
 		AA00000000000000000000DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CC /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		AA00000000000000000000C8 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C9 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000CA /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		AA00000000000000000000CF /* ManualSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualSessionView.swift; sourceTree = "<group>"; };
+		AA00000000000000000000D0 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA00000000000000000000CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA00000000000000000000CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				AA00000000000000000000C8 /* HistoryView.swift */,
 				AA00000000000000000000C9 /* SessionDetailView.swift */,
 				AA00000000000000000000CA /* StatsView.swift */,
+			AA00000000000000000000CF /* ManualSessionView.swift */,
+			AA00000000000000000000D0 /* EditSessionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +208,8 @@
 				AA00000000000000000000D8 /* HistoryView.swift in Sources */,
 				AA00000000000000000000D9 /* SessionDetailView.swift in Sources */,
 				AA00000000000000000000DA /* StatsView.swift in Sources */,
+			AA00000000000000000000DD /* ManualSessionView.swift in Sources */,
+			AA00000000000000000000DE /* EditSessionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

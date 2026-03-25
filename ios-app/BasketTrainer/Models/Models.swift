@@ -59,15 +59,50 @@ struct ShotResult: Codable {
     let made: Bool
 }
 
-// Une séance complète d'entraînement
-struct WorkoutSession: Codable, Identifiable {
+// ─────────────────────────────────────────────────
+// Série de tirs (pour les séances complexes)
+// ─────────────────────────────────────────────────
+struct ShotSeries: Codable, Identifiable {
     var id: UUID = UUID()
     var exerciseType: ExerciseType
     var totalShots: Int
     var madeShots: Int
-    var results: [Bool]          // true = réussi, false = raté
+    var results: [Bool]
+
+    var percentage: Double { totalShots == 0 ? 0 : Double(madeShots) / Double(totalShots) * 100 }
+    var missedShots: Int { totalShots - madeShots }
+
+    init(exerciseType: ExerciseType, totalShots: Int, madeShots: Int, results: [Bool] = []) {
+        self.exerciseType = exerciseType
+        self.totalShots   = totalShots
+        self.madeShots    = madeShots
+        self.results      = results
+    }
+}
+
+// ─────────────────────────────────────────────────
+// Une séance complète d'entraînement
+// ─────────────────────────────────────────────────
+struct WorkoutSession: Codable, Identifiable {
+    var id: UUID = UUID()
+    var exerciseType: ExerciseType      // type principal (1ère série pour les complexes)
+    var totalShots: Int
+    var madeShots: Int
+    var results: [Bool]                  // true = réussi, false = raté
     var date: Date
-    var sentFromWatch: Bool      // true si reçu depuis la montre Garmin
+    var sentFromWatch: Bool              // true si reçu depuis la montre Garmin
+    var series: [ShotSeries]?            // nil = séance simple, non-nil = séance complexe
+
+    // ── Propriétés calculées ──
+
+    var isComplex: Bool { (series?.count ?? 0) > 1 }
+
+    var displayName: String {
+        if let s = series, s.count > 1 { return "Séance complexe (\(s.count) séries)" }
+        return exerciseType.name
+    }
+
+    var displayEmoji: String { isComplex ? "🗂️" : exerciseType.emoji }
 
     var missedShots: Int { totalShots - madeShots }
     var percentage: Double { totalShots == 0 ? 0 : Double(madeShots) / Double(totalShots) * 100 }
@@ -92,7 +127,9 @@ struct WorkoutSession: Codable, Identifiable {
         }
     }
 
-    // Constructeur depuis les données reçues de la montre
+    // ── Constructeurs ──
+
+    // Depuis les données reçues de la montre
     init(fromGarmin data: [String: Any]) {
         let exId = data["exerciseId"] as? Int ?? 0
         exerciseType = ExerciseType(rawValue: exId) ?? .freethrow
@@ -101,30 +138,72 @@ struct WorkoutSession: Codable, Identifiable {
         results      = (data["results"] as? [Bool]) ?? []
         date         = Date(timeIntervalSince1970: TimeInterval(data["startTime"] as? Int ?? 0))
         sentFromWatch = true
+        series       = nil
     }
 
-    // Constructeur manuel (ajout depuis l'iPhone)
-    init(exerciseType: ExerciseType, totalShots: Int, madeShots: Int, results: [Bool]) {
-        self.exerciseType = exerciseType
-        self.totalShots   = totalShots
-        self.madeShots    = madeShots
-        self.results      = results
-        self.date         = Date()
+    // Constructeur manuel simple (ajout depuis l'iPhone)
+    init(exerciseType: ExerciseType, totalShots: Int, madeShots: Int,
+         results: [Bool] = [], date: Date = Date()) {
+        self.exerciseType  = exerciseType
+        self.totalShots    = totalShots
+        self.madeShots     = madeShots
+        self.results       = results
+        self.date          = date
         self.sentFromWatch = false
+        self.series        = nil
+    }
+
+    // Constructeur séance complexe (plusieurs séries)
+    static func makeComplex(series: [ShotSeries], date: Date = Date()) -> WorkoutSession {
+        let total   = series.reduce(0) { $0 + $1.totalShots }
+        let made    = series.reduce(0) { $0 + $1.madeShots }
+        let results = series.flatMap { $0.results }
+        var s = WorkoutSession(
+            exerciseType: series.first?.exerciseType ?? .freethrow,
+            totalShots: total,
+            madeShots: made,
+            results: results
+        )
+        s.date   = date
+        s.series = series
+        return s
     }
 }
 
+// ─────────────────────────────────────────────────
 // Statistiques agrégées par exercice
+// (gère les séances complexes via series)
+// ─────────────────────────────────────────────────
 struct ExerciseStats {
     let exerciseType: ExerciseType
     let sessions: [WorkoutSession]
 
-    var totalSessions: Int   { sessions.count }
-    var totalShots: Int      { sessions.reduce(0) { $0 + $1.totalShots } }
-    var totalMade: Int       { sessions.reduce(0) { $0 + $1.madeShots } }
+    var totalSessions: Int { sessions.count }
+
+    var totalShots: Int {
+        sessions.reduce(0) { acc, s in
+            if let series = s.series {
+                return acc + series.filter { $0.exerciseType == exerciseType }
+                                   .reduce(0) { $0 + $1.totalShots }
+            }
+            return acc + s.totalShots
+        }
+    }
+
+    var totalMade: Int {
+        sessions.reduce(0) { acc, s in
+            if let series = s.series {
+                return acc + series.filter { $0.exerciseType == exerciseType }
+                                   .reduce(0) { $0 + $1.madeShots }
+            }
+            return acc + s.madeShots
+        }
+    }
+
     var avgPercentage: Double {
         guard totalShots > 0 else { return 0 }
         return Double(totalMade) / Double(totalShots) * 100
     }
+
     var bestSession: WorkoutSession? { sessions.max(by: { $0.percentage < $1.percentage }) }
 }

@@ -1,0 +1,284 @@
+import SwiftUI
+
+// ─────────────────────────────────────────────────
+// SAISIE MANUELLE — Créer une séance depuis l'iPhone
+// Simple (un exercice) ou Complexe (plusieurs séries)
+// ─────────────────────────────────────────────────
+
+enum SessionMode: String, CaseIterable {
+    case simple   = "Simple"
+    case complex  = "Complexe"
+}
+
+struct ManualSessionView: View {
+    @EnvironmentObject var store: SessionStore
+    @Environment(\.dismiss) var dismiss
+
+    @State private var mode: SessionMode = .simple
+    @State private var date: Date = Date()
+
+    // ── Simple ──
+    @State private var exercise: ExerciseType = .freethrow
+    @State private var totalShots: Int = 10
+    @State private var madeShots:  Int = 7
+
+    // ── Complexe ──
+    @State private var series: [ShotSeries] = [
+        ShotSeries(exerciseType: .freethrow, totalShots: 10, madeShots: 7)
+    ]
+
+    private let shotOptions = [5, 10, 15, 20, 25, 30]
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color.black.ignoresSafeArea()
+
+                ScrollView {
+                    VStack(spacing: 28) {
+
+                        // ── Sélecteur simple / complexe ──
+                        modePicker
+
+                        if mode == .simple {
+                            simpleForm
+                        } else {
+                            complexForm
+                        }
+
+                        // ── Date ──
+                        datePicker
+
+                        // ── Sauvegarder ──
+                        saveButton
+
+                        Spacer(minLength: 40)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 16)
+                }
+            }
+            .navigationTitle("Nouvelle séance")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Annuler") { dismiss() }.foregroundStyle(.orange)
+                }
+            }
+        }
+    }
+
+    // ── Sélecteur de mode ──
+
+    private var modePicker: some View {
+        Picker("Mode", selection: $mode) {
+            ForEach(SessionMode.allCases, id: \.self) { m in
+                Text(m.rawValue).tag(m)
+            }
+        }
+        .pickerStyle(.segmented)
+    }
+
+    // ── Formulaire simple ──
+
+    private var simpleForm: some View {
+        VStack(spacing: 24) {
+            // Exercice
+            VStack(alignment: .leading, spacing: 14) {
+                SectionLabel(title: "Exercice", icon: "figure.basketball")
+                VStack(spacing: 8) {
+                    ForEach(ExerciseType.allCases) { ex in
+                        ExerciseOptionRow(exercise: ex, isSelected: exercise == ex)
+                            .onTapGesture {
+                                exercise = ex
+                                madeShots = min(madeShots, totalShots)
+                            }
+                    }
+                }
+            }
+
+            // Nombre de tirs
+            VStack(alignment: .leading, spacing: 14) {
+                SectionLabel(title: "Nombre de tirs", icon: "basketball")
+                HStack(spacing: 10) {
+                    ForEach(shotOptions, id: \.self) { n in
+                        ShotCountChip(count: n, isSelected: totalShots == n)
+                            .onTapGesture {
+                                totalShots = n
+                                madeShots  = min(madeShots, n)
+                            }
+                    }
+                }
+            }
+
+            // Tirs réussis
+            VStack(alignment: .leading, spacing: 14) {
+                SectionLabel(title: "Tirs réussis", icon: "checkmark.circle")
+                HStack {
+                    Text("\(madeShots) / \(totalShots)")
+                        .font(.title2.bold())
+                        .foregroundStyle(.white)
+                        .frame(width: 80)
+                    Stepper("", value: $madeShots, in: 0...totalShots)
+                        .labelsHidden()
+                }
+                .padding(16)
+                .background(Color.white.opacity(0.06))
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+            }
+        }
+    }
+
+    // ── Formulaire complexe ──
+
+    private var complexForm: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            SectionLabel(title: "Séries", icon: "list.number")
+
+            ForEach(series.indices, id: \.self) { idx in
+                SeriesEditorRow(
+                    series: $series[idx],
+                    index: idx + 1,
+                    onDelete: series.count > 1 ? { series.remove(at: idx) } : nil
+                )
+            }
+
+            Button {
+                series.append(ShotSeries(exerciseType: .freethrow, totalShots: 10, madeShots: 7))
+            } label: {
+                Label("Ajouter une série", systemImage: "plus.circle.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.orange)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(Color.orange.opacity(0.1))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+        }
+    }
+
+    // ── Date ──
+
+    private var datePicker: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            SectionLabel(title: "Date", icon: "calendar")
+            DatePicker("", selection: $date, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
+                .datePickerStyle(.compact)
+                .labelsHidden()
+                .colorScheme(.dark)
+                .padding(16)
+                .background(Color.white.opacity(0.06))
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+        }
+    }
+
+    // ── Bouton sauvegarder ──
+
+    private var saveButton: some View {
+        Button {
+            save()
+        } label: {
+            Text("Enregistrer la séance")
+                .font(.headline)
+                .foregroundStyle(.black)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 18)
+                .background(Color.orange)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+    }
+
+    private func save() {
+        if mode == .simple {
+            var s = WorkoutSession(
+                exerciseType: exercise,
+                totalShots: totalShots,
+                madeShots: madeShots
+            )
+            s.date = date
+            store.add(s)
+        } else {
+            let s = WorkoutSession.makeComplex(series: series, date: date)
+            store.add(s)
+        }
+        dismiss()
+    }
+}
+
+// ─────────────────────────────────────────────────
+// Éditeur d'une série (pour séance complexe)
+// ─────────────────────────────────────────────────
+struct SeriesEditorRow: View {
+    @Binding var series: ShotSeries
+    let index: Int
+    let onDelete: (() -> Void)?
+
+    private let shotOptions = [5, 10, 15, 20, 25, 30]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Text("Série \(index)")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.orange)
+                Spacer()
+                if let onDelete {
+                    Button(action: onDelete) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.red.opacity(0.7))
+                    }
+                }
+            }
+
+            // Exercice
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(ExerciseType.allCases) { ex in
+                        Button {
+                            series.exerciseType = ex
+                        } label: {
+                            Text(ex.emoji + " " + ex.name)
+                                .font(.caption.weight(.medium))
+                                .foregroundStyle(series.exerciseType == ex ? .black : .white)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 7)
+                                .background(series.exerciseType == ex ? Color.orange : Color.white.opacity(0.1))
+                                .clipShape(Capsule())
+                        }
+                    }
+                }
+            }
+
+            // Nb tirs
+            HStack(spacing: 6) {
+                ForEach(shotOptions, id: \.self) { n in
+                    Button {
+                        series.totalShots = n
+                        series.madeShots  = min(series.madeShots, n)
+                    } label: {
+                        Text("\(n)")
+                            .font(.caption.bold())
+                            .foregroundStyle(series.totalShots == n ? .black : .white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 8)
+                            .background(series.totalShots == n ? Color.orange : Color.white.opacity(0.1))
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                    }
+                }
+            }
+
+            // Réussis
+            HStack {
+                Text("Réussis : \(series.madeShots)/\(series.totalShots)")
+                    .font(.subheadline)
+                    .foregroundStyle(.white)
+                Spacer()
+                Stepper("", value: $series.madeShots, in: 0...series.totalShots)
+                    .labelsHidden()
+            }
+        }
+        .padding(14)
+        .background(Color.white.opacity(0.06))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+    }
+}

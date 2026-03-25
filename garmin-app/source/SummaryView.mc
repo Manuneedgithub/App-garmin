@@ -80,25 +80,21 @@ class SummaryView extends WatchUi.View {
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
-    // Retourne une couleur selon le pourcentage : rouge < 50, orange < 70, vert >= 70
     private function scoreColor(pct as Number) as Number {
         if (pct >= 70) { return COLOR_GREEN; }
         if (pct >= 50) { return COLOR_ORANGE; }
         return COLOR_RED;
     }
 
-    // Barre de progression horizontale pleine/vide
     private function drawProgressBar(dc as Graphics.Dc, cx as Number, cy as Number, pct as Number) as Void {
         var barW   = 140;
         var barH   = 8;
         var x      = cx - barW / 2;
         var filled = (barW * pct) / 100;
 
-        // Fond gris
         dc.setColor(0x333333, Graphics.COLOR_TRANSPARENT);
         dc.fillRoundedRectangle(x, cy, barW, barH, 4);
 
-        // Remplissage coloré
         if (filled > 0) {
             dc.setColor(scoreColor(pct), Graphics.COLOR_TRANSPARENT);
             dc.fillRoundedRectangle(x, cy, filled, barH, 4);
@@ -117,17 +113,14 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
         _session = session;
     }
 
-    // Bouton START → sauvegarder et envoyer à l'iPhone
     function onSelect() as Boolean {
         sendToPhone();
-        // Retour au menu principal (dépile tout)
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 
-    // Bouton BACK → quitter sans sauvegarder
     function onBack() as Boolean {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
@@ -135,23 +128,17 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Sauvegarde localement + tente l'envoi Bluetooth immédiat
-    // Si le phone est absent → reste en storage, envoyé au prochain lancement
+    // Envoie via URL scheme → Garmin Connect → app iPhone
     private function sendToPhone() as Void {
-        var data = _session.toDictionary();
-        savePendingSession(data);                          // stockage local d'abord
-        Communications.transmit(data, null, new TransmitDelegate());
-    }
-}
-
-class TransmitDelegate extends Communications.ConnectionListener {
-    function initialize() { Communications.ConnectionListener.initialize(); }
-
-    function onComplete() as Void {
-        removeFirstPending(); // envoi réussi → on retire du stockage
-    }
-
-    function onError() as Void {
-        // Session déjà en storage → sera renvoyée au prochain lancement
+        var resultStr = "";
+        for (var i = 0; i < _session.results.size(); i++) {
+            resultStr = resultStr + (_session.results[i] ? "1" : "0");
+        }
+        var url = "baskettrainer://s?e=" + _session.exerciseId.toString()
+                + "&t=" + _session.totalShots.toString()
+                + "&m=" + _session.madeShots.toString()
+                + "&s=" + _session.startTime.toString()
+                + "&r=" + resultStr;
+        Communications.openWebPage(url, null, null);
     }
 }

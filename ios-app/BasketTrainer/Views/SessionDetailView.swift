@@ -8,6 +8,12 @@ struct SessionDetailView: View {
     @EnvironmentObject var store: SessionStore
     @Environment(\.dismiss) var dismiss
     @State private var showDeleteAlert = false
+    @State private var showEdit = false
+
+    // Toujours lire depuis le store pour refléter les modifications
+    private var current: WorkoutSession {
+        store.sessions.first(where: { $0.id == session.id }) ?? session
+    }
 
     var body: some View {
         ZStack {
@@ -16,18 +22,17 @@ struct SessionDetailView: View {
             ScrollView {
                 VStack(spacing: 24) {
 
-                    // ── Header score ──
                     scoreHeader
 
-                    // ── Stats résumé ──
                     statsGrid
 
-                    // ── Tirs un par un ──
-                    if !session.results.isEmpty {
-                        shotsGrid
+                    // Séries (séances complexes)
+                    if let series = current.series, series.count > 1 {
+                        seriesList(series)
+                    } else if !current.results.isEmpty {
+                        shotsGrid(current.results)
                     }
 
-                    // ── Métadonnées ──
                     metaInfo
 
                     Spacer(minLength: 40)
@@ -36,15 +41,23 @@ struct SessionDetailView: View {
                 .padding(.top, 16)
             }
         }
-        .navigationTitle(session.exerciseType.name)
+        .navigationTitle(current.displayName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button(role: .destructive) {
-                    showDeleteAlert = true
-                } label: {
-                    Image(systemName: "trash")
-                        .foregroundStyle(.red.opacity(0.8))
+                HStack(spacing: 16) {
+                    Button {
+                        showEdit = true
+                    } label: {
+                        Image(systemName: "pencil")
+                            .foregroundStyle(.orange)
+                    }
+                    Button(role: .destructive) {
+                        showDeleteAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .foregroundStyle(.red.opacity(0.8))
+                    }
                 }
             }
         }
@@ -55,29 +68,32 @@ struct SessionDetailView: View {
             }
             Button("Annuler", role: .cancel) {}
         }
+        .sheet(isPresented: $showEdit) {
+            EditSessionView(session: current)
+        }
     }
 
     // ── Composants ──
 
     private var scoreHeader: some View {
         VStack(spacing: 8) {
-            Text(session.exerciseType.emoji)
+            Text(current.displayEmoji)
                 .font(.system(size: 52))
 
-            Text("\(session.madeShots) / \(session.totalShots)")
+            Text("\(current.madeShots) / \(current.totalShots)")
                 .font(.system(size: 56, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
 
-            Text(String(format: "%.0f%%", session.percentage))
+            Text(String(format: "%.0f%%", current.percentage))
                 .font(.title2.bold())
-                .foregroundStyle(percentageColor(session.percentage))
+                .foregroundStyle(percentageColor(current.percentage))
 
-            Text(session.performanceLabel)
+            Text(current.performanceLabel)
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 5)
-                .background(percentageColor(session.percentage).opacity(0.15))
+                .background(percentageColor(current.percentage).opacity(0.15))
                 .clipShape(Capsule())
         }
         .frame(maxWidth: .infinity)
@@ -88,23 +104,61 @@ struct SessionDetailView: View {
 
     private var statsGrid: some View {
         HStack(spacing: 12) {
-            StatTile(value: "\(session.madeShots)",  label: "Réussis",  color: .green)
-            StatTile(value: "\(session.missedShots)", label: "Ratés",   color: .red)
-            StatTile(value: "\(session.totalShots)",  label: "Total",   color: .orange)
+            StatTile(value: "\(current.madeShots)",  label: "Réussis",  color: .green)
+            StatTile(value: "\(current.missedShots)", label: "Ratés",   color: .red)
+            StatTile(value: "\(current.totalShots)",  label: "Total",   color: .orange)
         }
     }
 
-    private var shotsGrid: some View {
+    private func seriesList(_ series: [ShotSeries]) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Détail par série")
+                .font(.headline)
+                .foregroundStyle(.white)
+
+            ForEach(Array(series.enumerated()), id: \.offset) { idx, ser in
+                VStack(spacing: 8) {
+                    HStack {
+                        Text("\(ser.exerciseType.emoji) Série \(idx + 1) — \(ser.exerciseType.name)")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.white)
+                        Spacer()
+                        Text("\(ser.madeShots)/\(ser.totalShots)")
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.white)
+                        Text(String(format: "%.0f%%", ser.percentage))
+                            .font(.caption.bold())
+                            .foregroundStyle(percentageColor(ser.percentage))
+                    }
+
+                    if !ser.results.isEmpty {
+                        let columns = Array(repeating: GridItem(.flexible(), spacing: 6), count: 10)
+                        LazyVGrid(columns: columns, spacing: 6) {
+                            ForEach(Array(ser.results.enumerated()), id: \.offset) { i, made in
+                                ShotDot(index: i + 1, made: made)
+                            }
+                        }
+                    }
+                }
+                .padding(14)
+                .background(Color.white.opacity(0.06))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+        }
+        .padding(16)
+        .background(Color.white.opacity(0.05))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+
+    private func shotsGrid(_ results: [Bool]) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Détail des tirs")
                 .font(.headline)
                 .foregroundStyle(.white)
 
-            // Grille de points colorés (10 par ligne)
             let columns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 10)
-
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(Array(session.results.enumerated()), id: \.offset) { index, made in
+                ForEach(Array(results.enumerated()), id: \.offset) { index, made in
                     ShotDot(index: index + 1, made: made)
                 }
             }
@@ -116,10 +170,10 @@ struct SessionDetailView: View {
 
     private var metaInfo: some View {
         VStack(alignment: .leading, spacing: 8) {
-            InfoRow(icon: "calendar",       label: "Date",
-                    value: session.date.formatted(.dateTime.day().month(.wide).year().hour().minute()))
-            InfoRow(icon: "applewatch",     label: "Source",
-                    value: session.sentFromWatch ? "Garmin FR255" : "iPhone")
+            InfoRow(icon: "calendar",   label: "Date",
+                    value: current.date.formatted(.dateTime.day().month(.wide).year().hour().minute()))
+            InfoRow(icon: "applewatch", label: "Source",
+                    value: current.sentFromWatch ? "Garmin FR255" : "iPhone")
         }
         .padding(16)
         .background(Color.white.opacity(0.04))
