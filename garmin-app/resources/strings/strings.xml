@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<strings>
+    <string id="AppName">Basket</string>
+    <string id="MenuExercise">Exercice</string>
+    <string id="MenuShots">Nb de tirs</string>
+    <string id="ExFreethrow">Lancer Franc</string>
+    <string id="ExThreeCenter">3pts Centre</string>
+    <string id="ExThreeRight45">3pts 45° Dr.</string>
+    <string id="ExThreeLeft45">3pts 45° Ga.</string>
+    <string id="ExThreeCornerRight">3pts Coin Dr.</string>
+    <string id="ExThreeCornerLeft">3pts Coin Ga.</string>
+    <string id="ExMidrangeCenter">Mi-dist Centre</string>
+    <string id="ExMidrangeRight">Mi-dist Droite</string>
+    <string id="ExMidrangeLeft">Mi-dist Gauche</string>
+    <string id="LblMade">Réussi</string>
+    <string id="LblMissed">Raté</string>
+    <string id="LblResult">Résultat</string>
+    <string id="LblSaved">Sauvegardé</string>
+    <string id="LblQuit">Quitter</string>
+    <string id="LblRetry">Rejouer</string>
+    <string id="BtnUp">Haut</string>
+    <string id="BtnDown">Bas</string>
+</strings>

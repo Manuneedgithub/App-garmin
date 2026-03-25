@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<drawables>
+    <font-table id="Fonts">
+        <font filename="Roboto-Regular.ttf" id="FontSmall" antialias="true">
+            <size>18</size>
+        </font>
+    </font-table>
+</drawables>
