@@ -749,17 +749,15 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_142_43_144_4_s
 [ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 143 8 ]
         symbol [ Communications %tmp.1 143 8 22 ];
         %tmp.1 = getm $.Toybox.Communications;
-        symbol [ transmit %tmp.2 143 23 31 ];
-        %tmp.2 = getv function %tmp.1 :transmit;
-        symbol [ _session %tmp.4 143 32 40 ];
+        symbol [ openWebPage %tmp.2 143 23 34 ];
+        %tmp.2 = getv function %tmp.1 :openWebPage;
+        symbol [ _session %tmp.4 143 35 43 ];
         %tmp.4 = getv ? :_session;
-        symbol [ toDictionary %tmp.5 143 41 53 ];
-        %tmp.5 = getv function %tmp.4 :toDictionary;
+        symbol [ toURL %tmp.5 143 44 49 ];
+        %tmp.5 = getv function %tmp.4 :toURL;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         %tmp.7 = null;
-        symbol [ TransmitDelegate %tmp.11 143 67 83 ];
-        %tmp.11 = getv ? :TransmitDelegate;
-        %tmp.8 = newc %tmp.11 ();
+        %tmp.8 = null;
         invoke %tmp.1 %tmp.2(%tmp.6, %tmp.7, %tmp.8);
 C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_142_43_144_4_stop:
     }

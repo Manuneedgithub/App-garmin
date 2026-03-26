@@ -50,6 +50,28 @@ class SessionAccumulator {
         return Time.now().value() - globalStartTime;
     }
 
+    // Encode en URL baskettrainer://m?... pour openWebPage()
+    // Format : n=nb séries, s0e/s0t/s0m/s0r=série 0, s1e/...=série 1, etc.
+    function toURL() as String {
+        var n = completedSeries.size();
+        var d = elapsedSeconds();
+        var url = "baskettrainer://m?st=" + globalStartTime.toString()
+                + "&d=" + d.toString()
+                + "&n=" + n.toString();
+        for (var i = 0; i < n; i++) {
+            var s = completedSeries[i] as WorkoutSession;
+            var r = "";
+            for (var j = 0; j < s.results.size(); j++) {
+                r = r + ((s.results[j] as Boolean) ? "1" : "0");
+            }
+            url = url + "&s" + i.toString() + "e=" + s.exerciseId.toString()
+                      + "&s" + i.toString() + "t=" + s.totalShots.toString()
+                      + "&s" + i.toString() + "m=" + s.madeShots.toString()
+                      + "&s" + i.toString() + "r=" + r;
+        }
+        return url;
+    }
+
     // Sérialise pour envoi iPhone (format multi)
     function toDictionary() as Dictionary {
         var seriesArr = new [completedSeries.size()];

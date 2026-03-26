@@ -1098,26 +1098,24 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SeriesDoneView_mc_197_35_201_
 [ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SeriesDoneView.mc" 198 8 ]
         symbol [ Communications %tmp.1 198 8 22 ];
         %tmp.1 = getm $.Toybox.Communications;
-        symbol [ transmit %tmp.2 198 23 31 ];
-        %tmp.2 = getv function %tmp.1 :transmit;
-        symbol [ _accumulator %tmp.4 198 32 44 ];
+        symbol [ openWebPage %tmp.2 198 23 34 ];
+        %tmp.2 = getv function %tmp.1 :openWebPage;
+        symbol [ _accumulator %tmp.4 198 35 47 ];
         %tmp.4 = getv ? :_accumulator;
-        symbol [ toDictionary %tmp.5 198 45 57 ];
-        %tmp.5 = getv function %tmp.4 :toDictionary;
+        symbol [ toURL %tmp.5 198 48 53 ];
+        %tmp.5 = getv function %tmp.4 :toURL;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         %tmp.7 = null;
-        symbol [ TransmitDelegate %tmp.11 198 71 87 ];
-        %tmp.11 = getv ? :TransmitDelegate;
-        %tmp.8 = newc %tmp.11 ();
+        %tmp.8 = null;
         invoke %tmp.1 %tmp.2(%tmp.6, %tmp.7, %tmp.8);
 [ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SeriesDoneView.mc" 199 8 ]
-        %tmp.12 = self;
-        symbol [ popToRoot %tmp.13 199 8 17 ];
-        %tmp.13 = getv function %tmp.12 :popToRoot;
-        invoke %tmp.12 %tmp.13();
+        %tmp.9 = self;
+        symbol [ popToRoot %tmp.10 199 8 17 ];
+        %tmp.10 = getv function %tmp.9 :popToRoot;
+        invoke %tmp.9 %tmp.10();
 [ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SeriesDoneView.mc" 200 8 ]
-        %tmp.14 = true;
-        ret %tmp.14;
+        %tmp.11 = true;
+        ret %tmp.11;
 C__Users_manu_Desktop_App_garmin_garmin_app_source_SeriesDoneView_mc_197_35_201_4_stop:
     }
     [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SeriesDoneView.mc"; @line = 204; @symbol_functiondef = [onBack,204,13,19]; @symbol_return<0> = [Boolean,204,25,32]; ]
