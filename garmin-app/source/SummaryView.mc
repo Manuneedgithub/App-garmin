@@ -140,6 +140,6 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
 
     // Envoie via transmit() → CIQ SDK → app iPhone (Bluetooth direct, sans tap utilisateur)
     private function sendToPhone() as Void {
-        Communications.transmit(_session.toDictionary(), null, null);
+        Communications.transmit(_session.toDictionary(), null, new TransmitDelegate());
     }
 }

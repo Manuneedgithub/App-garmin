@@ -124,18 +124,22 @@ struct HomeView: View {
     }
 
     private var connectionBadge: some View {
-        HStack(spacing: 4) {
-            Circle()
-                .fill(garmin.lastSyncDate != nil ? Color.green : Color.orange)
-                .frame(width: 8, height: 8)
-            if let last = garmin.lastSyncDate {
-                Text("Synchro \(last.formatted(.relative(presentation: .named)))")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            } else {
-                Text("Prête")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+        Button {
+            garmin.showDeviceSelection()
+        } label: {
+            HStack(spacing: 4) {
+                Circle()
+                    .fill(garmin.lastSyncDate != nil ? Color.green : Color.orange)
+                    .frame(width: 8, height: 8)
+                if let last = garmin.lastSyncDate {
+                    Text("Synchro \(last.formatted(.relative(presentation: .named)))")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text("Connecter montre")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                }
             }
         }
     }

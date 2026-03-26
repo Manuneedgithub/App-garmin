@@ -1,0 +1,359 @@
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Time,2,14,18]; ]
+import Toybox.Time;
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 10; @symbol_classdef = [SessionAccumulator,10,6,24]; ]
+class SessionAccumulator {
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 10; ]
+    <init> {
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 10; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 11; @position = 8; @symbol_vardef = [completedSeries,11,8,23]; @symbol_type<0> = [Array,11,27,32]; ]
+    var completedSeries as Array;
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 12; @position = 8; @symbol_vardef = [globalStartTime,12,8,23]; @symbol_type<0> = [Number,12,27,33]; ]
+    var globalStartTime as Number;
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 14; @symbol_functiondef = [initialize,14,13,23]; ]
+    function initialize() as Void {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_14_26_17_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 15 8 ]
+        %tmp.2 = 0;
+        %tmp.1 = newa %tmp.2;
+        symbol [ completedSeries ? 15 8 23 ];
+        putv self :completedSeries %tmp.1;
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 16 8 ]
+        symbol [ Time %tmp.3 16 26 30 ];
+        %tmp.3 = getm $.Toybox.Time;
+        symbol [ now %tmp.4 16 31 34 ];
+        %tmp.4 = getv function %tmp.3 :now;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        symbol [ value %tmp.6 16 37 42 ];
+        %tmp.6 = getv function %tmp.5 :value;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        symbol [ globalStartTime ? 16 8 23 ];
+        putv self :globalStartTime %tmp.7;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_14_26_17_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 19; @symbol_functiondef = [addSeries,19,13,22]; @symbol_param<0> = [session,19,23,30]; @symbol_param<0>_type<0> = [WorkoutSession,19,34,48]; ]
+    function addSeries(session as WorkoutSession) as Void {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_19_58_21_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 20 8 ]
+        symbol [ completedSeries %tmp.2 20 8 23 ];
+        %tmp.2 = getv ? :completedSeries;
+        symbol [ add %tmp.3 20 24 27 ];
+        %tmp.3 = getv function %tmp.2 :add;
+        %tmp.4 = lgetv %session;
+        symbol [ session %tmp.4 20 28 35 ];
+        invoke %tmp.2 %tmp.3(%tmp.4);
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_19_58_21_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 23; @symbol_functiondef = [seriesCount,23,13,24]; @symbol_return<0> = [Number,23,30,36]; ]
+    function seriesCount() as Number {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_23_37_25_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 24 8 ]
+        symbol [ completedSeries %tmp.2 24 15 30 ];
+        %tmp.2 = getv ? :completedSeries;
+        symbol [ size %tmp.3 24 31 35 ];
+        %tmp.3 = getv function %tmp.2 :size;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        ret %tmp.4;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_23_37_25_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 27; @symbol_functiondef = [totalShots,27,13,23]; @symbol_return<0> = [Number,27,29,35]; ]
+    function totalShots() as Number {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 28 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_stop" ]
+        %t.1 = local;
+        symbol [ t %t.1 28 12 13 ];
+        %tmp.1 = 0;
+        lputv %t.1 %tmp.1;
+        symbol [ t %t.1 28 12 13 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 29 8 ]
+        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_init:
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 29 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 29 17 18 ];
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 29 24 25 ];
+        symbol [ completedSeries %tmp.5 29 28 43 ];
+        %tmp.5 = getv ? :completedSeries;
+        symbol [ size %tmp.6 29 44 48 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_begin:
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_57_31_8_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 30 12 ]
+        %tmp.9 = lgetv %t.1;
+        symbol [ t %tmp.9 30 12 13 ];
+        symbol [ completedSeries %tmp.11 30 18 33 ];
+        %tmp.11 = getv ? :completedSeries;
+        %tmp.12 = lgetv %i.2;
+        symbol [ i %tmp.12 30 34 35 ];
+        %tmp.13 = agetv %tmp.11 %tmp.12;
+        %tmp.14 = as %tmp.13 WorkoutSession;
+        symbol [ WorkoutSession %tmp.14 30 40 54 ];
+        symbol [ totalShots %tmp.15 30 56 66 ];
+        %tmp.15 = getv %tmp.14 :totalShots;
+        %tmp.16 = add %tmp.9 %tmp.15;
+        lputv %t.1 %tmp.16;
+        symbol [ t %t.1 30 12 13 ];
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_57_31_8_stop:
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_incr:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 29 ]
+        %tmp.19 = lgetv %i.2;
+        symbol [ i %tmp.19 29 52 53 ];
+        %tmp.20 = add %tmp.19 1;
+        lputv %i.2 %tmp.20;
+        symbol [ i %i.2 29 52 53 ];
+        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 32 8 ]
+        %tmp.21 = lgetv %t.1;
+        symbol [ t %tmp.21 32 15 16 ];
+        ret %tmp.21;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 35; @symbol_functiondef = [totalMade,35,13,22]; @symbol_return<0> = [Number,35,28,34]; ]
+    function totalMade() as Number {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 36 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_stop" ]
+        %m.1 = local;
+        symbol [ m %m.1 36 12 13 ];
+        %tmp.1 = 0;
+        lputv %m.1 %tmp.1;
+        symbol [ m %m.1 36 12 13 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 37 8 ]
+        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_init:
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 37 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 37 17 18 ];
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 37 24 25 ];
+        symbol [ completedSeries %tmp.5 37 28 43 ];
+        %tmp.5 = getv ? :completedSeries;
+        symbol [ size %tmp.6 37 44 48 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_begin:
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_57_39_8_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 38 12 ]
+        %tmp.9 = lgetv %m.1;
+        symbol [ m %tmp.9 38 12 13 ];
+        symbol [ completedSeries %tmp.11 38 18 33 ];
+        %tmp.11 = getv ? :completedSeries;
+        %tmp.12 = lgetv %i.2;
+        symbol [ i %tmp.12 38 34 35 ];
+        %tmp.13 = agetv %tmp.11 %tmp.12;
+        %tmp.14 = as %tmp.13 WorkoutSession;
+        symbol [ WorkoutSession %tmp.14 38 40 54 ];
+        symbol [ madeShots %tmp.15 38 56 65 ];
+        %tmp.15 = getv %tmp.14 :madeShots;
+        %tmp.16 = add %tmp.9 %tmp.15;
+        lputv %m.1 %tmp.16;
+        symbol [ m %m.1 38 12 13 ];
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_57_39_8_stop:
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_incr:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 37 ]
+        %tmp.19 = lgetv %i.2;
+        symbol [ i %tmp.19 37 52 53 ];
+        %tmp.20 = add %tmp.19 1;
+        lputv %i.2 %tmp.20;
+        symbol [ i %i.2 37 52 53 ];
+        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 40 8 ]
+        %tmp.21 = lgetv %m.1;
+        symbol [ m %tmp.21 40 15 16 ];
+        ret %tmp.21;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 43; @symbol_functiondef = [percentage,43,13,23]; @symbol_return<0> = [Number,43,29,35]; ]
+    function percentage() as Number {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 44 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_stop" ]
+        %t.1 = local;
+        symbol [ t %t.1 44 12 13 ];
+        %tmp.1 = self;
+        symbol [ totalShots %tmp.2 44 16 26 ];
+        %tmp.2 = getv function %tmp.1 :totalShots;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %t.1 %tmp.3;
+        symbol [ t %t.1 44 12 13 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 45 8 ]
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_stmt:
+        %tmp.4 = lgetv %t.1;
+        symbol [ t %tmp.4 45 12 13 ];
+        %tmp.5 = 0;
+        %tmp.6 = eq %tmp.4 %tmp.5;
+        bf %tmp.6 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_true:
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_20_45_32_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 45 22 ]
+        %tmp.7 = 0;
+        ret %tmp.7;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_20_45_32_stop:
+        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 46 8 ]
+        %tmp.8 = self;
+        symbol [ totalMade %tmp.9 46 16 25 ];
+        %tmp.9 = getv function %tmp.8 :totalMade;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        %tmp.11 = 100;
+        %tmp.12 = mul %tmp.10 %tmp.11;
+        %tmp.13 = lgetv %t.1;
+        symbol [ t %tmp.13 46 37 38 ];
+        %tmp.14 = div %tmp.12 %tmp.13;
+        ret %tmp.14;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 49; @symbol_functiondef = [elapsedSeconds,49,13,27]; @symbol_return<0> = [Number,49,33,39]; ]
+    function elapsedSeconds() as Number {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_49_40_51_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 50 8 ]
+        symbol [ Time %tmp.1 50 15 19 ];
+        %tmp.1 = getm $.Toybox.Time;
+        symbol [ now %tmp.2 50 20 23 ];
+        %tmp.2 = getv function %tmp.1 :now;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ value %tmp.4 50 26 31 ];
+        %tmp.4 = getv function %tmp.3 :value;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        symbol [ globalStartTime %tmp.7 50 36 51 ];
+        %tmp.7 = getv ? :globalStartTime;
+        %tmp.8 = sub %tmp.5 %tmp.7;
+        ret %tmp.8;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_49_40_51_4_stop:
+    }
+    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 54; @symbol_functiondef = [toDictionary,54,13,25]; @symbol_return<0> = [Dictionary,54,31,41]; ]
+    function toDictionary() as Dictionary {
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_54_42_68_4_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 55 8 ]
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_54_42_68_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_54_42_68_4_stop" ]
+        %seriesArr.1 = local;
+        symbol [ seriesArr %seriesArr.1 55 12 21 ];
+        symbol [ completedSeries %tmp.3 55 29 44 ];
+        %tmp.3 = getv ? :completedSeries;
+        symbol [ size %tmp.4 55 45 49 ];
+        %tmp.4 = getv function %tmp.3 :size;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        %tmp.1 = newa %tmp.5;
+        lputv %seriesArr.1 %tmp.1;
+        symbol [ seriesArr %seriesArr.1 55 12 21 ];
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 56 8 ]
+        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_init:
+        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 56 17 18 ];
+        %tmp.6 = 0;
+        lputv %i.2 %tmp.6;
+        symbol [ i %i.2 56 17 18 ];
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_test:
+        %tmp.7 = lgetv %i.2;
+        symbol [ i %tmp.7 56 24 25 ];
+        symbol [ completedSeries %tmp.9 56 28 43 ];
+        %tmp.9 = getv ? :completedSeries;
+        symbol [ size %tmp.10 56 44 48 ];
+        %tmp.10 = getv function %tmp.9 :size;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        %tmp.12 = lt %tmp.7 %tmp.11;
+        bf %tmp.12 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_end;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_begin:
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_57_58_8_start:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 57 12 ]
+        %tmp.13 = lgetv %seriesArr.1;
+        symbol [ seriesArr %tmp.13 57 12 21 ];
+        symbol [ completedSeries %tmp.15 57 28 43 ];
+        %tmp.15 = getv ? :completedSeries;
+        %tmp.16 = lgetv %i.2;
+        symbol [ i %tmp.16 57 44 45 ];
+        %tmp.17 = agetv %tmp.15 %tmp.16;
+        %tmp.18 = as %tmp.17 WorkoutSession;
+        symbol [ WorkoutSession %tmp.18 57 50 64 ];
+        symbol [ toDictionary %tmp.19 57 66 78 ];
+        %tmp.19 = getv function %tmp.18 :toDictionary;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        %tmp.21 = lgetv %i.2;
+        symbol [ i %tmp.21 57 22 23 ];
+        aputv %tmp.13 %tmp.21 %tmp.20;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_57_58_8_stop:
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_incr:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 56 ]
+        %tmp.24 = lgetv %i.2;
+        symbol [ i %tmp.24 56 52 53 ];
+        %tmp.25 = add %tmp.24 1;
+        lputv %i.2 %tmp.25;
+        symbol [ i %i.2 56 52 53 ];
+        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_test;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_56_8_58_8_for_end:
+[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 59 8 ]
+        %tmp.26 = newd 7;
+        %tmp.27 = "isMulti";
+        %tmp.28 = true;
+        %tmp.29 = dup %tmp.26;
+        %tmp.30 = aputv %tmp.29 %tmp.27 %tmp.28;
+        %tmp.31 = "series";
+        %tmp.32 = lgetv %seriesArr.1;
+        symbol [ seriesArr %tmp.32 61 28 37 ];
+        %tmp.33 = dup %tmp.30;
+        %tmp.34 = aputv %tmp.33 %tmp.31 %tmp.32;
+        %tmp.35 = "totalShots";
+        %tmp.36 = self;
+        symbol [ totalShots %tmp.37 62 28 38 ];
+        %tmp.37 = getv function %tmp.36 :totalShots;
+        %tmp.38 = invoke %tmp.36 %tmp.37();
+        %tmp.39 = dup %tmp.34;
+        %tmp.40 = aputv %tmp.39 %tmp.35 %tmp.38;
+        %tmp.41 = "madeShots";
+        %tmp.42 = self;
+        symbol [ totalMade %tmp.43 63 28 37 ];
+        %tmp.43 = getv function %tmp.42 :totalMade;
+        %tmp.44 = invoke %tmp.42 %tmp.43();
+        %tmp.45 = dup %tmp.40;
+        %tmp.46 = aputv %tmp.45 %tmp.41 %tmp.44;
+        %tmp.47 = "percentage";
+        %tmp.48 = self;
+        symbol [ percentage %tmp.49 64 28 38 ];
+        %tmp.49 = getv function %tmp.48 :percentage;
+        %tmp.50 = invoke %tmp.48 %tmp.49();
+        %tmp.51 = dup %tmp.46;
+        %tmp.52 = aputv %tmp.51 %tmp.47 %tmp.50;
+        %tmp.53 = "startTime";
+        symbol [ globalStartTime %tmp.55 65 28 43 ];
+        %tmp.55 = getv ? :globalStartTime;
+        %tmp.56 = dup %tmp.52;
+        %tmp.57 = aputv %tmp.56 %tmp.53 %tmp.55;
+        %tmp.58 = "duration";
+        %tmp.59 = self;
+        symbol [ elapsedSeconds %tmp.60 66 28 42 ];
+        %tmp.60 = getv function %tmp.59 :elapsedSeconds;
+        %tmp.61 = invoke %tmp.59 %tmp.60();
+        %tmp.62 = dup %tmp.57;
+        %tmp.63 = aputv %tmp.62 %tmp.58 %tmp.61;
+        ret %tmp.63;
+C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_54_42_68_4_stop:
+    }
+}
+[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 1; ]
+<init> {
+}

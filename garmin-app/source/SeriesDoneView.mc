@@ -195,7 +195,7 @@ class MultiSummaryDelegate extends WatchUi.BehaviorDelegate {
 
     // SELECT → envoyer à l'iPhone et retour menu principal
     function onSelect() as Boolean {
-        Communications.transmit(_accumulator.toDictionary(), null, null);
+        Communications.transmit(_accumulator.toDictionary(), null, new TransmitDelegate());
         popToRoot();
         return true;
     }

@@ -37,8 +37,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_BasketApp_mc_19_92_23_4_start
         [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_BasketApp_mc_19_92_23_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_BasketApp_mc_19_92_23_4_stop" ]
         %menu.1 = local;
         symbol [ menu %menu.1 20 12 16 ];
-        symbol [ ExerciseMenuView %tmp.4 20 23 39 ];
-        %tmp.4 = getv ? :ExerciseMenuView;
+        symbol [ ModeMenuView %tmp.4 20 27 39 ];
+        %tmp.4 = getv ? :ModeMenuView;
         %tmp.1 = newc %tmp.4 ();
         lputv %menu.1 %tmp.1;
         symbol [ menu %menu.1 20 12 16 ];
@@ -46,8 +46,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_BasketApp_mc_19_92_23_4_start
         [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_BasketApp_mc_19_92_23_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_BasketApp_mc_19_92_23_4_stop" ]
         %delegate.2 = local;
         symbol [ delegate %delegate.2 21 12 20 ];
-        symbol [ ExerciseMenuDelegate %tmp.8 21 27 47 ];
-        %tmp.8 = getv ? :ExerciseMenuDelegate;
+        symbol [ ModeMenuDelegate %tmp.8 21 27 43 ];
+        %tmp.8 = getv ? :ModeMenuDelegate;
         %tmp.5 = newc %tmp.8 ();
         lputv %delegate.2 %tmp.5;
         symbol [ delegate %delegate.2 21 12 20 ];

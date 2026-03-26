@@ -11,7 +11,11 @@
       "Bash(cp \"c:/Users/manu/Desktop/App garmin/garmin-app/bin/garminapp.prg\" \"c:/Users/manu/AppData/Local/Temp/BasketApp/garminapp.prg\")",
       "Bash(powershell -Command \"echo ''help'' | & ''C:/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b/bin/shell.exe''\")",
       "Bash(find c:/Users/manu/AppData/Roaming/Garmin/ConnectIQ/Sdks/connectiq-sdk-win-9.1.0-2026-03-09-6a872a80b -name *.md -o -name README* -o -name *.txt)",
-      "Read(//c/Users/manu/.vscode/extensions/**)"
+      "Read(//c/Users/manu/.vscode/extensions/**)",
+      "Bash(powershell -Command \"Get-PSDrive -PSProvider FileSystem | Where-Object {$_DisplayRoot -like ''*Garmin*'' -or $_Description -like ''*Garmin*''} | Select-Object Name, DisplayRoot, Description\")",
+      "Bash(powershell -Command \"Get-Volume | Select-Object DriveLetter, FileSystemLabel, DriveType | Format-Table\")",
+      "Bash(powershell -Command \"Get-ChildItem ''shell:::{20D04FE0-3AEA-1069-A2D8-08002B30309D}'' 2>/dev/null\")",
+      "Bash(powershell -Command \"Get-PnpDevice | Where-Object {$_FriendlyName -like ''*Garmin*'' -or $_FriendlyName -like ''*Forerunner*''} | Select-Object FriendlyName, Status\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\manu\\Desktop\\App garmin\\garmin-app"
