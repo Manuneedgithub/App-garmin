@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import UIKit
 import ConnectIQ
 
 // ─────────────────────────────────────────────────
@@ -20,15 +21,23 @@ class GarminManager: NSObject, ObservableObject {
 
     private let store   = SessionStore.shared
     private let appUUID = UUID(uuidString: "a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a")!
+    private let ciq     = ConnectIQ.sharedInstance()
 
     // ── Init SDK ──
     func setup() {
-        ConnectIQ.sharedInstance().initialize(
-            urlScheme: "baskettrainer",
-            store: IQAppStore.delegating
-        )
-        ConnectIQ.sharedInstance().register(forDeviceEvents: .all, delegate: self)
+        ciq?.initialize(withUrlScheme: "baskettrainer", uiOverrideDelegate: nil)
+        // Les appareils sont enregistrés après découverte via handleIncomingURL
+        // (passer nil ici crashe le SDK — clé nil dans dictionnaire interne)
         print("[GarminManager] CIQ SDK initialisé — en attente de la montre")
+    }
+
+    // Ouvre Garmin Connect pour que l'utilisateur sélectionne sa montre.
+    // Garmin Connect rappelle via URL baskettrainer:// → handleIncomingURL.
+    func showDeviceSelection() {
+        guard let url = URL(string: "gcm-ciq://app") else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 
     // ── Mode guidé ──
@@ -45,10 +54,13 @@ class GarminManager: NSObject, ObservableObject {
         guidedSeries   = []
     }
 
-    // ── URL entrante depuis Garmin Connect (SDK + fallback URL scheme) ──
+    // ── URL entrante depuis Garmin Connect ──
     func handleIncomingURL(_ url: URL) {
-        // Le SDK CIQ utilise notre URL scheme pour sa propre communication
-        ConnectIQ.sharedInstance().parseIncoming(from: url)
+        // Appareils renvoyés après sélection dans Garmin Connect
+        // (deviceStatusChanged gère register(forAppMessages:) au moment de la connexion)
+        if let devices = ciq?.parseDeviceSelectionResponse(from: url) as? [IQDevice] {
+            devices.forEach { ciq?.register(forDeviceEvents: $0, delegate: self) }
+        }
 
         // Fallback : URL directe baskettrainer://s?... (openWebPage)
         guard url.scheme == "baskettrainer",
@@ -109,15 +121,16 @@ class GarminManager: NSObject, ObservableObject {
                 )
                 session.sentFromWatch = true
                 store.add(session)
-                guidedTemplate = nil; guidedIndex = 0; guidedSeries = []
+                cancelGuidedSession()
             }
         } else {
             store.add(WorkoutSession(fromGarmin: data))
         }
     }
 
-    func sendWorkoutConfig(exerciseId: Int, totalShots: Int) {
-        // Non supporté sans le Store CIQ — la config se fait sur la montre
+    private func registerForMessages(from device: IQDevice) {
+        let app = IQApp(uuid: appUUID, store: appUUID, device: device)
+        ciq?.register(forAppMessages: app, delegate: self)
     }
 
     func addMockSession() {
@@ -134,12 +147,10 @@ class GarminManager: NSObject, ObservableObject {
 // ─────────────────────────────────────────────────
 extension GarminManager: IQDeviceEventDelegate {
     func deviceStatusChanged(_ device: IQDevice!, status: IQDeviceStatus) {
+        guard let device else { return }
         print("[GarminManager] Montre \(device.friendlyName ?? "?") — statut: \(status.rawValue)")
         guard status == .connected else { return }
-
-        // Enregistrement pour recevoir les messages de notre app sur cette montre
-        let app = IQApp(uuid: appUUID, store: appUUID, device: device)
-        ConnectIQ.sharedInstance().register(forAppMessages: app, delegate: self)
+        registerForMessages(from: device)
         print("[GarminManager] En écoute des messages transmit() de la montre")
     }
 }
@@ -149,8 +160,8 @@ extension GarminManager: IQDeviceEventDelegate {
 // ─────────────────────────────────────────────────
 extension GarminManager: IQAppMessageDelegate {
     func receivedMessage(_ message: Any!, from app: IQApp!) {
-        print("[GarminManager] Message reçu: \(String(describing: message))")
-        guard let data = message as? [String: Any] else { return }
+        guard let message, let data = message as? [String: Any] else { return }
+        print("[GarminManager] Message reçu")
         DispatchQueue.main.async { self.processSessionData(data) }
     }
 }

@@ -5,7 +5,6 @@ import SwiftUI
 // (La montre peut aussi faire ça en autonome)
 // ─────────────────────────────────────────────────
 struct WorkoutConfigView: View {
-    @EnvironmentObject var garmin: GarminManager
     @Environment(\.dismiss) var dismiss
 
     @State private var selectedExercise: ExerciseType = .freethrow
@@ -85,7 +84,6 @@ struct WorkoutConfigView: View {
 
     private var sendButton: some View {
         Button {
-            garmin.sendWorkoutConfig(exerciseId: selectedExercise.rawValue, totalShots: shotCount)
             withAnimation { didSend = true }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation { didSend = false }

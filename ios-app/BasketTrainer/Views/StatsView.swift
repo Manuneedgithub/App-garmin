@@ -523,13 +523,11 @@ struct StatsView: View {
     }
 
     private func fatigueComment(diff: Double) -> String {
-        switch diff {
-        case 5...:   return "Tu performes mieux en fin de séance — excellent mental !"
-        case 2...:   return "Bonne résistance à la fatigue."
-        case -2...:  return "Résistance stable — la fatigue t'affecte peu."
-        case -5...:  return "Légère baisse en fin de séance, c'est normal après un effort."
-        default:     return "Fatigue marquée en fin de séance — essaie de raccourcir les séries."
-        }
+        if diff >= 5  { return "Tu performes mieux en fin de séance — excellent mental !" }
+        if diff >= 2  { return "Bonne résistance à la fatigue." }
+        if diff >= -2 { return "Résistance stable — la fatigue t'affecte peu." }
+        if diff >= -5 { return "Légère baisse en fin de séance, c'est normal après un effort." }
+        return "Fatigue marquée en fin de séance — essaie de raccourcir les séries."
     }
 
     // ── Stats par exercice ──
@@ -637,10 +635,10 @@ struct HotZonesView: View {
     private func zoneColor(_ p: Double?) -> Color {
         guard let p else { return .white.opacity(0.18) }
         switch p {
-        case 70...: return Color(red: 0.10, green: 0.82, blue: 0.25)
-        case 55...: return Color(red: 1.00, green: 0.78, blue: 0.00)
-        case 40...: return Color(red: 1.00, green: 0.45, blue: 0.00)
-        default:    return Color(red: 0.92, green: 0.15, blue: 0.15)
+        case 70.0...: return Color(red: 0.10, green: 0.82, blue: 0.25)
+        case 55.0...: return Color(red: 1.00, green: 0.78, blue: 0.00)
+        case 40.0...: return Color(red: 1.00, green: 0.45, blue: 0.00)
+        default:      return Color(red: 0.92, green: 0.15, blue: 0.15)
         }
     }
 
