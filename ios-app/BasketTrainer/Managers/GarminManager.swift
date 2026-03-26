@@ -34,10 +34,8 @@ class GarminManager: NSObject, ObservableObject {
     // Ouvre Garmin Connect pour que l'utilisateur sélectionne sa montre.
     // Garmin Connect rappelle via URL baskettrainer:// → handleIncomingURL.
     func showDeviceSelection() {
-        guard let url = URL(string: "gcm-ciq://app") else { return }
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        }
+        // Le SDK gère lui-même l'URL avec l'UUID de l'app encodé
+        ciq?.showDeviceSelection()
     }
 
     // ── Mode guidé ──
