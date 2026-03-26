@@ -6,7 +6,8 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var store:  SessionStore
     @EnvironmentObject var garmin: GarminManager
-    @State private var showWorkoutConfig = false
+    @State private var showManualEntry  = false
+    @State private var prefillTemplate: ComplexTemplate? = nil
 
     var body: some View {
         NavigationStack {
@@ -14,16 +15,25 @@ struct HomeView: View {
                 Color.black.ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 24) {
+                    VStack(spacing: 20) {
 
-                        // ── En-tête ──
+                        // ── Mode guidé (prioritaire si actif) ──
+                        if garmin.guidedTemplate != nil {
+                            GuidedSessionBanner()
+                                .transition(.move(edge: .top).combined(with: .opacity))
+                        }
+
                         header
-
-                        // ── Résumé rapide ──
                         quickStats
-
-                        // ── Bouton lancer entraînement ──
                         newWorkoutButton
+
+                        // ── Templates complexes ──
+                        if !store.templates.isEmpty {
+                            TemplatesView { template in
+                                prefillTemplate = template
+                                showManualEntry = true
+                            }
+                        }
 
                         // ── Séances récentes ──
                         if !store.recentSessions.isEmpty {
@@ -34,6 +44,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
+                    .animation(.easeInOut(duration: 0.3), value: garmin.guidedTemplate != nil)
                 }
             }
             .navigationTitle("Basket Trainer")
@@ -43,8 +54,8 @@ struct HomeView: View {
                     connectionBadge
                 }
             }
-            .sheet(isPresented: $showWorkoutConfig) {
-                WorkoutConfigView()
+            .sheet(isPresented: $showManualEntry, onDismiss: { prefillTemplate = nil }) {
+                ManualSessionView(prefillTemplate: prefillTemplate)
             }
         }
     }
@@ -76,7 +87,8 @@ struct HomeView: View {
 
     private var newWorkoutButton: some View {
         Button {
-            showWorkoutConfig = true
+            prefillTemplate = nil
+            showManualEntry = true
         } label: {
             HStack {
                 Image(systemName: "plus.circle.fill")
@@ -86,7 +98,7 @@ struct HomeView: View {
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.black.opacity(0.5))
             }
             .foregroundStyle(.black)
             .padding(.horizontal, 20)
@@ -114,11 +126,17 @@ struct HomeView: View {
     private var connectionBadge: some View {
         HStack(spacing: 4) {
             Circle()
-                .fill(garmin.isConnected ? Color.green : Color.gray)
+                .fill(garmin.lastSyncDate != nil ? Color.green : Color.orange)
                 .frame(width: 8, height: 8)
-            Text(garmin.isConnected ? "Connectée" : "Hors ligne")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            if let last = garmin.lastSyncDate {
+                Text("Synchro \(last.formatted(.relative(presentation: .named)))")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            } else {
+                Text("Prête")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 }
@@ -158,14 +176,12 @@ struct SessionRowView: View {
 
     var body: some View {
         HStack(spacing: 14) {
-            // Icône exercice
             Text(session.displayEmoji)
                 .font(.title2)
                 .frame(width: 44, height: 44)
                 .background(Color.white.opacity(0.07))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
 
-            // Infos
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 6) {
                     Text(session.displayName)
@@ -189,7 +205,6 @@ struct SessionRowView: View {
 
             Spacer()
 
-            // Score
             VStack(alignment: .trailing, spacing: 2) {
                 Text("\(session.madeShots)/\(session.totalShots)")
                     .font(.subheadline.bold())

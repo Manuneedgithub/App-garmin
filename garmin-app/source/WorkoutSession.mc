@@ -43,6 +43,7 @@ class WorkoutSession {
     }
 
     // Sérialise la session pour l'envoi à l'iPhone
+    // duration = temps écoulé depuis startTime au moment de l'envoi
     function toDictionary() as Dictionary {
         return {
             "exerciseId"   => exerciseId,
@@ -51,7 +52,8 @@ class WorkoutSession {
             "madeShots"    => madeShots,
             "percentage"   => percentage(),
             "startTime"    => startTime,
-            "results"      => results
+            "results"      => results,
+            "duration"     => Time.now().value() - startTime
         };
     }
 }

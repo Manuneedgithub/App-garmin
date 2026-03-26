@@ -78,6 +78,15 @@ struct ShotSeries: Codable, Identifiable {
         self.madeShots    = madeShots
         self.results      = results
     }
+
+    // Depuis les données d'une série envoyée par la montre (dans un payload multi)
+    init(fromGarmin data: [String: Any]) {
+        let exId = data["exerciseId"] as? Int ?? 0
+        self.exerciseType = ExerciseType(rawValue: exId) ?? .freethrow
+        self.totalShots   = data["totalShots"] as? Int ?? 0
+        self.madeShots    = data["madeShots"]  as? Int ?? 0
+        self.results      = (data["results"] as? [Bool]) ?? []
+    }
 }
 
 // ─────────────────────────────────────────────────
@@ -92,6 +101,7 @@ struct WorkoutSession: Codable, Identifiable {
     var date: Date
     var sentFromWatch: Bool              // true si reçu depuis la montre Garmin
     var series: [ShotSeries]?            // nil = séance simple, non-nil = séance complexe
+    var duration: TimeInterval?          // durée en secondes (nil si non tracée)
 
     // ── Propriétés calculées ──
 
@@ -132,13 +142,14 @@ struct WorkoutSession: Codable, Identifiable {
     // Depuis les données reçues de la montre
     init(fromGarmin data: [String: Any]) {
         let exId = data["exerciseId"] as? Int ?? 0
-        exerciseType = ExerciseType(rawValue: exId) ?? .freethrow
-        totalShots   = data["totalShots"] as? Int ?? 0
-        madeShots    = data["madeShots"]  as? Int ?? 0
-        results      = (data["results"] as? [Bool]) ?? []
-        date         = Date(timeIntervalSince1970: TimeInterval(data["startTime"] as? Int ?? 0))
+        exerciseType  = ExerciseType(rawValue: exId) ?? .freethrow
+        totalShots    = data["totalShots"] as? Int ?? 0
+        madeShots     = data["madeShots"]  as? Int ?? 0
+        results       = (data["results"] as? [Bool]) ?? []
+        date          = Date(timeIntervalSince1970: TimeInterval(data["startTime"] as? Int ?? 0))
         sentFromWatch = true
-        series       = nil
+        series        = nil
+        duration      = (data["duration"] as? Int).map { TimeInterval($0) }
     }
 
     // Constructeur manuel simple (ajout depuis l'iPhone)
@@ -151,6 +162,7 @@ struct WorkoutSession: Codable, Identifiable {
         self.date          = date
         self.sentFromWatch = false
         self.series        = nil
+        self.duration      = nil
     }
 
     // Constructeur séance complexe (plusieurs séries)
@@ -164,10 +176,27 @@ struct WorkoutSession: Codable, Identifiable {
             madeShots: made,
             results: results
         )
-        s.date   = date
-        s.series = series
+        s.date     = date
+        s.series   = series
+        s.duration = nil
         return s
     }
+}
+
+// ─────────────────────────────────────────────────
+// Templates de séance complexe (max 5)
+// ─────────────────────────────────────────────────
+
+struct TemplateSeries: Codable {
+    var exerciseType: ExerciseType
+    var totalShots: Int
+}
+
+struct ComplexTemplate: Codable, Identifiable {
+    var id: UUID = UUID()
+    var name: String
+    var series: [TemplateSeries]
+    var createdAt: Date = Date()
 }
 
 // ─────────────────────────────────────────────────

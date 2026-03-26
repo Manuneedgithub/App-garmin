@@ -34,27 +34,31 @@ function getExerciseName(id as Number) as String {
 class ExerciseMenuView extends WatchUi.Menu2 {
     function initialize() {
         Menu2.initialize({:title => "Exercice"});
-        addItem(new WatchUi.MenuItem("Lancer Franc",   null, EX_FREETHROW,      {}));
-        addItem(new WatchUi.MenuItem("3pts Centre",    null, EX_THREE_CENTER,   {}));
+        addItem(new WatchUi.MenuItem("Lancer Franc",   null, EX_FREETHROW,      null));
+        addItem(new WatchUi.MenuItem("3pts Centre",    null, EX_THREE_CENTER,   null));
         addItem(new WatchUi.MenuItem("3pts 45 Dr.",    null, EX_THREE_RIGHT_45, null));
-        addItem(new WatchUi.MenuItem("3pts 45 Ga.",    null, EX_THREE_LEFT_45,  {}));
+        addItem(new WatchUi.MenuItem("3pts 45 Ga.",    null, EX_THREE_LEFT_45,  null));
         addItem(new WatchUi.MenuItem("3pts Coin Dr.",  null, EX_THREE_CORNER_R, null));
         addItem(new WatchUi.MenuItem("3pts Coin Ga.",  null, EX_THREE_CORNER_L, null));
-        addItem(new WatchUi.MenuItem("Mi-dist Centre", null, EX_MID_CENTER,     {}));
-        addItem(new WatchUi.MenuItem("Mi-dist Droite", null, EX_MID_RIGHT,      {}));
-        addItem(new WatchUi.MenuItem("Mi-dist Gauche", null, EX_MID_LEFT,       {}));
+        addItem(new WatchUi.MenuItem("Mi-dist Centre", null, EX_MID_CENTER,     null));
+        addItem(new WatchUi.MenuItem("Mi-dist Droite", null, EX_MID_RIGHT,      null));
+        addItem(new WatchUi.MenuItem("Mi-dist Gauche", null, EX_MID_LEFT,       null));
     }
 }
 
+// Accepte un accumulateur optionnel (null = mode simple, non-null = mode multi)
 class ExerciseMenuDelegate extends WatchUi.Menu2InputDelegate {
-    function initialize() {
+    private var _accumulator as SessionAccumulator or Null;
+
+    function initialize(accumulator as SessionAccumulator or Null) {
         Menu2InputDelegate.initialize();
+        _accumulator = accumulator;
     }
 
     function onSelect(item as WatchUi.MenuItem) as Void {
         var exerciseId = item.getId() as Number;
         var nextMenu   = new ShotCountMenuView(exerciseId);
-        var nextDel    = new ShotCountMenuDelegate(exerciseId);
+        var nextDel    = new ShotCountMenuDelegate(exerciseId, _accumulator);
         WatchUi.pushView(nextMenu, nextDel, WatchUi.SLIDE_LEFT);
     }
 

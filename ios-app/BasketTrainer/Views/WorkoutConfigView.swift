@@ -99,10 +99,10 @@ struct WorkoutConfigView: View {
             .foregroundStyle(.black)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 18)
-            .background(garmin.isConnected ? Color.orange : Color.gray)
+            .background(Color.orange)
             .clipShape(RoundedRectangle(cornerRadius: 16))
         }
-        .disabled(!garmin.isConnected)
+
     }
 
     private var sentConfirmation: some View {

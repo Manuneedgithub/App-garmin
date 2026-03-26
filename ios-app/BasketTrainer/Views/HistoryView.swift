@@ -8,6 +8,7 @@ struct HistoryView: View {
     @State private var filterType: ExerciseType? = nil
     @State private var showFilterSheet  = false
     @State private var showManualEntry  = false
+    @State private var prefillTemplate: ComplexTemplate? = nil
 
     private var filteredSessions: [WorkoutSession] {
         let sorted = store.sessions.sorted { $0.date > $1.date }
@@ -51,8 +52,8 @@ struct HistoryView: View {
             .sheet(isPresented: $showFilterSheet) {
                 FilterSheet(selectedType: $filterType)
             }
-            .sheet(isPresented: $showManualEntry) {
-                ManualSessionView()
+            .sheet(isPresented: $showManualEntry, onDismiss: { prefillTemplate = nil }) {
+                ManualSessionView(prefillTemplate: prefillTemplate)
             }
         }
     }

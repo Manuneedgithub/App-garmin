@@ -15,10 +15,10 @@ class BasketApp extends Application.AppBase {
     function onStop(state as Dictionary?) as Void {
     }
 
-    // Premier écran affiché : le menu de sélection d'exercice
+    // Premier écran affiché : choix Simple / Multi-exercices
     function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
-        var menu = new ExerciseMenuView();
-        var delegate = new ExerciseMenuDelegate();
+        var menu     = new ModeMenuView();
+        var delegate = new ModeMenuDelegate();
         return [menu, delegate];
     }
 }

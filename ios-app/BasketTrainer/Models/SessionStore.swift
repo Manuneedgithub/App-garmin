@@ -9,12 +9,17 @@ import Combine
 class SessionStore: ObservableObject {
     static let shared = SessionStore()
 
-    @Published private(set) var sessions: [WorkoutSession] = []
+    @Published private(set) var sessions:   [WorkoutSession]   = []
+    @Published private(set) var templates:  [ComplexTemplate]  = []
 
-    private let storageKey = "basket_sessions"
+    private let storageKey   = "basket_sessions"
+    private let templateKey  = "basket_templates"
+
+    static let maxTemplates = 5
 
     init() {
         load()
+        loadTemplates()
     }
 
     // ── Lecture ──
@@ -91,6 +96,20 @@ class SessionStore: ObservableObject {
         save()
     }
 
+    // ── Templates ──
+
+    func addTemplate(_ t: ComplexTemplate) {
+        var all = templates.filter { $0.id != t.id }
+        all.append(t)
+        templates = Array(all.suffix(SessionStore.maxTemplates))
+        saveTemplates()
+    }
+
+    func deleteTemplate(_ t: ComplexTemplate) {
+        templates.removeAll { $0.id == t.id }
+        saveTemplates()
+    }
+
     // ── Persistence ──
 
     private func save() {
@@ -104,5 +123,18 @@ class SessionStore: ObservableObject {
               let decoded = try? JSONDecoder().decode([WorkoutSession].self, from: data)
         else { return }
         sessions = decoded
+    }
+
+    private func saveTemplates() {
+        if let data = try? JSONEncoder().encode(templates) {
+            UserDefaults.standard.set(data, forKey: templateKey)
+        }
+    }
+
+    private func loadTemplates() {
+        guard let data = UserDefaults.standard.data(forKey: templateKey),
+              let decoded = try? JSONDecoder().decode([ComplexTemplate].self, from: data)
+        else { return }
+        templates = decoded
     }
 }

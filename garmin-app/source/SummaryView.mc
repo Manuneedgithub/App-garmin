@@ -1,6 +1,7 @@
 import Toybox.WatchUi;
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.Time;
 import Toybox.Communications;
 
 // ─────────────────────────────────────────────────
@@ -70,13 +71,22 @@ class SummaryView extends WatchUi.View {
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // ── Barre de performance ──
-        drawProgressBar(dc, cx, 170, pct);
+        drawProgressBar(dc, cx, 168, pct);
+
+        // ── Durée de la séance ──
+        var elapsed = Time.now().value() - _session.startTime;
+        var mins    = elapsed / 60;
+        var secs    = elapsed % 60;
+        var durStr  = mins.format("%d") + "min " + secs.format("%02d") + "s";
+        dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, 188, Graphics.FONT_XTINY, durStr,
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // ── Instructions ──
         dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 205, Graphics.FONT_XTINY, "\u25b6 Sauvegarder",
+        dc.drawText(cx, 208, Graphics.FONT_XTINY, "\u25b6 Sauvegarder",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(cx, 225, Graphics.FONT_XTINY, "\u21a9 Quitter",
+        dc.drawText(cx, 226, Graphics.FONT_XTINY, "\u21a9 Quitter",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
@@ -128,17 +138,8 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Envoie via URL scheme → Garmin Connect → app iPhone
+    // Envoie via transmit() → CIQ SDK → app iPhone (Bluetooth direct, sans tap utilisateur)
     private function sendToPhone() as Void {
-        var resultStr = "";
-        for (var i = 0; i < _session.results.size(); i++) {
-            resultStr = resultStr + (_session.results[i] ? "1" : "0");
-        }
-        var url = "baskettrainer://s?e=" + _session.exerciseId.toString()
-                + "&t=" + _session.totalShots.toString()
-                + "&m=" + _session.madeShots.toString()
-                + "&s=" + _session.startTime.toString()
-                + "&r=" + resultStr;
-        Communications.openWebPage(url, null, null);
+        Communications.transmit(_session.toDictionary(), null, null);
     }
 }

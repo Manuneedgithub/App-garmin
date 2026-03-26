@@ -6,28 +6,48 @@ import SwiftUI
 // ─────────────────────────────────────────────────
 
 enum SessionMode: String, CaseIterable {
-    case simple   = "Simple"
-    case complex  = "Complexe"
+    case simple  = "Simple"
+    case complex = "Complexe"
 }
 
 struct ManualSessionView: View {
     @EnvironmentObject var store: SessionStore
     @Environment(\.dismiss) var dismiss
 
-    @State private var mode: SessionMode = .simple
+    var prefillTemplate: ComplexTemplate? = nil
+
+    @State private var mode: SessionMode
     @State private var date: Date = Date()
 
     // ── Simple ──
-    @State private var exercise: ExerciseType = .freethrow
+    @State private var exercise:   ExerciseType = .freethrow
     @State private var totalShots: Int = 10
     @State private var madeShots:  Int = 7
 
     // ── Complexe ──
-    @State private var series: [ShotSeries] = [
-        ShotSeries(exerciseType: .freethrow, totalShots: 10, madeShots: 7)
-    ]
+    @State private var series: [ShotSeries]
+
+    // ── Template ──
+    @State private var saveAsTemplate: Bool = false
+    @State private var templateName:   String = ""
 
     private let shotOptions = [5, 10, 15, 20, 25, 30]
+
+    init(prefillTemplate: ComplexTemplate? = nil) {
+        self.prefillTemplate = prefillTemplate
+        if let t = prefillTemplate {
+            _mode = State(initialValue: .complex)
+            _series = State(initialValue: t.series.map {
+                ShotSeries(exerciseType: $0.exerciseType, totalShots: $0.totalShots, madeShots: 0)
+            })
+            _templateName = State(initialValue: t.name)
+        } else {
+            _mode = State(initialValue: .simple)
+            _series = State(initialValue: [
+                ShotSeries(exerciseType: .freethrow, totalShots: 10, madeShots: 7)
+            ])
+        }
+    }
 
     var body: some View {
         NavigationStack {
@@ -37,7 +57,6 @@ struct ManualSessionView: View {
                 ScrollView {
                     VStack(spacing: 28) {
 
-                        // ── Sélecteur simple / complexe ──
                         modePicker
 
                         if mode == .simple {
@@ -46,10 +65,12 @@ struct ManualSessionView: View {
                             complexForm
                         }
 
-                        // ── Date ──
                         datePicker
 
-                        // ── Sauvegarder ──
+                        if mode == .complex {
+                            templateSection
+                        }
+
                         saveButton
 
                         Spacer(minLength: 40)
@@ -58,7 +79,7 @@ struct ManualSessionView: View {
                     .padding(.top, 16)
                 }
             }
-            .navigationTitle("Nouvelle séance")
+            .navigationTitle(prefillTemplate != nil ? "Relancer template" : "Nouvelle séance")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -83,21 +104,19 @@ struct ManualSessionView: View {
 
     private var simpleForm: some View {
         VStack(spacing: 24) {
-            // Exercice
             VStack(alignment: .leading, spacing: 14) {
                 SectionLabel(title: "Exercice", icon: "figure.basketball")
                 VStack(spacing: 8) {
                     ForEach(ExerciseType.allCases) { ex in
                         ExerciseOptionRow(exercise: ex, isSelected: exercise == ex)
                             .onTapGesture {
-                                exercise = ex
+                                exercise  = ex
                                 madeShots = min(madeShots, totalShots)
                             }
                     }
                 }
             }
 
-            // Nombre de tirs
             VStack(alignment: .leading, spacing: 14) {
                 SectionLabel(title: "Nombre de tirs", icon: "basketball")
                 HStack(spacing: 10) {
@@ -111,7 +130,6 @@ struct ManualSessionView: View {
                 }
             }
 
-            // Tirs réussis
             VStack(alignment: .leading, spacing: 14) {
                 SectionLabel(title: "Tirs réussis", icon: "checkmark.circle")
                 HStack {
@@ -172,6 +190,38 @@ struct ManualSessionView: View {
         }
     }
 
+    // ── Template ──
+
+    private var templateSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Toggle(isOn: $saveAsTemplate) {
+                Label("Sauvegarder comme template", systemImage: "rectangle.stack.badge.plus")
+                    .font(.subheadline)
+                    .foregroundStyle(.white)
+            }
+            .tint(.orange)
+            .padding(16)
+            .background(Color.white.opacity(0.06))
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+
+            if saveAsTemplate {
+                let canAdd = store.templates.count < SessionStore.maxTemplates
+                if !canAdd {
+                    Label("Limite atteinte (\(SessionStore.maxTemplates)/\(SessionStore.maxTemplates)). Supprime un template existant.", systemImage: "exclamationmark.triangle")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                }
+
+                TextField("Nom du template (ex: Entraînement 3pts)", text: $templateName)
+                    .foregroundStyle(.white)
+                    .padding(14)
+                    .background(Color.white.opacity(0.06))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .colorScheme(.dark)
+            }
+        }
+    }
+
     // ── Bouton sauvegarder ──
 
     private var saveButton: some View {
@@ -190,16 +240,20 @@ struct ManualSessionView: View {
 
     private func save() {
         if mode == .simple {
-            var s = WorkoutSession(
-                exerciseType: exercise,
-                totalShots: totalShots,
-                madeShots: madeShots
-            )
+            var s = WorkoutSession(exerciseType: exercise, totalShots: totalShots, madeShots: madeShots)
             s.date = date
             store.add(s)
         } else {
             let s = WorkoutSession.makeComplex(series: series, date: date)
             store.add(s)
+
+            if saveAsTemplate && !templateName.trimmingCharacters(in: .whitespaces).isEmpty {
+                let t = ComplexTemplate(
+                    name: templateName.trimmingCharacters(in: .whitespaces),
+                    series: series.map { TemplateSeries(exerciseType: $0.exerciseType, totalShots: $0.totalShots) }
+                )
+                store.addTemplate(t)
+            }
         }
         dismiss()
     }
@@ -210,7 +264,7 @@ struct ManualSessionView: View {
 // ─────────────────────────────────────────────────
 struct SeriesEditorRow: View {
     @Binding var series: ShotSeries
-    let index: Int
+    let index:    Int
     let onDelete: (() -> Void)?
 
     private let shotOptions = [5, 10, 15, 20, 25, 30]
@@ -249,7 +303,7 @@ struct SeriesEditorRow: View {
                 }
             }
 
-            // Nb tirs
+            // Nombre de tirs
             HStack(spacing: 6) {
                 ForEach(shotOptions, id: \.self) { n in
                     Button {
@@ -267,7 +321,7 @@ struct SeriesEditorRow: View {
                 }
             }
 
-            // Réussis
+            // Tirs réussis
             HStack {
                 Text("Réussis : \(series.madeShots)/\(series.totalShots)")
                     .font(.subheadline)

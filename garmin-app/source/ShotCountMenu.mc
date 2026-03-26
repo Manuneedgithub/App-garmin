@@ -22,19 +22,21 @@ class ShotCountMenuView extends WatchUi.Menu2 {
 }
 
 class ShotCountMenuDelegate extends WatchUi.Menu2InputDelegate {
-    private var _exerciseId as Number;
+    private var _exerciseId  as Number;
+    private var _accumulator as SessionAccumulator or Null;
 
-    function initialize(exerciseId as Number) {
+    function initialize(exerciseId as Number, accumulator as SessionAccumulator or Null) {
         Menu2InputDelegate.initialize();
-        _exerciseId = exerciseId;
+        _exerciseId  = exerciseId;
+        _accumulator = accumulator;
     }
 
     // Quand l'utilisateur valide un nombre → lance l'entraînement
     function onSelect(item as WatchUi.MenuItem) as Void {
         var totalShots = item.getId() as Number;
         var session    = new WorkoutSession(_exerciseId, totalShots);
-        var view       = new WorkoutView(session);
-        var delegate   = new WorkoutDelegate(session, view);
+        var view       = new WorkoutView(session, _accumulator);
+        var delegate   = new WorkoutDelegate(session, view, _accumulator);
         WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
     }
 

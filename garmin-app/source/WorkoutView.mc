@@ -1,6 +1,7 @@
 import Toybox.WatchUi;
 import Toybox.Graphics;
 import Toybox.Lang;
+import Toybox.Time;
 
 // ─────────────────────────────────────────────────
 // ÉCRAN PRINCIPAL — Tracking tir par tir
@@ -8,9 +9,10 @@ import Toybox.Lang;
 // Layout sur FR255 (260x260px, rond) :
 //
 //   ┌──────────────────────────┐
-//   │    [Nom exercice]        │  y=50  gris clair
+//   │   [Série 2 • 01:23]      │  y=22  gris xtiny  (timer + compteur série si multi)
+//   │    [Nom exercice]        │  y=44  gris xtiny
 //   │                          │
-//   │       7 / 10             │  y=110 blanc grand
+//   │       7 / 10             │  y=108 blanc grand
 //   │        70%               │  y=148 orange moyen
 //   │                          │
 //   │  ● ● ● ● ● ● ● ○ ○ ●    │  y=178 points colorés
@@ -20,21 +22,23 @@ import Toybox.Lang;
 // ─────────────────────────────────────────────────
 
 class WorkoutView extends WatchUi.View {
-    private var _session as WorkoutSession;
+    private var _session     as WorkoutSession;
+    private var _accumulator as SessionAccumulator or Null;
 
     // Palette
     private const COLOR_BG      = Graphics.COLOR_BLACK;
     private const COLOR_WHITE   = Graphics.COLOR_WHITE;
-    private const COLOR_ORANGE  = 0xFF6600;   // orange basket
+    private const COLOR_ORANGE  = 0xFF6600;
     private const COLOR_GRAY    = 0x888888;
     private const COLOR_GREEN   = 0x33CC66;
     private const COLOR_RED     = 0xFF3333;
     private const DOT_RADIUS    = 6;
     private const DOT_SPACING   = 15;
 
-    function initialize(session as WorkoutSession) {
+    function initialize(session as WorkoutSession, accumulator as SessionAccumulator or Null) {
         View.initialize();
-        _session = session;
+        _session     = session;
+        _accumulator = accumulator;
     }
 
     function onLayout(dc as Graphics.Dc) as Void {
@@ -42,16 +46,35 @@ class WorkoutView extends WatchUi.View {
     }
 
     function onUpdate(dc as Graphics.Dc) as Void {
-        var w = dc.getWidth();   // 260
+        var w  = dc.getWidth();   // 260
         var cx = w / 2;
 
         // ── Fond noir ──
         dc.setColor(COLOR_BG, COLOR_BG);
         dc.clear();
 
+        // ── Ligne du haut : timer (+ compteur série si multi) ──
+        var startRef = (_accumulator != null)
+            ? (_accumulator as SessionAccumulator).globalStartTime
+            : _session.startTime;
+        var elapsed  = Time.now().value() - startRef;
+        var mins     = elapsed / 60;
+        var secs     = elapsed % 60;
+        var timerStr = mins.format("%d") + ":" + secs.format("%02d");
+
+        var headerStr = timerStr;
+        if (_accumulator != null) {
+            var acc       = _accumulator as SessionAccumulator;
+            var seriesNum = acc.seriesCount() + 1;  // +1 car la série en cours n'est pas encore ajoutée
+            headerStr = "S\u00e9rie " + seriesNum.toString() + " \u2022 " + timerStr;
+        }
+        dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx, 22, Graphics.FONT_XTINY, headerStr,
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+
         // ── Nom de l'exercice (petit, gris) ──
         dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 42, Graphics.FONT_XTINY, _session.exerciseName,
+        dc.drawText(cx, 44, Graphics.FONT_XTINY, _session.exerciseName,
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // ── Compteur principal  "7 / 10" (grand, blanc) ──
@@ -98,7 +121,7 @@ class WorkoutView extends WatchUi.View {
             dc.setColor(color, Graphics.COLOR_TRANSPARENT);
             dc.fillCircle(x, cy, DOT_RADIUS);
 
-            // Petit contour blanc pour la lisibilité
+            // Petit contour noir pour la lisibilité
             dc.setColor(COLOR_BG, Graphics.COLOR_TRANSPARENT);
             dc.drawCircle(x, cy, DOT_RADIUS);
         }
@@ -109,11 +132,13 @@ class WorkoutView extends WatchUi.View {
 // DELEGATE — Gestion des boutons pendant l'exercice
 // ─────────────────────────────────────────────────
 class WorkoutDelegate extends WatchUi.BehaviorDelegate {
-    private var _session as WorkoutSession;
+    private var _session     as WorkoutSession;
+    private var _accumulator as SessionAccumulator or Null;
 
-    function initialize(session as WorkoutSession, view as WorkoutView) {
+    function initialize(session as WorkoutSession, view as WorkoutView, accumulator as SessionAccumulator or Null) {
         BehaviorDelegate.initialize();
-        _session = session;
+        _session     = session;
+        _accumulator = accumulator;
     }
 
     // Bouton HAUT → Tir réussi ✅
@@ -128,7 +153,7 @@ class WorkoutDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // Bouton BACK → annuler et revenir au menu
+    // Bouton BACK → annuler et revenir
     function onBack() as Boolean {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
@@ -138,12 +163,20 @@ class WorkoutDelegate extends WatchUi.BehaviorDelegate {
         _session.recordShot(made);
 
         if (_session.isFinished()) {
-            // Exercice terminé → écran de résumé
-            var summaryView = new SummaryView(_session);
-            var summaryDel  = new SummaryDelegate(_session);
-            WatchUi.pushView(summaryView, summaryDel, WatchUi.SLIDE_LEFT);
+            if (_accumulator != null) {
+                // Mode multi : ajouter la série et afficher l'écran de transition
+                var acc = _accumulator as SessionAccumulator;
+                acc.addSeries(_session);
+                var doneView = new SeriesDoneView(_session, acc);
+                var doneDel  = new SeriesDoneDelegate(acc);
+                WatchUi.pushView(doneView, doneDel, WatchUi.SLIDE_LEFT);
+            } else {
+                // Mode simple : écran de résumé standard
+                var summaryView = new SummaryView(_session);
+                var summaryDel  = new SummaryDelegate(_session);
+                WatchUi.pushView(summaryView, summaryDel, WatchUi.SLIDE_LEFT);
+            }
         } else {
-            // Met à jour l'affichage
             WatchUi.requestUpdate();
         }
     }
