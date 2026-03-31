@@ -232,9 +232,9 @@ struct GuidedSessionBanner: View {
         .padding(16)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white.opacity(0.06))
+                .fill(Color(.systemBackground))
                 .overlay(RoundedRectangle(cornerRadius: 16)
-                    .strokeBorder(Color.orange.opacity(0.4), lineWidth: 1))
+                    .strokeBorder(Color.orange.opacity(0.5), lineWidth: 1))
         )
     }
 }

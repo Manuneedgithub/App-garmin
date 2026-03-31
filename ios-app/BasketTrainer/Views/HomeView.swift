@@ -12,37 +12,34 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                Color(.systemGroupedBackground).ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 16) {
 
-                        // ── Mode guidé (prioritaire si actif) ──
                         if garmin.guidedTemplate != nil {
                             GuidedSessionBanner()
+                                .padding(.horizontal, 20)
                                 .transition(.move(edge: .top).combined(with: .opacity))
                         }
 
-                        header
                         quickStats
-                        newWorkoutButton
+                            .padding(.horizontal, 20)
 
-                        // ── Templates complexes ──
+                        newWorkoutButton
+                            .padding(.horizontal, 20)
+
                         if !store.templates.isEmpty {
-                            TemplatesView { template in
-                                prefillTemplate = template
-                                showManualEntry = true
-                            }
+                            templatesSection
                         }
 
-                        // ── Séances récentes ──
                         if !store.recentSessions.isEmpty {
                             recentSessionsList
+                                .padding(.horizontal, 20)
                         }
 
                         Spacer(minLength: 40)
                     }
-                    .padding(.horizontal, 20)
                     .padding(.top, 10)
                     .animation(.easeInOut(duration: 0.3), value: garmin.guidedTemplate != nil)
                 }
@@ -51,7 +48,9 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    connectionBadge
+                    Text(Date().formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated)))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
             .sheet(isPresented: $showManualEntry, onDismiss: { prefillTemplate = nil }) {
@@ -60,28 +59,11 @@ struct HomeView: View {
         }
     }
 
-    // ── Composants ──
-
-    private var header: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Bonjour 👋")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                Text("Prêt à s'entraîner ?")
-                    .font(.title2.bold())
-                    .foregroundStyle(.white)
-            }
-            Spacer()
-        }
-    }
-
     private var quickStats: some View {
         HStack(spacing: 12) {
-            MiniStatCard(value: "\(store.totalSessions)", label: "Séances",   icon: "figure.basketball")
-            MiniStatCard(value: "\(store.totalShots)",   label: "Tirs",       icon: "basketball")
-            MiniStatCard(value: String(format: "%.0f%%", store.overallPct),
-                                                          label: "Réussite",   icon: "percent")
+            MiniStatCard(value: "\(store.totalSessions)", label: "Séances",  icon: "figure.basketball")
+            MiniStatCard(value: "\(store.totalShots)",   label: "Tirs",      icon: "basketball")
+            MiniStatCard(value: String(format: "%.0f%%", store.overallPct),  label: "Réussite", icon: "percent")
         }
     }
 
@@ -90,56 +72,89 @@ struct HomeView: View {
             prefillTemplate = nil
             showManualEntry = true
         } label: {
-            HStack {
-                Image(systemName: "plus.circle.fill")
-                    .font(.title2)
-                Text("Nouvel entraînement")
-                    .font(.headline)
+            HStack(spacing: 12) {
+                ZStack {
+                    Circle()
+                        .fill(Color.white.opacity(0.22))
+                        .frame(width: 30, height: 30)
+                    Image(systemName: "plus")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(.white)
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Nouvel entraînement")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    Text("Saisie manuelle ou depuis la montre")
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.75))
+                }
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.subheadline)
-                    .foregroundStyle(.black.opacity(0.5))
+                    .foregroundStyle(.white.opacity(0.5))
             }
-            .foregroundStyle(.black)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 18)
-            .background(.orange)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 16)
+            .background(Color.orange)
             .clipShape(RoundedRectangle(cornerRadius: 16))
         }
     }
 
-    private var recentSessionsList: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Récentes")
+    private var templatesSection: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("Templates")
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
+                .padding(.horizontal, 20)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(store.templates) { template in
+                        Button {
+                            prefillTemplate = template
+                            showManualEntry = true
+                        } label: {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(template.name)
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundStyle(.primary)
+                                    .lineLimit(1)
+                                Text("\(template.series.count) séries · \(template.series.reduce(0) { $0 + $1.totalShots }) tirs")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 12)
+                            .background(Color(.systemBackground))
+                            .overlay(alignment: .leading) {
+                                Rectangle()
+                                    .fill(Color.orange)
+                                    .frame(width: 3)
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
+            }
+        }
+    }
+
+    private var recentSessionsList: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text("Récentes")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Spacer()
+            }
 
             ForEach(store.recentSessions.prefix(5)) { session in
                 NavigationLink(destination: SessionDetailView(session: session)) {
                     SessionRowView(session: session)
                 }
                 .buttonStyle(.plain)
-            }
-        }
-    }
-
-    private var connectionBadge: some View {
-        Button {
-            garmin.showDeviceSelection()
-        } label: {
-            HStack(spacing: 4) {
-                Circle()
-                    .fill(garmin.lastSyncDate != nil ? Color.green : Color.orange)
-                    .frame(width: 8, height: 8)
-                if let last = garmin.lastSyncDate {
-                    Text("Synchro \(last.formatted(.relative(presentation: .named)))")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                } else {
-                    Text("Connecter montre")
-                        .font(.caption)
-                        .foregroundStyle(.orange)
-                }
             }
         }
     }
