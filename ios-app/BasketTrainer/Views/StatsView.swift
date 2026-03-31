@@ -6,36 +6,33 @@ import Charts
 // ─────────────────────────────────────────────────
 
 enum StatsPeriod: String, CaseIterable {
+    case week7  = "7j"
+    case month  = "30j"
+    case month3 = "3m"
     case all    = "Tout"
-    case month  = "Mois"
-    case week   = "Semaine"
-    case today  = "Auj"
 
     func startDate() -> Date? {
         let cal = Calendar.current
         let now = Date()
         switch self {
-        case .all:   return nil
-        case .month: return cal.date(from: cal.dateComponents([.year, .month], from: now))
-        case .week:  return cal.date(from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now))
-        case .today: return cal.startOfDay(for: now)
+        case .all:    return nil
+        case .week7:  return cal.date(byAdding: .day,   value: -7,  to: now)
+        case .month:  return cal.date(byAdding: .day,   value: -30, to: now)
+        case .month3: return cal.date(byAdding: .month, value: -3,  to: now)
         }
     }
 
-    // Début de la période précédente (pour la comparaison)
     func previousStartDate() -> Date? {
         let cal = Calendar.current
         let now = Date()
         switch self {
         case .all: return nil
+        case .week7:
+            return cal.date(byAdding: .day, value: -14, to: now)
         case .month:
-            let s = cal.date(from: cal.dateComponents([.year, .month], from: now))!
-            return cal.date(byAdding: .month, value: -1, to: s)
-        case .week:
-            let s = cal.date(from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now))!
-            return cal.date(byAdding: .weekOfYear, value: -1, to: s)
-        case .today:
-            return cal.date(byAdding: .day, value: -1, to: cal.startOfDay(for: now))
+            return cal.date(byAdding: .day, value: -60, to: now)
+        case .month3:
+            return cal.date(byAdding: .month, value: -6, to: now)
         }
     }
 }
@@ -163,7 +160,7 @@ struct StatsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                Color(.systemGroupedBackground).ignoresSafeArea()
                 ScrollView {
                     VStack(spacing: 24) {
                         periodPicker
@@ -222,7 +219,7 @@ struct StatsView: View {
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
                         Text(String(format: "%.1f%%", filteredOverallPct))
                             .font(.title3.bold())
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                         if let change = pctChange {
                             HStack(spacing: 2) {
                                 Image(systemName: change >= 0 ? "arrow.up" : "arrow.down")
@@ -244,7 +241,7 @@ struct StatsView: View {
                 }
                 .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
                 .overlay(alignment: .topTrailing) {
                     Image(systemName: "percent")
@@ -258,7 +255,7 @@ struct StatsView: View {
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text("\(currentStreak)")
                             .font(.title3.bold())
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                         Text(currentStreak <= 1 ? "jour" : "jours")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -274,7 +271,7 @@ struct StatsView: View {
                 }
                 .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
                 .overlay(alignment: .topTrailing) {
                     Text(currentStreak >= 7 ? "🔥" : currentStreak >= 3 ? "⚡" : "💤")
@@ -290,7 +287,7 @@ struct StatsView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Progression (15 dernières séances)")
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
 
             let data = filteredSessions
                 .sorted { $0.date < $1.date }
@@ -321,7 +318,7 @@ struct StatsView: View {
             .chartYScale(domain: 0...100)
             .chartYAxis {
                 AxisMarks(values: [0, 25, 50, 75, 100]) { value in
-                    AxisGridLine().foregroundStyle(Color.white.opacity(0.1))
+                    AxisGridLine().foregroundStyle(Color(.separator))
                     AxisValueLabel {
                         Text("\(value.as(Int.self) ?? 0)%")
                             .font(.caption2).foregroundStyle(.secondary)
@@ -332,7 +329,7 @@ struct StatsView: View {
             .frame(height: 160)
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -352,7 +349,7 @@ struct StatsView: View {
         return VStack(alignment: .leading, spacing: 12) {
             Text("Calendrier d'entraînement")
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
 
             HStack(alignment: .top, spacing: 4) {
                 // Étiquettes jours
@@ -397,12 +394,12 @@ struct StatsView: View {
             }
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
     private func heatColor(count: Int, isFuture: Bool) -> Color {
-        if isFuture || count == 0 { return Color.white.opacity(0.08) }
+        if isFuture || count == 0 { return Color(.tertiarySystemFill) }
         switch count {
         case 1:  return Color.orange.opacity(0.40)
         case 2:  return Color.orange.opacity(0.70)
@@ -416,7 +413,7 @@ struct StatsView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Records personnels")
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                 Text("Meilleures séances par exercice (≥ 10 tirs, tous temps)")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -430,7 +427,7 @@ struct StatsView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(record.exerciseType.name)
                             .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                         Text("\(record.shots) tirs · \(record.date.formatted(date: .abbreviated, time: .omitted))")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -446,12 +443,12 @@ struct StatsView: View {
                     }
                 }
                 .padding(14)
-                .background(Color.white.opacity(0.05))
+                .background(Color(.secondarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -464,7 +461,7 @@ struct StatsView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Résistance à la fatigue")
                         .font(.headline)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("1ère vs 2ème moitié des séances (≥ 10 tirs)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -479,7 +476,7 @@ struct StatsView: View {
                 VStack(spacing: 4) {
                     Text(String(format: "%.0f%%", data.first))
                         .font(.title2.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("Début")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -500,7 +497,7 @@ struct StatsView: View {
                 VStack(spacing: 4) {
                     Text(String(format: "%.0f%%", data.second))
                         .font(.title2.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("Fin")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -518,7 +515,7 @@ struct StatsView: View {
                 .foregroundStyle(.secondary)
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -535,7 +532,7 @@ struct StatsView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Par exercice")
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
 
             let stats = store.allStats(from: filteredSessions)
             if stats.isEmpty {
@@ -576,7 +573,7 @@ struct FatigueBar: View {
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.white.opacity(0.08))
+                        .fill(Color(.tertiarySystemFill))
                         .frame(height: 8)
                     RoundedRectangle(cornerRadius: 4)
                         .fill(color)
@@ -586,8 +583,9 @@ struct FatigueBar: View {
             .frame(height: 8)
             Text(String(format: "%.0f%%", pct))
                 .font(.caption.bold())
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
                 .frame(width: 36, alignment: .trailing)
+                .monospacedDigit()
         }
     }
 }
@@ -646,7 +644,7 @@ struct HotZonesView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Hot Zones")
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
 
             HStack(spacing: 10) {
                 ForEach([
@@ -695,7 +693,7 @@ struct HotZonesView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -771,7 +769,8 @@ struct GlobalStatCard: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(value)
                     .font(.title3.bold())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
+                    .monospacedDigit()
                 Text(label)
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -780,7 +779,7 @@ struct GlobalStatCard: View {
         }
         .padding(16)
         .frame(maxWidth: .infinity)
-        .background(Color.white.opacity(0.06))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
@@ -798,14 +797,13 @@ struct ExerciseStatRow: View {
     }
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: 10) {
             HStack {
-                Text(stats.exerciseType.emoji)
-                    .font(.title3)
+                Text(stats.exerciseType.emoji).font(.title3)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(stats.exerciseType.name)
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("\(stats.totalSessions) séance\(stats.totalSessions > 1 ? "s" : "") · \(stats.totalShots) tirs")
                         .font(.caption)
                         .foregroundStyle(.secondary)
@@ -814,22 +812,23 @@ struct ExerciseStatRow: View {
                 Text(String(format: "%.0f%%", stats.avgPercentage))
                     .font(.title3.bold())
                     .foregroundStyle(pctColor)
+                    .monospacedDigit()
             }
 
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 3)
-                        .fill(Color.white.opacity(0.1))
-                        .frame(height: 6)
+                        .fill(Color(.tertiarySystemFill))
+                        .frame(height: 5)
                     RoundedRectangle(cornerRadius: 3)
                         .fill(pctColor)
-                        .frame(width: geo.size.width * (stats.avgPercentage / 100), height: 6)
+                        .frame(width: geo.size.width * (stats.avgPercentage / 100), height: 5)
                 }
             }
-            .frame(height: 6)
+            .frame(height: 5)
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
