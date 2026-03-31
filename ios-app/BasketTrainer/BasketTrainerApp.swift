@@ -7,7 +7,6 @@ struct BasketTrainerApp: App {
 
     init() {
         GarminManager.shared.setup()
-        customizeAppearance()
     }
 
     var body: some Scene {
@@ -19,14 +18,5 @@ struct BasketTrainerApp: App {
                     garmin.handleIncomingURL(url)
                 }
         }
-    }
-
-    private func customizeAppearance() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.titleTextAttributes    = [.foregroundColor: UIColor.white]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().standardAppearance   = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 }
