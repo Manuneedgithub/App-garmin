@@ -17,7 +17,7 @@ struct SessionDetailView: View {
 
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            Color(.systemGroupedBackground).ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 24) {
@@ -76,30 +76,83 @@ struct SessionDetailView: View {
     // ── Composants ──
 
     private var scoreHeader: some View {
-        VStack(spacing: 8) {
-            Text(current.displayEmoji)
-                .font(.system(size: 52))
+        VStack(spacing: 0) {
+            // Identité exercice
+            HStack(spacing: 12) {
+                Text(current.displayEmoji)
+                    .font(.title)
+                    .frame(width: 48, height: 48)
+                    .background(Color(.secondarySystemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(current.displayName)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                        .lineLimit(1)
+                    HStack(spacing: 4) {
+                        Text(current.date.formatted(.dateTime.day().month().hour().minute()))
+                        if let dur = current.duration, dur > 0 {
+                            Text("·")
+                            Text("\(Int(dur / 60)) min")
+                        }
+                    }
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                }
+                Spacer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.top, 16)
+            .padding(.bottom, 14)
 
-            Text("\(current.madeShots) / \(current.totalShots)")
-                .font(.system(size: 56, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
+            Divider()
 
-            Text(String(format: "%.0f%%", current.percentage))
-                .font(.title2.bold())
-                .foregroundStyle(percentageColor(current.percentage))
+            // Score
+            HStack(spacing: 0) {
+                VStack(spacing: 4) {
+                    Text("\(current.madeShots)/\(current.totalShots)")
+                        .font(.title.bold())
+                        .foregroundStyle(.primary)
+                        .monospacedDigit()
+                    Text("Score")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity)
 
-            Text(current.performanceLabel)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 5)
-                .background(percentageColor(current.percentage).opacity(0.15))
-                .clipShape(Capsule())
+                Divider().frame(height: 40)
+
+                VStack(spacing: 4) {
+                    Text(String(format: "%.0f%%", current.percentage))
+                        .font(.title.bold())
+                        .foregroundStyle(percentageColor(current.percentage))
+                        .monospacedDigit()
+                    Text(current.performanceLabel)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .padding(.vertical, 14)
+            .padding(.horizontal, 16)
+
+            Divider()
+
+            // Barre de progression
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .fill(Color(.tertiarySystemFill))
+                        .frame(height: 5)
+                    Rectangle()
+                        .fill(percentageColor(current.percentage))
+                        .frame(width: geo.size.width * CGFloat(current.percentage / 100), height: 5)
+                }
+            }
+            .frame(height: 5)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 28)
-        .background(Color.white.opacity(0.05))
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .background(Color(.systemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
     private var statsGrid: some View {
@@ -114,18 +167,18 @@ struct SessionDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Détail par série")
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
 
             ForEach(Array(series.enumerated()), id: \.offset) { idx, ser in
                 VStack(spacing: 8) {
                     HStack {
                         Text("\(ser.exerciseType.emoji) Série \(idx + 1) — \(ser.exerciseType.name)")
                             .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                         Spacer()
                         Text("\(ser.madeShots)/\(ser.totalShots)")
                             .font(.subheadline.bold())
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                         Text(String(format: "%.0f%%", ser.percentage))
                             .font(.caption.bold())
                             .foregroundStyle(percentageColor(ser.percentage))
@@ -141,12 +194,12 @@ struct SessionDetailView: View {
                     }
                 }
                 .padding(14)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.secondarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -154,7 +207,7 @@ struct SessionDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Détail des tirs")
                 .font(.headline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
 
             let columns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 10)
             LazyVGrid(columns: columns, spacing: 10) {
@@ -164,19 +217,22 @@ struct SessionDetailView: View {
             }
         }
         .padding(16)
-        .background(Color.white.opacity(0.05))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
     private var metaInfo: some View {
         VStack(alignment: .leading, spacing: 8) {
-            InfoRow(icon: "calendar",   label: "Date",
+            InfoRow(icon: "calendar",
+                    label: "Date",
                     value: current.date.formatted(.dateTime.day().month(.wide).year().hour().minute()))
-            InfoRow(icon: "applewatch", label: "Source",
+            Divider()
+            InfoRow(icon: "applewatch",
+                    label: "Source",
                     value: current.sentFromWatch ? "Garmin FR255" : "iPhone")
         }
         .padding(16)
-        .background(Color.white.opacity(0.04))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 
@@ -201,13 +257,14 @@ struct StatTile: View {
             Text(value)
                 .font(.title2.bold())
                 .foregroundStyle(color)
+                .monospacedDigit()
             Text(label)
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .background(color.opacity(0.1))
+        .padding(.vertical, 14)
+        .background(color.opacity(0.08))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
@@ -244,7 +301,7 @@ struct InfoRow: View {
             Spacer()
             Text(value)
                 .font(.subheadline)
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
                 .multilineTextAlignment(.trailing)
         }
     }
