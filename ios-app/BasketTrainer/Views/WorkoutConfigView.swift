@@ -126,7 +126,7 @@ struct SectionLabel: View {
     var body: some View {
         Label(title, systemImage: icon)
             .font(.headline)
-            .foregroundStyle(.white)
+            .foregroundStyle(.primary)
     }
 }
 
@@ -136,21 +136,20 @@ struct ExerciseOptionRow: View {
 
     var body: some View {
         HStack(spacing: 14) {
-            Text(exercise.emoji)
-                .font(.title3)
+            Text(exercise.emoji).font(.title3)
             Text(exercise.name)
                 .font(.subheadline)
-                .foregroundStyle(isSelected ? .black : .white)
+                .foregroundStyle(isSelected ? .white : .primary)
             Spacer()
             if isSelected {
                 Image(systemName: "checkmark")
                     .font(.subheadline.bold())
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
             }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
-        .background(isSelected ? Color.orange : Color.white.opacity(0.07))
+        .background(isSelected ? Color.orange : Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
@@ -162,10 +161,10 @@ struct ShotCountChip: View {
     var body: some View {
         Text("\(count)")
             .font(.subheadline.bold())
-            .foregroundStyle(isSelected ? .black : .white)
+            .foregroundStyle(isSelected ? .white : .primary)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
-            .background(isSelected ? Color.orange : Color.white.opacity(0.07))
+            .background(isSelected ? Color.orange : Color(.secondarySystemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

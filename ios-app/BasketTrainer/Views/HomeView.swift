@@ -160,14 +160,15 @@ struct MiniStatCard: View {
                 .foregroundStyle(.orange)
             Text(value)
                 .font(.title3.bold())
-                .foregroundStyle(.white)
+                .foregroundStyle(.primary)
+                .monospacedDigit()
             Text(label)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
-        .background(Color.white.opacity(0.07))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
@@ -183,28 +184,38 @@ struct SessionRowView: View {
             Text(session.displayEmoji)
                 .font(.title2)
                 .frame(width: 44, height: 44)
-                .background(Color.white.opacity(0.07))
+                .background(Color(.secondarySystemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
 
             VStack(alignment: .leading, spacing: 3) {
                 HStack(spacing: 6) {
                     Text(session.displayName)
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                     if session.isComplex {
-                        Text("Complexe")
+                        Text("\(session.series?.count ?? 0) séries")
                             .font(.caption2.weight(.medium))
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(.white)
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(Color.orange.opacity(0.15))
+                            .background(Color.orange)
                             .clipShape(Capsule())
                     }
+                    if session.sentFromWatch {
+                        Text("⌚")
+                            .font(.caption2)
+                    }
                 }
-                Text(session.date.formatted(.dateTime.day().month().hour().minute()))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                HStack(spacing: 4) {
+                    Text(session.date.formatted(.dateTime.day().month().hour().minute()))
+                    if let dur = session.duration, dur > 0 {
+                        Text("·")
+                        Text("\(Int(dur / 60)) min")
+                    }
+                }
+                .font(.caption)
+                .foregroundStyle(.secondary)
             }
 
             Spacer()
@@ -212,14 +223,15 @@ struct SessionRowView: View {
             VStack(alignment: .trailing, spacing: 2) {
                 Text("\(session.madeShots)/\(session.totalShots)")
                     .font(.subheadline.bold())
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
+                    .monospacedDigit()
                 Text(String(format: "%.0f%%", session.percentage))
-                    .font(.caption)
+                    .font(.caption.bold())
                     .foregroundStyle(percentageColor(session.percentage))
             }
         }
         .padding(14)
-        .background(Color.white.opacity(0.06))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 
