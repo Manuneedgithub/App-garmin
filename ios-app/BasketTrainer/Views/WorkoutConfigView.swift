@@ -6,6 +6,7 @@ import SwiftUI
 // ─────────────────────────────────────────────────
 struct WorkoutConfigView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var garmin: GarminManager
 
     @State private var selectedExercise: ExerciseType = .freethrow
     @State private var shotCount: Int = 10
@@ -16,54 +17,39 @@ struct WorkoutConfigView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                Color(.systemGroupedBackground).ignoresSafeArea()
 
                 ScrollView {
-                    VStack(spacing: 28) {
-
-                        // ── Choix exercice ──
+                    VStack(spacing: 24) {
                         sectionExercise
-
-                        // ── Choix nb tirs ──
                         sectionShotCount
-
-                        // ── Bouton envoyer ──
+                        connectionStatus
                         sendButton
-
-                        if didSend {
-                            sentConfirmation
-                        }
-
+                        if didSend { sentConfirmation }
+                        hintText
                         Spacer(minLength: 40)
                     }
                     .padding(.horizontal, 20)
                     .padding(.top, 16)
                 }
             }
-            .navigationTitle("Configurer")
+            .navigationTitle("Envoyer à la montre")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Fermer") { dismiss() }
-                        .foregroundStyle(.orange)
+                    Button("Fermer") { dismiss() }.foregroundStyle(.orange)
                 }
             }
         }
     }
 
-    // ── Sections ──
-
     private var sectionExercise: some View {
         VStack(alignment: .leading, spacing: 14) {
             SectionLabel(title: "Exercice", icon: "figure.basketball")
-
             VStack(spacing: 8) {
                 ForEach(ExerciseType.allCases) { exercise in
-                    ExerciseOptionRow(
-                        exercise: exercise,
-                        isSelected: selectedExercise == exercise
-                    )
-                    .onTapGesture { selectedExercise = exercise }
+                    ExerciseOptionRow(exercise: exercise, isSelected: selectedExercise == exercise)
+                        .onTapGesture { selectedExercise = exercise }
                 }
             }
         }
@@ -72,7 +58,6 @@ struct WorkoutConfigView: View {
     private var sectionShotCount: some View {
         VStack(alignment: .leading, spacing: 14) {
             SectionLabel(title: "Nombre de tirs", icon: "basketball")
-
             HStack(spacing: 10) {
                 ForEach(shotOptions, id: \.self) { n in
                     ShotCountChip(count: n, isSelected: shotCount == n)
@@ -80,6 +65,32 @@ struct WorkoutConfigView: View {
                 }
             }
         }
+    }
+
+    private var connectionStatus: some View {
+        HStack(spacing: 10) {
+            Circle()
+                .fill(garmin.lastSyncDate != nil ? Color.green : Color.orange)
+                .frame(width: 8, height: 8)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Forerunner 255")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                if let last = garmin.lastSyncDate {
+                    Text("Synchro \(last.formatted(.relative(presentation: .named)))")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Text("Aucune synchro récente")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            Spacer()
+        }
+        .padding(14)
+        .background(Color(.systemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 
     private var sendButton: some View {
@@ -94,24 +105,30 @@ struct WorkoutConfigView: View {
                 Text("Envoyer sur la montre")
                     .fontWeight(.semibold)
             }
-            .foregroundStyle(.black)
+            .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 18)
             .background(Color.orange)
             .clipShape(RoundedRectangle(cornerRadius: 16))
         }
-
     }
 
     private var sentConfirmation: some View {
         HStack(spacing: 8) {
-            Image(systemName: "checkmark.circle.fill")
-                .foregroundStyle(.green)
+            Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
             Text("Envoyé ! Lance l'app sur ta montre.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }
         .transition(.move(edge: .bottom).combined(with: .opacity))
+    }
+
+    private var hintText: some View {
+        Text("Ou lancez directement depuis la montre — les données seront synchronisées automatiquement.")
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 8)
     }
 }
 

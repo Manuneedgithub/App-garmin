@@ -15,7 +15,7 @@ struct TemplatesView: View {
             HStack {
                 Label("Templates complexes", systemImage: "rectangle.stack.fill")
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                 Spacer()
                 Text("\(store.templates.count)/\(SessionStore.maxTemplates)")
                     .font(.caption)
@@ -36,7 +36,7 @@ struct TemplatesView: View {
             }
         }
         .padding(16)
-        .background(Color.white.opacity(0.04))
+        .background(Color(.secondarySystemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 
@@ -77,34 +77,29 @@ struct TemplateCard: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(template.name)
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("\(template.series.count) série\(template.series.count > 1 ? "s" : "") · \(template.series.reduce(0) { $0 + $1.totalShots }) tirs total")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
-                Button {
-                    showDeleteAlert = true
-                } label: {
-                    Image(systemName: "xmark.circle")
-                        .foregroundStyle(.secondary)
+                Button { showDeleteAlert = true } label: {
+                    Image(systemName: "xmark.circle").foregroundStyle(.secondary)
                 }
             }
 
-            // ── Séries ──
             HStack(spacing: 6) {
                 ForEach(template.series.indices, id: \.self) { idx in
                     let s = template.series[idx]
                     VStack(spacing: 2) {
-                        Text(s.exerciseType.emoji)
-                            .font(.caption)
+                        Text(s.exerciseType.emoji).font(.caption)
                         Text("×\(s.totalShots)")
                             .font(.system(size: 9, weight: .bold))
                             .foregroundStyle(.orange)
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 5)
-                    .background(Color.white.opacity(0.08))
+                    .background(Color(.secondarySystemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 8))
 
                     if idx < template.series.count - 1 {
@@ -116,24 +111,20 @@ struct TemplateCard: View {
                 Spacer(minLength: 0)
             }
 
-            // ── Boutons ──
             HStack(spacing: 10) {
-                // Saisie manuelle (iPhone)
                 Button(action: onLaunchManual) {
                     Label("Saisir", systemImage: "square.and.pencil")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(Color.white.opacity(0.10))
+                        .background(Color(.secondarySystemBackground))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
-
-                // Mode guidé (montre)
                 Button(action: onLaunchGuided) {
                     Label("Guider la montre", systemImage: "applewatch")
                         .font(.caption.weight(.semibold))
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
                         .background(Color.orange)
@@ -142,7 +133,12 @@ struct TemplateCard: View {
             }
         }
         .padding(14)
-        .background(Color.white.opacity(0.07))
+        .background(Color(.systemBackground))
+        .overlay(alignment: .leading) {
+            Rectangle()
+                .fill(Color.orange)
+                .frame(width: 3)
+        }
         .clipShape(RoundedRectangle(cornerRadius: 14))
         .alert("Supprimer ce template ?", isPresented: $showDeleteAlert) {
             Button("Supprimer", role: .destructive, action: onDelete)
@@ -177,7 +173,7 @@ struct GuidedSessionBanner: View {
                         .foregroundStyle(.orange)
                     Text("Mode guidé actif")
                         .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                 }
                 Spacer()
                 Button("Annuler") { garmin.cancelGuidedSession() }
@@ -196,7 +192,7 @@ struct GuidedSessionBanner: View {
                         Circle()
                             .fill(idx < done
                                   ? Color.green
-                                  : (idx == done ? Color.orange : Color.white.opacity(0.2)))
+                                  : (idx == done ? Color.orange : Color(.tertiarySystemFill)))
                             .frame(width: 10, height: 10)
                         if idx < done {
                             Image(systemName: "checkmark")
@@ -218,7 +214,7 @@ struct GuidedSessionBanner: View {
                         .font(.subheadline)
                     Text("Maintenant : \(next.exerciseType.emoji) \(next.exerciseType.name) × \(next.totalShots) tirs")
                         .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                 }
                 .padding(10)
                 .background(Color.orange.opacity(0.15))
