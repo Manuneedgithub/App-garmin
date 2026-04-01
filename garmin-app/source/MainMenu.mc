@@ -21,7 +21,7 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
         if (id == 0) {
             // Tirs libres : mode existant
             var menu = new ExerciseMenuView();
-            var del  = new ExerciseMenuDelegate(null);
+            var del = new ExerciseMenuDelegate(null);
             WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
         } else if (id == 1) {
             // Objectif simple : choisir exercice puis objectif
