@@ -248,7 +248,7 @@ struct ManualSessionView: View {
             if saveAsTemplate && !templateName.trimmingCharacters(in: .whitespaces).isEmpty {
                 let t = ComplexTemplate(
                     name: templateName.trimmingCharacters(in: .whitespaces),
-                    series: series.map { TemplateSeries(exerciseType: $0.exerciseType, totalShots: $0.totalShots) }
+                    series: series.map { TemplateSeries(exerciseType: $0.exerciseType, totalShots: $0.totalShots, targetMade: $0.targetMade) }
                 )
                 store.addTemplate(t)
             }
@@ -266,6 +266,7 @@ struct SeriesEditorRow: View {
     let onDelete: (() -> Void)?
 
     private let shotOptions = [5, 10, 15, 20, 25, 30]
+    @State private var hasTarget: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -327,6 +328,29 @@ struct SeriesEditorRow: View {
                 Spacer()
                 Stepper("", value: $series.madeShots, in: 0...series.totalShots)
                     .labelsHidden()
+            }
+
+            // Objectif paniers (optionnel)
+            Toggle("Mode objectif", isOn: $hasTarget)
+                .font(.subheadline)
+                .onChange(of: hasTarget) { enabled in
+                    series.targetMade = enabled ? series.madeShots : nil
+                }
+
+            if hasTarget {
+                HStack {
+                    Text("Objectif paniers")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Stepper("\(series.targetMade ?? 1)",
+                            value: Binding(
+                                get: { series.targetMade ?? 1 },
+                                set: { series.targetMade = $0 }
+                            ),
+                            in: 1...100)
+                    .labelsHidden()
+                }
             }
         }
         .padding(14)
