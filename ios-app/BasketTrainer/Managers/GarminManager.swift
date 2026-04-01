@@ -44,7 +44,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     }
 
     // IQAppMessageDelegate — message received from watch
-    func receivedMessage(_ message: Any, fromApp app: IQApp) {
+    func receivedMessage(_ message: Any, from app: IQApp) {
         guard let dict = message as? [String: Any] else { return }
         parseAndStore(dict)
     }
