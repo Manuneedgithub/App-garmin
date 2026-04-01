@@ -5,30 +5,28 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
     private let appUUID = UUID(uuidString: "a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a")!
     private let store = SessionStore.shared
+    private var sdk: ConnectIQ { ConnectIQ.sharedInstance()! }
 
     @Published var lastSyncDate: Date? = nil
     @Published var connectedDevice: IQDevice? = nil
 
-    // Guided session properties (unchanged from old implementation)
+    // Guided session properties
     @Published var guidedTemplate: ComplexTemplate? = nil
     @Published var guidedIndex: Int = 0
     @Published var guidedSeries: [ShotSeries] = []
 
     func setup() {
-        ConnectIQ.sharedInstance().initialize(
-            withUrlScheme: "baskettrainer",
-            uiOverrideDelegate: nil
-        )
+        sdk.initialize(withUrlScheme: "baskettrainer", uiOverrideDelegate: nil)
     }
 
     // Called by BasketTrainerApp.onOpenURL
     // Garmin Connect wakes the app via "baskettrainer://..." to provide the device list
     func handleIncomingURL(_ url: URL) {
-        guard let devices = ConnectIQ.sharedInstance().handleOpenURL(url, sourceApplication: nil),
+        guard let devices = sdk.handleOpenURL(url, sourceApplication: nil),
               !devices.isEmpty else { return }
 
         for case let device as IQDevice in devices {
-            ConnectIQ.sharedInstance().register(forDeviceEvents: device, delegate: self)
+            sdk.register(forDeviceEvents: device, delegate: self)
         }
     }
 
@@ -36,8 +34,8 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     func deviceStatusChanged(_ device: IQDevice, status: IQDeviceStatus) {
         if status == .connected {
             connectedDevice = device
-            let app = IQApp(uuid: appUUID, store: nil, device: device)
-            ConnectIQ.sharedInstance().register(forAppMessages: app, delegate: self)
+            let app = IQApp(uuid: appUUID, store: IQApp.eStoreFront, device: device)
+            sdk.register(forAppMessages: app, delegate: self)
         } else {
             connectedDevice = nil
         }
@@ -50,11 +48,11 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     }
 
     private func parseAndStore(_ dict: [String: Any]) {
-        let exId      = dict["exerciseId"] as? Int ?? 0
-        let total     = dict["totalShots"] as? Int ?? 0
-        let made      = dict["madeShots"]  as? Int ?? 0
-        let startTime = dict["startTime"]  as? Int ?? 0
-        let duration  = dict["duration"]   as? Int ?? 0
+        let exId       = dict["exerciseId"] as? Int ?? 0
+        let total      = dict["totalShots"] as? Int ?? 0
+        let made       = dict["madeShots"]  as? Int ?? 0
+        let startTime  = dict["startTime"]  as? Int ?? 0
+        let duration   = dict["duration"]   as? Int ?? 0
         let rawResults = dict["results"] as? [Bool] ?? []
 
         var session = WorkoutSession(
