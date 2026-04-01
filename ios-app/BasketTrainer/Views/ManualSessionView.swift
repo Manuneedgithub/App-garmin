@@ -333,6 +333,7 @@ struct SeriesEditorRow: View {
             // Objectif paniers (optionnel)
             Toggle("Mode objectif", isOn: $hasTarget)
                 .font(.subheadline)
+                .onAppear { hasTarget = series.targetMade != nil }
                 .onChange(of: hasTarget) { enabled in
                     series.targetMade = enabled ? series.madeShots : nil
                 }
