@@ -18,7 +18,7 @@ struct EditSessionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                Color(.systemGroupedBackground).ignoresSafeArea()
 
                 ScrollView {
                     VStack(spacing: 28) {
@@ -61,7 +61,7 @@ struct EditSessionView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(editedSession.exerciseType.name)
                         .font(.headline)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("\(editedSession.totalShots) tirs")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
@@ -69,7 +69,7 @@ struct EditSessionView: View {
                 Spacer()
             }
             .padding(16)
-            .background(Color.white.opacity(0.06))
+            .background(Color(.systemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 14))
 
             // Tirs réussis
@@ -80,7 +80,7 @@ struct EditSessionView: View {
                     HStack {
                         Text("\(editedSession.madeShots) / \(editedSession.totalShots)")
                             .font(.title2.bold())
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                             .frame(width: 80)
                         Stepper("", value: $editedSession.madeShots, in: 0...editedSession.totalShots)
                             .labelsHidden()
@@ -90,7 +90,7 @@ struct EditSessionView: View {
                     GeometryReader { geo in
                         ZStack(alignment: .leading) {
                             RoundedRectangle(cornerRadius: 4)
-                                .fill(Color.white.opacity(0.1))
+                                .fill(Color(.tertiarySystemFill))
                                 .frame(height: 8)
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(pctColor(editedSession.percentage))
@@ -105,7 +105,7 @@ struct EditSessionView: View {
                         .foregroundStyle(pctColor(editedSession.percentage))
                 }
                 .padding(16)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
             }
         }
@@ -123,7 +123,7 @@ struct EditSessionView: View {
                     HStack {
                         Text("\(ser.exerciseType.emoji) Série \(idx + 1) — \(ser.exerciseType.name)")
                             .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                         Spacer()
                         Text("\(ser.totalShots) tirs")
                             .font(.caption)
@@ -133,7 +133,7 @@ struct EditSessionView: View {
                     HStack {
                         Text("\(ser.madeShots)/\(ser.totalShots)")
                             .font(.title3.bold())
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                             .frame(width: 70)
                         Stepper("", value: Binding(
                             get: { editedSession.series?[idx].madeShots ?? 0 },
@@ -147,7 +147,7 @@ struct EditSessionView: View {
                     }
                 }
                 .padding(14)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
             }
         }
@@ -162,9 +162,8 @@ struct EditSessionView: View {
                        displayedComponents: [.date, .hourAndMinute])
                 .datePickerStyle(.compact)
                 .labelsHidden()
-                .colorScheme(.dark)
                 .padding(16)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
         }
     }
@@ -177,7 +176,7 @@ struct EditSessionView: View {
         } label: {
             Text("Enregistrer les modifications")
                 .font(.headline)
-                .foregroundStyle(.black)
+                .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 18)
                 .background(Color.orange)

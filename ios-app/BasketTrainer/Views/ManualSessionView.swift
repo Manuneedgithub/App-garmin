@@ -52,7 +52,7 @@ struct ManualSessionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                Color(.systemGroupedBackground).ignoresSafeArea()
 
                 ScrollView {
                     VStack(spacing: 28) {
@@ -135,13 +135,13 @@ struct ManualSessionView: View {
                 HStack {
                     Text("\(madeShots) / \(totalShots)")
                         .font(.title2.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                         .frame(width: 80)
                     Stepper("", value: $madeShots, in: 0...totalShots)
                         .labelsHidden()
                 }
                 .padding(16)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
             }
         }
@@ -169,7 +169,7 @@ struct ManualSessionView: View {
                     .foregroundStyle(.orange)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
-                    .background(Color.orange.opacity(0.1))
+                    .background(Color.orange.opacity(0.15))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
             }
         }
@@ -183,9 +183,8 @@ struct ManualSessionView: View {
             DatePicker("", selection: $date, in: ...Date(), displayedComponents: [.date, .hourAndMinute])
                 .datePickerStyle(.compact)
                 .labelsHidden()
-                .colorScheme(.dark)
                 .padding(16)
-                .background(Color.white.opacity(0.06))
+                .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
         }
     }
@@ -197,11 +196,11 @@ struct ManualSessionView: View {
             Toggle(isOn: $saveAsTemplate) {
                 Label("Sauvegarder comme template", systemImage: "rectangle.stack.badge.plus")
                     .font(.subheadline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
             }
             .tint(.orange)
             .padding(16)
-            .background(Color.white.opacity(0.06))
+            .background(Color(.systemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 14))
 
             if saveAsTemplate {
@@ -213,11 +212,10 @@ struct ManualSessionView: View {
                 }
 
                 TextField("Nom du template (ex: Entraînement 3pts)", text: $templateName)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                     .padding(14)
-                    .background(Color.white.opacity(0.06))
+                    .background(Color(.systemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .colorScheme(.dark)
             }
         }
     }
@@ -230,7 +228,7 @@ struct ManualSessionView: View {
         } label: {
             Text("Enregistrer la séance")
                 .font(.headline)
-                .foregroundStyle(.black)
+                .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 18)
                 .background(Color.orange)
@@ -293,10 +291,10 @@ struct SeriesEditorRow: View {
                         } label: {
                             Text(ex.emoji + " " + ex.name)
                                 .font(.caption.weight(.medium))
-                                .foregroundStyle(series.exerciseType == ex ? .black : .white)
+                                .foregroundStyle(series.exerciseType == ex ? .white : .primary)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 7)
-                                .background(series.exerciseType == ex ? Color.orange : Color.white.opacity(0.1))
+                                .background(series.exerciseType == ex ? Color.orange : Color(.secondarySystemBackground))
                                 .clipShape(Capsule())
                         }
                     }
@@ -312,10 +310,10 @@ struct SeriesEditorRow: View {
                     } label: {
                         Text("\(n)")
                             .font(.caption.bold())
-                            .foregroundStyle(series.totalShots == n ? .black : .white)
+                            .foregroundStyle(series.totalShots == n ? .white : .primary)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 8)
-                            .background(series.totalShots == n ? Color.orange : Color.white.opacity(0.1))
+                            .background(series.totalShots == n ? Color.orange : Color(.secondarySystemBackground))
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                     }
                 }
@@ -325,14 +323,14 @@ struct SeriesEditorRow: View {
             HStack {
                 Text("Réussis : \(series.madeShots)/\(series.totalShots)")
                     .font(.subheadline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.primary)
                 Spacer()
                 Stepper("", value: $series.madeShots, in: 0...series.totalShots)
                     .labelsHidden()
             }
         }
         .padding(14)
-        .background(Color.white.opacity(0.06))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
