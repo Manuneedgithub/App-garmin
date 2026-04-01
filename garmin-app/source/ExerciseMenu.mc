@@ -66,3 +66,25 @@ class ExerciseMenuDelegate extends WatchUi.Menu2InputDelegate {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
     }
 }
+
+// Délégué pour le mode Objectif : après avoir choisi l'exercice,
+// affiche GoalMenuView au lieu de ShotCountMenuView
+class ExerciseMenuGoalDelegate extends WatchUi.Menu2InputDelegate {
+    private var _accumulator as Object or Null;
+
+    function initialize(accumulator as Object or Null) {
+        Menu2InputDelegate.initialize();
+        _accumulator = accumulator;
+    }
+
+    function onSelect(item as WatchUi.MenuItem) as Void {
+        var exerciseId = item.getId() as Number;
+        var view       = new GoalMenuView(exerciseId, 10);
+        var del        = new GoalMenuDelegate(view, exerciseId);
+        WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
+    }
+
+    function onBack() as Void {
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
+    }
+}
