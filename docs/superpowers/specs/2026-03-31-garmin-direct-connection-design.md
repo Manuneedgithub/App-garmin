@@ -96,9 +96,12 @@ La méthode `toURL()` n'est plus utilisée. La supprimer entièrement.
 
 ### 4.1 Xcode — Intégration du framework
 
-1. Ouvrir `ios-app/BasketTrainer.xcodeproj` dans Xcode
-2. Target → General → Frameworks, Libraries, and Embedded Content
-3. Ajouter `ConnectIQ.xcframework` → choisir **Embed & Sign**
+**Source SDK :** https://github.com/garmin/connectiq-companion-app-sdk-ios
+
+1. Télécharger la release (`.xcframework`) depuis le repo GitHub ci-dessus
+2. Ouvrir `ios-app/BasketTrainer.xcodeproj` dans Xcode
+3. Target → General → Frameworks, Libraries, and Embedded Content
+4. Ajouter `ConnectIQ.xcframework` → choisir **Embed & Sign**
 
 ### 4.2 Info.plist — Clés requises
 
@@ -160,25 +163,22 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     }
 
     // Appelé par BasketTrainerApp.onOpenURL
-    // Garmin Connect ouvre l'app via "baskettrainer://devices?..." pour fournir les devices
-    // ou via un payload SDK quand un message arrive
+    // Garmin Connect ouvre l'app via "baskettrainer://..." pour fournir la liste des devices
+    // handleOpenURL retourne les IQDevice parsés — on s'enregistre pour chacun
     func handleIncomingURL(_ url: URL) {
-        guard let devices = ConnectIQ.sharedInstance().parseDeviceSelection(from: url),
+        guard let devices = ConnectIQ.sharedInstance().handleOpenURL(url, sourceApplication: nil),
               !devices.isEmpty else { return }
 
-        ConnectIQ.sharedInstance().register(
-            forDeviceEvents: devices as? [IQDevice] ?? [],
-            delegate: self
-        )
+        for device in devices {
+            ConnectIQ.sharedInstance().register(forDeviceEvents: device, delegate: self)
+        }
     }
 
     // IQDeviceEventDelegate — connexion/déconnexion d'un device
     func deviceStatusChanged(_ device: IQDevice, status: IQDeviceStatus) {
         if status == .connected {
             connectedDevice = device
-            let app = ConnectIQ.sharedInstance().getApp(
-                withUUID: appUUID, forDevice: device
-            )
+            let app = IQApp(uuid: appUUID, store: nil, device: device)
             ConnectIQ.sharedInstance().register(forAppMessages: app, delegate: self)
         } else {
             connectedDevice = nil
