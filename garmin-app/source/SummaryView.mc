@@ -140,6 +140,23 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
 
     // Envoie via transmit() → CIQ SDK → app iPhone (Bluetooth direct, sans tap utilisateur)
     private function sendToPhone() as Void {
-        Communications.openWebPage(_session.toURL(), null, null);
+        Communications.transmit(_session.toDictionary(), null, new TransmitListener());
+    }
+}
+
+// ─────────────────────────────────────────────────
+// LISTENER — Résultat de l'envoi Bluetooth
+// ─────────────────────────────────────────────────
+class TransmitListener extends Communications.ConnectionListener {
+    function initialize() {
+        Communications.ConnectionListener.initialize();
+    }
+
+    function onComplete() as Void {
+        // Envoi réussi — rien à faire
+    }
+
+    function onError() as Void {
+        // Échec silencieux — Bluetooth déconnecté ou app iPhone absente
     }
 }

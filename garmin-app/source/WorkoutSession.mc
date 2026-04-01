@@ -42,21 +42,6 @@ class WorkoutSession {
         return (madeShots * 100) / currentShot;
     }
 
-    // Encode la session en URL baskettrainer://s?... pour openWebPage()
-    function toURL() as String {
-        var r = "";
-        for (var i = 0; i < results.size(); i++) {
-            r = r + ((results[i] as Boolean) ? "1" : "0");
-        }
-        var d = Time.now().value() - startTime;
-        return "baskettrainer://s?e=" + exerciseId.toString()
-             + "&t=" + totalShots.toString()
-             + "&m=" + madeShots.toString()
-             + "&st=" + startTime.toString()
-             + "&r=" + r
-             + "&d=" + d.toString();
-    }
-
     // Sérialise la session pour l'envoi à l'iPhone
     // duration = temps écoulé depuis startTime au moment de l'envoi
     function toDictionary() as Dictionary {
