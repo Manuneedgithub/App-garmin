@@ -1,0 +1,127 @@
+<h2>Système de design — Basket Trainer</h2>
+<p class="subtitle">Les briques de base appliquées à tous les écrans</p>
+
+<div class="section">
+  <div class="label">Couleurs</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+    <div style="text-align:center">
+      <div style="width:64px;height:64px;border-radius:14px;background:#FF6600;margin:0 auto"></div>
+      <div style="font-size:10px;color:#ccc;margin-top:6px">Accent<br>#FF6600</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:64px;height:64px;border-radius:14px;background:#34C759;margin:0 auto"></div>
+      <div style="font-size:10px;color:#ccc;margin-top:6px">Succès<br>systemGreen</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:64px;height:64px;border-radius:14px;background:#FF3B30;margin:0 auto"></div>
+      <div style="font-size:10px;color:#ccc;margin-top:6px">Erreur<br>systemRed</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:64px;height:64px;border-radius:14px;background:#f2f2f7;border:1px solid rgba(255,255,255,0.15);margin:0 auto"></div>
+      <div style="font-size:10px;color:#ccc;margin-top:6px">BG clair<br>systemGrouped<br>Background</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:64px;height:64px;border-radius:14px;background:#1c1c1e;border:1px solid rgba(255,255,255,0.08);margin:0 auto"></div>
+      <div style="font-size:10px;color:#ccc;margin-top:6px">BG sombre<br>systemGrouped<br>Background</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:64px;height:64px;border-radius:14px;background:#fff;border:1px solid rgba(255,255,255,0.1);margin:0 auto"></div>
+      <div style="font-size:10px;color:#ccc;margin-top:6px">Carte claire<br>systemBackground</div>
+    </div>
+    <div style="text-align:center">
+      <div style="width:64px;height:64px;border-radius:14px;background:#2c2c2e;border:1px solid rgba(255,255,255,0.05);margin:0 auto"></div>
+      <div style="font-size:10px;color:#ccc;margin-top:6px">Carte sombre<br>secondarySystem<br>Background</div>
+    </div>
+  </div>
+  <div style="margin-top:10px;font-size:11px;color:#888">Toutes les couleurs de fond sont des <strong style="color:#ccc">couleurs système iOS</strong> — elles s'adaptent automatiquement au mode clair/sombre. Seul l'orange #FF6600 est fixe.</div>
+</div>
+
+<div class="section">
+  <div class="label">Typographie — SF Pro (système)</div>
+  <div style="background:#1c1c1e;border-radius:14px;padding:18px 20px;margin-top:10px;display:flex;flex-direction:column;gap:10px">
+    <div>
+      <span style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px">Large Title · 34pt Bold</span>
+      <div style="font-size:10px;color:#666;margin-top:2px">.largeTitle — titres de navigation</div>
+    </div>
+    <div>
+      <span style="font-size:20px;font-weight:700;color:#fff">Title · 20pt Semibold</span>
+      <div style="font-size:10px;color:#666;margin-top:2px">.title2 — titres de section</div>
+    </div>
+    <div>
+      <span style="font-size:15px;font-weight:600;color:#fff">Headline · 15pt Semibold</span>
+      <div style="font-size:10px;color:#666;margin-top:2px">.headline — labels de carte</div>
+    </div>
+    <div>
+      <span style="font-size:15px;color:#fff">Body · 15pt Regular</span>
+      <div style="font-size:10px;color:#666;margin-top:2px">.body — contenu principal</div>
+    </div>
+    <div>
+      <span style="font-size:12px;color:#888">Caption · 12pt — métadonnées, dates</span>
+    </div>
+    <div>
+      <span style="font-size:28px;font-weight:800;color:#FF6600;font-variant-numeric:tabular-nums">68%</span>
+      <span style="font-size:28px;font-weight:800;color:#fff;font-variant-numeric:tabular-nums"> · 7/10</span>
+      <div style="font-size:10px;color:#666;margin-top:2px">.largeTitle — chiffres clés, tabular nums pour l'alignement</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">Composants réutilisables</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
+
+    <!-- Stat Card -->
+    <div>
+      <div style="font-size:10px;color:#888;margin-bottom:6px">StatCard</div>
+      <div style="background:#fff;border-radius:14px;padding:14px 16px;text-align:center;width:80px;box-shadow:0 1px 6px rgba(0,0,0,0.1)">
+        <div style="font-size:9px;color:#FF6600;margin-bottom:4px">📊</div>
+        <div style="font-size:18px;font-weight:800;color:#000;font-variant-numeric:tabular-nums">68%</div>
+        <div style="font-size:9px;color:#888;margin-top:2px">Réussite</div>
+      </div>
+    </div>
+
+    <!-- Session Row -->
+    <div style="flex:1;min-width:200px">
+      <div style="font-size:10px;color:#888;margin-bottom:6px">SessionRow</div>
+      <div style="background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 1px 6px rgba(0,0,0,0.08);display:flex;align-items:center;gap:10px">
+        <div style="width:40px;height:40px;background:#fff5ee;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🎯</div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:600;color:#000">Lancer Franc</div>
+          <div style="font-size:11px;color:#999;margin-top:2px">Aujourd'hui · 3 min</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:15px;font-weight:700;color:#000">7/10</div>
+          <div style="font-size:11px;color:#FF6600;font-weight:600">70%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div style="flex:1;min-width:200px">
+      <div style="font-size:10px;color:#888;margin-bottom:6px">ProgressBar (séance)</div>
+      <div style="background:#fff;border-radius:14px;padding:14px;box-shadow:0 1px 6px rgba(0,0,0,0.08)">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+          <span style="font-size:12px;font-weight:600;color:#000">Lancer Franc</span>
+          <span style="font-size:12px;font-weight:700;color:#34C759">70%</span>
+        </div>
+        <div style="height:6px;background:#f0f0f0;border-radius:3px;overflow:hidden">
+          <div style="height:100%;width:70%;background:linear-gradient(90deg,#34C759,#30d158);border-radius:3px"></div>
+        </div>
+        <div style="font-size:10px;color:#999;margin-top:6px">7 réussis · 3 ratés</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <div class="label">Bouton principal (CTA)</div>
+  <div style="margin-top:10px">
+    <div style="background:#FF6600;border-radius:14px;padding:16px 20px;display:inline-flex;align-items:center;gap:10px;cursor:pointer">
+      <div style="width:28px;height:28px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px">+</div>
+      <span style="color:#fff;font-size:15px;font-weight:700">Nouvel entraînement</span>
+      <span style="color:rgba(255,255,255,0.5);font-size:13px;margin-left:4px">›</span>
+    </div>
+    <div style="font-size:10px;color:#888;margin-top:8px">Couleur pleine orange · coins 14pt · padding 16pt vertical</div>
+  </div>
+</div>

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32FD5D262F74916F00C25CD6 /* ConnectIQ in Frameworks */ = {isa = PBXBuildFile; productRef = 32FD5D252F74916F00C25CD6 /* ConnectIQ */; };
+		32CB2D8F2F7D125700FB5A89 /* ConnectIQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */; };
+		32CB2D902F7D125700FB5A89 /* ConnectIQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AA00000000000000000000D1 /* BasketTrainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C1 /* BasketTrainerApp.swift */; };
 		AA00000000000000000000D2 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C2 /* Models.swift */; };
 		AA00000000000000000000D3 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C3 /* SessionStore.swift */; };
@@ -18,14 +19,31 @@
 		AA00000000000000000000D8 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C8 /* HistoryView.swift */; };
 		AA00000000000000000000D9 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C9 /* SessionDetailView.swift */; };
 		AA00000000000000000000DA /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CA /* StatsView.swift */; };
+		AA00000000000000000000DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CB /* Assets.xcassets */; };
+		AA00000000000000000000DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CC /* Preview Assets.xcassets */; };
 		AA00000000000000000000DD /* ManualSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CF /* ManualSessionView.swift */; };
 		AA00000000000000000000DE /* EditSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000D0 /* EditSessionView.swift */; };
 		AA00000000000000000000DF /* TemplatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000010 /* TemplatesView.swift */; };
-		AA00000000000000000000DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CB /* Assets.xcassets */; };
-		AA00000000000000000000DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CC /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		32CB2D912F7D125700FB5A89 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				32CB2D902F7D125700FB5A89 /* ConnectIQ.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		32CB2D8D2F7D123200FB5A89 /* connectiq-companion-app-sdk-ios-1.8.0 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "connectiq-companion-app-sdk-ios-1.8.0"; path = "../../../../Downloads/connectiq-companion-app-sdk-ios-1.8.0"; sourceTree = "<group>"; };
+		32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ConnectIQ.xcframework; path = "../../../../Downloads/connectiq-companion-app-sdk-ios-1.8.0/ConnectIQ.xcframework"; sourceTree = "<group>"; };
+		AA0000000000000000000010 /* TemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000B1 /* BasketTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00000000000000000000C1 /* BasketTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTrainerApp.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -37,12 +55,11 @@
 		AA00000000000000000000C8 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C9 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000CA /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		AA00000000000000000000CF /* ManualSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualSessionView.swift; sourceTree = "<group>"; };
-		AA00000000000000000000D0 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
-		AA0000000000000000000010 /* TemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA00000000000000000000CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AA00000000000000000000CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA00000000000000000000CF /* ManualSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualSessionView.swift; sourceTree = "<group>"; };
+		AA00000000000000000000D0 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,17 +67,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32FD5D262F74916F00C25CD6 /* ConnectIQ in Frameworks */,
+				32CB2D8F2F7D125700FB5A89 /* ConnectIQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32CB2D8C2F7D123200FB5A89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */,
+				32CB2D8D2F7D123200FB5A89 /* connectiq-companion-app-sdk-ios-1.8.0 */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA00000000000000000000A1 = {
 			isa = PBXGroup;
 			children = (
 				AA00000000000000000000A3 /* BasketTrainer */,
+				32CB2D8C2F7D123200FB5A89 /* Frameworks */,
 				AA00000000000000000000A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,9 +140,9 @@
 				AA00000000000000000000C8 /* HistoryView.swift */,
 				AA00000000000000000000C9 /* SessionDetailView.swift */,
 				AA00000000000000000000CA /* StatsView.swift */,
-			AA00000000000000000000CF /* ManualSessionView.swift */,
-			AA00000000000000000000D0 /* EditSessionView.swift */,
-			AA0000000000000000000010 /* TemplatesView.swift */,
+				AA00000000000000000000CF /* ManualSessionView.swift */,
+				AA00000000000000000000D0 /* EditSessionView.swift */,
+				AA0000000000000000000010 /* TemplatesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,6 +165,7 @@
 				AA00000000000000000000E1 /* Sources */,
 				AA00000000000000000000E2 /* Resources */,
 				AA00000000000000000000E3 /* Frameworks */,
+				32CB2D912F7D125700FB5A89 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -173,7 +201,6 @@
 			);
 			mainGroup = AA00000000000000000000A1;
 			packageReferences = (
-				32FD5D242F74916F00C25CD6 /* XCRemoteSwiftPackageReference "connectiq-companion-app-sdk-ios" */,
 			);
 			productRefGroup = AA00000000000000000000A2 /* Products */;
 			projectDirPath = "";
@@ -211,9 +238,9 @@
 				AA00000000000000000000D8 /* HistoryView.swift in Sources */,
 				AA00000000000000000000D9 /* SessionDetailView.swift in Sources */,
 				AA00000000000000000000DA /* StatsView.swift in Sources */,
-			AA00000000000000000000DD /* ManualSessionView.swift in Sources */,
-			AA00000000000000000000DE /* EditSessionView.swift in Sources */,
-			AA00000000000000000000DF /* TemplatesView.swift in Sources */,
+				AA00000000000000000000DD /* ManualSessionView.swift in Sources */,
+				AA00000000000000000000DE /* EditSessionView.swift in Sources */,
+				AA00000000000000000000DF /* TemplatesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,24 +436,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		32FD5D242F74916F00C25CD6 /* XCRemoteSwiftPackageReference "connectiq-companion-app-sdk-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/garmin/connectiq-companion-app-sdk-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.8.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		32FD5D252F74916F00C25CD6 /* ConnectIQ */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 32FD5D242F74916F00C25CD6 /* XCRemoteSwiftPackageReference "connectiq-companion-app-sdk-ios" */;
-			productName = ConnectIQ;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AA000000000000000000FFFF /* Project object */;
 }

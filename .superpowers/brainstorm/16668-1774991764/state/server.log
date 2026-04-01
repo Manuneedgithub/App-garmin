@@ -1,0 +1,35 @@
+{"type":"server-started","port":62285,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:62285","screen_dir":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content","state_dir":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/state"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-direction.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-direction.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-direction.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-direction.html"}
+{"source":"user-event","type":"click","text":"Basket Trainer\n        Synchro ✓\n      \n      \n      \n        🏀\n        \n          68% réussite\n          Sur les 7 dernières séances\n        \n      \n      \n      \n        \n          24\n          Séances\n        \n        \n          480\n          Tirs\n        \n      \n      \n      \n        ⊞Accueil\n        ☰Historique\n        ↗Stats\n      \n    \n    \n      Light Clean\n      Fond gris clair, cartes blanches, ombres douces. Style moderne iOS natif type Fitness Apple.","choice":"b","id":null,"timestamp":1774991846213}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/light-dark-comparison.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/light-dark-comparison.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/light-dark-comparison.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/light-dark-comparison.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-system.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-system.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-system.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/design-system.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/home-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/home-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/home-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/home-screen.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/history-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/history-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/history-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/history-screen.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/stats-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/stats-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/stats-screen.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/stats-screen.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/secondary-screens.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/secondary-screens.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/secondary-screens.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/secondary-screens.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/waiting.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/waiting.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/waiting.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/16668-1774991764/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

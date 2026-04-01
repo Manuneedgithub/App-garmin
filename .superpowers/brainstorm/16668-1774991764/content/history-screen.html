@@ -1,0 +1,202 @@
+<h2>HistoryView — Historique</h2>
+<p class="subtitle">Liste groupée par date, filtres par exercice, swipe to delete</p>
+
+<div class="split">
+
+  <!-- LIGHT -->
+  <div class="mockup">
+    <div class="mockup-header">☀️ Mode Clair</div>
+    <div class="mockup-body" style="background:#f2f2f7;padding:0;border-radius:0 0 8px 8px;overflow:hidden;font-family:-apple-system,sans-serif">
+
+      <div style="background:#f2f2f7;padding:10px 16px 8px">
+        <div style="font-size:26px;font-weight:800;color:#000;letter-spacing:-0.5px">Historique</div>
+        <!-- Search bar -->
+        <div style="background:#e5e5ea;border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:6px;margin-top:8px">
+          <span style="color:#8e8e93;font-size:13px">🔍</span>
+          <span style="color:#8e8e93;font-size:13px">Rechercher...</span>
+        </div>
+        <!-- Filter chips -->
+        <div style="display:flex;gap:6px;margin-top:8px;overflow:hidden">
+          <div style="background:#FF6600;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#fff;white-space:nowrap">Tous</div>
+          <div style="background:#fff;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#8e8e93;white-space:nowrap;border:1px solid #e5e5ea">Lancer Franc</div>
+          <div style="background:#fff;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#8e8e93;white-space:nowrap;border:1px solid #e5e5ea">3 Points</div>
+          <div style="background:#fff;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#8e8e93;white-space:nowrap;border:1px solid #e5e5ea">Mi-distance</div>
+        </div>
+      </div>
+
+      <div style="padding:4px 12px 10px;display:flex;flex-direction:column;gap:12px">
+
+        <!-- Group: Aujourd'hui -->
+        <div>
+          <div style="font-size:11px;font-weight:600;color:#8e8e93;text-transform:uppercase;letter-spacing:0.5px;padding:0 4px;margin-bottom:6px">Aujourd'hui</div>
+          <div style="display:flex;flex-direction:column;gap:1px;background:#c6c6c8;border-radius:14px;overflow:hidden">
+            <div style="background:#fff;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#fff5ee;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎯</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#000">Lancer Franc</div>
+                <div style="font-size:10px;color:#8e8e93;margin-top:1px">10h30 · 3 min · Montre ⌚</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#000">7/10</div>
+                <div style="font-size:10px;color:#34C759;font-weight:600">70%</div>
+              </div>
+            </div>
+            <div style="background:#fff;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#fff5ee;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🗂️</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#000">Séance complexe</div>
+                <div style="display:flex;align-items:center;gap:4px;margin-top:2px">
+                  <span style="font-size:9px;background:#FF6600;color:#fff;border-radius:4px;padding:1px 5px;font-weight:600">3 séries</span>
+                  <span style="font-size:10px;color:#8e8e93">08h00 · 12 min</span>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#000">22/30</div>
+                <div style="font-size:10px;color:#34C759;font-weight:600">73%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Group: Hier -->
+        <div>
+          <div style="font-size:11px;font-weight:600;color:#8e8e93;text-transform:uppercase;letter-spacing:0.5px;padding:0 4px;margin-bottom:6px">Hier</div>
+          <div style="display:flex;flex-direction:column;gap:1px;background:#c6c6c8;border-radius:14px;overflow:hidden">
+            <div style="background:#fff;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#fff5ee;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🏀</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#000">3pts Centre</div>
+                <div style="font-size:10px;color:#8e8e93;margin-top:1px">18h15 · 5 min</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#000">6/10</div>
+                <div style="font-size:10px;color:#FF6600;font-weight:600">60%</div>
+              </div>
+            </div>
+            <div style="background:#fff;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#fff5ee;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📐</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#000">3pts Coin Droite</div>
+                <div style="font-size:10px;color:#8e8e93;margin-top:1px">16h00 · 4 min</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#000">4/10</div>
+                <div style="font-size:10px;color:#FF3B30;font-weight:600">40%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tab bar -->
+      <div style="display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid rgba(0,0,0,0.08);background:#f2f2f7">
+        <div style="text-align:center"><div style="font-size:18px">🏠</div><div style="font-size:9px;color:#8e8e93;margin-top:1px">Accueil</div></div>
+        <div style="text-align:center"><div style="font-size:18px">📋</div><div style="font-size:9px;color:#FF6600;font-weight:600;margin-top:1px">Historique</div></div>
+        <div style="text-align:center"><div style="font-size:18px">📊</div><div style="font-size:9px;color:#8e8e93;margin-top:1px">Stats</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DARK -->
+  <div class="mockup">
+    <div class="mockup-header">🌙 Mode Sombre</div>
+    <div class="mockup-body" style="background:#000;padding:0;border-radius:0 0 8px 8px;overflow:hidden;font-family:-apple-system,sans-serif">
+
+      <div style="background:#000;padding:10px 16px 8px">
+        <div style="font-size:26px;font-weight:800;color:#fff;letter-spacing:-0.5px">Historique</div>
+        <div style="background:#1c1c1e;border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:6px;margin-top:8px">
+          <span style="color:#636366;font-size:13px">🔍</span>
+          <span style="color:#636366;font-size:13px">Rechercher...</span>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:8px;overflow:hidden">
+          <div style="background:#FF6600;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#fff;white-space:nowrap">Tous</div>
+          <div style="background:#1c1c1e;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#636366;white-space:nowrap">Lancer Franc</div>
+          <div style="background:#1c1c1e;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#636366;white-space:nowrap">3 Points</div>
+          <div style="background:#1c1c1e;border-radius:20px;padding:5px 12px;font-size:10px;font-weight:600;color:#636366;white-space:nowrap">Mi-distance</div>
+        </div>
+      </div>
+
+      <div style="padding:4px 12px 10px;display:flex;flex-direction:column;gap:12px">
+
+        <div>
+          <div style="font-size:11px;font-weight:600;color:#636366;text-transform:uppercase;letter-spacing:0.5px;padding:0 4px;margin-bottom:6px">Aujourd'hui</div>
+          <div style="display:flex;flex-direction:column;gap:1px;background:#3a3a3c;border-radius:14px;overflow:hidden">
+            <div style="background:#1c1c1e;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#2c2c2e;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🎯</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#fff">Lancer Franc</div>
+                <div style="font-size:10px;color:#636366;margin-top:1px">10h30 · 3 min · Montre ⌚</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#fff">7/10</div>
+                <div style="font-size:10px;color:#34C759;font-weight:600">70%</div>
+              </div>
+            </div>
+            <div style="background:#1c1c1e;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#2c2c2e;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🗂️</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#fff">Séance complexe</div>
+                <div style="display:flex;align-items:center;gap:4px;margin-top:2px">
+                  <span style="font-size:9px;background:#FF6600;color:#fff;border-radius:4px;padding:1px 5px;font-weight:600">3 séries</span>
+                  <span style="font-size:10px;color:#636366">08h00 · 12 min</span>
+                </div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#fff">22/30</div>
+                <div style="font-size:10px;color:#34C759;font-weight:600">73%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:11px;font-weight:600;color:#636366;text-transform:uppercase;letter-spacing:0.5px;padding:0 4px;margin-bottom:6px">Hier</div>
+          <div style="display:flex;flex-direction:column;gap:1px;background:#3a3a3c;border-radius:14px;overflow:hidden">
+            <div style="background:#1c1c1e;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#2c2c2e;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🏀</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#fff">3pts Centre</div>
+                <div style="font-size:10px;color:#636366;margin-top:1px">18h15 · 5 min</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#fff">6/10</div>
+                <div style="font-size:10px;color:#FF6600;font-weight:600">60%</div>
+              </div>
+            </div>
+            <div style="background:#1c1c1e;padding:11px 13px;display:flex;align-items:center;gap:9px">
+              <div style="width:34px;height:34px;background:#2c2c2e;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📐</div>
+              <div style="flex:1">
+                <div style="font-size:12px;font-weight:600;color:#fff">3pts Coin Droite</div>
+                <div style="font-size:10px;color:#636366;margin-top:1px">16h00 · 4 min</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:13px;font-weight:700;color:#fff">4/10</div>
+                <div style="font-size:10px;color:#FF3B30;font-weight:600">40%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid rgba(255,255,255,0.08);background:#000">
+        <div style="text-align:center"><div style="font-size:18px">🏠</div><div style="font-size:9px;color:#636366;margin-top:1px">Accueil</div></div>
+        <div style="text-align:center"><div style="font-size:18px">📋</div><div style="font-size:9px;color:#FF6600;font-weight:600;margin-top:1px">Historique</div></div>
+        <div style="text-align:center"><div style="font-size:18px">📊</div><div style="font-size:9px;color:#636366;margin-top:1px">Stats</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:16px;padding:14px 18px;background:rgba(255,255,255,0.05);border-radius:12px;border:1px solid rgba(255,255,255,0.1)">
+  <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#fff">Changements vs actuel</p>
+  <ul style="margin:0;padding-left:18px;font-size:12px;color:#aaa;display:flex;flex-direction:column;gap:4px">
+    <li>Barre de recherche ajoutée en haut</li>
+    <li>Filtres en chips horizontaux (Tous / Lancer Franc / 3 Points / Mi-distance) — remplace le picker actuel</li>
+    <li>Groupement par date en style iOS inséré (séparateurs fins entre les rows du même groupe)</li>
+    <li>Badge "Montre ⌚" sur les séances reçues depuis la Garmin</li>
+    <li>Badge "N séries" orange sur les séances complexes</li>
+  </ul>
+</div>
