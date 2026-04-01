@@ -22,7 +22,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     // Called by BasketTrainerApp.onOpenURL
     // Garmin Connect wakes the app via "baskettrainer://..." to provide the device list
     func handleIncomingURL(_ url: URL) {
-        guard let devices = sdk.parseDeviceSelectionResponseFromURL(url) as? [IQDevice],
+        guard let devices = sdk.parseDeviceSelectionResponse(from: url) as? [IQDevice],
               !devices.isEmpty else { return }
         for device in devices {
             sdk.register(forDeviceEvents: device, delegate: self)
@@ -33,7 +33,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     func deviceStatusChanged(_ device: IQDevice, status: IQDeviceStatus) {
         if status == .connected {
             connectedDevice = device
-            let app = IQApp.appWithUUID(appUUID, storeUuid: appUUID, device: device)
+            let app = IQApp(uuid: appUUID, store: appUUID, device: device)
             sdk.register(forAppMessages: app, delegate: self)
         } else {
             connectedDevice = nil
