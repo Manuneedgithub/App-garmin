@@ -1,5 +1,5 @@
 {
-  "monkeyC.jungleFiles": "monkey.jungle",
+  "monkeyC.jungleFiles": "garmin-app/monkey.jungle",
   "monkeyC.typeCheckLevel": "Informative",
   "monkeyC.simulatorVersion": "latest",
   "monkeyC.developerKey": "/Users/manu/Documents/GitHub/App-garmin/garmin-app/developer_key"

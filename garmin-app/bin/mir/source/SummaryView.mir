@@ -1,79 +1,79 @@
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
 import Toybox.Graphics;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; ]
 import Toybox.Time;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Communications,5,14,28]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Communications,5,14,28]; ]
 import Toybox.Communications;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 24; @symbol_classdef = [SummaryView,24,6,17]; @symbol_extends<0> = [WatchUi,24,26,33]; @symbol_extends<1> = [View,24,34,38]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 24; @symbol_classdef = [SummaryView,24,6,17]; @symbol_extends<0> = [WatchUi,24,26,33]; @symbol_extends<1> = [View,24,34,38]; ]
 class SummaryView extends WatchUi.View {
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 24; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 24; ]
     <init> {
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 27 18 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 27 18 ]
         symbol [ Graphics %tmp.1 27 33 41 ];
         %tmp.1 = getm $.Toybox.Graphics;
         symbol [ COLOR_BLACK %tmp.2 27 42 53 ];
         %tmp.2 = getv %tmp.1 :COLOR_BLACK;
         putv self :COLOR_BG %tmp.2;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 28 18 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 28 18 ]
         symbol [ Graphics %tmp.3 28 33 41 ];
         %tmp.3 = getm $.Toybox.Graphics;
         symbol [ COLOR_WHITE %tmp.4 28 42 53 ];
         %tmp.4 = getv %tmp.3 :COLOR_WHITE;
         putv self :COLOR_WHITE %tmp.4;
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 24; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 24; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 25; @position = 16; @symbol_vardef = [_session,25,16,24]; @symbol_type<0> = [WorkoutSession,25,28,42]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 25; @position = 16; @symbol_vardef = [_session,25,16,24]; @symbol_type<0> = [WorkoutSession,25,28,42]; ]
     private
     var _session as WorkoutSession;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 27; @position = 18; @symbol_constdef = [COLOR_BG,27,18,26]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 27; @position = 18; @symbol_constdef = [COLOR_BG,27,18,26]; ]
     private
     const COLOR_BG;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 28; @position = 18; @symbol_constdef = [COLOR_WHITE,28,18,29]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 28; @position = 18; @symbol_constdef = [COLOR_WHITE,28,18,29]; ]
     private
     const COLOR_WHITE;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 29; @position = 18; @symbol_constdef = [COLOR_ORANGE,29,18,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 29; @position = 18; @symbol_constdef = [COLOR_ORANGE,29,18,30]; ]
     private
     const COLOR_ORANGE = 0xFF6600;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 30; @position = 18; @symbol_constdef = [COLOR_GREEN,30,18,29]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 30; @position = 18; @symbol_constdef = [COLOR_GREEN,30,18,29]; ]
     private
     const COLOR_GREEN = 0x33CC66;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 31; @position = 18; @symbol_constdef = [COLOR_GRAY,31,18,28]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 31; @position = 18; @symbol_constdef = [COLOR_GRAY,31,18,28]; ]
     private
     const COLOR_GRAY = 0x888888;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 32; @position = 18; @symbol_constdef = [COLOR_RED,32,18,27]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 32; @position = 18; @symbol_constdef = [COLOR_RED,32,18,27]; ]
     private
     const COLOR_RED = 0xFF3333;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 34; @symbol_functiondef = [initialize,34,13,23]; @symbol_param<0> = [session,34,24,31]; @symbol_param<0>_type<0> = [WorkoutSession,34,35,49]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 34; @symbol_functiondef = [initialize,34,13,23]; @symbol_param<0> = [session,34,24,31]; @symbol_param<0>_type<0> = [WorkoutSession,34,35,49]; ]
     function initialize(session as WorkoutSession) as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_34_51_37_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 35 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_34_51_37_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 35 8 ]
         symbol [ View %tmp.2 35 8 12 ];
         %tmp.2 = getv ? :View;
         symbol [ initialize %tmp.3 35 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 36 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 36 8 ]
         %tmp.4 = lgetv %session;
         symbol [ session %tmp.4 36 19 26 ];
         symbol [ _session ? 36 8 16 ];
         putv self :_session %tmp.4;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_34_51_37_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_34_51_37_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 39; @symbol_functiondef = [onLayout,39,13,21]; @symbol_param<0> = [dc,39,22,24]; @symbol_param<0>_type<0> = [Graphics,39,28,36]; @symbol_param<0>_type<1> = [Dc,39,37,39]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 39; @symbol_functiondef = [onLayout,39,13,21]; @symbol_param<0> = [dc,39,22,24]; @symbol_param<0>_type<0> = [Graphics,39,28,36]; @symbol_param<0>_type<1> = [Dc,39,37,39]; ]
     function onLayout(dc as Graphics.Dc) as Void {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 42; @symbol_functiondef = [onUpdate,42,13,21]; @symbol_param<0> = [dc,42,22,24]; @symbol_param<0>_type<0> = [Graphics,42,28,36]; @symbol_param<0>_type<1> = [Dc,42,37,39]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 42; @symbol_functiondef = [onUpdate,42,13,21]; @symbol_param<0> = [dc,42,22,24]; @symbol_param<0>_type<0> = [Graphics,42,28,36]; @symbol_param<0>_type<1> = [Dc,42,37,39]; ]
     function onUpdate(dc as Graphics.Dc) as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 43 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 43 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %w.1 = local;
         symbol [ w %w.1 43 12 13 ];
         %tmp.1 = lgetv %dc;
@@ -83,8 +83,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %w.1 %tmp.3;
         symbol [ w %w.1 43 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 44 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 44 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %cx.2 = local;
         symbol [ cx %cx.2 44 12 14 ];
         %tmp.4 = lgetv %w.1;
@@ -93,8 +93,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.6 = div %tmp.4 %tmp.5;
         lputv %cx.2 %tmp.6;
         symbol [ cx %cx.2 44 12 14 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 45 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 45 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %pct.3 = local;
         symbol [ pct %pct.3 45 12 15 ];
         symbol [ _session %tmp.8 45 18 26 ];
@@ -104,7 +104,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.10 = invoke %tmp.8 %tmp.9();
         lputv %pct.3 %tmp.10;
         symbol [ pct %pct.3 45 12 15 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 48 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 48 8 ]
         %tmp.11 = lgetv %dc;
         symbol [ dc %tmp.11 48 8 10 ];
         symbol [ setColor %tmp.12 48 11 19 ];
@@ -114,13 +114,13 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         symbol [ COLOR_BG %tmp.16 48 30 38 ];
         %tmp.16 = getv ? :COLOR_BG;
         invoke %tmp.11 %tmp.12(%tmp.14, %tmp.16);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 49 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 49 8 ]
         %tmp.17 = lgetv %dc;
         symbol [ dc %tmp.17 49 8 10 ];
         symbol [ clear %tmp.18 49 11 16 ];
         %tmp.18 = getv function %tmp.17 :clear;
         invoke %tmp.17 %tmp.18();
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 52 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 52 8 ]
         %tmp.19 = lgetv %dc;
         symbol [ dc %tmp.19 52 8 10 ];
         symbol [ setColor %tmp.20 52 11 19 ];
@@ -132,7 +132,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         symbol [ COLOR_TRANSPARENT %tmp.24 52 41 58 ];
         %tmp.24 = getv %tmp.23 :COLOR_TRANSPARENT;
         invoke %tmp.19 %tmp.20(%tmp.22, %tmp.24);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 53 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 53 8 ]
         %tmp.25 = lgetv %dc;
         symbol [ dc %tmp.25 53 8 10 ];
         symbol [ drawText %tmp.26 53 11 19 ];
@@ -155,7 +155,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.35 = getv %tmp.34 :TEXT_JUSTIFY_VCENTER;
         %tmp.36 = bitor %tmp.33 %tmp.35;
         invoke %tmp.25 %tmp.26(%tmp.27, %tmp.28, %tmp.30, %tmp.31, %tmp.36);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 57 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 57 8 ]
         %tmp.37 = lgetv %dc;
         symbol [ dc %tmp.37 57 8 10 ];
         symbol [ setColor %tmp.38 57 11 19 ];
@@ -167,7 +167,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         symbol [ COLOR_TRANSPARENT %tmp.42 57 42 59 ];
         %tmp.42 = getv %tmp.41 :COLOR_TRANSPARENT;
         invoke %tmp.37 %tmp.38(%tmp.40, %tmp.42);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 58 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 58 8 ]
         %tmp.43 = lgetv %dc;
         symbol [ dc %tmp.43 58 8 10 ];
         symbol [ drawText %tmp.44 58 11 19 ];
@@ -193,8 +193,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.55 = getv %tmp.54 :TEXT_JUSTIFY_VCENTER;
         %tmp.56 = bitor %tmp.53 %tmp.55;
         invoke %tmp.43 %tmp.44(%tmp.45, %tmp.46, %tmp.48, %tmp.51, %tmp.56);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 62 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 62 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %scoreText.4 = local;
         symbol [ scoreText %scoreText.4 62 12 21 ];
         symbol [ _session %tmp.58 62 24 32 ];
@@ -216,7 +216,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.69 = add %tmp.63 %tmp.68;
         lputv %scoreText.4 %tmp.69;
         symbol [ scoreText %scoreText.4 62 12 21 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 63 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 63 8 ]
         %tmp.70 = lgetv %dc;
         symbol [ dc %tmp.70 63 8 10 ];
         symbol [ setColor %tmp.71 63 11 19 ];
@@ -228,7 +228,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         symbol [ COLOR_TRANSPARENT %tmp.75 63 42 59 ];
         %tmp.75 = getv %tmp.74 :COLOR_TRANSPARENT;
         invoke %tmp.70 %tmp.71(%tmp.73, %tmp.75);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 64 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 64 8 ]
         %tmp.76 = lgetv %dc;
         symbol [ dc %tmp.76 64 8 10 ];
         symbol [ drawText %tmp.77 64 11 19 ];
@@ -252,8 +252,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.86 = getv %tmp.85 :TEXT_JUSTIFY_VCENTER;
         %tmp.87 = bitor %tmp.84 %tmp.86;
         invoke %tmp.76 %tmp.77(%tmp.78, %tmp.79, %tmp.81, %tmp.82, %tmp.87);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 68 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 68 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %pctColor.5 = local;
         symbol [ pctColor %pctColor.5 68 12 20 ];
         %tmp.88 = self;
@@ -264,7 +264,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.91 = invoke %tmp.88 %tmp.89(%tmp.90);
         lputv %pctColor.5 %tmp.91;
         symbol [ pctColor %pctColor.5 68 12 20 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 69 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 69 8 ]
         %tmp.92 = lgetv %dc;
         symbol [ dc %tmp.92 69 8 10 ];
         symbol [ setColor %tmp.93 69 11 19 ];
@@ -276,7 +276,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         symbol [ COLOR_TRANSPARENT %tmp.96 69 39 56 ];
         %tmp.96 = getv %tmp.95 :COLOR_TRANSPARENT;
         invoke %tmp.92 %tmp.93(%tmp.94, %tmp.96);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 70 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 70 8 ]
         %tmp.97 = lgetv %dc;
         symbol [ dc %tmp.97 70 8 10 ];
         symbol [ drawText %tmp.98 70 11 19 ];
@@ -305,7 +305,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.111 = getv %tmp.110 :TEXT_JUSTIFY_VCENTER;
         %tmp.112 = bitor %tmp.109 %tmp.111;
         invoke %tmp.97 %tmp.98(%tmp.99, %tmp.100, %tmp.102, %tmp.107, %tmp.112);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 74 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 74 8 ]
         %tmp.113 = self;
         symbol [ drawProgressBar %tmp.114 74 8 23 ];
         %tmp.114 = getv function %tmp.113 :drawProgressBar;
@@ -317,8 +317,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.118 = lgetv %pct.3;
         symbol [ pct %tmp.118 74 37 40 ];
         invoke %tmp.113 %tmp.114(%tmp.115, %tmp.116, %tmp.117, %tmp.118);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 77 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 77 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %elapsed.6 = local;
         symbol [ elapsed %elapsed.6 77 12 19 ];
         symbol [ Time %tmp.119 77 22 26 ];
@@ -336,8 +336,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.127 = sub %tmp.123 %tmp.126;
         lputv %elapsed.6 %tmp.127;
         symbol [ elapsed %elapsed.6 77 12 19 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 78 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 78 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %mins.7 = local;
         symbol [ mins %mins.7 78 12 16 ];
         %tmp.128 = lgetv %elapsed.6;
@@ -346,8 +346,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.130 = div %tmp.128 %tmp.129;
         lputv %mins.7 %tmp.130;
         symbol [ mins %mins.7 78 12 16 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 79 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 79 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %secs.8 = local;
         symbol [ secs %secs.8 79 12 16 ];
         %tmp.131 = lgetv %elapsed.6;
@@ -356,8 +356,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.133 = mod %tmp.131 %tmp.132;
         lputv %secs.8 %tmp.133;
         symbol [ secs %secs.8 79 12 16 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 80 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 80 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop" ]
         %durStr.9 = local;
         symbol [ durStr %durStr.9 80 12 18 ];
         %tmp.134 = lgetv %mins.7;
@@ -379,7 +379,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.146 = add %tmp.144 %tmp.145;
         lputv %durStr.9 %tmp.146;
         symbol [ durStr %durStr.9 80 12 18 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 81 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 81 8 ]
         %tmp.147 = lgetv %dc;
         symbol [ dc %tmp.147 81 8 10 ];
         symbol [ setColor %tmp.148 81 11 19 ];
@@ -391,7 +391,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         symbol [ COLOR_TRANSPARENT %tmp.152 81 41 58 ];
         %tmp.152 = getv %tmp.151 :COLOR_TRANSPARENT;
         invoke %tmp.147 %tmp.148(%tmp.150, %tmp.152);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 82 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 82 8 ]
         %tmp.153 = lgetv %dc;
         symbol [ dc %tmp.153 82 8 10 ];
         symbol [ drawText %tmp.154 82 11 19 ];
@@ -415,7 +415,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.163 = getv %tmp.162 :TEXT_JUSTIFY_VCENTER;
         %tmp.164 = bitor %tmp.161 %tmp.163;
         invoke %tmp.153 %tmp.154(%tmp.155, %tmp.156, %tmp.158, %tmp.159, %tmp.164);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 86 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 86 8 ]
         %tmp.165 = lgetv %dc;
         symbol [ dc %tmp.165 86 8 10 ];
         symbol [ setColor %tmp.166 86 11 19 ];
@@ -427,7 +427,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         symbol [ COLOR_TRANSPARENT %tmp.170 86 41 58 ];
         %tmp.170 = getv %tmp.169 :COLOR_TRANSPARENT;
         invoke %tmp.165 %tmp.166(%tmp.168, %tmp.170);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 87 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 87 8 ]
         %tmp.171 = lgetv %dc;
         symbol [ dc %tmp.171 87 8 10 ];
         symbol [ drawText %tmp.172 87 11 19 ];
@@ -450,7 +450,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.181 = getv %tmp.180 :TEXT_JUSTIFY_VCENTER;
         %tmp.182 = bitor %tmp.179 %tmp.181;
         invoke %tmp.171 %tmp.172(%tmp.173, %tmp.174, %tmp.176, %tmp.177, %tmp.182);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 89 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 89 8 ]
         %tmp.183 = lgetv %dc;
         symbol [ dc %tmp.183 89 8 10 ];
         symbol [ drawText %tmp.184 89 11 19 ];
@@ -473,70 +473,70 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_sta
         %tmp.193 = getv %tmp.192 :TEXT_JUSTIFY_VCENTER;
         %tmp.194 = bitor %tmp.191 %tmp.193;
         invoke %tmp.183 %tmp.184(%tmp.185, %tmp.186, %tmp.188, %tmp.189, %tmp.194);
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_42_49_91_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 93; @symbol_functiondef = [scoreColor,93,21,31]; @symbol_param<0> = [pct,93,32,35]; @symbol_param<0>_type<0> = [Number,93,39,45]; @symbol_return<0> = [Number,93,50,56]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 93; @symbol_functiondef = [scoreColor,93,21,31]; @symbol_param<0> = [pct,93,32,35]; @symbol_param<0>_type<0> = [Number,93,39,45]; @symbol_return<0> = [Number,93,50,56]; ]
     private
     function scoreColor(pct as Number) as Number {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_93_57_97_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 94 8 ]
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_93_57_97_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 94 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_stmt:
         %tmp.1 = lgetv %pct;
         symbol [ pct %tmp.1 94 12 15 ];
         %tmp.2 = 70;
         %tmp.3 = gte %tmp.1 %tmp.2;
-        bf %tmp.3 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_true:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_94_23_94_45_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 94 25 ]
+        bf %tmp.3 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_94_23_94_45_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 94 25 ]
         symbol [ COLOR_GREEN %tmp.5 94 32 43 ];
         %tmp.5 = getv ? :COLOR_GREEN;
         ret %tmp.5;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_94_23_94_45_stop:
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 95 8 ]
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_94_23_94_45_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_94_8_94_45_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 95 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_stmt:
         %tmp.6 = lgetv %pct;
         symbol [ pct %tmp.6 95 12 15 ];
         %tmp.7 = 50;
         %tmp.8 = gte %tmp.6 %tmp.7;
-        bf %tmp.8 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_true:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_95_23_95_46_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 95 25 ]
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_95_23_95_46_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 95 25 ]
         symbol [ COLOR_ORANGE %tmp.10 95 32 44 ];
         %tmp.10 = getv ? :COLOR_ORANGE;
         ret %tmp.10;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_95_23_95_46_stop:
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 96 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_95_23_95_46_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_95_8_95_46_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 96 8 ]
         symbol [ COLOR_RED %tmp.12 96 15 24 ];
         %tmp.12 = getv ? :COLOR_RED;
         ret %tmp.12;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_93_57_97_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_93_57_97_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 99; @symbol_functiondef = [drawProgressBar,99,21,36]; @symbol_param<0> = [dc,99,37,39]; @symbol_param<0>_type<0> = [Graphics,99,43,51]; @symbol_param<0>_type<1> = [Dc,99,52,54]; @symbol_param<1> = [cx,99,56,58]; @symbol_param<1>_type<0> = [Number,99,62,68]; @symbol_param<2> = [cy,99,70,72]; @symbol_param<2>_type<0> = [Number,99,76,82]; @symbol_param<3> = [pct,99,84,87]; @symbol_param<3>_type<0> = [Number,99,91,97]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 99; @symbol_functiondef = [drawProgressBar,99,21,36]; @symbol_param<0> = [dc,99,37,39]; @symbol_param<0>_type<0> = [Graphics,99,43,51]; @symbol_param<0>_type<1> = [Dc,99,52,54]; @symbol_param<1> = [cx,99,56,58]; @symbol_param<1>_type<0> = [Number,99,62,68]; @symbol_param<2> = [cy,99,70,72]; @symbol_param<2>_type<0> = [Number,99,76,82]; @symbol_param<3> = [pct,99,84,87]; @symbol_param<3>_type<0> = [Number,99,91,97]; ]
     private
     function drawProgressBar(dc as Graphics.Dc, cx as Number, cy as Number, pct as Number) as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 100 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 100 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
         %barW.1 = local;
         symbol [ barW %barW.1 100 12 16 ];
         %tmp.1 = 140;
         lputv %barW.1 %tmp.1;
         symbol [ barW %barW.1 100 12 16 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 101 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 101 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
         %barH.2 = local;
         symbol [ barH %barH.2 101 12 16 ];
         %tmp.2 = 8;
         lputv %barH.2 %tmp.2;
         symbol [ barH %barH.2 101 12 16 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 102 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 102 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
         %x.3 = local;
         symbol [ x %x.3 102 12 13 ];
         %tmp.3 = lgetv %cx;
@@ -548,8 +548,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_s
         %tmp.7 = sub %tmp.3 %tmp.6;
         lputv %x.3 %tmp.7;
         symbol [ x %x.3 102 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 103 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 103 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop" ]
         %filled.4 = local;
         symbol [ filled %filled.4 103 12 18 ];
         %tmp.8 = lgetv %barW.1;
@@ -561,7 +561,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_s
         %tmp.12 = div %tmp.10 %tmp.11;
         lputv %filled.4 %tmp.12;
         symbol [ filled %filled.4 103 12 18 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 105 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 105 8 ]
         %tmp.13 = lgetv %dc;
         symbol [ dc %tmp.13 105 8 10 ];
         symbol [ setColor %tmp.14 105 11 19 ];
@@ -572,7 +572,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_s
         symbol [ COLOR_TRANSPARENT %tmp.17 105 39 56 ];
         %tmp.17 = getv %tmp.16 :COLOR_TRANSPARENT;
         invoke %tmp.13 %tmp.14(%tmp.15, %tmp.17);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 106 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 106 8 ]
         %tmp.18 = lgetv %dc;
         symbol [ dc %tmp.18 106 8 10 ];
         symbol [ fillRoundedRectangle %tmp.19 106 11 31 ];
@@ -587,16 +587,16 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_s
         symbol [ barH %tmp.23 106 45 49 ];
         %tmp.24 = 4;
         invoke %tmp.18 %tmp.19(%tmp.20, %tmp.21, %tmp.22, %tmp.23, %tmp.24);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 108 8 ]
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_stmt:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 108 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_stmt:
         %tmp.25 = lgetv %filled.4;
         symbol [ filled %tmp.25 108 12 18 ];
         %tmp.26 = 0;
         %tmp.27 = gt %tmp.25 %tmp.26;
-        bf %tmp.27 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_true:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_24_111_8_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 109 12 ]
+        bf %tmp.27 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_108_24_111_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 109 12 ]
         %tmp.28 = lgetv %dc;
         symbol [ dc %tmp.28 109 12 14 ];
         symbol [ setColor %tmp.29 109 15 23 ];
@@ -612,7 +612,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_24_111_8_s
         symbol [ COLOR_TRANSPARENT %tmp.35 109 50 67 ];
         %tmp.35 = getv %tmp.34 :COLOR_TRANSPARENT;
         invoke %tmp.28 %tmp.29(%tmp.33, %tmp.35);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 110 12 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 110 12 ]
         %tmp.36 = lgetv %dc;
         symbol [ dc %tmp.36 110 12 14 ];
         symbol [ fillRoundedRectangle %tmp.37 110 15 35 ];
@@ -627,49 +627,49 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_24_111_8_s
         symbol [ barH %tmp.41 110 51 55 ];
         %tmp.42 = 4;
         invoke %tmp.36 %tmp.37(%tmp.38, %tmp.39, %tmp.40, %tmp.41, %tmp.42);
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_24_111_8_stop:
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_end:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_108_24_111_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_108_8_111_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_99_107_112_4_stop:
     }
 }
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 118; @symbol_classdef = [SummaryDelegate,118,6,21]; @symbol_extends<0> = [WatchUi,118,30,37]; @symbol_extends<1> = [BehaviorDelegate,118,38,54]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 118; @symbol_classdef = [SummaryDelegate,118,6,21]; @symbol_extends<0> = [WatchUi,118,30,37]; @symbol_extends<1> = [BehaviorDelegate,118,38,54]; ]
 class SummaryDelegate extends WatchUi.BehaviorDelegate {
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 118; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 118; ]
     <init> {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 118; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 118; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 119; @position = 16; @symbol_vardef = [_session,119,16,24]; @symbol_type<0> = [WorkoutSession,119,28,42]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 119; @position = 16; @symbol_vardef = [_session,119,16,24]; @symbol_type<0> = [WorkoutSession,119,28,42]; ]
     private
     var _session as WorkoutSession;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 121; @symbol_functiondef = [initialize,121,13,23]; @symbol_param<0> = [session,121,24,31]; @symbol_param<0>_type<0> = [WorkoutSession,121,35,49]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 121; @symbol_functiondef = [initialize,121,13,23]; @symbol_param<0> = [session,121,24,31]; @symbol_param<0>_type<0> = [WorkoutSession,121,35,49]; ]
     function initialize(session as WorkoutSession) as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_121_51_124_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 122 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_121_51_124_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 122 8 ]
         symbol [ BehaviorDelegate %tmp.2 122 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
         symbol [ initialize %tmp.3 122 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 123 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 123 8 ]
         %tmp.4 = lgetv %session;
         symbol [ session %tmp.4 123 19 26 ];
         symbol [ _session ? 123 8 16 ];
         putv self :_session %tmp.4;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_121_51_124_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_121_51_124_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 126; @symbol_functiondef = [onSelect,126,13,21]; @symbol_return<0> = [Boolean,126,27,34]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 126; @symbol_functiondef = [onSelect,126,13,21]; @symbol_return<0> = [Boolean,126,27,34]; ]
     function onSelect() as Boolean {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_126_35_132_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 127 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_126_35_132_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 127 8 ]
         %tmp.1 = self;
         symbol [ sendToPhone %tmp.2 127 8 19 ];
         %tmp.2 = getv function %tmp.1 :sendToPhone;
         invoke %tmp.1 %tmp.2();
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 128 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 128 8 ]
         symbol [ WatchUi %tmp.3 128 8 15 ];
         %tmp.3 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.4 128 16 23 ];
@@ -679,7 +679,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_126_35_132_4_s
         symbol [ SLIDE_RIGHT %tmp.6 128 32 43 ];
         %tmp.6 = getv %tmp.5 :SLIDE_RIGHT;
         invoke %tmp.3 %tmp.4(%tmp.6);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 129 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 129 8 ]
         symbol [ WatchUi %tmp.7 129 8 15 ];
         %tmp.7 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.8 129 16 23 ];
@@ -689,7 +689,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_126_35_132_4_s
         symbol [ SLIDE_RIGHT %tmp.10 129 32 43 ];
         %tmp.10 = getv %tmp.9 :SLIDE_RIGHT;
         invoke %tmp.7 %tmp.8(%tmp.10);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 130 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 130 8 ]
         symbol [ WatchUi %tmp.11 130 8 15 ];
         %tmp.11 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.12 130 16 23 ];
@@ -699,15 +699,15 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_126_35_132_4_s
         symbol [ SLIDE_RIGHT %tmp.14 130 32 43 ];
         %tmp.14 = getv %tmp.13 :SLIDE_RIGHT;
         invoke %tmp.11 %tmp.12(%tmp.14);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 131 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 131 8 ]
         %tmp.15 = true;
         ret %tmp.15;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_126_35_132_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_126_35_132_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 134; @symbol_functiondef = [onBack,134,13,19]; @symbol_return<0> = [Boolean,134,25,32]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 134; @symbol_functiondef = [onBack,134,13,19]; @symbol_return<0> = [Boolean,134,25,32]; ]
     function onBack() as Boolean {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_134_33_139_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 135 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_134_33_139_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 135 8 ]
         symbol [ WatchUi %tmp.1 135 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.2 135 16 23 ];
@@ -717,7 +717,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_134_33_139_4_s
         symbol [ SLIDE_RIGHT %tmp.4 135 32 43 ];
         %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
         invoke %tmp.1 %tmp.2(%tmp.4);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 136 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 136 8 ]
         symbol [ WatchUi %tmp.5 136 8 15 ];
         %tmp.5 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.6 136 16 23 ];
@@ -727,7 +727,7 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_134_33_139_4_s
         symbol [ SLIDE_RIGHT %tmp.8 136 32 43 ];
         %tmp.8 = getv %tmp.7 :SLIDE_RIGHT;
         invoke %tmp.5 %tmp.6(%tmp.8);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 137 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 137 8 ]
         symbol [ WatchUi %tmp.9 137 8 15 ];
         %tmp.9 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.10 137 16 23 ];
@@ -737,31 +737,62 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_134_33_139_4_s
         symbol [ SLIDE_RIGHT %tmp.12 137 32 43 ];
         %tmp.12 = getv %tmp.11 :SLIDE_RIGHT;
         invoke %tmp.9 %tmp.10(%tmp.12);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 138 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 138 8 ]
         %tmp.13 = true;
         ret %tmp.13;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_134_33_139_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_134_33_139_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 142; @symbol_functiondef = [sendToPhone,142,21,32]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 142; @symbol_functiondef = [sendToPhone,142,21,32]; ]
     private
     function sendToPhone() as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_142_43_144_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc" 143 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_142_43_144_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 143 8 ]
         symbol [ Communications %tmp.1 143 8 22 ];
         %tmp.1 = getm $.Toybox.Communications;
-        symbol [ openWebPage %tmp.2 143 23 34 ];
-        %tmp.2 = getv function %tmp.1 :openWebPage;
-        symbol [ _session %tmp.4 143 35 43 ];
+        symbol [ transmit %tmp.2 143 23 31 ];
+        %tmp.2 = getv function %tmp.1 :transmit;
+        symbol [ _session %tmp.4 143 32 40 ];
         %tmp.4 = getv ? :_session;
-        symbol [ toURL %tmp.5 143 44 49 ];
-        %tmp.5 = getv function %tmp.4 :toURL;
+        symbol [ toDictionary %tmp.5 143 41 53 ];
+        %tmp.5 = getv function %tmp.4 :toDictionary;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         %tmp.7 = null;
-        %tmp.8 = null;
+        symbol [ TransmitListener %tmp.11 143 67 83 ];
+        %tmp.11 = getv ? :TransmitListener;
+        %tmp.8 = newc %tmp.11 ();
         invoke %tmp.1 %tmp.2(%tmp.6, %tmp.7, %tmp.8);
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SummaryView_mc_142_43_144_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_142_43_144_4_stop:
     }
 }
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SummaryView.mc"; @line = 1; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 150; @symbol_classdef = [TransmitListener,150,6,22]; @symbol_extends<0> = [Communications,150,31,45]; @symbol_extends<1> = [ConnectionListener,150,46,64]; ]
+class TransmitListener extends Communications.ConnectionListener {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 150; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 150; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 151; @symbol_functiondef = [initialize,151,13,23]; ]
+    function initialize() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_151_26_153_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc" 152 8 ]
+        symbol [ Communications %tmp.1 152 8 22 ];
+        %tmp.1 = getm $.Toybox.Communications;
+        symbol [ ConnectionListener %tmp.2 152 23 41 ];
+        %tmp.2 = getv %tmp.1 :ConnectionListener;
+        symbol [ initialize %tmp.3 152 42 52 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SummaryView_mc_151_26_153_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 155; @symbol_functiondef = [onComplete,155,13,23]; ]
+    function onComplete() as Void {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 159; @symbol_functiondef = [onError,159,13,20]; ]
+    function onError() as Void {
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SummaryView.mc"; @line = 1; ]
 <init> {
 }

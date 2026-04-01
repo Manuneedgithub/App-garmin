@@ -1,29 +1,29 @@
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Time,2,14,18]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Time,2,14,18]; ]
 import Toybox.Time;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 10; @symbol_classdef = [SessionAccumulator,10,6,24]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 10; @symbol_classdef = [SessionAccumulator,10,6,24]; ]
 class SessionAccumulator {
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 10; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 10; ]
     <init> {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 10; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 10; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 11; @position = 8; @symbol_vardef = [completedSeries,11,8,23]; @symbol_type<0> = [Array,11,27,32]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 11; @position = 8; @symbol_vardef = [completedSeries,11,8,23]; @symbol_type<0> = [Array,11,27,32]; ]
     var completedSeries as Array;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 12; @position = 8; @symbol_vardef = [globalStartTime,12,8,23]; @symbol_type<0> = [Number,12,27,33]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 12; @position = 8; @symbol_vardef = [globalStartTime,12,8,23]; @symbol_type<0> = [Number,12,27,33]; ]
     var globalStartTime as Number;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 14; @symbol_functiondef = [initialize,14,13,23]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 14; @symbol_functiondef = [initialize,14,13,23]; ]
     function initialize() as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_14_26_17_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 15 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_14_26_17_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 15 8 ]
         %tmp.2 = 0;
         %tmp.1 = newa %tmp.2;
         symbol [ completedSeries ? 15 8 23 ];
         putv self :completedSeries %tmp.1;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 16 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 16 8 ]
         symbol [ Time %tmp.3 16 26 30 ];
         %tmp.3 = getm $.Toybox.Time;
         symbol [ now %tmp.4 16 31 34 ];
@@ -34,12 +34,12 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_14_26_1
         %tmp.7 = invoke %tmp.5 %tmp.6();
         symbol [ globalStartTime ? 16 8 23 ];
         putv self :globalStartTime %tmp.7;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_14_26_17_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_14_26_17_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 19; @symbol_functiondef = [addSeries,19,13,22]; @symbol_param<0> = [session,19,23,30]; @symbol_param<0>_type<0> = [WorkoutSession,19,34,48]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 19; @symbol_functiondef = [addSeries,19,13,22]; @symbol_param<0> = [session,19,23,30]; @symbol_param<0>_type<0> = [WorkoutSession,19,34,48]; ]
     function addSeries(session as WorkoutSession) as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_19_58_21_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 20 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_19_58_21_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 20 8 ]
         symbol [ completedSeries %tmp.2 20 8 23 ];
         %tmp.2 = getv ? :completedSeries;
         symbol [ add %tmp.3 20 24 27 ];
@@ -47,40 +47,40 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_19_58_2
         %tmp.4 = lgetv %session;
         symbol [ session %tmp.4 20 28 35 ];
         invoke %tmp.2 %tmp.3(%tmp.4);
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_19_58_21_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_19_58_21_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 23; @symbol_functiondef = [seriesCount,23,13,24]; @symbol_return<0> = [Number,23,30,36]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 23; @symbol_functiondef = [seriesCount,23,13,24]; @symbol_return<0> = [Number,23,30,36]; ]
     function seriesCount() as Number {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_23_37_25_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 24 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_23_37_25_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 24 8 ]
         symbol [ completedSeries %tmp.2 24 15 30 ];
         %tmp.2 = getv ? :completedSeries;
         symbol [ size %tmp.3 24 31 35 ];
         %tmp.3 = getv function %tmp.2 :size;
         %tmp.4 = invoke %tmp.2 %tmp.3();
         ret %tmp.4;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_23_37_25_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_23_37_25_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 27; @symbol_functiondef = [totalShots,27,13,23]; @symbol_return<0> = [Number,27,29,35]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 27; @symbol_functiondef = [totalShots,27,13,23]; @symbol_return<0> = [Number,27,29,35]; ]
     function totalShots() as Number {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 28 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_stop" ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 28 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_stop" ]
         %t.1 = local;
         symbol [ t %t.1 28 12 13 ];
         %tmp.1 = 0;
         lputv %t.1 %tmp.1;
         symbol [ t %t.1 28 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 29 8 ]
-        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_init:
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 29 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end" ]
         %i.2 = local;
         symbol [ i %i.2 29 17 18 ];
         %tmp.2 = 0;
         lputv %i.2 %tmp.2;
         symbol [ i %i.2 29 17 18 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test:
         %tmp.3 = lgetv %i.2;
         symbol [ i %tmp.3 29 24 25 ];
         symbol [ completedSeries %tmp.5 29 28 43 ];
@@ -89,10 +89,10 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31
         %tmp.6 = getv function %tmp.5 :size;
         %tmp.7 = invoke %tmp.5 %tmp.6();
         %tmp.8 = lt %tmp.3 %tmp.7;
-        bf %tmp.8 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_begin:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_57_31_8_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 30 12 ]
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_57_31_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 30 12 ]
         %tmp.9 = lgetv %t.1;
         symbol [ t %tmp.9 30 12 13 ];
         symbol [ completedSeries %tmp.11 30 18 33 ];
@@ -107,42 +107,42 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_57_3
         %tmp.16 = add %tmp.9 %tmp.15;
         lputv %t.1 %tmp.16;
         symbol [ t %t.1 30 12 13 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_57_31_8_stop:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_incr:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 29 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_57_31_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 29 ]
         %tmp.19 = lgetv %i.2;
         symbol [ i %tmp.19 29 52 53 ];
         %tmp.20 = add %tmp.19 1;
         lputv %i.2 %tmp.20;
         symbol [ i %i.2 29 52 53 ];
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 32 8 ]
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_29_8_31_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 32 8 ]
         %tmp.21 = lgetv %t.1;
         symbol [ t %tmp.21 32 15 16 ];
         ret %tmp.21;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_27_36_33_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 35; @symbol_functiondef = [totalMade,35,13,22]; @symbol_return<0> = [Number,35,28,34]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 35; @symbol_functiondef = [totalMade,35,13,22]; @symbol_return<0> = [Number,35,28,34]; ]
     function totalMade() as Number {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 36 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_stop" ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 36 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_stop" ]
         %m.1 = local;
         symbol [ m %m.1 36 12 13 ];
         %tmp.1 = 0;
         lputv %m.1 %tmp.1;
         symbol [ m %m.1 36 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 37 8 ]
-        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_init:
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 37 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end" ]
         %i.2 = local;
         symbol [ i %i.2 37 17 18 ];
         %tmp.2 = 0;
         lputv %i.2 %tmp.2;
         symbol [ i %i.2 37 17 18 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test:
         %tmp.3 = lgetv %i.2;
         symbol [ i %tmp.3 37 24 25 ];
         symbol [ completedSeries %tmp.5 37 28 43 ];
@@ -151,10 +151,10 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39
         %tmp.6 = getv function %tmp.5 :size;
         %tmp.7 = invoke %tmp.5 %tmp.6();
         %tmp.8 = lt %tmp.3 %tmp.7;
-        bf %tmp.8 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_begin:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_57_39_8_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 38 12 ]
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_57_39_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 38 12 ]
         %tmp.9 = lgetv %m.1;
         symbol [ m %tmp.9 38 12 13 ];
         symbol [ completedSeries %tmp.11 38 18 33 ];
@@ -169,27 +169,27 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_57_3
         %tmp.16 = add %tmp.9 %tmp.15;
         lputv %m.1 %tmp.16;
         symbol [ m %m.1 38 12 13 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_57_39_8_stop:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_incr:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 37 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_57_39_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 37 ]
         %tmp.19 = lgetv %i.2;
         symbol [ i %tmp.19 37 52 53 ];
         %tmp.20 = add %tmp.19 1;
         lputv %i.2 %tmp.20;
         symbol [ i %i.2 37 52 53 ];
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 40 8 ]
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_37_8_39_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 40 8 ]
         %tmp.21 = lgetv %m.1;
         symbol [ m %tmp.21 40 15 16 ];
         ret %tmp.21;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_35_35_41_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 43; @symbol_functiondef = [percentage,43,13,23]; @symbol_return<0> = [Number,43,29,35]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 43; @symbol_functiondef = [percentage,43,13,23]; @symbol_return<0> = [Number,43,29,35]; ]
     function percentage() as Number {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 44 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_stop" ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 44 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_stop" ]
         %t.1 = local;
         symbol [ t %t.1 44 12 13 ];
         %tmp.1 = self;
@@ -198,22 +198,22 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_4
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %t.1 %tmp.3;
         symbol [ t %t.1 44 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 45 8 ]
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_stmt:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 45 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_stmt:
         %tmp.4 = lgetv %t.1;
         symbol [ t %tmp.4 45 12 13 ];
         %tmp.5 = 0;
         %tmp.6 = eq %tmp.4 %tmp.5;
-        bf %tmp.6 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_true:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_20_45_32_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 45 22 ]
+        bf %tmp.6 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_45_20_45_32_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 45 22 ]
         %tmp.7 = 0;
         ret %tmp.7;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_20_45_32_stop:
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 46 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_45_20_45_32_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45_32_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 46 8 ]
         %tmp.8 = self;
         symbol [ totalMade %tmp.9 46 16 25 ];
         %tmp.9 = getv function %tmp.8 :totalMade;
@@ -224,12 +224,12 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_45_8_45
         symbol [ t %tmp.13 46 37 38 ];
         %tmp.14 = div %tmp.12 %tmp.13;
         ret %tmp.14;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_43_36_47_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 49; @symbol_functiondef = [elapsedSeconds,49,13,27]; @symbol_return<0> = [Number,49,33,39]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 49; @symbol_functiondef = [elapsedSeconds,49,13,27]; @symbol_return<0> = [Number,49,33,39]; ]
     function elapsedSeconds() as Number {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_49_40_51_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 50 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_49_40_51_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 50 8 ]
         symbol [ Time %tmp.1 50 15 19 ];
         %tmp.1 = getm $.Toybox.Time;
         symbol [ now %tmp.2 50 20 23 ];
@@ -242,13 +242,13 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_49_40_5
         %tmp.7 = getv ? :globalStartTime;
         %tmp.8 = sub %tmp.5 %tmp.7;
         ret %tmp.8;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_49_40_51_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_49_40_51_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 55; @symbol_functiondef = [toURL,55,13,18]; @symbol_return<0> = [String,55,24,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 55; @symbol_functiondef = [toURL,55,13,18]; @symbol_return<0> = [String,55,24,30]; ]
     function toURL() as String {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 56 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop" ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 56 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop" ]
         %n.1 = local;
         symbol [ n %n.1 56 12 13 ];
         symbol [ completedSeries %tmp.2 56 16 31 ];
@@ -258,8 +258,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_7
         %tmp.4 = invoke %tmp.2 %tmp.3();
         lputv %n.1 %tmp.4;
         symbol [ n %n.1 56 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 57 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 57 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop" ]
         %d.2 = local;
         symbol [ d %d.2 57 12 13 ];
         %tmp.5 = self;
@@ -268,8 +268,8 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_7
         %tmp.7 = invoke %tmp.5 %tmp.6();
         lputv %d.2 %tmp.7;
         symbol [ d %d.2 57 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 58 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 58 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop" ]
         %url.3 = local;
         symbol [ url %url.3 58 12 15 ];
         %tmp.8 = "baskettrainer://m?st=";
@@ -297,26 +297,26 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_7
         %tmp.25 = add %tmp.21 %tmp.24;
         lputv %url.3 %tmp.25;
         symbol [ url %url.3 58 12 15 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 61 8 ]
-        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_init:
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 61 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end" ]
         %i.4 = local;
         symbol [ i %i.4 61 17 18 ];
         %tmp.26 = 0;
         lputv %i.4 %tmp.26;
         symbol [ i %i.4 61 17 18 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_test:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_test:
         %tmp.27 = lgetv %i.4;
         symbol [ i %tmp.27 61 24 25 ];
         %tmp.28 = lgetv %n.1;
         symbol [ n %tmp.28 61 28 29 ];
         %tmp.29 = lt %tmp.27 %tmp.28;
-        bf %tmp.29 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_begin:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 62 12 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_stop" ]
+        bf %tmp.29 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 62 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_stop" ]
         %s.5 = local;
         symbol [ s %s.5 62 16 17 ];
         symbol [ completedSeries %tmp.31 62 20 35 ];
@@ -328,23 +328,23 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_7
         symbol [ WorkoutSession %tmp.34 62 42 56 ];
         lputv %s.5 %tmp.34;
         symbol [ s %s.5 62 16 17 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 63 12 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_stop" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 63 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_stop" ]
         %r.6 = local;
         symbol [ r %r.6 63 16 17 ];
         %tmp.35 = "";
         lputv %r.6 %tmp.35;
         symbol [ r %r.6 63 16 17 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 64 12 ]
-        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_init:
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 64 12 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end" ]
         %j.7 = local;
         symbol [ j %j.7 64 21 22 ];
         %tmp.36 = 0;
         lputv %j.7 %tmp.36;
         symbol [ j %j.7 64 21 22 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_test:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_test:
         %tmp.37 = lgetv %j.7;
         symbol [ j %tmp.37 64 28 29 ];
         %tmp.38 = lgetv %s.5;
@@ -355,13 +355,13 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_6
         %tmp.40 = getv function %tmp.39 :size;
         %tmp.41 = invoke %tmp.39 %tmp.40();
         %tmp.42 = lt %tmp.37 %tmp.41;
-        bf %tmp.42 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_begin:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_55_66_12_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 65 16 ]
+        bf %tmp.42 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_55_66_12_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 65 16 ]
         %tmp.43 = lgetv %r.6;
         symbol [ r %tmp.43 65 20 21 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_begin:
         %tmp.44 = lgetv %s.5;
         symbol [ s %tmp.44 65 26 27 ];
         symbol [ results %tmp.45 65 28 35 ];
@@ -371,30 +371,30 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_6
         %tmp.47 = agetv %tmp.45 %tmp.46;
         %tmp.48 = as %tmp.47 Boolean;
         symbol [ Boolean %tmp.48 65 42 49 ];
-        bf %tmp.48 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_else_false;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_true:
+        bf %tmp.48 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_true:
         %tmp.49 = "1";
         push %tmp.49;
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_else_false:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_else_false:
         %tmp.50 = "0";
         push %tmp.50;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_end:
-        %tmp.51 = phi [%tmp.48 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_begin] [%tmp.49 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_true] [%tmp.50 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_else_false] [%tmp.51 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_end];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_end:
+        %tmp.51 = phi [%tmp.48 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_begin] [%tmp.49 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_true] [%tmp.50 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_else_false] [%tmp.51 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_65_25_65_59_end];
         %tmp.52 = add %tmp.43 %tmp.51;
         lputv %r.6 %tmp.52;
         symbol [ r %r.6 65 16 17 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_55_66_12_stop:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_incr:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 64 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_55_66_12_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 64 ]
         %tmp.55 = lgetv %j.7;
         symbol [ j %tmp.55 64 50 51 ];
         %tmp.56 = add %tmp.55 1;
         lputv %j.7 %tmp.56;
         symbol [ j %j.7 64 50 51 ];
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_test;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 67 12 ]
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_66_12_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 67 12 ]
         %tmp.57 = lgetv %url.3;
         symbol [ url %tmp.57 67 18 21 ];
         %tmp.58 = "&s";
@@ -466,27 +466,27 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_64_12_6
         %tmp.106 = add %tmp.104 %tmp.105;
         lputv %url.3 %tmp.106;
         symbol [ url %url.3 67 12 15 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_stop:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_incr:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 61 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_36_71_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 61 ]
         %tmp.109 = lgetv %i.4;
         symbol [ i %tmp.109 61 31 32 ];
         %tmp.110 = add %tmp.109 1;
         lputv %i.4 %tmp.110;
         symbol [ i %i.4 61 31 32 ];
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_test;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 72 8 ]
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_61_8_71_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 72 8 ]
         %tmp.111 = lgetv %url.3;
         symbol [ url %tmp.111 72 15 18 ];
         ret %tmp.111;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_55_31_73_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 76; @symbol_functiondef = [toDictionary,76,13,25]; @symbol_return<0> = [Dictionary,76,31,41]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 76; @symbol_functiondef = [toDictionary,76,13,25]; @symbol_return<0> = [Dictionary,76,31,41]; ]
     function toDictionary() as Dictionary {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 77 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_stop" ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 77 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_stop" ]
         %seriesArr.1 = local;
         symbol [ seriesArr %seriesArr.1 77 12 21 ];
         symbol [ completedSeries %tmp.3 77 29 44 ];
@@ -497,16 +497,16 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_9
         %tmp.1 = newa %tmp.5;
         lputv %seriesArr.1 %tmp.1;
         symbol [ seriesArr %seriesArr.1 77 12 21 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 78 8 ]
-        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_init:
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end" ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 78 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end" ]
         %i.2 = local;
         symbol [ i %i.2 78 17 18 ];
         %tmp.6 = 0;
         lputv %i.2 %tmp.6;
         symbol [ i %i.2 78 17 18 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_test:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_test:
         %tmp.7 = lgetv %i.2;
         symbol [ i %tmp.7 78 24 25 ];
         symbol [ completedSeries %tmp.9 78 28 43 ];
@@ -515,10 +515,10 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80
         %tmp.10 = getv function %tmp.9 :size;
         %tmp.11 = invoke %tmp.9 %tmp.10();
         %tmp.12 = lt %tmp.7 %tmp.11;
-        bf %tmp.12 @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_begin:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_57_80_8_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 79 12 ]
+        bf %tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_57_80_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 79 12 ]
         %tmp.13 = lgetv %seriesArr.1;
         symbol [ seriesArr %tmp.13 79 12 21 ];
         symbol [ completedSeries %tmp.15 79 28 43 ];
@@ -534,17 +534,17 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_57_8
         %tmp.21 = lgetv %i.2;
         symbol [ i %tmp.21 79 22 23 ];
         aputv %tmp.13 %tmp.21 %tmp.20;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_57_80_8_stop:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_incr:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 78 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_57_80_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 78 ]
         %tmp.24 = lgetv %i.2;
         symbol [ i %tmp.24 78 52 53 ];
         %tmp.25 = add %tmp.24 1;
         lputv %i.2 %tmp.25;
         symbol [ i %i.2 78 52 53 ];
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_test;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc" 81 8 ]
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc" 81 8 ]
         %tmp.26 = newd 7;
         %tmp.27 = "isMulti";
         %tmp.28 = true;
@@ -589,9 +589,9 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_78_8_80
         %tmp.62 = dup %tmp.57;
         %tmp.63 = aputv %tmp.62 %tmp.58 %tmp.61;
         ret %tmp.63;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SessionAccumulator_mc_76_42_90_4_stop:
     }
 }
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\SessionAccumulator.mc"; @line = 1; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SessionAccumulator.mc"; @line = 1; ]
 <init> {
 }

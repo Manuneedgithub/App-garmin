@@ -1,39 +1,39 @@
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Time,2,14,18]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Time,2,14,18]; ]
 import Toybox.Time;
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 8; @symbol_classdef = [WorkoutSession,8,6,20]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 8; @symbol_classdef = [WorkoutSession,8,6,20]; ]
 class WorkoutSession {
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 8; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 8; ]
     <init> {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 8; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 8; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 9; @position = 8; @symbol_vardef = [exerciseId,9,8,18]; @symbol_type<0> = [Number,9,24,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 9; @position = 8; @symbol_vardef = [exerciseId,9,8,18]; @symbol_type<0> = [Number,9,24,30]; ]
     var exerciseId as Number;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 10; @position = 8; @symbol_vardef = [exerciseName,10,8,20]; @symbol_type<0> = [String,10,24,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 10; @position = 8; @symbol_vardef = [exerciseName,10,8,20]; @symbol_type<0> = [String,10,24,30]; ]
     var exerciseName as String;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 11; @position = 8; @symbol_vardef = [totalShots,11,8,18]; @symbol_type<0> = [Number,11,24,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 11; @position = 8; @symbol_vardef = [totalShots,11,8,18]; @symbol_type<0> = [Number,11,24,30]; ]
     var totalShots as Number;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 12; @position = 8; @symbol_vardef = [currentShot,12,8,19]; @symbol_type<0> = [Number,12,24,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 12; @position = 8; @symbol_vardef = [currentShot,12,8,19]; @symbol_type<0> = [Number,12,24,30]; ]
     var currentShot as Number;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 13; @position = 8; @symbol_vardef = [madeShots,13,8,17]; @symbol_type<0> = [Number,13,24,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 13; @position = 8; @symbol_vardef = [madeShots,13,8,17]; @symbol_type<0> = [Number,13,24,30]; ]
     var madeShots as Number;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 14; @position = 8; @symbol_vardef = [results,14,8,15]; @symbol_type<0> = [Array,14,24,29]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 14; @position = 8; @symbol_vardef = [results,14,8,15]; @symbol_type<0> = [Array,14,24,29]; ]
     var results as Array;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 15; @position = 8; @symbol_vardef = [startTime,15,8,17]; @symbol_type<0> = [Number,15,24,30]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 15; @position = 8; @symbol_vardef = [startTime,15,8,17]; @symbol_type<0> = [Number,15,24,30]; ]
     var startTime as Number;
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 17; @symbol_functiondef = [initialize,17,13,23]; @symbol_param<0> = [exId,17,24,28]; @symbol_param<0>_type<0> = [Number,17,32,38]; @symbol_param<1> = [total,17,40,45]; @symbol_param<1>_type<0> = [Number,17,49,55]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 17; @symbol_functiondef = [initialize,17,13,23]; @symbol_param<0> = [exId,17,24,28]; @symbol_param<0>_type<0> = [Number,17,32,38]; @symbol_param<1> = [total,17,40,45]; @symbol_param<1>_type<0> = [Number,17,49,55]; ]
     function initialize(exId as Number, total as Number) as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_17_57_25_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 18 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_17_57_25_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 18 8 ]
         %tmp.1 = lgetv %exId;
         symbol [ exId %tmp.1 18 23 27 ];
         symbol [ exerciseId ? 18 8 18 ];
         putv self :exerciseId %tmp.1;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 19 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 19 8 ]
         %tmp.2 = self;
         symbol [ getExerciseName %tmp.3 19 23 38 ];
         %tmp.3 = getv function %tmp.2 :getExerciseName;
@@ -42,25 +42,25 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_17_57_25_4_
         %tmp.5 = invoke %tmp.2 %tmp.3(%tmp.4);
         symbol [ exerciseName ? 19 8 20 ];
         putv self :exerciseName %tmp.5;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 20 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 20 8 ]
         %tmp.6 = lgetv %total;
         symbol [ total %tmp.6 20 23 28 ];
         symbol [ totalShots ? 20 8 18 ];
         putv self :totalShots %tmp.6;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 21 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 21 8 ]
         %tmp.7 = 0;
         symbol [ currentShot ? 21 8 19 ];
         putv self :currentShot %tmp.7;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 22 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 22 8 ]
         %tmp.8 = 0;
         symbol [ madeShots ? 22 8 17 ];
         putv self :madeShots %tmp.8;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 23 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 23 8 ]
         %tmp.10 = 0;
         %tmp.9 = newa %tmp.10;
         symbol [ results ? 23 8 15 ];
         putv self :results %tmp.9;
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 24 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 24 8 ]
         symbol [ Time %tmp.11 24 23 27 ];
         %tmp.11 = getm $.Toybox.Time;
         symbol [ now %tmp.12 24 28 31 ];
@@ -71,12 +71,12 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_17_57_25_4_
         %tmp.15 = invoke %tmp.13 %tmp.14();
         symbol [ startTime ? 24 8 17 ];
         putv self :startTime %tmp.15;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_17_57_25_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_17_57_25_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 28; @symbol_functiondef = [recordShot,28,13,23]; @symbol_param<0> = [made,28,24,28]; @symbol_param<0>_type<0> = [Boolean,28,32,39]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 28; @symbol_functiondef = [recordShot,28,13,23]; @symbol_param<0> = [made,28,24,28]; @symbol_param<0>_type<0> = [Boolean,28,32,39]; ]
     function recordShot(made as Boolean) as Void {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_28_49_32_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 29 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_28_49_32_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 29 8 ]
         symbol [ results %tmp.2 29 8 15 ];
         %tmp.2 = getv ? :results;
         symbol [ add %tmp.3 29 16 19 ];
@@ -84,61 +84,61 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_28_49_32_4_
         %tmp.4 = lgetv %made;
         symbol [ made %tmp.4 29 20 24 ];
         invoke %tmp.2 %tmp.3(%tmp.4);
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 30 8 ]
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_stmt:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 30 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_stmt:
         %tmp.5 = lgetv %made;
         symbol [ made %tmp.5 30 12 16 ];
-        bf %tmp.5 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_true:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_30_18_30_33_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 30 20 ]
+        bf %tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_30_18_30_33_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 30 20 ]
         symbol [ madeShots %tmp.8 30 20 29 ];
         %tmp.8 = getv ? :madeShots;
         %tmp.9 = add %tmp.8 1;
         symbol [ madeShots ? 30 20 29 ];
         putv self :madeShots dup %tmp.9;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_30_18_30_33_stop:
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 31 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_30_18_30_33_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_30_8_30_33_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 31 8 ]
         symbol [ currentShot %tmp.12 31 8 19 ];
         %tmp.12 = getv ? :currentShot;
         %tmp.13 = add %tmp.12 1;
         symbol [ currentShot ? 31 8 19 ];
         putv self :currentShot dup %tmp.13;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_28_49_32_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_28_49_32_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 35; @symbol_functiondef = [isFinished,35,13,23]; @symbol_return<0> = [Boolean,35,29,36]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 35; @symbol_functiondef = [isFinished,35,13,23]; @symbol_return<0> = [Boolean,35,29,36]; ]
     function isFinished() as Boolean {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_35_37_37_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 36 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_35_37_37_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 36 8 ]
         symbol [ currentShot %tmp.2 36 15 26 ];
         %tmp.2 = getv ? :currentShot;
         symbol [ totalShots %tmp.4 36 30 40 ];
         %tmp.4 = getv ? :totalShots;
         %tmp.5 = gte %tmp.2 %tmp.4;
         ret %tmp.5;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_35_37_37_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_35_37_37_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 40; @symbol_functiondef = [percentage,40,13,23]; @symbol_return<0> = [Number,40,29,35]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 40; @symbol_functiondef = [percentage,40,13,23]; @symbol_return<0> = [Number,40,29,35]; ]
     function percentage() as Number {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_40_36_43_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 41 8 ]
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_40_36_43_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 41 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_stmt:
         symbol [ currentShot %tmp.2 41 12 23 ];
         %tmp.2 = getv ? :currentShot;
         %tmp.3 = 0;
         %tmp.4 = eq %tmp.2 %tmp.3;
-        bf %tmp.4 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_true:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_30_41_42_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 41 32 ]
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_41_30_41_42_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 41 32 ]
         %tmp.5 = 0;
         ret %tmp.5;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_30_41_42_stop:
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 42 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_41_30_41_42_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 42 8 ]
         symbol [ madeShots %tmp.7 42 16 25 ];
         %tmp.7 = getv ? :madeShots;
         %tmp.8 = 100;
@@ -147,198 +147,68 @@ C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_41_8_41_42_
         %tmp.11 = getv ? :currentShot;
         %tmp.12 = div %tmp.9 %tmp.11;
         ret %tmp.12;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_40_36_43_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_40_36_43_4_stop:
     }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 46; @symbol_functiondef = [toURL,46,13,18]; @symbol_return<0> = [String,46,24,30]; ]
-    function toURL() as String {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_46_31_58_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 47 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_46_31_58_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_46_31_58_4_stop" ]
-        %r.1 = local;
-        symbol [ r %r.1 47 12 13 ];
-        %tmp.1 = "";
-        lputv %r.1 %tmp.1;
-        symbol [ r %r.1 47 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 48 8 ]
-        for @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_test @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_incr @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_init:
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_begin" "C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_end" ]
-        %i.2 = local;
-        symbol [ i %i.2 48 17 18 ];
-        %tmp.2 = 0;
-        lputv %i.2 %tmp.2;
-        symbol [ i %i.2 48 17 18 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_test:
-        %tmp.3 = lgetv %i.2;
-        symbol [ i %tmp.3 48 24 25 ];
-        symbol [ results %tmp.5 48 28 35 ];
-        %tmp.5 = getv ? :results;
-        symbol [ size %tmp.6 48 36 40 ];
-        %tmp.6 = getv function %tmp.5 :size;
-        %tmp.7 = invoke %tmp.5 %tmp.6();
-        %tmp.8 = lt %tmp.3 %tmp.7;
-        bf %tmp.8 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_begin:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_49_50_8_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 49 12 ]
-        %tmp.9 = lgetv %r.1;
-        symbol [ r %tmp.9 49 16 17 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_begin:
-        symbol [ results %tmp.11 49 22 29 ];
-        %tmp.11 = getv ? :results;
-        %tmp.12 = lgetv %i.2;
-        symbol [ i %tmp.12 49 30 31 ];
-        %tmp.13 = agetv %tmp.11 %tmp.12;
-        %tmp.14 = as %tmp.13 Boolean;
-        symbol [ Boolean %tmp.14 49 36 43 ];
-        bf %tmp.14 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_else_false;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_true:
-        %tmp.15 = "1";
-        push %tmp.15;
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_end;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_else_false:
-        %tmp.16 = "0";
-        push %tmp.16;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_end:
-        %tmp.17 = phi [%tmp.14 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_begin] [%tmp.15 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_true] [%tmp.16 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_else_false] [%tmp.17 @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_49_21_49_53_end];
-        %tmp.18 = add %tmp.9 %tmp.17;
-        lputv %r.1 %tmp.18;
-        symbol [ r %r.1 49 12 13 ];
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_49_50_8_stop:
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_incr:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 48 ]
-        %tmp.21 = lgetv %i.2;
-        symbol [ i %tmp.21 48 44 45 ];
-        %tmp.22 = add %tmp.21 1;
-        lputv %i.2 %tmp.22;
-        symbol [ i %i.2 48 44 45 ];
-        goto @C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_test;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_48_8_50_8_for_end:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 51 8 ]
-        [ "C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_46_31_58_4_start" "C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_46_31_58_4_stop" ]
-        %d.3 = local;
-        symbol [ d %d.3 51 12 13 ];
-        symbol [ Time %tmp.23 51 16 20 ];
-        %tmp.23 = getm $.Toybox.Time;
-        symbol [ now %tmp.24 51 21 24 ];
-        %tmp.24 = getv function %tmp.23 :now;
-        %tmp.25 = invoke %tmp.23 %tmp.24();
-        symbol [ value %tmp.26 51 27 32 ];
-        %tmp.26 = getv function %tmp.25 :value;
-        %tmp.27 = invoke %tmp.25 %tmp.26();
-        symbol [ startTime %tmp.29 51 37 46 ];
-        %tmp.29 = getv ? :startTime;
-        %tmp.30 = sub %tmp.27 %tmp.29;
-        lputv %d.3 %tmp.30;
-        symbol [ d %d.3 51 12 13 ];
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 52 8 ]
-        %tmp.31 = "baskettrainer://s?e=";
-        symbol [ exerciseId %tmp.33 52 40 50 ];
-        %tmp.33 = getv ? :exerciseId;
-        symbol [ toString %tmp.34 52 51 59 ];
-        %tmp.34 = getv function %tmp.33 :toString;
-        %tmp.35 = invoke %tmp.33 %tmp.34();
-        %tmp.36 = add %tmp.31 %tmp.35;
-        %tmp.37 = "&t=";
-        %tmp.38 = add %tmp.36 %tmp.37;
-        symbol [ totalShots %tmp.40 53 23 33 ];
-        %tmp.40 = getv ? :totalShots;
-        symbol [ toString %tmp.41 53 34 42 ];
-        %tmp.41 = getv function %tmp.40 :toString;
-        %tmp.42 = invoke %tmp.40 %tmp.41();
-        %tmp.43 = add %tmp.38 %tmp.42;
-        %tmp.44 = "&m=";
-        %tmp.45 = add %tmp.43 %tmp.44;
-        symbol [ madeShots %tmp.47 54 23 32 ];
-        %tmp.47 = getv ? :madeShots;
-        symbol [ toString %tmp.48 54 33 41 ];
-        %tmp.48 = getv function %tmp.47 :toString;
-        %tmp.49 = invoke %tmp.47 %tmp.48();
-        %tmp.50 = add %tmp.45 %tmp.49;
-        %tmp.51 = "&st=";
-        %tmp.52 = add %tmp.50 %tmp.51;
-        symbol [ startTime %tmp.54 55 24 33 ];
-        %tmp.54 = getv ? :startTime;
-        symbol [ toString %tmp.55 55 34 42 ];
-        %tmp.55 = getv function %tmp.54 :toString;
-        %tmp.56 = invoke %tmp.54 %tmp.55();
-        %tmp.57 = add %tmp.52 %tmp.56;
-        %tmp.58 = "&r=";
-        %tmp.59 = add %tmp.57 %tmp.58;
-        %tmp.60 = lgetv %r.1;
-        symbol [ r %tmp.60 56 23 24 ];
-        %tmp.61 = add %tmp.59 %tmp.60;
-        %tmp.62 = "&d=";
-        %tmp.63 = add %tmp.61 %tmp.62;
-        %tmp.64 = lgetv %d.3;
-        symbol [ d %tmp.64 57 23 24 ];
-        symbol [ toString %tmp.65 57 25 33 ];
-        %tmp.65 = getv function %tmp.64 :toString;
-        %tmp.66 = invoke %tmp.64 %tmp.65();
-        %tmp.67 = add %tmp.63 %tmp.66;
-        ret %tmp.67;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_46_31_58_4_stop:
-    }
-    [ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 62; @symbol_functiondef = [toDictionary,62,13,25]; @symbol_return<0> = [Dictionary,62,31,41]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 47; @symbol_functiondef = [toDictionary,47,13,25]; @symbol_return<0> = [Dictionary,47,31,41]; ]
     function toDictionary() as Dictionary {
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_62_42_73_4_start:
-[ "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc" 63 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_47_42_58_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc" 48 8 ]
         %tmp.1 = newd 8;
         %tmp.2 = "exerciseId";
-        symbol [ exerciseId %tmp.4 64 30 40 ];
+        symbol [ exerciseId %tmp.4 49 30 40 ];
         %tmp.4 = getv ? :exerciseId;
         %tmp.5 = dup %tmp.1;
         %tmp.6 = aputv %tmp.5 %tmp.2 %tmp.4;
         %tmp.7 = "exerciseName";
-        symbol [ exerciseName %tmp.9 65 30 42 ];
+        symbol [ exerciseName %tmp.9 50 30 42 ];
         %tmp.9 = getv ? :exerciseName;
         %tmp.10 = dup %tmp.6;
         %tmp.11 = aputv %tmp.10 %tmp.7 %tmp.9;
         %tmp.12 = "totalShots";
-        symbol [ totalShots %tmp.14 66 30 40 ];
+        symbol [ totalShots %tmp.14 51 30 40 ];
         %tmp.14 = getv ? :totalShots;
         %tmp.15 = dup %tmp.11;
         %tmp.16 = aputv %tmp.15 %tmp.12 %tmp.14;
         %tmp.17 = "madeShots";
-        symbol [ madeShots %tmp.19 67 30 39 ];
+        symbol [ madeShots %tmp.19 52 30 39 ];
         %tmp.19 = getv ? :madeShots;
         %tmp.20 = dup %tmp.16;
         %tmp.21 = aputv %tmp.20 %tmp.17 %tmp.19;
         %tmp.22 = "percentage";
         %tmp.23 = self;
-        symbol [ percentage %tmp.24 68 30 40 ];
+        symbol [ percentage %tmp.24 53 30 40 ];
         %tmp.24 = getv function %tmp.23 :percentage;
         %tmp.25 = invoke %tmp.23 %tmp.24();
         %tmp.26 = dup %tmp.21;
         %tmp.27 = aputv %tmp.26 %tmp.22 %tmp.25;
         %tmp.28 = "startTime";
-        symbol [ startTime %tmp.30 69 30 39 ];
+        symbol [ startTime %tmp.30 54 30 39 ];
         %tmp.30 = getv ? :startTime;
         %tmp.31 = dup %tmp.27;
         %tmp.32 = aputv %tmp.31 %tmp.28 %tmp.30;
         %tmp.33 = "results";
-        symbol [ results %tmp.35 70 30 37 ];
+        symbol [ results %tmp.35 55 30 37 ];
         %tmp.35 = getv ? :results;
         %tmp.36 = dup %tmp.32;
         %tmp.37 = aputv %tmp.36 %tmp.33 %tmp.35;
         %tmp.38 = "duration";
-        symbol [ Time %tmp.39 71 30 34 ];
+        symbol [ Time %tmp.39 56 30 34 ];
         %tmp.39 = getm $.Toybox.Time;
-        symbol [ now %tmp.40 71 35 38 ];
+        symbol [ now %tmp.40 56 35 38 ];
         %tmp.40 = getv function %tmp.39 :now;
         %tmp.41 = invoke %tmp.39 %tmp.40();
-        symbol [ value %tmp.42 71 41 46 ];
+        symbol [ value %tmp.42 56 41 46 ];
         %tmp.42 = getv function %tmp.41 :value;
         %tmp.43 = invoke %tmp.41 %tmp.42();
-        symbol [ startTime %tmp.45 71 51 60 ];
+        symbol [ startTime %tmp.45 56 51 60 ];
         %tmp.45 = getv ? :startTime;
         %tmp.46 = sub %tmp.43 %tmp.45;
         %tmp.47 = dup %tmp.37;
         %tmp.48 = aputv %tmp.47 %tmp.38 %tmp.46;
         ret %tmp.48;
-C__Users_manu_Desktop_App_garmin_garmin_app_source_WorkoutSession_mc_62_42_73_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutSession_mc_47_42_58_4_stop:
     }
 }
-[ @file = "C:\Users\manu\Desktop\App garmin\garmin-app\source\WorkoutSession.mc"; @line = 1; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutSession.mc"; @line = 1; ]
 <init> {
 }
