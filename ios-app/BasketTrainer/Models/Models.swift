@@ -68,6 +68,7 @@ struct ShotSeries: Codable, Identifiable {
     var totalShots: Int
     var madeShots: Int
     var results: [Bool]
+    var targetMade: Int?   // objectif paniers (nil si mode tirs libres)
 
     var percentage: Double { totalShots == 0 ? 0 : Double(madeShots) / Double(totalShots) * 100 }
     var missedShots: Int { totalShots - madeShots }
@@ -86,6 +87,7 @@ struct ShotSeries: Codable, Identifiable {
         self.totalShots   = data["totalShots"] as? Int ?? 0
         self.madeShots    = data["madeShots"]  as? Int ?? 0
         self.results      = (data["results"] as? [Bool]) ?? []
+        self.targetMade   = data["targetMade"] as? Int
     }
 }
 
@@ -190,6 +192,7 @@ struct WorkoutSession: Codable, Identifiable {
 struct TemplateSeries: Codable {
     var exerciseType: ExerciseType
     var totalShots: Int
+    var targetMade: Int?   // nil = mode tirs libres, non-nil = mode objectif
 }
 
 struct ComplexTemplate: Codable, Identifiable {
