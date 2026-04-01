@@ -70,11 +70,8 @@ class ExerciseMenuDelegate extends WatchUi.Menu2InputDelegate {
 // Délégué pour le mode Objectif : après avoir choisi l'exercice,
 // affiche GoalMenuView au lieu de ShotCountMenuView
 class ExerciseMenuGoalDelegate extends WatchUi.Menu2InputDelegate {
-    private var _accumulator as Object or Null;
-
-    function initialize(accumulator as Object or Null) {
+    function initialize() {
         Menu2InputDelegate.initialize();
-        _accumulator = accumulator;
     }
 
     function onSelect(item as WatchUi.MenuItem) as Void {

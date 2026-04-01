@@ -26,7 +26,7 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
         } else if (id == 1) {
             // Objectif simple : choisir exercice puis objectif
             var menu = new ExerciseMenuView();
-            var del = new ExerciseMenuGoalDelegate(null);
+            var del = new ExerciseMenuGoalDelegate();
             WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
         } else {
             // Objectif complexe : non implémenté dans ce plan
