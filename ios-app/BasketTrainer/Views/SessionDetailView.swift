@@ -175,6 +175,15 @@ struct SessionDetailView: View {
                         Text("\(ser.exerciseType.emoji) Série \(idx + 1) — \(ser.exerciseType.name)")
                             .font(.subheadline.weight(.semibold))
                             .foregroundStyle(.primary)
+                        if let target = ser.targetMade {
+                            Text("🎯 \(target)")
+                                .font(.caption.weight(.medium))
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.green.opacity(0.8))
+                                .clipShape(Capsule())
+                        }
                         Spacer()
                         Text("\(ser.madeShots)/\(ser.totalShots)")
                             .font(.subheadline.bold())
