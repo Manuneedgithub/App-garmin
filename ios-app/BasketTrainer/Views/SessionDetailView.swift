@@ -163,6 +163,17 @@ struct SessionDetailView: View {
         }
     }
 
+    @ViewBuilder
+    private func targetBadge(_ target: Int) -> some View {
+        Text("🎯 \(target)")
+            .font(.caption.weight(.medium))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 6)
+            .padding(.vertical, 2)
+            .background(Color.green.opacity(0.8))
+            .clipShape(Capsule())
+    }
+
     private func seriesList(_ series: [ShotSeries]) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Détail par série")
@@ -175,15 +186,7 @@ struct SessionDetailView: View {
                         Text("\(ser.exerciseType.emoji) Série \(idx + 1) — \(ser.exerciseType.name)")
                             .font(.subheadline.weight(.semibold))
                             .foregroundStyle(.primary)
-                        if let target = ser.targetMade {
-                            Text("🎯 \(target)")
-                                .font(.caption.weight(.medium))
-                                .foregroundStyle(.white)
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 2)
-                                .background(Color.green.opacity(0.8))
-                                .clipShape(Capsule())
-                        }
+                        if let target = ser.targetMade { targetBadge(target) }
                         Spacer()
                         Text("\(ser.madeShots)/\(ser.totalShots)")
                             .font(.subheadline.bold())
