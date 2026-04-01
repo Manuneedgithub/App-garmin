@@ -5,7 +5,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
     private let appUUID = UUID(uuidString: "a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a")!
     private let store = SessionStore.shared
-    private var sdk: ConnectIQ { ConnectIQ.sharedInstance()! }
+    private let sdk = ConnectIQ.sharedInstance()
 
     @Published var lastSyncDate: Date? = nil
     @Published var connectedDevice: IQDevice? = nil
@@ -22,10 +22,9 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     // Called by BasketTrainerApp.onOpenURL
     // Garmin Connect wakes the app via "baskettrainer://..." to provide the device list
     func handleIncomingURL(_ url: URL) {
-        guard let devices = sdk.handleOpenURL(url, sourceApplication: nil),
+        guard let devices = sdk.parseDeviceSelectionResponseFromURL(url) as? [IQDevice],
               !devices.isEmpty else { return }
-
-        for case let device as IQDevice in devices {
+        for device in devices {
             sdk.register(forDeviceEvents: device, delegate: self)
         }
     }
@@ -34,7 +33,8 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     func deviceStatusChanged(_ device: IQDevice, status: IQDeviceStatus) {
         if status == .connected {
             connectedDevice = device
-            let app = IQApp(uuid: appUUID, store: IQApp.eStoreFront, device: device)
+            let nsuuid = appUUID as NSUUID
+            let app = IQApp.appWithUUID(nsuuid, storeUuid: nsuuid, device: device)
             sdk.register(forAppMessages: app, delegate: self)
         } else {
             connectedDevice = nil
