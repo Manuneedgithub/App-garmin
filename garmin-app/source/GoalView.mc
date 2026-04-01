@@ -122,12 +122,10 @@ class GoalView extends WatchUi.View {
 // ─────────────────────────────────────────────────
 class GoalDelegate extends WatchUi.BehaviorDelegate {
     private var _session as GoalSession;
-    private var _view    as GoalView;
 
     function initialize(session as GoalSession, view as GoalView) {
         BehaviorDelegate.initialize();
         _session = session;
-        _view    = view;
     }
 
     // Bouton HAUT → Tir réussi
