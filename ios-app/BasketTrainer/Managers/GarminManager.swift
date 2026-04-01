@@ -5,7 +5,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
     private let appUUID = UUID(uuidString: "a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a")!
     private let store = SessionStore.shared
-    private let sdk = ConnectIQ.sharedInstance()
+    private let sdk = ConnectIQ.sharedInstance()!
 
     @Published var lastSyncDate: Date? = nil
     @Published var connectedDevice: IQDevice? = nil
@@ -33,8 +33,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     func deviceStatusChanged(_ device: IQDevice, status: IQDeviceStatus) {
         if status == .connected {
             connectedDevice = device
-            let nsuuid = appUUID as NSUUID
-            let app = IQApp.appWithUUID(nsuuid, storeUuid: nsuuid, device: device)
+            let app = IQApp.appWithUUID(appUUID, storeUuid: appUUID, device: device)
             sdk.register(forAppMessages: app, delegate: self)
         } else {
             connectedDevice = nil
