@@ -140,7 +140,8 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
 
     // Envoie via transmit() → CIQ SDK → app iPhone (Bluetooth direct, sans tap utilisateur)
     private function sendToPhone() as Void {
-        Communications.transmit(_session.toDictionary(), null, new TransmitListener());
+        var dict = _session.toDictionary();
+        Communications.transmit(dict, null, new TransmitListener(dict));
     }
 }
 
@@ -148,8 +149,11 @@ class SummaryDelegate extends WatchUi.BehaviorDelegate {
 // LISTENER — Résultat de l'envoi Bluetooth
 // ─────────────────────────────────────────────────
 class TransmitListener extends Communications.ConnectionListener {
-    function initialize() {
+    private var _dict as Dictionary;
+
+    function initialize(dict as Dictionary) {
         Communications.ConnectionListener.initialize();
+        _dict = dict;
     }
 
     function onComplete() as Void {
@@ -157,6 +161,7 @@ class TransmitListener extends Communications.ConnectionListener {
     }
 
     function onError() as Void {
-        // Échec silencieux — Bluetooth déconnecté ou app iPhone absente
+        // Bluetooth déconnecté ou app iPhone absente → stocker pour envoi différé
+        PendingQueue.enqueue(_dict);
     }
 }

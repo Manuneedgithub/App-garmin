@@ -99,7 +99,8 @@ class GoalSummaryDelegate extends WatchUi.BehaviorDelegate {
 
     // SELECT → envoyer à l'iPhone + retour menu
     function onSelect() as Boolean {
-        Communications.transmit(_session.toDictionary(), null, new GoalTransmitListener());
+        var dict = _session.toDictionary();
+        Communications.transmit(dict, null, new GoalTransmitListener(dict));
         // Retour au menu principal (3 pops : GoalSummary, GoalView, GoalMenu)
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
@@ -117,11 +118,17 @@ class GoalSummaryDelegate extends WatchUi.BehaviorDelegate {
 }
 
 class GoalTransmitListener extends Communications.ConnectionListener {
-    function initialize() {
+    private var _dict as Dictionary;
+
+    function initialize(dict as Dictionary) {
         Communications.ConnectionListener.initialize();
+        _dict = dict;
     }
+
     function onComplete() as Void {
     }
+
     function onError() as Void {
+        PendingQueue.enqueue(_dict);
     }
 }
