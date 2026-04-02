@@ -26,6 +26,7 @@ class SyncManager {
 
     // Envoie la prochaine séance de la queue
     function sendNext() as Void {
+        cancelTimer();
         if (PendingQueue.isEmpty()) { return; }
         var dict = PendingQueue.peek();
         if (dict == null) { return; }
@@ -44,6 +45,7 @@ class SyncManager {
     function onTransmitError() as Void {
         _retryCount++;
         if (_retryCount < MAX_RETRIES) {
+            cancelTimer();
             _timer = new Timer.Timer();
             _timer.start(method(:sendNext), RETRY_DELAY_MS, false);
         } else {
