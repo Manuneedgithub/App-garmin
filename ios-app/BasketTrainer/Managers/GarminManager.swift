@@ -70,6 +70,8 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
             connectedDevice = device
             let app = IQApp(uuid: appUUID, store: appUUID, device: device)
             sdk.register(forAppMessages: app, delegate: self)
+            // Réveille l'app montre → BasketApp.onStart() → SyncManager.flush()
+            sdk.open(app, openApplicationResult: nil)
         } else if connectedDevice?.uuid == device.uuid {
             connectedDevice = nil
         }
