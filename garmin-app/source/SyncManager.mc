@@ -18,7 +18,7 @@ class SyncManager {
     static const MAX_RETRIES    = 3;
     static const RETRY_DELAY_MS = 30000;
 
-    function initialize() as Void {
+    function initialize() {
         _retryCount = 0;
         _timer      = null;
         sendNext();
