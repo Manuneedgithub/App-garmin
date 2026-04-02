@@ -14,7 +14,7 @@ class PendingQueue {
     // Lit le tableau depuis Properties (tableau vide si absent)
     private static function load() as Array {
         var raw = Application.Properties.getValue(KEY);
-        if (raw == null) { return new [0]; }
+        if (raw == null || !(raw instanceof Array)) { return new [0]; }
         return raw as Array;
     }
 
@@ -36,7 +36,7 @@ class PendingQueue {
         var arr = load();
         if (arr.size() == 0) { return null; }
         var item = arr[0] as Dictionary;
-        arr.remove(arr[0]);
+        arr = arr.slice(1, null);
         save(arr);
         return item;
     }
@@ -55,6 +55,6 @@ class PendingQueue {
 
     // True si aucune séance en attente
     static function isEmpty() as Boolean {
-        return load().size() == 0;
+        return size() == 0;
     }
 }
