@@ -1,0 +1,298 @@
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Communications,1,14,28]; ]
+import Toybox.Communications;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Timer,3,14,19]; ]
+import Toybox.Timer;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 14; @symbol_classdef = [SyncManager,14,6,17]; ]
+class SyncManager {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 14; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 14; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 15; @position = 16; @symbol_vardef = [_retryCount,15,16,27]; @symbol_type<0> = [Number,15,31,37]; ]
+    private
+    var _retryCount as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 16; @position = 16; @symbol_vardef = [_timer,16,16,22]; @symbol_type<0> = [Timer,16,31,36]; @symbol_type<1> = [Timer,16,37,42]; ]
+    private
+    var _timer as Timer.Timer or Null;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 18; @position = 17; @symbol_constdef = [MAX_RETRIES,18,17,28]; ]
+    static
+    const MAX_RETRIES = 3;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 19; @position = 17; @symbol_constdef = [RETRY_DELAY_MS,19,17,31]; ]
+    static
+    const RETRY_DELAY_MS = 30000;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 21; @symbol_functiondef = [initialize,21,13,23]; ]
+    function initialize() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_21_26_25_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 22 8 ]
+        %tmp.1 = 0;
+        symbol [ _retryCount ? 22 8 19 ];
+        putv self :_retryCount %tmp.1;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 23 8 ]
+        %tmp.2 = null;
+        symbol [ _timer ? 23 8 14 ];
+        putv self :_timer %tmp.2;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 24 8 ]
+        %tmp.3 = self;
+        symbol [ sendNext %tmp.4 24 8 16 ];
+        %tmp.4 = getv function %tmp.3 :sendNext;
+        invoke %tmp.3 %tmp.4();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_21_26_25_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 28; @symbol_functiondef = [sendNext,28,13,21]; ]
+    function sendNext() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_28_32_34_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 29 8 ]
+        %tmp.1 = self;
+        symbol [ cancelTimer %tmp.2 29 8 19 ];
+        %tmp.2 = getv function %tmp.1 :cancelTimer;
+        invoke %tmp.1 %tmp.2();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 30 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_30_8_30_46_if_stmt:
+        symbol [ PendingQueue %tmp.4 30 12 24 ];
+        %tmp.4 = getv ? :PendingQueue;
+        symbol [ isEmpty %tmp.5 30 25 32 ];
+        %tmp.5 = getv function %tmp.4 :isEmpty;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        bf %tmp.6 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_30_8_30_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_30_8_30_46_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_30_36_30_46_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 30 38 ]
+        ret ?;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_30_36_30_46_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_30_8_30_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_30_8_30_46_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 31 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_28_32_34_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_28_32_34_4_stop" ]
+        %dict.1 = local;
+        symbol [ dict %dict.1 31 12 16 ];
+        symbol [ PendingQueue %tmp.8 31 19 31 ];
+        %tmp.8 = getv ? :PendingQueue;
+        symbol [ peek %tmp.9 31 32 36 ];
+        %tmp.9 = getv function %tmp.8 :peek;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        lputv %dict.1 %tmp.10;
+        symbol [ dict %dict.1 31 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 32 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_32_8_32_36_if_stmt:
+        %tmp.11 = lgetv %dict.1;
+        symbol [ dict %tmp.11 32 12 16 ];
+        %tmp.12 = null;
+        %tmp.13 = eq %tmp.11 %tmp.12;
+        bf %tmp.13 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_32_8_32_36_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_32_8_32_36_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_32_26_32_36_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 32 28 ]
+        ret ?;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_32_26_32_36_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_32_8_32_36_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_32_8_32_36_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 33 8 ]
+        symbol [ Communications %tmp.14 33 8 22 ];
+        %tmp.14 = getm $.Toybox.Communications;
+        symbol [ transmit %tmp.15 33 23 31 ];
+        %tmp.15 = getv function %tmp.14 :transmit;
+        %tmp.16 = lgetv %dict.1;
+        symbol [ dict %tmp.16 33 32 36 ];
+        %tmp.17 = null;
+        symbol [ SyncTransmitListener %tmp.21 33 48 68 ];
+        %tmp.21 = getv ? :SyncTransmitListener;
+        %tmp.22 = self;
+        symbol [ self %tmp.22 33 69 73 ];
+        %tmp.18 = newc %tmp.21 (%tmp.22);
+        invoke %tmp.14 %tmp.15(%tmp.16, %tmp.17, %tmp.18);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_28_32_34_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 37; @symbol_functiondef = [onTransmitComplete,37,13,31]; ]
+    function onTransmitComplete() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_37_42_42_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 38 8 ]
+        symbol [ PendingQueue %tmp.2 38 8 20 ];
+        %tmp.2 = getv ? :PendingQueue;
+        symbol [ dequeue %tmp.3 38 21 28 ];
+        %tmp.3 = getv function %tmp.2 :dequeue;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 39 8 ]
+        %tmp.4 = 0;
+        symbol [ _retryCount ? 39 8 19 ];
+        putv self :_retryCount %tmp.4;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 40 8 ]
+        %tmp.5 = self;
+        symbol [ cancelTimer %tmp.6 40 8 19 ];
+        %tmp.6 = getv function %tmp.5 :cancelTimer;
+        invoke %tmp.5 %tmp.6();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 41 8 ]
+        %tmp.7 = self;
+        symbol [ sendNext %tmp.8 41 8 16 ];
+        %tmp.8 = getv function %tmp.7 :sendNext;
+        invoke %tmp.7 %tmp.8();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_37_42_42_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 45; @symbol_functiondef = [onTransmitError,45,13,28]; ]
+    function onTransmitError() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_45_39_58_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 46 8 ]
+        symbol [ _retryCount %tmp.3 46 8 19 ];
+        %tmp.3 = getv ? :_retryCount;
+        %tmp.4 = add %tmp.3 1;
+        symbol [ _retryCount ? 46 8 19 ];
+        putv self :_retryCount dup %tmp.4;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 47 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_8_57_8_if_stmt:
+        symbol [ _retryCount %tmp.6 47 12 23 ];
+        %tmp.6 = getv ? :_retryCount;
+        symbol [ MAX_RETRIES %tmp.8 47 26 37 ];
+        %tmp.8 = getv ? :MAX_RETRIES;
+        %tmp.9 = lt %tmp.6 %tmp.8;
+        bf %tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_8_57_8_if_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_8_57_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_39_51_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 48 12 ]
+        %tmp.10 = self;
+        symbol [ cancelTimer %tmp.11 48 12 23 ];
+        %tmp.11 = getv function %tmp.10 :cancelTimer;
+        invoke %tmp.10 %tmp.11();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 49 12 ]
+        symbol [ Timer %tmp.14 49 25 30 ];
+        %tmp.14 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.15 49 31 36 ];
+        %tmp.15 = getv function ? %tmp.14 :Timer;
+        %tmp.12 = newc %tmp.15 ();
+        symbol [ _timer ? 49 12 18 ];
+        putv self :_timer %tmp.12;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 50 12 ]
+        symbol [ _timer %tmp.17 50 12 18 ];
+        %tmp.17 = getv ? :_timer;
+        symbol [ start %tmp.18 50 19 24 ];
+        %tmp.18 = getv function %tmp.17 :start;
+        %tmp.19 = self;
+        symbol [ method %tmp.20 50 25 31 ];
+        %tmp.20 = getv function %tmp.19 :method;
+        %tmp.22 = const :sendNext;
+        symbol [ sendNext %tmp.22 50 33 41 const ];
+        %tmp.23 = invoke %tmp.19 %tmp.20(%tmp.22);
+        symbol [ RETRY_DELAY_MS %tmp.25 50 44 58 ];
+        %tmp.25 = getv ? :RETRY_DELAY_MS;
+        %tmp.26 = false;
+        invoke %tmp.17 %tmp.18(%tmp.23, %tmp.25, %tmp.26);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_39_51_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_8_57_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_8_57_8_if_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_51_15_57_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 53 12 ]
+        symbol [ PendingQueue %tmp.28 53 12 24 ];
+        %tmp.28 = getv ? :PendingQueue;
+        symbol [ dequeue %tmp.29 53 25 32 ];
+        %tmp.29 = getv function %tmp.28 :dequeue;
+        invoke %tmp.28 %tmp.29();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 54 12 ]
+        %tmp.30 = 0;
+        symbol [ _retryCount ? 54 12 23 ];
+        putv self :_retryCount %tmp.30;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 55 12 ]
+        %tmp.31 = self;
+        symbol [ cancelTimer %tmp.32 55 12 23 ];
+        %tmp.32 = getv function %tmp.31 :cancelTimer;
+        invoke %tmp.31 %tmp.32();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 56 12 ]
+        %tmp.33 = self;
+        symbol [ sendNext %tmp.34 56 12 20 ];
+        %tmp.34 = getv function %tmp.33 :sendNext;
+        invoke %tmp.33 %tmp.34();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_51_15_57_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_47_8_57_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_45_39_58_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 60; @symbol_functiondef = [cancelTimer,60,21,32]; ]
+    private
+    function cancelTimer() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_60_43_65_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 61 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_61_8_64_8_if_stmt:
+        symbol [ _timer %tmp.2 61 12 18 ];
+        %tmp.2 = getv ? :_timer;
+        %tmp.3 = null;
+        %tmp.4 = ne %tmp.2 %tmp.3;
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_61_8_64_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_61_8_64_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_61_28_64_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 62 12 ]
+        symbol [ _timer %tmp.6 62 13 19 ];
+        %tmp.6 = getv ? :_timer;
+        %tmp.7 = as %tmp.6 { (!Null) };
+        %tmp.8 = as %tmp.7 Timer.Timer;
+        symbol [ Timer %tmp.8 62 23 28 ];
+        symbol [ Timer %tmp.8 62 29 34 ];
+        symbol [ stop %tmp.9 62 36 40 ];
+        %tmp.9 = getv function %tmp.8 :stop;
+        invoke %tmp.8 %tmp.9();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 63 12 ]
+        %tmp.10 = null;
+        symbol [ _timer ? 63 12 18 ];
+        putv self :_timer %tmp.10;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_61_28_64_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_61_8_64_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_61_8_64_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_60_43_65_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 72; @symbol_classdef = [SyncTransmitListener,72,6,26]; @symbol_extends<0> = [Communications,72,35,49]; @symbol_extends<1> = [ConnectionListener,72,50,68]; ]
+class SyncTransmitListener extends Communications.ConnectionListener {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 72; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 72; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 73; @position = 16; @symbol_vardef = [_manager,73,16,24]; @symbol_type<0> = [SyncManager,73,28,39]; ]
+    private
+    var _manager as SyncManager;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 75; @symbol_functiondef = [initialize,75,13,23]; @symbol_param<0> = [manager,75,24,31]; @symbol_param<0>_type<0> = [SyncManager,75,35,46]; ]
+    function initialize(manager as SyncManager) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_75_48_78_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 76 8 ]
+        symbol [ Communications %tmp.1 76 8 22 ];
+        %tmp.1 = getm $.Toybox.Communications;
+        symbol [ ConnectionListener %tmp.2 76 23 41 ];
+        %tmp.2 = getv %tmp.1 :ConnectionListener;
+        symbol [ initialize %tmp.3 76 42 52 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 77 8 ]
+        %tmp.4 = lgetv %manager;
+        symbol [ manager %tmp.4 77 19 26 ];
+        symbol [ _manager ? 77 8 16 ];
+        putv self :_manager %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_75_48_78_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 80; @symbol_functiondef = [onComplete,80,13,23]; ]
+    function onComplete() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_80_34_82_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 81 8 ]
+        symbol [ _manager %tmp.2 81 8 16 ];
+        %tmp.2 = getv ? :_manager;
+        symbol [ onTransmitComplete %tmp.3 81 17 35 ];
+        %tmp.3 = getv function %tmp.2 :onTransmitComplete;
+        invoke %tmp.2 %tmp.3();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_80_34_82_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 84; @symbol_functiondef = [onError,84,13,20]; ]
+    function onError() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_84_31_86_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc" 85 8 ]
+        symbol [ _manager %tmp.2 85 8 16 ];
+        %tmp.2 = getv ? :_manager;
+        symbol [ onTransmitError %tmp.3 85 17 32 ];
+        %tmp.3 = getv function %tmp.2 :onTransmitError;
+        invoke %tmp.2 %tmp.3();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_SyncManager_mc_84_31_86_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/SyncManager.mc"; @line = 1; ]
+<init> {
+}

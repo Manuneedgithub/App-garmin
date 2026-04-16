@@ -1,0 +1,284 @@
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Application,1,14,25]; ]
+import Toybox.Application;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 10; @symbol_classdef = [PendingQueue,10,6,18]; ]
+class PendingQueue {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 10; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 10; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 11; @position = 17; @symbol_constdef = [MAX_SIZE,11,17,25]; ]
+    static
+    const MAX_SIZE = 20;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 12; @position = 17; @symbol_constdef = [KEY,12,17,20]; ]
+    static
+    const KEY = "pendingQ";
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 15; @symbol_functiondef = [load,15,28,32]; @symbol_return<0> = [Array,15,38,43]; ]
+    private static
+    function load() as Array {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_15_44_19_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 16 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_15_44_19_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_15_44_19_4_stop" ]
+        %raw.1 = local;
+        symbol [ raw %raw.1 16 12 15 ];
+        symbol [ Application %tmp.1 16 18 29 ];
+        %tmp.1 = getm $.Toybox.Application;
+        symbol [ Properties %tmp.2 16 30 40 ];
+        %tmp.2 = getv %tmp.1 :Properties;
+        symbol [ getValue %tmp.3 16 41 49 ];
+        %tmp.3 = getv function %tmp.2 :getValue;
+        symbol [ KEY %tmp.5 16 50 53 ];
+        %tmp.5 = getv ? :KEY;
+        %tmp.6 = invoke %tmp.2 %tmp.3(%tmp.5);
+        lputv %raw.1 %tmp.6;
+        symbol [ raw %raw.1 16 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 17 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_8_17_70_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_12_17_49_begin:
+        %tmp.7 = lgetv %raw.1;
+        symbol [ raw %tmp.7 17 12 15 ];
+        %tmp.8 = null;
+        %tmp.9 = eq %tmp.7 %tmp.8;
+        bt %tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_8_17_70_if_true;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_27_17_49_false:
+        %tmp.10 = lgetv %raw.1;
+        symbol [ raw %tmp.10 17 29 32 ];
+        %tmp.11 = as %tmp.10 { (!Null) };
+        symbol [ Array %tmp.13 17 44 49 ];
+        %tmp.13 = getv ? :Array;
+        %tmp.14 = isa %tmp.11 %tmp.13;
+        %tmp.15 = not %tmp.14;
+        push %tmp.15;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_27_17_49_end:
+        %tmp.16 = phi [%tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_12_17_49_begin] [%tmp.15 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_27_17_49_false] [%tmp.16 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_27_17_49_end];
+        bf %tmp.16 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_8_17_70_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_8_17_70_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_52_17_70_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 17 54 ]
+        %tmp.18 = 0;
+        %tmp.17 = newa %tmp.18;
+        ret %tmp.17;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_52_17_70_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_8_17_70_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_17_8_17_70_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 18 8 ]
+        %tmp.19 = lgetv %raw.1;
+        symbol [ raw %tmp.19 18 15 18 ];
+        %tmp.20 = as %tmp.19 Array;
+        symbol [ Array %tmp.20 18 22 27 ];
+        ret %tmp.20;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_15_44_19_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 22; @symbol_functiondef = [save,22,28,32]; @symbol_param<0> = [arr,22,33,36]; @symbol_param<0>_type<0> = [Array,22,40,45]; ]
+    private static
+    function save(arr as Array) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_22_55_24_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 23 8 ]
+        symbol [ Application %tmp.1 23 8 19 ];
+        %tmp.1 = getm $.Toybox.Application;
+        symbol [ Properties %tmp.2 23 20 30 ];
+        %tmp.2 = getv %tmp.1 :Properties;
+        symbol [ setValue %tmp.3 23 31 39 ];
+        %tmp.3 = getv function %tmp.2 :setValue;
+        symbol [ KEY %tmp.5 23 40 43 ];
+        %tmp.5 = getv ? :KEY;
+        %tmp.6 = lgetv %arr;
+        symbol [ arr %tmp.6 23 45 48 ];
+        invoke %tmp.2 %tmp.3(%tmp.5, %tmp.6);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_22_55_24_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 27; @symbol_functiondef = [enqueue,27,20,27]; @symbol_param<0> = [dict,27,28,32]; @symbol_param<0>_type<0> = [Dictionary,27,36,46]; ]
+    static
+    function enqueue(dict as Dictionary) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_27_56_32_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 28 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_27_56_32_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_27_56_32_4_stop" ]
+        %arr.1 = local;
+        symbol [ arr %arr.1 28 12 15 ];
+        %tmp.1 = self;
+        symbol [ load %tmp.2 28 18 22 ];
+        %tmp.2 = getv function %tmp.1 :load;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %arr.1 %tmp.3;
+        symbol [ arr %arr.1 28 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 29 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_29_8_29_46_if_stmt:
+        %tmp.4 = lgetv %arr.1;
+        symbol [ arr %tmp.4 29 12 15 ];
+        symbol [ size %tmp.5 29 16 20 ];
+        %tmp.5 = getv function %tmp.4 :size;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        symbol [ MAX_SIZE %tmp.8 29 26 34 ];
+        %tmp.8 = getv ? :MAX_SIZE;
+        %tmp.9 = gte %tmp.6 %tmp.8;
+        bf %tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_29_8_29_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_29_8_29_46_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_29_36_29_46_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 29 38 ]
+        ret ?;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_29_36_29_46_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_29_8_29_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_29_8_29_46_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 30 8 ]
+        %tmp.10 = lgetv %arr.1;
+        symbol [ arr %tmp.10 30 8 11 ];
+        symbol [ add %tmp.11 30 12 15 ];
+        %tmp.11 = getv function %tmp.10 :add;
+        %tmp.12 = lgetv %dict;
+        symbol [ dict %tmp.12 30 16 20 ];
+        invoke %tmp.10 %tmp.11(%tmp.12);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 31 8 ]
+        %tmp.13 = self;
+        symbol [ save %tmp.14 31 8 12 ];
+        %tmp.14 = getv function %tmp.13 :save;
+        %tmp.15 = lgetv %arr.1;
+        symbol [ arr %tmp.15 31 13 16 ];
+        invoke %tmp.13 %tmp.14(%tmp.15);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_27_56_32_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 35; @symbol_functiondef = [dequeue,35,20,27]; @symbol_return<0> = [Dictionary,35,33,43]; ]
+    static
+    function dequeue() as Dictionary or Null {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_35_52_42_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 36 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_35_52_42_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_35_52_42_4_stop" ]
+        %arr.1 = local;
+        symbol [ arr %arr.1 36 12 15 ];
+        %tmp.1 = self;
+        symbol [ load %tmp.2 36 18 22 ];
+        %tmp.2 = getv function %tmp.1 :load;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %arr.1 %tmp.3;
+        symbol [ arr %arr.1 36 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 37 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_37_8_37_44_if_stmt:
+        %tmp.4 = lgetv %arr.1;
+        symbol [ arr %tmp.4 37 12 15 ];
+        symbol [ size %tmp.5 37 16 20 ];
+        %tmp.5 = getv function %tmp.4 :size;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = 0;
+        %tmp.8 = eq %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_37_8_37_44_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_37_8_37_44_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_37_29_37_44_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 37 31 ]
+        %tmp.9 = null;
+        ret %tmp.9;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_37_29_37_44_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_37_8_37_44_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_37_8_37_44_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 38 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_35_52_42_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_35_52_42_4_stop" ]
+        %item.2 = local;
+        symbol [ item %item.2 38 12 16 ];
+        %tmp.10 = lgetv %arr.1;
+        symbol [ arr %tmp.10 38 19 22 ];
+        %tmp.11 = 0;
+        %tmp.12 = agetv %tmp.10 %tmp.11;
+        %tmp.13 = as %tmp.12 Dictionary;
+        symbol [ Dictionary %tmp.13 38 29 39 ];
+        lputv %item.2 %tmp.13;
+        symbol [ item %item.2 38 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 39 8 ]
+        %tmp.14 = lgetv %arr.1;
+        symbol [ arr %tmp.14 39 14 17 ];
+        symbol [ slice %tmp.15 39 18 23 ];
+        %tmp.15 = getv function %tmp.14 :slice;
+        %tmp.16 = 1;
+        %tmp.17 = null;
+        %tmp.18 = invoke %tmp.14 %tmp.15(%tmp.16, %tmp.17);
+        lputv %arr.1 %tmp.18;
+        symbol [ arr %arr.1 39 8 11 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 40 8 ]
+        %tmp.19 = self;
+        symbol [ save %tmp.20 40 8 12 ];
+        %tmp.20 = getv function %tmp.19 :save;
+        %tmp.21 = lgetv %arr.1;
+        symbol [ arr %tmp.21 40 13 16 ];
+        invoke %tmp.19 %tmp.20(%tmp.21);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 41 8 ]
+        %tmp.22 = lgetv %item.2;
+        symbol [ item %tmp.22 41 15 19 ];
+        ret %tmp.22;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_35_52_42_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 45; @symbol_functiondef = [peek,45,20,24]; @symbol_return<0> = [Dictionary,45,30,40]; ]
+    static
+    function peek() as Dictionary or Null {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_45_49_49_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 46 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_45_49_49_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_45_49_49_4_stop" ]
+        %arr.1 = local;
+        symbol [ arr %arr.1 46 12 15 ];
+        %tmp.1 = self;
+        symbol [ load %tmp.2 46 18 22 ];
+        %tmp.2 = getv function %tmp.1 :load;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %arr.1 %tmp.3;
+        symbol [ arr %arr.1 46 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 47 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_47_8_47_44_if_stmt:
+        %tmp.4 = lgetv %arr.1;
+        symbol [ arr %tmp.4 47 12 15 ];
+        symbol [ size %tmp.5 47 16 20 ];
+        %tmp.5 = getv function %tmp.4 :size;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = 0;
+        %tmp.8 = eq %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_47_8_47_44_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_47_8_47_44_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_47_29_47_44_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 47 31 ]
+        %tmp.9 = null;
+        ret %tmp.9;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_47_29_47_44_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_47_8_47_44_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_47_8_47_44_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 48 8 ]
+        %tmp.10 = lgetv %arr.1;
+        symbol [ arr %tmp.10 48 15 18 ];
+        %tmp.11 = 0;
+        %tmp.12 = agetv %tmp.10 %tmp.11;
+        %tmp.13 = as %tmp.12 Dictionary;
+        symbol [ Dictionary %tmp.13 48 25 35 ];
+        ret %tmp.13;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_45_49_49_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 52; @symbol_functiondef = [size,52,20,24]; @symbol_return<0> = [Number,52,30,36]; ]
+    static
+    function size() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_52_37_54_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 53 8 ]
+        %tmp.1 = self;
+        symbol [ load %tmp.2 53 15 19 ];
+        %tmp.2 = getv function %tmp.1 :load;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ size %tmp.4 53 22 26 ];
+        %tmp.4 = getv function %tmp.3 :size;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        ret %tmp.5;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_52_37_54_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 57; @symbol_functiondef = [isEmpty,57,20,27]; @symbol_return<0> = [Boolean,57,33,40]; ]
+    static
+    function isEmpty() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_57_41_59_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc" 58 8 ]
+        %tmp.1 = self;
+        symbol [ size %tmp.2 58 15 19 ];
+        %tmp.2 = getv function %tmp.1 :size;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = 0;
+        %tmp.5 = eq %tmp.3 %tmp.4;
+        ret %tmp.5;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PendingQueue_mc_57_41_59_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PendingQueue.mc"; @line = 1; ]
+<init> {
+}

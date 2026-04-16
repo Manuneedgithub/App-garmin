@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		32CB2D8D2F7D123200FB5A89 /* connectiq-companion-app-sdk-ios-1.8.0 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "connectiq-companion-app-sdk-ios-1.8.0"; path = "../../../../Downloads/connectiq-companion-app-sdk-ios-1.8.0"; sourceTree = "<group>"; };
-		32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ConnectIQ.xcframework; path = "../../../../Downloads/connectiq-companion-app-sdk-ios-1.8.0/ConnectIQ.xcframework"; sourceTree = "<group>"; };
+		32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ConnectIQ.xcframework; path = ConnectIQ.xcframework; sourceTree = "<group>"; };
 		AA0000000000000000000010 /* TemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000B1 /* BasketTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00000000000000000000C1 /* BasketTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTrainerApp.swift; sourceTree = "<group>"; };

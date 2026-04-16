@@ -1,0 +1,36 @@
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Communications,1,14,28]; ]
+import Toybox.Communications;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 6; @symbol_classdef = [TransmitDelegate,6,6,22]; @symbol_extends<0> = [Communications,6,31,45]; @symbol_extends<1> = [ConnectionListener,6,46,64]; ]
+class TransmitDelegate extends Communications.ConnectionListener {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 7; @symbol_functiondef = [initialize,7,13,23]; ]
+    function initialize() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_TransmitDelegate_mc_7_26_9_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc" 8 8 ]
+        symbol [ Communications %tmp.1 8 8 22 ];
+        %tmp.1 = getm $.Toybox.Communications;
+        symbol [ ConnectionListener %tmp.2 8 23 41 ];
+        %tmp.2 = getv %tmp.1 :ConnectionListener;
+        symbol [ initialize %tmp.3 8 42 52 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_TransmitDelegate_mc_7_26_9_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 11; @symbol_functiondef = [onComplete,11,13,23]; ]
+    function onComplete() as Void {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 15; @symbol_functiondef = [onError,15,13,20]; ]
+    function onError() as Void {
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/TransmitDelegate.mc"; @line = 1; ]
+<init> {
+}

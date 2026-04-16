@@ -23,6 +23,9 @@ struct HomeView: View {
                                 .transition(.move(edge: .top).combined(with: .opacity))
                         }
 
+                        watchConnectionRow
+                            .padding(.horizontal, 20)
+
                         quickStats
                             .padding(.horizontal, 20)
 
@@ -57,6 +60,28 @@ struct HomeView: View {
                 ManualSessionView(prefillTemplate: prefillTemplate)
             }
         }
+    }
+
+    private var watchConnectionRow: some View {
+        HStack(spacing: 10) {
+            Image(systemName: garmin.connectedDevice != nil ? "applewatch.radiowaves.left.and.right" : "applewatch.slash")
+                .foregroundStyle(garmin.connectedDevice != nil ? .green : .secondary)
+            Text(garmin.connectedDevice != nil ? "Montre connectée" : "Montre non connectée")
+                .font(.subheadline)
+                .foregroundStyle(garmin.connectedDevice != nil ? .primary : .secondary)
+            Spacer()
+            if garmin.connectedDevice == nil {
+                Button("Connecter") {
+                    garmin.connectWatch()
+                }
+                .font(.subheadline.weight(.medium))
+                .foregroundStyle(.orange)
+            }
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .background(Color(.systemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     private var quickStats: some View {
