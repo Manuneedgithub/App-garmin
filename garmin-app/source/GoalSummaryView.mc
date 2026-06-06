@@ -101,7 +101,8 @@ class GoalSummaryDelegate extends WatchUi.BehaviorDelegate {
     function onSelect() as Boolean {
         var dict = _session.toDictionary();
         Communications.transmit(dict, null, new GoalTransmitListener(dict));
-        // Retour au menu principal (3 pops : GoalSummary, GoalView, GoalMenu)
+        // Retour au menu principal (4 pops : GoalSummary, GoalView, GoalMenu, ShotTypeMenu)
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
@@ -110,6 +111,7 @@ class GoalSummaryDelegate extends WatchUi.BehaviorDelegate {
 
     // BACK → quitter sans envoyer
     function onBack() as Boolean {
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);

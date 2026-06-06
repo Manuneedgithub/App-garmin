@@ -90,11 +90,13 @@ class GoalMenuView extends WatchUi.View {
 class GoalMenuDelegate extends WatchUi.BehaviorDelegate {
     private var _view       as GoalMenuView;
     private var _exerciseId as Number;
+    private var _shotTypeId as Number;
 
-    function initialize(view as GoalMenuView, exerciseId as Number) {
+    function initialize(view as GoalMenuView, exerciseId as Number, shotTypeId as Number) {
         BehaviorDelegate.initialize();
         _view       = view;
         _exerciseId = exerciseId;
+        _shotTypeId = shotTypeId;
     }
 
     // Bouton HAUT → +1
@@ -115,7 +117,7 @@ class GoalMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // SELECT → lancer la session
     function onSelect() as Boolean {
-        var session = new GoalSession(_exerciseId, _view.getTarget());
+        var session = new GoalSession(_exerciseId, _view.getTarget(), _shotTypeId);
         var view    = new GoalView(session);
         var del     = new GoalDelegate(session, view);
         WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);

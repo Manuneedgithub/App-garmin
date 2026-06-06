@@ -57,9 +57,9 @@ class ExerciseMenuDelegate extends WatchUi.Menu2InputDelegate {
 
     function onSelect(item as WatchUi.MenuItem) as Void {
         var exerciseId = item.getId() as Number;
-        var nextMenu   = new ShotCountMenuView(exerciseId);
-        var nextDel    = new ShotCountMenuDelegate(exerciseId, _accumulator);
-        WatchUi.pushView(nextMenu, nextDel, WatchUi.SLIDE_LEFT);
+        var shotMenu   = new ShotTypeMenuView(exerciseId);
+        var del        = new ShotTypeMenuDelegate(exerciseId, 0, _accumulator);
+        WatchUi.pushView(shotMenu, del, WatchUi.SLIDE_LEFT);
     }
 
     function onBack() as Void {
@@ -76,9 +76,9 @@ class ExerciseMenuGoalDelegate extends WatchUi.Menu2InputDelegate {
 
     function onSelect(item as WatchUi.MenuItem) as Void {
         var exerciseId = item.getId() as Number;
-        var view       = new GoalMenuView(exerciseId, 10);
-        var del        = new GoalMenuDelegate(view, exerciseId);
-        WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
+        var shotMenu   = new ShotTypeMenuView(exerciseId);
+        var del        = new ShotTypeMenuDelegate(exerciseId, 1, null);
+        WatchUi.pushView(shotMenu, del, WatchUi.SLIDE_LEFT);
     }
 
     function onBack() as Void {
