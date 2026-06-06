@@ -3,13 +3,25 @@ import SwiftUI
 // ─────────────────────────────────────────────────
 // ACCUEIL — Dashboard + accès rapide
 // ─────────────────────────────────────────────────
+private enum HomeSheet: Identifiable {
+    case manual
+    case routineBuilder
+    case slotsConfig
+
+    var id: String {
+        switch self {
+        case .manual:          return "manual"
+        case .routineBuilder:  return "routineBuilder"
+        case .slotsConfig:     return "slotsConfig"
+        }
+    }
+}
+
 struct HomeView: View {
     @EnvironmentObject var store:  SessionStore
     @EnvironmentObject var garmin: GarminManager
-    @State private var showManualEntry  = false
+    @State private var activeSheet: HomeSheet? = nil
     @State private var prefillTemplate: ComplexTemplate? = nil
-    @State private var showRoutineBuilder = false
-    @State private var showSlotsConfig = false
 
     var body: some View {
         NavigationStack {
@@ -23,7 +35,7 @@ struct HomeView: View {
                             .padding(.horizontal, 20)
 
                         Button {
-                            showSlotsConfig = true
+                            activeSheet = .slotsConfig
                         } label: {
                             HStack {
                                 Image(systemName: "dumbbell.fill")
@@ -70,17 +82,18 @@ struct HomeView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .sheet(isPresented: $showManualEntry, onDismiss: { prefillTemplate = nil }) {
-                ManualSessionView(prefillTemplate: prefillTemplate)
-            }
-            .sheet(isPresented: $showRoutineBuilder) {
-                RoutineBuilderView()
-                    .environmentObject(store)
-            }
-            .sheet(isPresented: $showSlotsConfig) {
-                SlotsView()
-                    .environmentObject(store)
-                    .environmentObject(garmin)
+            .sheet(item: $activeSheet, onDismiss: { prefillTemplate = nil }) { sheet in
+                switch sheet {
+                case .manual:
+                    ManualSessionView(prefillTemplate: prefillTemplate)
+                case .routineBuilder:
+                    RoutineBuilderView()
+                        .environmentObject(store)
+                case .slotsConfig:
+                    SlotsView()
+                        .environmentObject(store)
+                        .environmentObject(garmin)
+                }
             }
         }
     }
@@ -118,7 +131,7 @@ struct HomeView: View {
     private var newWorkoutButton: some View {
         Button {
             prefillTemplate = nil
-            showManualEntry = true
+            activeSheet = .manual
         } label: {
             HStack(spacing: 12) {
                 ZStack {
@@ -153,9 +166,9 @@ struct HomeView: View {
         TemplatesView(
             onLaunchManual: { t in
                 prefillTemplate = t
-                showManualEntry = true
+                activeSheet = .manual
             },
-            onAdd: store.templates.count < SessionStore.maxTemplates ? { showRoutineBuilder = true } : nil
+            onAdd: store.templates.count < SessionStore.maxTemplates ? { activeSheet = .routineBuilder } : nil
         )
         .padding(.horizontal, 20)
     }

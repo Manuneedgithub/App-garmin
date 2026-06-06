@@ -38,10 +38,10 @@ struct SlotsView: View {
                     Button("Fermer") { dismiss() }.foregroundStyle(.orange)
                 }
             }
-        }
-        .sheet(item: $editRequest) { req in
-            SlotEditorView(index: req.id, existing: store.watchSlots[req.id])
-                .environmentObject(store)
+            .sheet(item: $editRequest) { req in
+                SlotEditorView(index: req.id, existing: store.watchSlots[req.id])
+                    .environmentObject(store)
+            }
         }
     }
 }
