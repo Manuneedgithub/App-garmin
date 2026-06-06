@@ -92,6 +92,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
         let duration   = dict["duration"]   as? Int ?? 0
         let rawResults = dict["results"] as? [Bool] ?? []
         let targetMade = dict["targetMade"] as? Int
+        let shotTypeId = dict["shotTypeId"] as? Int
 
         var session = WorkoutSession(
             exerciseType: ExerciseType(rawValue: exId) ?? .freethrow,
@@ -102,6 +103,9 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
         )
         session.duration = TimeInterval(duration)
         session.sentFromWatch = true
+        if let stId = shotTypeId, let st = ShotType(rawValue: stId) {
+            session.shotType = st
+        }
 
         // Si targetMade présent, créer une série simple avec l'objectif
         if let target = targetMade {
@@ -119,7 +123,8 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
     private func handleSessionOrGuided(_ session: WorkoutSession, results: [Bool], total: Int, made: Int) {
         if let template = guidedTemplate {
-            let ser = ShotSeries(exerciseType: session.exerciseType, totalShots: total, madeShots: made, results: results)
+            var ser = ShotSeries(exerciseType: session.exerciseType, totalShots: total, madeShots: made, results: results)
+            ser.shotType = session.shotType  // propagate shot type from session
             guidedSeries.append(ser)
             guidedIndex += 1
             if guidedIndex >= template.series.count {
@@ -147,7 +152,11 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
         let payload: [String: Any] = [
             "type": "routine",
             "series": template.series.map {
-                ["exerciseId": $0.exerciseType.rawValue, "totalShots": $0.totalShots]
+                [
+                    "exerciseId": $0.exerciseType.rawValue,
+                    "totalShots": $0.totalShots,
+                    "shotTypeId": $0.shotType.rawValue
+                ]
             }
         ]
         sdk.sendMessage(payload, to: app, progress: nil) { _ in }

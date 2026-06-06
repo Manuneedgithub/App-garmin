@@ -23,6 +23,7 @@ struct ManualSessionView: View {
     @State private var exercise:   ExerciseType = .freethrow
     @State private var totalShots: Int = 10
     @State private var madeShots:  Int = 7
+    @State private var shotType:   ShotType = .catchAndShoot
 
     // ── Complexe ──
     @State private var series: [ShotSeries]
@@ -144,6 +145,19 @@ struct ManualSessionView: View {
                 .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
             }
+
+            VStack(alignment: .leading, spacing: 14) {
+                SectionLabel(title: "Type de tir", icon: "figure.basketball")
+                Picker("Type de tir", selection: $shotType) {
+                    ForEach(ShotType.allCases, id: \.self) { t in
+                        Text(t.name).tag(t)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(16)
+                .background(Color(.systemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+            }
         }
     }
 
@@ -239,7 +253,8 @@ struct ManualSessionView: View {
     private func save() {
         if mode == .simple {
             var s = WorkoutSession(exerciseType: exercise, totalShots: totalShots, madeShots: madeShots)
-            s.date = date
+            s.date     = date
+            s.shotType = shotType
             store.add(s)
         } else {
             let s = WorkoutSession.makeComplex(series: series, date: date)
@@ -248,7 +263,12 @@ struct ManualSessionView: View {
             if saveAsTemplate && !templateName.trimmingCharacters(in: .whitespaces).isEmpty {
                 let t = ComplexTemplate(
                     name: templateName.trimmingCharacters(in: .whitespaces),
-                    series: series.map { TemplateSeries(exerciseType: $0.exerciseType, totalShots: $0.totalShots, targetMade: $0.targetMade) }
+                    series: series.map {
+                        TemplateSeries(exerciseType: $0.exerciseType,
+                                       totalShots: $0.totalShots,
+                                       targetMade: $0.targetMade,
+                                       shotType: $0.shotType ?? .catchAndShoot)
+                    }
                 )
                 store.addTemplate(t)
             }
@@ -267,6 +287,7 @@ struct SeriesEditorRow: View {
 
     private let shotOptions = [5, 10, 15, 20, 25, 30]
     @State private var hasTarget: Bool = false
+    @State private var showShotTypePicker = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -328,6 +349,25 @@ struct SeriesEditorRow: View {
                 Spacer()
                 Stepper("", value: $series.madeShots, in: 0...series.totalShots)
                     .labelsHidden()
+            }
+
+            // Type de tir
+            Button {
+                showShotTypePicker = true
+            } label: {
+                HStack {
+                    Label(series.shotType?.name ?? "Type de tir", systemImage: "figure.basketball")
+                        .font(.subheadline)
+                        .foregroundStyle(series.shotType != nil ? Color.orange : .secondary)
+                    Spacer()
+                    Image(systemName: "chevron.right").font(.caption).foregroundStyle(.secondary)
+                }
+            }
+            .sheet(isPresented: $showShotTypePicker) {
+                ShotTypePickerSheet(selected: Binding(
+                    get: { series.shotType ?? .catchAndShoot },
+                    set: { series.shotType = $0 }
+                ))
             }
 
             // Objectif paniers (optionnel)

@@ -63,6 +63,7 @@ struct RoutineBuilderView: View {
 struct SeriesRow: View {
     @Binding var series: TemplateSeries
     @State private var showPicker = false
+    @State private var showShotTypePicker = false
 
     var body: some View {
         HStack {
@@ -79,6 +80,20 @@ struct SeriesRow: View {
                 ExercisePickerSheet(selected: $series.exerciseType)
             }
             Spacer()
+            Button {
+                showShotTypePicker = true
+            } label: {
+                Label(series.shotType.name, systemImage: "figure.basketball")
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 7)
+                    .background(Color.orange)
+                    .clipShape(Capsule())
+            }
+            .sheet(isPresented: $showShotTypePicker) {
+                ShotTypePickerSheet(selected: $series.shotType)
+            }
             Stepper(
                 "\(series.totalShots) tirs",
                 value: $series.totalShots,
@@ -86,6 +101,38 @@ struct SeriesRow: View {
             )
             .fixedSize()
         }
+    }
+}
+
+struct ShotTypePickerSheet: View {
+    @Binding var selected: ShotType
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        NavigationStack {
+            List(ShotType.allCases, id: \.self) { t in
+                Button {
+                    selected = t
+                    dismiss()
+                } label: {
+                    HStack {
+                        Text(t.name).foregroundStyle(.primary)
+                        Spacer()
+                        if selected == t {
+                            Image(systemName: "checkmark").foregroundStyle(Color.orange)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Type de tir")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Fermer") { dismiss() }.foregroundStyle(Color.orange)
+                }
+            }
+        }
+        .presentationDetents([.medium])
     }
 }
 
