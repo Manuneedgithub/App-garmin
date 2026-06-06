@@ -29,7 +29,9 @@ class BasketApp extends Application.AppBase {
         if (!(message instanceof Dictionary)) { return; }
         var dict = message as Dictionary;
         if (dict["type"] instanceof String && (dict["type"] as String).equals("slot")) {
+            if (!(dict["index"] instanceof Number) || !(dict["series"] instanceof Array)) { return; }
             var index  = dict["index"] as Number;
+            if (index < 0 || index > 4) { return; }
             var series = dict["series"] as Array;
             Application.Storage.setValue("slot_" + index.toString(), series);
         }
