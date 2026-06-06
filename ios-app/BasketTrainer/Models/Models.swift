@@ -54,6 +54,20 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
     }
 }
 
+enum ShotType: Int, CaseIterable, Codable {
+    case catchAndShoot = 0
+    case offDribble    = 1
+    case standing      = 2
+
+    var name: String {
+        switch self {
+        case .catchAndShoot: return "Catch & Shoot"
+        case .offDribble:    return "Avec dribble"
+        case .standing:      return "À l'arrêt"
+        }
+    }
+}
+
 // Résultat d'un tir individuel
 struct ShotResult: Codable {
     let made: Bool
@@ -69,6 +83,7 @@ struct ShotSeries: Codable, Identifiable {
     var madeShots: Int
     var results: [Bool]
     var targetMade: Int?   // objectif paniers (nil si mode tirs libres)
+    var shotType: ShotType?   // nil = données historiques sans type
 
     var percentage: Double { totalShots == 0 ? 0 : Double(madeShots) / Double(totalShots) * 100 }
     var missedShots: Int { totalShots - madeShots }
@@ -88,6 +103,26 @@ struct ShotSeries: Codable, Identifiable {
         self.madeShots    = data["madeShots"]  as? Int ?? 0
         self.results      = (data["results"] as? [Bool]) ?? []
         self.targetMade   = data["targetMade"] as? Int
+        if let stId = data["shotTypeId"] as? Int {
+            self.shotType = ShotType(rawValue: stId)
+        } else {
+            self.shotType = nil
+        }
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, exerciseType, totalShots, madeShots, results, targetMade, shotType
+    }
+
+    init(from decoder: Decoder) throws {
+        let c        = try decoder.container(keyedBy: CodingKeys.self)
+        id           = try c.decodeIfPresent(UUID.self,         forKey: .id) ?? UUID()
+        exerciseType = try c.decode(ExerciseType.self,          forKey: .exerciseType)
+        totalShots   = try c.decode(Int.self,                   forKey: .totalShots)
+        madeShots    = try c.decode(Int.self,                   forKey: .madeShots)
+        results      = try c.decodeIfPresent([Bool].self,       forKey: .results) ?? []
+        targetMade   = try c.decodeIfPresent(Int.self,          forKey: .targetMade)
+        shotType     = try c.decodeIfPresent(ShotType.self,     forKey: .shotType)
     }
 }
 
@@ -104,6 +139,7 @@ struct WorkoutSession: Codable, Identifiable {
     var sentFromWatch: Bool              // true si reçu depuis la montre Garmin
     var series: [ShotSeries]?            // nil = séance simple, non-nil = séance complexe
     var duration: TimeInterval?          // durée en secondes (nil si non tracée)
+    var shotType: ShotType?   // for simple sessions (no series array)
 
     // ── Propriétés calculées ──
 
@@ -152,6 +188,11 @@ struct WorkoutSession: Codable, Identifiable {
         sentFromWatch = true
         series        = nil
         duration      = (data["duration"] as? Int).map { TimeInterval($0) }
+        if let stId = data["shotTypeId"] as? Int {
+            shotType = ShotType(rawValue: stId)
+        } else {
+            shotType = nil
+        }
     }
 
     // Constructeur manuel simple (ajout depuis l'iPhone)
@@ -165,6 +206,7 @@ struct WorkoutSession: Codable, Identifiable {
         self.sentFromWatch = false
         self.series        = nil
         self.duration      = nil
+        self.shotType      = nil
     }
 
     // Constructeur séance complexe (plusieurs séries)
@@ -181,7 +223,27 @@ struct WorkoutSession: Codable, Identifiable {
         s.date     = date
         s.series   = series
         s.duration = nil
+        s.shotType = nil
         return s
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case id, exerciseType, totalShots, madeShots, results, date,
+             sentFromWatch, series, duration, shotType
+    }
+
+    init(from decoder: Decoder) throws {
+        let c         = try decoder.container(keyedBy: CodingKeys.self)
+        id            = try c.decodeIfPresent(UUID.self,           forKey: .id) ?? UUID()
+        exerciseType  = try c.decode(ExerciseType.self,            forKey: .exerciseType)
+        totalShots    = try c.decode(Int.self,                     forKey: .totalShots)
+        madeShots     = try c.decode(Int.self,                     forKey: .madeShots)
+        results       = try c.decodeIfPresent([Bool].self,         forKey: .results) ?? []
+        date          = try c.decodeIfPresent(Date.self,           forKey: .date) ?? Date()
+        sentFromWatch = try c.decodeIfPresent(Bool.self,           forKey: .sentFromWatch) ?? false
+        series        = try c.decodeIfPresent([ShotSeries].self,   forKey: .series)
+        duration      = try c.decodeIfPresent(TimeInterval.self,   forKey: .duration)
+        shotType      = try c.decodeIfPresent(ShotType.self,       forKey: .shotType)
     }
 }
 
@@ -192,7 +254,28 @@ struct WorkoutSession: Codable, Identifiable {
 struct TemplateSeries: Codable {
     var exerciseType: ExerciseType
     var totalShots: Int
-    var targetMade: Int?   // nil = mode tirs libres, non-nil = mode objectif
+    var targetMade: Int?
+    var shotType: ShotType = .catchAndShoot
+
+    private enum CodingKeys: String, CodingKey {
+        case exerciseType, totalShots, targetMade, shotType
+    }
+
+    init(exerciseType: ExerciseType, totalShots: Int,
+         targetMade: Int? = nil, shotType: ShotType = .catchAndShoot) {
+        self.exerciseType = exerciseType
+        self.totalShots   = totalShots
+        self.targetMade   = targetMade
+        self.shotType     = shotType
+    }
+
+    init(from decoder: Decoder) throws {
+        let c        = try decoder.container(keyedBy: CodingKeys.self)
+        exerciseType = try c.decode(ExerciseType.self,      forKey: .exerciseType)
+        totalShots   = try c.decode(Int.self,               forKey: .totalShots)
+        targetMade   = try c.decodeIfPresent(Int.self,      forKey: .targetMade)
+        shotType     = try c.decodeIfPresent(ShotType.self, forKey: .shotType) ?? .catchAndShoot
+    }
 }
 
 struct ComplexTemplate: Codable, Identifiable {
@@ -238,4 +321,14 @@ struct ExerciseStats {
     }
 
     var bestSession: WorkoutSession? { sessions.max(by: { $0.percentage < $1.percentage }) }
+}
+
+struct SpotStats {
+    let exerciseType: ExerciseType
+    let totalShots: Int
+    let totalMade: Int
+    var percentage: Double {
+        totalShots == 0 ? 0 : Double(totalMade) / Double(totalShots) * 100
+    }
+    var byType: [ShotType: (shots: Int, made: Int)]
 }

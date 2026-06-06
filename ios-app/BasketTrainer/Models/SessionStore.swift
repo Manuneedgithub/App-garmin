@@ -41,6 +41,41 @@ class SessionStore: ObservableObject {
         ExerciseStats(exerciseType: type, sessions: sessions(for: type))
     }
 
+    func spotStats(for exerciseType: ExerciseType) -> SpotStats {
+        var totalShots = 0
+        var totalMade  = 0
+        var byType: [ShotType: (shots: Int, made: Int)] = [:]
+
+        for session in sessions {
+            if let seriesList = session.series {
+                for s in seriesList where s.exerciseType == exerciseType {
+                    totalShots += s.totalShots
+                    totalMade  += s.madeShots
+                    if let t = s.shotType {
+                        var e = byType[t] ?? (shots: 0, made: 0)
+                        e.shots += s.totalShots
+                        e.made  += s.madeShots
+                        byType[t] = e
+                    }
+                }
+            } else if session.exerciseType == exerciseType {
+                totalShots += session.totalShots
+                totalMade  += session.madeShots
+                if let t = session.shotType {
+                    var e = byType[t] ?? (shots: 0, made: 0)
+                    e.shots += session.totalShots
+                    e.made  += session.madeShots
+                    byType[t] = e
+                }
+            }
+        }
+
+        return SpotStats(exerciseType: exerciseType,
+                         totalShots: totalShots,
+                         totalMade: totalMade,
+                         byType: byType)
+    }
+
     // Calcule les stats sur un sous-ensemble de séances (pour le filtre temporel)
     func allStats(from src: [WorkoutSession]) -> [ExerciseStats] {
         ExerciseType.allCases
