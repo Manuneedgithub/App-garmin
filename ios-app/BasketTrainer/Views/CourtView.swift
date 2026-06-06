@@ -6,16 +6,19 @@ private struct CourtSpot {
     let ny: CGFloat
 }
 
+// ny = fraction of court height above baseline (0=baseline, 1=top)
+// Maps to canvas: cy = (1 - ny) * h
+// Court features: FT line at ny≈0.30, arc top at ny≈0.72, arc corners at ny≈0.45
 private let courtSpots: [CourtSpot] = [
-    CourtSpot(type: .freethrow,    nx: 0.50, ny: 0.35),
-    CourtSpot(type: .threeCenter,  nx: 0.50, ny: 0.92),
-    CourtSpot(type: .threeRight45, nx: 0.78, ny: 0.80),
-    CourtSpot(type: .threeLeft45,  nx: 0.22, ny: 0.80),
-    CourtSpot(type: .threeCornerR, nx: 0.94, ny: 0.45),
-    CourtSpot(type: .threeCornerL, nx: 0.06, ny: 0.45),
-    CourtSpot(type: .midCenter,    nx: 0.50, ny: 0.62),
-    CourtSpot(type: .midRight,     nx: 0.70, ny: 0.56),
-    CourtSpot(type: .midLeft,      nx: 0.30, ny: 0.56),
+    CourtSpot(type: .freethrow,    nx: 0.50, ny: 0.30),  // ligne de lancer franc
+    CourtSpot(type: .threeCenter,  nx: 0.50, ny: 0.72),  // 3pts sommet de l'arc
+    CourtSpot(type: .threeRight45, nx: 0.75, ny: 0.65),  // 3pts aile droite ~45°
+    CourtSpot(type: .threeLeft45,  nx: 0.25, ny: 0.65),  // 3pts aile gauche ~45°
+    CourtSpot(type: .threeCornerR, nx: 0.93, ny: 0.20),  // 3pts coin droit
+    CourtSpot(type: .threeCornerL, nx: 0.07, ny: 0.20),  // 3pts coin gauche
+    CourtSpot(type: .midCenter,    nx: 0.50, ny: 0.50),  // mi-distance centre
+    CourtSpot(type: .midRight,     nx: 0.74, ny: 0.38),  // mi-distance droite
+    CourtSpot(type: .midLeft,      nx: 0.26, ny: 0.38),  // mi-distance gauche
 ]
 
 struct CourtView: View {
@@ -34,7 +37,7 @@ struct CourtView: View {
                         ForEach(courtSpots, id: \.type) { spot in
                             let stats   = store.spotStats(for: spot.type)
                             let cx      = spot.nx * w
-                            let cy      = (1 - spot.ny) * h * 0.85 + h * 0.05
+                            let cy      = (1.0 - spot.ny) * h
                             let hasData = stats.totalShots > 0
                             let color   = hasData ? spotColor(stats.percentage) : Color(.systemFill)
 
