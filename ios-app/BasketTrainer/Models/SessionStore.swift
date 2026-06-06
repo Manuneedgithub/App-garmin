@@ -11,15 +11,18 @@ class SessionStore: ObservableObject {
 
     @Published private(set) var sessions:   [WorkoutSession]   = []
     @Published private(set) var templates:  [ComplexTemplate]  = []
+    @Published private(set) var watchSlots: [ComplexTemplate?] = Array(repeating: nil, count: 5)
 
     private let storageKey   = "basket_sessions"
     private let templateKey  = "basket_templates"
+    private let slotsKey     = "basket_watch_slots"
 
     static let maxTemplates = 5
 
     init() {
         load()
         loadTemplates()
+        loadSlots()
     }
 
     // ── Lecture ──
@@ -143,6 +146,27 @@ class SessionStore: ObservableObject {
     func deleteTemplate(_ t: ComplexTemplate) {
         templates.removeAll { $0.id == t.id }
         saveTemplates()
+    }
+
+    // ── Watch Slots ──
+
+    func setWatchSlot(_ index: Int, template: ComplexTemplate?) {
+        guard index >= 0 && index < 5 else { return }
+        watchSlots[index] = template
+        saveSlots()
+    }
+
+    private func saveSlots() {
+        if let data = try? JSONEncoder().encode(watchSlots) {
+            UserDefaults.standard.set(data, forKey: slotsKey)
+        }
+    }
+
+    private func loadSlots() {
+        guard let data = UserDefaults.standard.data(forKey: slotsKey),
+              let decoded = try? JSONDecoder().decode([ComplexTemplate?].self, from: data)
+        else { return }
+        watchSlots = decoded
     }
 
     // ── Persistence ──

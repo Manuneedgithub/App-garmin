@@ -14,11 +14,6 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     @Published var lastSyncDate: Date? = nil
     @Published var connectedDevice: IQDevice? = nil
 
-    // Guided session properties
-    @Published var guidedTemplate: ComplexTemplate? = nil
-    @Published var guidedIndex: Int = 0
-    @Published var guidedSeries: [ShotSeries] = []
-
     func setup() {
         sdk.initialize(withUrlScheme: "baskettrainer", uiOverrideDelegate: nil)
         central = CBCentralManager(delegate: self, queue: .main,
@@ -117,40 +112,16 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
         DispatchQueue.main.async {
             self.lastSyncDate = Date()
-            self.handleSessionOrGuided(session, results: rawResults, total: total, made: made)
+            self.store.add(session)
         }
     }
 
-    private func handleSessionOrGuided(_ session: WorkoutSession, results: [Bool], total: Int, made: Int) {
-        if let template = guidedTemplate {
-            var ser = ShotSeries(exerciseType: session.exerciseType, totalShots: total, madeShots: made, results: results)
-            ser.shotType = session.shotType  // propagate shot type from session
-            guidedSeries.append(ser)
-            guidedIndex += 1
-            if guidedIndex >= template.series.count {
-                var complex = WorkoutSession.makeComplex(series: guidedSeries, date: session.date)
-                complex.sentFromWatch = true
-                store.add(complex)
-                cancelGuidedSession()
-            }
-        } else {
-            store.add(session)
-        }
-    }
-
-    func startGuidedSession(_ template: ComplexTemplate) {
-        guidedTemplate = template; guidedIndex = 0; guidedSeries = []
-    }
-
-    func cancelGuidedSession() {
-        guidedTemplate = nil; guidedIndex = 0; guidedSeries = []
-    }
-
-    func sendRoutine(_ template: ComplexTemplate) {
+    func sendSlot(_ index: Int, template: ComplexTemplate) {
         guard let device = connectedDevice else { return }
         let app = IQApp(uuid: appUUID, store: appUUID, device: device)
         let payload: [String: Any] = [
-            "type": "routine",
+            "type": "slot",
+            "index": index,
             "series": template.series.map {
                 [
                     "exerciseId": $0.exerciseType.rawValue,
@@ -160,7 +131,6 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
             }
         ]
         sdk.sendMessage(payload, to: app, progress: nil) { _ in }
-        startGuidedSession(template)
     }
 
     func addMockSession() {

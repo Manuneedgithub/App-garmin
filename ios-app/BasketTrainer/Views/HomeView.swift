@@ -18,12 +18,6 @@ struct HomeView: View {
                 ScrollView {
                     VStack(spacing: 16) {
 
-                        if garmin.guidedTemplate != nil {
-                            GuidedSessionBanner()
-                                .padding(.horizontal, 20)
-                                .transition(.move(edge: .top).combined(with: .opacity))
-                        }
-
                         watchConnectionRow
                             .padding(.horizontal, 20)
 
@@ -43,7 +37,6 @@ struct HomeView: View {
                         Spacer(minLength: 40)
                     }
                     .padding(.top, 10)
-                    .animation(.easeInOut(duration: 0.3), value: garmin.guidedTemplate != nil)
                 }
             }
             .navigationTitle("Basket Trainer")
