@@ -3,13 +3,11 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 
 class BasketApp extends Application.AppBase {
-    private var _sync           as SyncManager or Null;
-    private var _pendingRoutine as Dictionary or Null;
+    private var _sync as SyncManager or Null;
 
     function initialize() {
         AppBase.initialize();
-        _sync           = null;
-        _pendingRoutine = null;
+        _sync = null;
     }
 
     function onStart(state as Dictionary?) as Void {
@@ -27,22 +25,14 @@ class BasketApp extends Application.AppBase {
         return [menu, delegate];
     }
 
-    // Called when iPhone sends a message via sdk.sendMessage()
     function onMessage(message as Object) as Void {
         if (!(message instanceof Dictionary)) { return; }
         var dict = message as Dictionary;
-        if (dict["type"] instanceof String && (dict["type"] as String).equals("routine")) {
-            _pendingRoutine = dict;
+        if (dict["type"] instanceof String && (dict["type"] as String).equals("slot")) {
+            var index  = dict["index"] as Number;
+            var series = dict["series"] as Array;
+            Application.Storage.setValue("slot_" + index.toString(), series);
         }
-    }
-
-    function getPendingRoutine() as Dictionary or Null {
-        return _pendingRoutine;
-    }
-
-    // Caller must invoke this after consuming the routine (peek + clear pattern)
-    function clearPendingRoutine() as Void {
-        _pendingRoutine = null;
     }
 }
 

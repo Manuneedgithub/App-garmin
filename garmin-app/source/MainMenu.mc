@@ -7,7 +7,7 @@ class MainMenuView extends WatchUi.Menu2 {
         Menu2.initialize({:title => "Basket Trainer"});
         addItem(new WatchUi.MenuItem("Tirs libres",       null, 0, null));
         addItem(new WatchUi.MenuItem("Objectif simple",   null, 1, null));
-        addItem(new WatchUi.MenuItem("Objectif complexe", null, 2, null));
+        addItem(new WatchUi.MenuItem("Entraînements",     null, 2, null));
     }
 }
 
@@ -29,18 +29,9 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
             var del = new ExerciseMenuGoalDelegate();
             WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
         } else if (id == 2) {
-            var routine = getApp().getPendingRoutine();
-            if (routine == null) {
-                var view = new RoutineWaitView();
-                var del  = new RoutineWaitDelegate();
-                WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
-            } else {
-                var runner = new RoutineRunner(routine);
-                getApp().clearPendingRoutine();
-                var view   = new RoutineStartView(runner);
-                var del    = new RoutineStartDelegate(runner);
-                WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
-            }
+            var menu = new SlotMenuView();
+            var del  = new SlotMenuDelegate();
+            WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
         }
     }
 

@@ -70,45 +70,6 @@ class RoutineRunner {
 }
 
 // ─────────────────────────────────────────────────
-// RoutineWaitView — shown when no routine is pending
-// ─────────────────────────────────────────────────
-
-class RoutineWaitView extends WatchUi.View {
-    private const COLOR_BG     = Graphics.COLOR_BLACK;
-    private const COLOR_ORANGE = 0xFF6600;
-    private const COLOR_GRAY   = 0x888888;
-
-    function initialize() { View.initialize(); }
-
-    function onUpdate(dc as Graphics.Dc) as Void {
-        var w  = dc.getWidth();
-        var cx = w / 2;
-        dc.setColor(COLOR_BG, COLOR_BG);
-        dc.clear();
-        dc.setColor(COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 90,  Graphics.FONT_TINY,  "Aucune routine",
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 118, Graphics.FONT_XTINY, "Ouvre l'app iPhone",
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(cx, 136, Graphics.FONT_XTINY, "et appuie sur",
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(cx, 154, Graphics.FONT_XTINY, "\"Guider la montre\"",
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(cx, 215, Graphics.FONT_XTINY, "↩ Retour",
-                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-    }
-}
-
-class RoutineWaitDelegate extends WatchUi.BehaviorDelegate {
-    function initialize() { BehaviorDelegate.initialize(); }
-    function onBack() as Boolean {
-        WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        return true;
-    }
-}
-
-// ─────────────────────────────────────────────────
 // RoutineStartView — routine overview before starting
 // ─────────────────────────────────────────────────
 
@@ -380,11 +341,11 @@ class RoutineFinalDelegate extends WatchUi.BehaviorDelegate {
     function onBack()   as Boolean { popToRoot(); return true; }
 
     private function popToRoot() as Void {
-        // Stack at this point: MainMenu + RoutineStart
+        // Stack at this point: MainMenu + SlotMenu + RoutineStart
         //   + K × (WorkoutView + RoutineSeriesDoneView) + RoutineFinalView
-        // Total pops needed = 2K + 2  (K = completed series count)
+        // Total pops needed = 2K + 3  (K = completed series count)
         var k    = _runner.accumulator.seriesCount();
-        var pops = k * 2 + 2;
+        var pops = k * 2 + 3;
         for (var i = 0; i < pops; i++) {
             WatchUi.popView(WatchUi.SLIDE_RIGHT);
         }
