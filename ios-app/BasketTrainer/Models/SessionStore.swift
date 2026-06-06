@@ -165,7 +165,8 @@ class SessionStore: ObservableObject {
 
     private func loadSlots() {
         guard let data = UserDefaults.standard.data(forKey: slotsKey),
-              let decoded = try? JSONDecoder().decode([ComplexTemplate?].self, from: data)
+              let decoded = try? JSONDecoder().decode([ComplexTemplate?].self, from: data),
+              decoded.count == Self.maxWatchSlots
         else { return }
         watchSlots = decoded
     }

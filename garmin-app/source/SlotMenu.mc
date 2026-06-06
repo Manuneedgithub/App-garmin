@@ -6,7 +6,7 @@ import Toybox.Application;
 // Returns "X séries · Y tirs" if slot has data, null if empty
 function slotSummary(index as Number) as String or Null {
     var val = Application.Storage.getValue("slot_" + index.toString());
-    if (val == null) { return null; }
+    if (val == null || !(val instanceof Array)) { return null; }
     var arr   = val as Array;
     var total = 0;
     for (var i = 0; i < arr.size(); i++) {
