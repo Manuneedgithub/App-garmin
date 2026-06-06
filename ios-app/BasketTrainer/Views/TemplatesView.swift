@@ -8,6 +8,12 @@ struct TemplatesView: View {
     @EnvironmentObject var store:  SessionStore
     @EnvironmentObject var garmin: GarminManager
     let onLaunchManual: (ComplexTemplate) -> Void
+    let onAdd: (() -> Void)?
+
+    init(onLaunchManual: @escaping (ComplexTemplate) -> Void, onAdd: (() -> Void)? = nil) {
+        self.onLaunchManual = onLaunchManual
+        self.onAdd = onAdd
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -17,9 +23,17 @@ struct TemplatesView: View {
                     .font(.headline)
                     .foregroundStyle(.primary)
                 Spacer()
-                Text("\(store.templates.count)/\(SessionStore.maxTemplates)")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                if let onAdd {
+                    Button(action: onAdd) {
+                        Image(systemName: "plus.circle")
+                            .foregroundStyle(.orange)
+                            .font(.title3)
+                    }
+                } else {
+                    Text("\(store.templates.count)/\(SessionStore.maxTemplates)")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
             }
 
             if store.templates.isEmpty {

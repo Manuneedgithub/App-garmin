@@ -130,28 +130,14 @@ struct HomeView: View {
     }
 
     private var templatesSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("Routines")
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                Spacer()
-                Button {
-                    showRoutineBuilder = true
-                } label: {
-                    Image(systemName: "plus.circle")
-                        .foregroundStyle(.orange)
-                        .font(.title3)
-                }
-            }
-            .padding(.horizontal, 20)
-
-            TemplatesView(onLaunchManual: { t in
+        TemplatesView(
+            onLaunchManual: { t in
                 prefillTemplate = t
                 showManualEntry = true
-            })
-            .padding(.horizontal, 20)
-        }
+            },
+            onAdd: store.templates.count < SessionStore.maxTemplates ? { showRoutineBuilder = true } : nil
+        )
+        .padding(.horizontal, 20)
     }
 
     private var recentSessionsList: some View {
