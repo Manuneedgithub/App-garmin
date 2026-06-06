@@ -29,6 +29,7 @@ class BasketApp extends Application.AppBase {
 
     // Called when iPhone sends a message via sdk.sendMessage()
     function onMessage(message as Object) as Void {
+        if (!(message instanceof Dictionary)) { return; }
         var dict = message as Dictionary;
         if (dict["type"] instanceof String && (dict["type"] as String).equals("routine")) {
             _pendingRoutine = dict;
@@ -39,6 +40,7 @@ class BasketApp extends Application.AppBase {
         return _pendingRoutine;
     }
 
+    // Caller must invoke this after consuming the routine (peek + clear pattern)
     function clearPendingRoutine() as Void {
         _pendingRoutine = null;
     }
