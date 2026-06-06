@@ -28,9 +28,19 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
             var menu = new ExerciseMenuView();
             var del = new ExerciseMenuGoalDelegate();
             WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
-        } else {
-            // Objectif complexe : non implémenté dans ce plan
-            // (sera géré via guided session depuis iPhone)
+        } else if (id == 2) {
+            var routine = getApp().getPendingRoutine();
+            if (routine == null) {
+                var view = new RoutineWaitView();
+                var del  = new RoutineWaitDelegate();
+                WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
+            } else {
+                getApp().clearPendingRoutine();
+                var runner = new RoutineRunner(routine);
+                var view   = new RoutineStartView(runner);
+                var del    = new RoutineStartDelegate(runner);
+                WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
+            }
         }
     }
 
