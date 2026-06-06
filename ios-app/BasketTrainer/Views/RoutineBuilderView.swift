@@ -53,7 +53,7 @@ struct RoutineBuilderView: View {
                     }
                     .disabled(seriesList.isEmpty)
                     .fontWeight(.semibold)
-                    .foregroundStyle(seriesList.isEmpty ? .secondary : .orange)
+                    .foregroundStyle(Color.orange)
                 }
             }
         }
