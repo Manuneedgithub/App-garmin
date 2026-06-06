@@ -2,14 +2,14 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-// Point d'entrée principal de l'application
 class BasketApp extends Application.AppBase {
-    // Stocké en instance pour éviter le garbage collection du SyncManager
-    private var _sync as SyncManager or Null;
+    private var _sync           as SyncManager or Null;
+    private var _pendingRoutine as Dictionary or Null;
 
     function initialize() {
         AppBase.initialize();
-        _sync = null;
+        _sync           = null;
+        _pendingRoutine = null;
     }
 
     function onStart(state as Dictionary?) as Void {
@@ -21,15 +21,29 @@ class BasketApp extends Application.AppBase {
         _sync = null;
     }
 
-    // Premier écran affiché : choix du mode d'entraînement
     function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
         var menu     = new MainMenuView();
         var delegate = new MainMenuDelegate();
         return [menu, delegate];
     }
+
+    // Called when iPhone sends a message via sdk.sendMessage()
+    function onMessage(message as Object) as Void {
+        var dict = message as Dictionary;
+        if (dict["type"] instanceof String && (dict["type"] as String).equals("routine")) {
+            _pendingRoutine = dict;
+        }
+    }
+
+    function getPendingRoutine() as Dictionary or Null {
+        return _pendingRoutine;
+    }
+
+    function clearPendingRoutine() as Void {
+        _pendingRoutine = null;
+    }
 }
 
-// Raccourci global pour accéder à l'app
 function getApp() as BasketApp {
     return Application.getApp() as BasketApp;
 }
