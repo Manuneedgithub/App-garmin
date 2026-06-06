@@ -141,6 +141,19 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
         guidedTemplate = nil; guidedIndex = 0; guidedSeries = []
     }
 
+    func sendRoutine(_ template: ComplexTemplate) {
+        guard let device = connectedDevice else { return }
+        let app = IQApp(uuid: appUUID, store: appUUID, device: device)
+        let payload: [String: Any] = [
+            "type": "routine",
+            "series": template.series.map {
+                ["exerciseId": $0.exerciseType.rawValue, "totalShots": $0.totalShots]
+            }
+        ]
+        sdk.sendMessage(payload, to: app, progress: nil) { _ in }
+        startGuidedSession(template)
+    }
+
     func addMockSession() {
         let results = (0..<10).map { _ in Bool.random() }
         store.add(WorkoutSession(

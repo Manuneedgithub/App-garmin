@@ -29,7 +29,7 @@ struct TemplatesView: View {
                     TemplateCard(
                         template: template,
                         onLaunchManual: { onLaunchManual(template) },
-                        onLaunchGuided: { garmin.startGuidedSession(template) },
+                        onLaunchGuided: { garmin.sendRoutine(template) },
                         onDelete:       { store.deleteTemplate(template) }
                     )
                 }
