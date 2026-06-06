@@ -35,8 +35,8 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
                 var del  = new RoutineWaitDelegate();
                 WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
             } else {
-                getApp().clearPendingRoutine();
                 var runner = new RoutineRunner(routine);
+                getApp().clearPendingRoutine();
                 var view   = new RoutineStartView(runner);
                 var del    = new RoutineStartDelegate(runner);
                 WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
