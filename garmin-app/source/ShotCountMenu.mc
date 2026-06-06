@@ -36,7 +36,7 @@ class ShotCountMenuDelegate extends WatchUi.Menu2InputDelegate {
         var totalShots = item.getId() as Number;
         var session    = new WorkoutSession(_exerciseId, totalShots);
         var view       = new WorkoutView(session, _accumulator);
-        var delegate   = new WorkoutDelegate(session, view, _accumulator);
+        var delegate   = new WorkoutDelegate(session, view, _accumulator, null);
         WatchUi.pushView(view, delegate, WatchUi.SLIDE_LEFT);
     }
 

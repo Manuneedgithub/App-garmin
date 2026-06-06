@@ -134,26 +134,28 @@ class WorkoutView extends WatchUi.View {
 class WorkoutDelegate extends WatchUi.BehaviorDelegate {
     private var _session     as WorkoutSession;
     private var _accumulator as SessionAccumulator or Null;
+    private var _runner      as RoutineRunner or Null;
 
-    function initialize(session as WorkoutSession, view as WorkoutView, accumulator as SessionAccumulator or Null) {
+    function initialize(session     as WorkoutSession,
+                        view        as WorkoutView,
+                        accumulator as SessionAccumulator or Null,
+                        runner      as RoutineRunner or Null) {
         BehaviorDelegate.initialize();
         _session     = session;
         _accumulator = accumulator;
+        _runner      = runner;
     }
 
-    // Bouton HAUT → Tir réussi ✅
     function onNextPage() as Boolean {
         recordAndAdvance(true);
         return true;
     }
 
-    // Bouton BAS → Tir raté ❌
     function onPreviousPage() as Boolean {
         recordAndAdvance(false);
         return true;
     }
 
-    // Bouton BACK → annuler et revenir
     function onBack() as Boolean {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
@@ -163,15 +165,23 @@ class WorkoutDelegate extends WatchUi.BehaviorDelegate {
         _session.recordShot(made);
 
         if (_session.isFinished()) {
-            if (_accumulator != null) {
-                // Mode multi : ajouter la série et afficher l'écran de transition
+            if (_runner != null) {
+                // Routine mode: transmit, advance runner, show bridge view
+                var runner     = _runner as RoutineRunner;
+                var completedN = runner.seriesNumber();
+                runner.onSeriesComplete(_session);
+                var doneView = new RoutineSeriesDoneView(_session, runner, completedN);
+                var doneDel  = new RoutineSeriesDoneDelegate(runner);
+                WatchUi.pushView(doneView, doneDel, WatchUi.SLIDE_LEFT);
+            } else if (_accumulator != null) {
+                // Free multi-series mode
                 var acc = _accumulator as SessionAccumulator;
                 acc.addSeries(_session);
                 var doneView = new SeriesDoneView(_session, acc);
                 var doneDel  = new SeriesDoneDelegate(acc);
                 WatchUi.pushView(doneView, doneDel, WatchUi.SLIDE_LEFT);
             } else {
-                // Mode simple : écran de résumé standard
+                // Simple single-series mode
                 var summaryView = new SummaryView(_session);
                 var summaryDel  = new SummaryDelegate(_session);
                 WatchUi.pushView(summaryView, summaryDel, WatchUi.SLIDE_LEFT);
