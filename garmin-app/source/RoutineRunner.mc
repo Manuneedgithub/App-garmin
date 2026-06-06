@@ -34,6 +34,18 @@ class RoutineRunner {
         return (_series[i] as Dictionary)["totalShots"] as Number;
     }
 
+    function currentShotTypeId() as Number {
+        var d = _series[_index] as Dictionary;
+        if (d.hasKey("shotTypeId")) { return d["shotTypeId"] as Number; }
+        return 0;  // fallback: Catch & Shoot
+    }
+
+    function shotTypeIdAt(i as Number) as Number {
+        var d = _series[i] as Dictionary;
+        if (d.hasKey("shotTypeId")) { return d["shotTypeId"] as Number; }
+        return 0;  // fallback: Catch & Shoot
+    }
+
     function seriesNumber() as Number { return _index + 1; }  // 1-based
 
     function totalSeries() as Number { return _series.size(); }
@@ -157,7 +169,7 @@ class RoutineStartDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onSelect() as Boolean {
-        var sess = new WorkoutSession(_runner.currentExerciseId(), _runner.currentTotalShots());
+        var sess = new WorkoutSession(_runner.currentExerciseId(), _runner.currentTotalShots(), _runner.currentShotTypeId());
         var view = new WorkoutView(sess, null);
         var del  = new WorkoutDelegate(sess, view, null, _runner);
         WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
@@ -272,7 +284,7 @@ class RoutineSeriesDoneDelegate extends WatchUi.BehaviorDelegate {
             var del  = new RoutineFinalDelegate(_runner);
             WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
         } else {
-            var sess = new WorkoutSession(_runner.currentExerciseId(), _runner.currentTotalShots());
+            var sess = new WorkoutSession(_runner.currentExerciseId(), _runner.currentTotalShots(), _runner.currentShotTypeId());
             var view = new WorkoutView(sess, null);
             var del  = new WorkoutDelegate(sess, view, null, _runner);
             WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
