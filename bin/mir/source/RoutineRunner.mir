@@ -1,0 +1,2428 @@
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Communications,4,14,28]; ]
+import Toybox.Communications;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 10; @symbol_classdef = [RoutineRunner,10,6,19]; ]
+class RoutineRunner {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 10; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 10; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 11; @position = 16; @symbol_vardef = [_series,11,16,23]; @symbol_type<0> = [Array,11,27,32]; ]
+    private
+    var _series as Array;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 12; @position = 16; @symbol_vardef = [_index,12,16,22]; @symbol_type<0> = [Number,12,27,33]; ]
+    private
+    var _index as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 13; @position = 8; @symbol_vardef = [accumulator,13,8,19]; @symbol_type<0> = [SessionAccumulator,13,27,45]; ]
+    var accumulator as SessionAccumulator;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 15; @symbol_functiondef = [initialize,15,13,23]; @symbol_param<0> = [routine,15,24,31]; @symbol_param<0>_type<0> = [Dictionary,15,35,45]; ]
+    function initialize(routine as Dictionary) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_15_47_19_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 16 8 ]
+        %tmp.1 = lgetv %routine;
+        symbol [ routine %tmp.1 16 22 29 ];
+        %tmp.2 = "series";
+        %tmp.3 = agetv %tmp.1 %tmp.2;
+        %tmp.4 = as %tmp.3 Array;
+        symbol [ Array %tmp.4 16 43 48 ];
+        symbol [ _series ? 16 8 15 ];
+        putv self :_series %tmp.4;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 17 8 ]
+        %tmp.5 = 0;
+        symbol [ _index ? 17 8 14 ];
+        putv self :_index %tmp.5;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 18 8 ]
+        symbol [ SessionAccumulator %tmp.9 18 26 44 ];
+        %tmp.9 = getv ? :SessionAccumulator;
+        %tmp.6 = newc %tmp.9 ();
+        symbol [ accumulator ? 18 8 19 ];
+        putv self :accumulator %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_15_47_19_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 21; @symbol_functiondef = [currentExerciseId,21,13,30]; @symbol_return<0> = [Number,21,36,42]; ]
+    function currentExerciseId() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_21_43_23_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 22 8 ]
+        symbol [ _series %tmp.2 22 16 23 ];
+        %tmp.2 = getv ? :_series;
+        symbol [ _index %tmp.4 22 24 30 ];
+        %tmp.4 = getv ? :_index;
+        %tmp.5 = agetv %tmp.2 %tmp.4;
+        %tmp.6 = as %tmp.5 Dictionary;
+        symbol [ Dictionary %tmp.6 22 35 45 ];
+        %tmp.7 = "exerciseId";
+        %tmp.8 = agetv %tmp.6 %tmp.7;
+        %tmp.9 = as %tmp.8 Number;
+        symbol [ Number %tmp.9 22 64 70 ];
+        ret %tmp.9;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_21_43_23_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 25; @symbol_functiondef = [currentTotalShots,25,13,30]; @symbol_return<0> = [Number,25,36,42]; ]
+    function currentTotalShots() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_25_43_27_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 26 8 ]
+        symbol [ _series %tmp.2 26 16 23 ];
+        %tmp.2 = getv ? :_series;
+        symbol [ _index %tmp.4 26 24 30 ];
+        %tmp.4 = getv ? :_index;
+        %tmp.5 = agetv %tmp.2 %tmp.4;
+        %tmp.6 = as %tmp.5 Dictionary;
+        symbol [ Dictionary %tmp.6 26 35 45 ];
+        %tmp.7 = "totalShots";
+        %tmp.8 = agetv %tmp.6 %tmp.7;
+        %tmp.9 = as %tmp.8 Number;
+        symbol [ Number %tmp.9 26 64 70 ];
+        ret %tmp.9;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_25_43_27_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 29; @symbol_functiondef = [exerciseIdAt,29,13,25]; @symbol_param<0> = [i,29,26,27]; @symbol_param<0>_type<0> = [Number,29,31,37]; @symbol_return<0> = [Number,29,42,48]; ]
+    function exerciseIdAt(i as Number) as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_29_49_31_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 30 8 ]
+        symbol [ _series %tmp.2 30 16 23 ];
+        %tmp.2 = getv ? :_series;
+        %tmp.3 = lgetv %i;
+        symbol [ i %tmp.3 30 24 25 ];
+        %tmp.4 = agetv %tmp.2 %tmp.3;
+        %tmp.5 = as %tmp.4 Dictionary;
+        symbol [ Dictionary %tmp.5 30 30 40 ];
+        %tmp.6 = "exerciseId";
+        %tmp.7 = agetv %tmp.5 %tmp.6;
+        %tmp.8 = as %tmp.7 Number;
+        symbol [ Number %tmp.8 30 59 65 ];
+        ret %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_29_49_31_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 33; @symbol_functiondef = [totalShotsAt,33,13,25]; @symbol_param<0> = [i,33,26,27]; @symbol_param<0>_type<0> = [Number,33,31,37]; @symbol_return<0> = [Number,33,42,48]; ]
+    function totalShotsAt(i as Number) as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_33_49_35_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 34 8 ]
+        symbol [ _series %tmp.2 34 16 23 ];
+        %tmp.2 = getv ? :_series;
+        %tmp.3 = lgetv %i;
+        symbol [ i %tmp.3 34 24 25 ];
+        %tmp.4 = agetv %tmp.2 %tmp.3;
+        %tmp.5 = as %tmp.4 Dictionary;
+        symbol [ Dictionary %tmp.5 34 30 40 ];
+        %tmp.6 = "totalShots";
+        %tmp.7 = agetv %tmp.5 %tmp.6;
+        %tmp.8 = as %tmp.7 Number;
+        symbol [ Number %tmp.8 34 59 65 ];
+        ret %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_33_49_35_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 37; @symbol_functiondef = [seriesNumber,37,13,25]; @symbol_return<0> = [Number,37,31,37]; ]
+    function seriesNumber() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_37_38_37_59_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 37 40 ]
+        symbol [ _index %tmp.2 37 47 53 ];
+        %tmp.2 = getv ? :_index;
+        %tmp.3 = 1;
+        %tmp.4 = add %tmp.2 %tmp.3;
+        ret %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_37_38_37_59_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 39; @symbol_functiondef = [totalSeries,39,13,24]; @symbol_return<0> = [Number,39,30,36]; ]
+    function totalSeries() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_39_37_39_62_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 39 39 ]
+        symbol [ _series %tmp.2 39 46 53 ];
+        %tmp.2 = getv ? :_series;
+        symbol [ size %tmp.3 39 54 58 ];
+        %tmp.3 = getv function %tmp.2 :size;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        ret %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_39_37_39_62_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 41; @symbol_functiondef = [isComplete,41,13,23]; @symbol_return<0> = [Boolean,41,29,36]; ]
+    function isComplete() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_41_37_41_72_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 41 39 ]
+        symbol [ _index %tmp.2 41 46 52 ];
+        %tmp.2 = getv ? :_index;
+        symbol [ _series %tmp.4 41 56 63 ];
+        %tmp.4 = getv ? :_series;
+        symbol [ size %tmp.5 41 64 68 ];
+        %tmp.5 = getv function %tmp.4 :size;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = gte %tmp.2 %tmp.6;
+        ret %tmp.7;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_41_37_41_72_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 43; @symbol_functiondef = [totalPlannedShots,43,13,30]; @symbol_return<0> = [Number,43,36,42]; ]
+    function totalPlannedShots() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_43_43_49_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 44 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_43_43_49_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_43_43_49_4_stop" ]
+        %t.1 = local;
+        symbol [ t %t.1 44 12 13 ];
+        %tmp.1 = 0;
+        lputv %t.1 %tmp.1;
+        symbol [ t %t.1 44 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 45 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 45 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 45 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 45 24 25 ];
+        symbol [ _series %tmp.5 45 28 35 ];
+        %tmp.5 = getv ? :_series;
+        symbol [ size %tmp.6 45 36 40 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_49_47_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 46 12 ]
+        %tmp.9 = lgetv %t.1;
+        symbol [ t %tmp.9 46 12 13 ];
+        symbol [ _series %tmp.11 46 18 25 ];
+        %tmp.11 = getv ? :_series;
+        %tmp.12 = lgetv %i.2;
+        symbol [ i %tmp.12 46 26 27 ];
+        %tmp.13 = agetv %tmp.11 %tmp.12;
+        %tmp.14 = as %tmp.13 Dictionary;
+        symbol [ Dictionary %tmp.14 46 32 42 ];
+        %tmp.15 = "totalShots";
+        %tmp.16 = agetv %tmp.14 %tmp.15;
+        %tmp.17 = as %tmp.16 Number;
+        symbol [ Number %tmp.17 46 61 67 ];
+        %tmp.18 = add %tmp.9 %tmp.17;
+        lputv %t.1 %tmp.18;
+        symbol [ t %t.1 46 12 13 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_49_47_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 45 ]
+        %tmp.21 = lgetv %i.2;
+        symbol [ i %tmp.21 45 44 45 ];
+        %tmp.22 = add %tmp.21 1;
+        lputv %i.2 %tmp.22;
+        symbol [ i %i.2 45 44 45 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_45_8_47_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 48 8 ]
+        %tmp.23 = lgetv %t.1;
+        symbol [ t %tmp.23 48 15 16 ];
+        ret %tmp.23;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_43_43_49_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 52; @symbol_functiondef = [onSeriesComplete,52,13,29]; @symbol_param<0> = [session,52,30,37]; @symbol_param<0>_type<0> = [WorkoutSession,52,41,55]; ]
+    function onSeriesComplete(session as WorkoutSession) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_52_65_57_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 53 8 ]
+        symbol [ accumulator %tmp.2 53 8 19 ];
+        %tmp.2 = getv ? :accumulator;
+        symbol [ addSeries %tmp.3 53 20 29 ];
+        %tmp.3 = getv function %tmp.2 :addSeries;
+        %tmp.4 = lgetv %session;
+        symbol [ session %tmp.4 53 30 37 ];
+        invoke %tmp.2 %tmp.3(%tmp.4);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 54 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_52_65_57_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_52_65_57_4_stop" ]
+        %dict.1 = local;
+        symbol [ dict %dict.1 54 12 16 ];
+        %tmp.5 = lgetv %session;
+        symbol [ session %tmp.5 54 19 26 ];
+        symbol [ toDictionary %tmp.6 54 27 39 ];
+        %tmp.6 = getv function %tmp.5 :toDictionary;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %dict.1 %tmp.7;
+        symbol [ dict %dict.1 54 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 55 8 ]
+        symbol [ Communications %tmp.8 55 8 22 ];
+        %tmp.8 = getm $.Toybox.Communications;
+        symbol [ transmit %tmp.9 55 23 31 ];
+        %tmp.9 = getv function %tmp.8 :transmit;
+        %tmp.10 = lgetv %dict.1;
+        symbol [ dict %tmp.10 55 32 36 ];
+        %tmp.11 = null;
+        symbol [ TransmitListener %tmp.15 55 48 64 ];
+        %tmp.15 = getv ? :TransmitListener;
+        %tmp.16 = lgetv %dict.1;
+        symbol [ dict %tmp.16 55 65 69 ];
+        %tmp.12 = newc %tmp.15 (%tmp.16);
+        invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11, %tmp.12);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 56 8 ]
+        symbol [ _index %tmp.19 56 8 14 ];
+        %tmp.19 = getv ? :_index;
+        %tmp.20 = add %tmp.19 1;
+        symbol [ _index ? 56 8 14 ];
+        putv self :_index dup %tmp.20;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_52_65_57_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 64; @symbol_classdef = [RoutineWaitView,64,6,21]; @symbol_extends<0> = [WatchUi,64,30,37]; @symbol_extends<1> = [View,64,38,42]; ]
+class RoutineWaitView extends WatchUi.View {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 64; ]
+    <init> {
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 65 18 ]
+        symbol [ Graphics %tmp.21 65 33 41 ];
+        %tmp.21 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.22 65 42 53 ];
+        %tmp.22 = getv %tmp.21 :COLOR_BLACK;
+        putv self :COLOR_BG %tmp.22;
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 64; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 65; @position = 18; @symbol_constdef = [COLOR_BG,65,18,26]; ]
+    private
+    const COLOR_BG;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 66; @position = 18; @symbol_constdef = [COLOR_ORANGE,66,18,30]; ]
+    private
+    const COLOR_ORANGE = 0xFF6600;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 67; @position = 18; @symbol_constdef = [COLOR_GRAY,67,18,28]; ]
+    private
+    const COLOR_GRAY = 0x888888;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 69; @symbol_functiondef = [initialize,69,13,23]; ]
+    function initialize() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_69_26_69_47_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 69 28 ]
+        symbol [ View %tmp.2 69 28 32 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 69 33 43 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_69_26_69_47_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 71; @symbol_functiondef = [onUpdate,71,13,21]; @symbol_param<0> = [dc,71,22,24]; @symbol_param<0>_type<0> = [Graphics,71,28,36]; @symbol_param<0>_type<1> = [Dc,71,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_71_49_88_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 72 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_71_49_88_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_71_49_88_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 72 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 72 17 19 ];
+        symbol [ getWidth %tmp.2 72 20 28 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %w.1 %tmp.3;
+        symbol [ w %w.1 72 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 73 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_71_49_88_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_71_49_88_4_stop" ]
+        %cx.2 = local;
+        symbol [ cx %cx.2 73 12 14 ];
+        %tmp.4 = lgetv %w.1;
+        symbol [ w %tmp.4 73 17 18 ];
+        %tmp.5 = 2;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        lputv %cx.2 %tmp.6;
+        symbol [ cx %cx.2 73 12 14 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 74 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 74 8 10 ];
+        symbol [ setColor %tmp.8 74 11 19 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ COLOR_BG %tmp.10 74 20 28 ];
+        %tmp.10 = getv ? :COLOR_BG;
+        symbol [ COLOR_BG %tmp.12 74 30 38 ];
+        %tmp.12 = getv ? :COLOR_BG;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 75 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 75 8 10 ];
+        symbol [ clear %tmp.14 75 11 16 ];
+        %tmp.14 = getv function %tmp.13 :clear;
+        invoke %tmp.13 %tmp.14();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 76 8 ]
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 76 8 10 ];
+        symbol [ setColor %tmp.16 76 11 19 ];
+        %tmp.16 = getv function %tmp.15 :setColor;
+        symbol [ COLOR_ORANGE %tmp.18 76 20 32 ];
+        %tmp.18 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.19 76 34 42 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.20 76 43 60 ];
+        %tmp.20 = getv %tmp.19 :COLOR_TRANSPARENT;
+        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 77 8 ]
+        %tmp.21 = lgetv %dc;
+        symbol [ dc %tmp.21 77 8 10 ];
+        symbol [ drawText %tmp.22 77 11 19 ];
+        %tmp.22 = getv function %tmp.21 :drawText;
+        %tmp.23 = lgetv %cx.2;
+        symbol [ cx %tmp.23 77 20 22 ];
+        %tmp.24 = 90;
+        symbol [ Graphics %tmp.25 77 29 37 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.26 77 38 47 ];
+        %tmp.26 = getv %tmp.25 :FONT_TINY;
+        %tmp.27 = "Aucune routine";
+        symbol [ Graphics %tmp.28 78 20 28 ];
+        %tmp.28 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.29 78 29 48 ];
+        %tmp.29 = getv %tmp.28 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.30 78 51 59 ];
+        %tmp.30 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.31 78 60 80 ];
+        %tmp.31 = getv %tmp.30 :TEXT_JUSTIFY_VCENTER;
+        %tmp.32 = bitor %tmp.29 %tmp.31;
+        invoke %tmp.21 %tmp.22(%tmp.23, %tmp.24, %tmp.26, %tmp.27, %tmp.32);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 79 8 ]
+        %tmp.33 = lgetv %dc;
+        symbol [ dc %tmp.33 79 8 10 ];
+        symbol [ setColor %tmp.34 79 11 19 ];
+        %tmp.34 = getv function %tmp.33 :setColor;
+        symbol [ COLOR_GRAY %tmp.36 79 20 30 ];
+        %tmp.36 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.37 79 32 40 ];
+        %tmp.37 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.38 79 41 58 ];
+        %tmp.38 = getv %tmp.37 :COLOR_TRANSPARENT;
+        invoke %tmp.33 %tmp.34(%tmp.36, %tmp.38);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 80 8 ]
+        %tmp.39 = lgetv %dc;
+        symbol [ dc %tmp.39 80 8 10 ];
+        symbol [ drawText %tmp.40 80 11 19 ];
+        %tmp.40 = getv function %tmp.39 :drawText;
+        %tmp.41 = lgetv %cx.2;
+        symbol [ cx %tmp.41 80 20 22 ];
+        %tmp.42 = 118;
+        symbol [ Graphics %tmp.43 80 29 37 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.44 80 38 48 ];
+        %tmp.44 = getv %tmp.43 :FONT_XTINY;
+        %tmp.45 = "Ouvre l'app iPhone";
+        symbol [ Graphics %tmp.46 81 20 28 ];
+        %tmp.46 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.47 81 29 48 ];
+        %tmp.47 = getv %tmp.46 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.48 81 51 59 ];
+        %tmp.48 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.49 81 60 80 ];
+        %tmp.49 = getv %tmp.48 :TEXT_JUSTIFY_VCENTER;
+        %tmp.50 = bitor %tmp.47 %tmp.49;
+        invoke %tmp.39 %tmp.40(%tmp.41, %tmp.42, %tmp.44, %tmp.45, %tmp.50);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 82 8 ]
+        %tmp.51 = lgetv %dc;
+        symbol [ dc %tmp.51 82 8 10 ];
+        symbol [ drawText %tmp.52 82 11 19 ];
+        %tmp.52 = getv function %tmp.51 :drawText;
+        %tmp.53 = lgetv %cx.2;
+        symbol [ cx %tmp.53 82 20 22 ];
+        %tmp.54 = 136;
+        symbol [ Graphics %tmp.55 82 29 37 ];
+        %tmp.55 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.56 82 38 48 ];
+        %tmp.56 = getv %tmp.55 :FONT_XTINY;
+        %tmp.57 = "et appuie sur";
+        symbol [ Graphics %tmp.58 83 20 28 ];
+        %tmp.58 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.59 83 29 48 ];
+        %tmp.59 = getv %tmp.58 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.60 83 51 59 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.61 83 60 80 ];
+        %tmp.61 = getv %tmp.60 :TEXT_JUSTIFY_VCENTER;
+        %tmp.62 = bitor %tmp.59 %tmp.61;
+        invoke %tmp.51 %tmp.52(%tmp.53, %tmp.54, %tmp.56, %tmp.57, %tmp.62);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 84 8 ]
+        %tmp.63 = lgetv %dc;
+        symbol [ dc %tmp.63 84 8 10 ];
+        symbol [ drawText %tmp.64 84 11 19 ];
+        %tmp.64 = getv function %tmp.63 :drawText;
+        %tmp.65 = lgetv %cx.2;
+        symbol [ cx %tmp.65 84 20 22 ];
+        %tmp.66 = 154;
+        symbol [ Graphics %tmp.67 84 29 37 ];
+        %tmp.67 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.68 84 38 48 ];
+        %tmp.68 = getv %tmp.67 :FONT_XTINY;
+        %tmp.69 = "\"Guider la montre\"";
+        symbol [ Graphics %tmp.70 85 20 28 ];
+        %tmp.70 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.71 85 29 48 ];
+        %tmp.71 = getv %tmp.70 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.72 85 51 59 ];
+        %tmp.72 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.73 85 60 80 ];
+        %tmp.73 = getv %tmp.72 :TEXT_JUSTIFY_VCENTER;
+        %tmp.74 = bitor %tmp.71 %tmp.73;
+        invoke %tmp.63 %tmp.64(%tmp.65, %tmp.66, %tmp.68, %tmp.69, %tmp.74);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 86 8 ]
+        %tmp.75 = lgetv %dc;
+        symbol [ dc %tmp.75 86 8 10 ];
+        symbol [ drawText %tmp.76 86 11 19 ];
+        %tmp.76 = getv function %tmp.75 :drawText;
+        %tmp.77 = lgetv %cx.2;
+        symbol [ cx %tmp.77 86 20 22 ];
+        %tmp.78 = 215;
+        symbol [ Graphics %tmp.79 86 29 37 ];
+        %tmp.79 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.80 86 38 48 ];
+        %tmp.80 = getv %tmp.79 :FONT_XTINY;
+        %tmp.81 = "↩ Retour";
+        symbol [ Graphics %tmp.82 87 20 28 ];
+        %tmp.82 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.83 87 29 48 ];
+        %tmp.83 = getv %tmp.82 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.84 87 51 59 ];
+        %tmp.84 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.85 87 60 80 ];
+        %tmp.85 = getv %tmp.84 :TEXT_JUSTIFY_VCENTER;
+        %tmp.86 = bitor %tmp.83 %tmp.85;
+        invoke %tmp.75 %tmp.76(%tmp.77, %tmp.78, %tmp.80, %tmp.81, %tmp.86);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_71_49_88_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 91; @symbol_classdef = [RoutineWaitDelegate,91,6,25]; @symbol_extends<0> = [WatchUi,91,34,41]; @symbol_extends<1> = [BehaviorDelegate,91,42,58]; ]
+class RoutineWaitDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 91; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 91; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 92; @symbol_functiondef = [initialize,92,13,23]; ]
+    function initialize() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_92_26_92_59_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 92 28 ]
+        symbol [ BehaviorDelegate %tmp.2 92 28 44 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 92 45 55 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_92_26_92_59_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 93; @symbol_functiondef = [onBack,93,13,19]; @symbol_return<0> = [Boolean,93,25,32]; ]
+    function onBack() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_93_33_96_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 94 8 ]
+        symbol [ WatchUi %tmp.1 94 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 94 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 94 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 94 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 95 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_93_33_96_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 103; @symbol_classdef = [RoutineStartView,103,6,22]; @symbol_extends<0> = [WatchUi,103,31,38]; @symbol_extends<1> = [View,103,39,43]; ]
+class RoutineStartView extends WatchUi.View {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 103; ]
+    <init> {
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 105 18 ]
+        symbol [ Graphics %tmp.6 105 33 41 ];
+        %tmp.6 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.7 105 42 53 ];
+        %tmp.7 = getv %tmp.6 :COLOR_BLACK;
+        putv self :COLOR_BG %tmp.7;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 106 18 ]
+        symbol [ Graphics %tmp.8 106 33 41 ];
+        %tmp.8 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.9 106 42 53 ];
+        %tmp.9 = getv %tmp.8 :COLOR_WHITE;
+        putv self :COLOR_WHITE %tmp.9;
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 103; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 104; @position = 16; @symbol_vardef = [_runner,104,16,23]; @symbol_type<0> = [RoutineRunner,104,30,43]; ]
+    private
+    var _runner as RoutineRunner;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 105; @position = 18; @symbol_constdef = [COLOR_BG,105,18,26]; ]
+    private
+    const COLOR_BG;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 106; @position = 18; @symbol_constdef = [COLOR_WHITE,106,18,29]; ]
+    private
+    const COLOR_WHITE;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 107; @position = 18; @symbol_constdef = [COLOR_ORANGE,107,18,30]; ]
+    private
+    const COLOR_ORANGE = 0xFF6600;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 108; @position = 18; @symbol_constdef = [COLOR_GRAY,108,18,28]; ]
+    private
+    const COLOR_GRAY = 0x888888;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 110; @symbol_functiondef = [initialize,110,13,23]; @symbol_param<0> = [runner,110,24,30]; @symbol_param<0>_type<0> = [RoutineRunner,110,34,47]; ]
+    function initialize(runner as RoutineRunner) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_110_49_113_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 111 8 ]
+        symbol [ View %tmp.2 111 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 111 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 112 8 ]
+        %tmp.4 = lgetv %runner;
+        symbol [ runner %tmp.4 112 18 24 ];
+        symbol [ _runner ? 112 8 15 ];
+        putv self :_runner %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_110_49_113_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 115; @symbol_functiondef = [onUpdate,115,13,21]; @symbol_param<0> = [dc,115,22,24]; @symbol_param<0>_type<0> = [Graphics,115,28,36]; @symbol_param<0>_type<1> = [Dc,115,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 116 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 116 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 116 17 19 ];
+        symbol [ getWidth %tmp.2 116 20 28 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %w.1 %tmp.3;
+        symbol [ w %w.1 116 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 117 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_stop" ]
+        %cx.2 = local;
+        symbol [ cx %cx.2 117 12 14 ];
+        %tmp.4 = lgetv %w.1;
+        symbol [ w %tmp.4 117 17 18 ];
+        %tmp.5 = 2;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        lputv %cx.2 %tmp.6;
+        symbol [ cx %cx.2 117 12 14 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 118 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 118 8 10 ];
+        symbol [ setColor %tmp.8 118 11 19 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ COLOR_BG %tmp.10 118 20 28 ];
+        %tmp.10 = getv ? :COLOR_BG;
+        symbol [ COLOR_BG %tmp.12 118 30 38 ];
+        %tmp.12 = getv ? :COLOR_BG;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 119 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 119 8 10 ];
+        symbol [ clear %tmp.14 119 11 16 ];
+        %tmp.14 = getv function %tmp.13 :clear;
+        invoke %tmp.13 %tmp.14();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 122 8 ]
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 122 8 10 ];
+        symbol [ setColor %tmp.16 122 11 19 ];
+        %tmp.16 = getv function %tmp.15 :setColor;
+        symbol [ COLOR_GRAY %tmp.18 122 20 30 ];
+        %tmp.18 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.19 122 32 40 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.20 122 41 58 ];
+        %tmp.20 = getv %tmp.19 :COLOR_TRANSPARENT;
+        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 123 8 ]
+        %tmp.21 = lgetv %dc;
+        symbol [ dc %tmp.21 123 8 10 ];
+        symbol [ drawText %tmp.22 123 11 19 ];
+        %tmp.22 = getv function %tmp.21 :drawText;
+        %tmp.23 = lgetv %cx.2;
+        symbol [ cx %tmp.23 123 20 22 ];
+        %tmp.24 = 24;
+        symbol [ Graphics %tmp.25 123 28 36 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.26 123 37 47 ];
+        %tmp.26 = getv %tmp.25 :FONT_XTINY;
+        %tmp.27 = "Routine guidée";
+        symbol [ Graphics %tmp.28 124 20 28 ];
+        %tmp.28 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.29 124 29 48 ];
+        %tmp.29 = getv %tmp.28 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.30 124 51 59 ];
+        %tmp.30 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.31 124 60 80 ];
+        %tmp.31 = getv %tmp.30 :TEXT_JUSTIFY_VCENTER;
+        %tmp.32 = bitor %tmp.29 %tmp.31;
+        invoke %tmp.21 %tmp.22(%tmp.23, %tmp.24, %tmp.26, %tmp.27, %tmp.32);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 127 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_stop" ]
+        %header.3 = local;
+        symbol [ header %header.3 127 12 18 ];
+        symbol [ _runner %tmp.34 127 21 28 ];
+        %tmp.34 = getv ? :_runner;
+        symbol [ totalSeries %tmp.35 127 29 40 ];
+        %tmp.35 = getv function %tmp.34 :totalSeries;
+        %tmp.36 = invoke %tmp.34 %tmp.35();
+        symbol [ toString %tmp.37 127 43 51 ];
+        %tmp.37 = getv function %tmp.36 :toString;
+        %tmp.38 = invoke %tmp.36 %tmp.37();
+        %tmp.39 = " séries · ";
+        %tmp.40 = add %tmp.38 %tmp.39;
+        symbol [ _runner %tmp.42 128 21 28 ];
+        %tmp.42 = getv ? :_runner;
+        symbol [ totalPlannedShots %tmp.43 128 29 46 ];
+        %tmp.43 = getv function %tmp.42 :totalPlannedShots;
+        %tmp.44 = invoke %tmp.42 %tmp.43();
+        symbol [ toString %tmp.45 128 49 57 ];
+        %tmp.45 = getv function %tmp.44 :toString;
+        %tmp.46 = invoke %tmp.44 %tmp.45();
+        %tmp.47 = add %tmp.40 %tmp.46;
+        %tmp.48 = " tirs";
+        %tmp.49 = add %tmp.47 %tmp.48;
+        lputv %header.3 %tmp.49;
+        symbol [ header %header.3 127 12 18 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 129 8 ]
+        %tmp.50 = lgetv %dc;
+        symbol [ dc %tmp.50 129 8 10 ];
+        symbol [ setColor %tmp.51 129 11 19 ];
+        %tmp.51 = getv function %tmp.50 :setColor;
+        symbol [ COLOR_WHITE %tmp.53 129 20 31 ];
+        %tmp.53 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.54 129 33 41 ];
+        %tmp.54 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.55 129 42 59 ];
+        %tmp.55 = getv %tmp.54 :COLOR_TRANSPARENT;
+        invoke %tmp.50 %tmp.51(%tmp.53, %tmp.55);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 130 8 ]
+        %tmp.56 = lgetv %dc;
+        symbol [ dc %tmp.56 130 8 10 ];
+        symbol [ drawText %tmp.57 130 11 19 ];
+        %tmp.57 = getv function %tmp.56 :drawText;
+        %tmp.58 = lgetv %cx.2;
+        symbol [ cx %tmp.58 130 20 22 ];
+        %tmp.59 = 46;
+        symbol [ Graphics %tmp.60 130 28 36 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.61 130 37 46 ];
+        %tmp.61 = getv %tmp.60 :FONT_TINY;
+        %tmp.62 = lgetv %header.3;
+        symbol [ header %tmp.62 130 48 54 ];
+        symbol [ Graphics %tmp.63 131 20 28 ];
+        %tmp.63 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.64 131 29 48 ];
+        %tmp.64 = getv %tmp.63 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.65 131 51 59 ];
+        %tmp.65 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.66 131 60 80 ];
+        %tmp.66 = getv %tmp.65 :TEXT_JUSTIFY_VCENTER;
+        %tmp.67 = bitor %tmp.64 %tmp.66;
+        invoke %tmp.56 %tmp.57(%tmp.58, %tmp.59, %tmp.61, %tmp.62, %tmp.67);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 134 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_stop" ]
+        %n.4 = local;
+        symbol [ n %n.4 134 12 13 ];
+        symbol [ _runner %tmp.69 134 16 23 ];
+        %tmp.69 = getv ? :_runner;
+        symbol [ totalSeries %tmp.70 134 24 35 ];
+        %tmp.70 = getv function %tmp.69 :totalSeries;
+        %tmp.71 = invoke %tmp.69 %tmp.70();
+        lputv %n.4 %tmp.71;
+        symbol [ n %n.4 134 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 135 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_end" ]
+        %i.5 = local;
+        symbol [ i %i.5 135 17 18 ];
+        %tmp.72 = 0;
+        lputv %i.5 %tmp.72;
+        symbol [ i %i.5 135 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_test:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_24_135_37_begin:
+        %tmp.73 = lgetv %i.5;
+        symbol [ i %tmp.73 135 24 25 ];
+        %tmp.74 = lgetv %n.4;
+        symbol [ n %tmp.74 135 28 29 ];
+        %tmp.75 = lt %tmp.73 %tmp.74;
+        %tmp.76 = dup %tmp.75;
+        bf %tmp.76 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_33_135_37_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_33_135_37_true:
+        %tmp.77 = lgetv %i.5;
+        symbol [ i %tmp.77 135 33 34 ];
+        %tmp.78 = 6;
+        %tmp.79 = lt %tmp.77 %tmp.78;
+        %tmp.80 = and %tmp.75 %tmp.79;
+        push %tmp.80;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_33_135_37_end:
+        %tmp.81 = phi [%tmp.76 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_24_135_37_begin] [%tmp.80 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_33_135_37_true] [%tmp.81 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_33_135_37_end];
+        bf %tmp.81 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_45_142_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 136 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_45_142_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_45_142_8_stop" ]
+        %line.6 = local;
+        symbol [ line %line.6 136 16 20 ];
+        %tmp.82 = lgetv %i.5;
+        symbol [ i %tmp.82 136 24 25 ];
+        %tmp.83 = 1;
+        %tmp.84 = add %tmp.82 %tmp.83;
+        symbol [ toString %tmp.85 136 31 39 ];
+        %tmp.85 = getv function %tmp.84 :toString;
+        %tmp.86 = invoke %tmp.84 %tmp.85();
+        %tmp.87 = ". ";
+        %tmp.88 = add %tmp.86 %tmp.87;
+        %tmp.89 = self;
+        symbol [ getExerciseName %tmp.90 137 23 38 ];
+        %tmp.90 = getv function %tmp.89 :getExerciseName;
+        symbol [ _runner %tmp.92 137 39 46 ];
+        %tmp.92 = getv ? :_runner;
+        symbol [ exerciseIdAt %tmp.93 137 47 59 ];
+        %tmp.93 = getv function %tmp.92 :exerciseIdAt;
+        %tmp.94 = lgetv %i.5;
+        symbol [ i %tmp.94 137 60 61 ];
+        %tmp.95 = invoke %tmp.92 %tmp.93(%tmp.94);
+        %tmp.96 = invoke %tmp.89 %tmp.90(%tmp.95);
+        %tmp.97 = add %tmp.88 %tmp.96;
+        %tmp.98 = " ×";
+        %tmp.99 = add %tmp.97 %tmp.98;
+        symbol [ _runner %tmp.101 138 30 37 ];
+        %tmp.101 = getv ? :_runner;
+        symbol [ totalShotsAt %tmp.102 138 38 50 ];
+        %tmp.102 = getv function %tmp.101 :totalShotsAt;
+        %tmp.103 = lgetv %i.5;
+        symbol [ i %tmp.103 138 51 52 ];
+        %tmp.104 = invoke %tmp.101 %tmp.102(%tmp.103);
+        symbol [ toString %tmp.105 138 54 62 ];
+        %tmp.105 = getv function %tmp.104 :toString;
+        %tmp.106 = invoke %tmp.104 %tmp.105();
+        %tmp.107 = add %tmp.99 %tmp.106;
+        lputv %line.6 %tmp.107;
+        symbol [ line %line.6 136 16 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 139 12 ]
+        %tmp.108 = lgetv %dc;
+        symbol [ dc %tmp.108 139 12 14 ];
+        symbol [ setColor %tmp.109 139 15 23 ];
+        %tmp.109 = getv function %tmp.108 :setColor;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_begin:
+        %tmp.110 = lgetv %i.5;
+        symbol [ i %tmp.110 139 24 25 ];
+        %tmp.111 = 0;
+        %tmp.112 = eq %tmp.110 %tmp.111;
+        bf %tmp.112 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_true:
+        symbol [ COLOR_ORANGE %tmp.114 139 33 45 ];
+        %tmp.114 = getv ? :COLOR_ORANGE;
+        push %tmp.114;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_else_false:
+        symbol [ COLOR_GRAY %tmp.116 139 48 58 ];
+        %tmp.116 = getv ? :COLOR_GRAY;
+        push %tmp.116;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_end:
+        %tmp.117 = phi [%tmp.112 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_begin] [%tmp.114 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_true] [%tmp.116 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_else_false] [%tmp.117 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_139_24_139_48_end];
+        symbol [ Graphics %tmp.118 139 60 68 ];
+        %tmp.118 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.119 139 69 86 ];
+        %tmp.119 = getv %tmp.118 :COLOR_TRANSPARENT;
+        invoke %tmp.108 %tmp.109(%tmp.117, %tmp.119);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 140 12 ]
+        %tmp.120 = lgetv %dc;
+        symbol [ dc %tmp.120 140 12 14 ];
+        symbol [ drawText %tmp.121 140 15 23 ];
+        %tmp.121 = getv function %tmp.120 :drawText;
+        %tmp.122 = lgetv %cx.2;
+        symbol [ cx %tmp.122 140 24 26 ];
+        %tmp.123 = 76;
+        %tmp.124 = lgetv %i.5;
+        symbol [ i %tmp.124 140 33 34 ];
+        %tmp.125 = 20;
+        %tmp.126 = mul %tmp.124 %tmp.125;
+        %tmp.127 = add %tmp.123 %tmp.126;
+        symbol [ Graphics %tmp.128 140 41 49 ];
+        %tmp.128 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.129 140 50 60 ];
+        %tmp.129 = getv %tmp.128 :FONT_XTINY;
+        %tmp.130 = lgetv %line.6;
+        symbol [ line %tmp.130 140 62 66 ];
+        symbol [ Graphics %tmp.131 141 24 32 ];
+        %tmp.131 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.132 141 33 52 ];
+        %tmp.132 = getv %tmp.131 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.133 141 55 63 ];
+        %tmp.133 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.134 141 64 84 ];
+        %tmp.134 = getv %tmp.133 :TEXT_JUSTIFY_VCENTER;
+        %tmp.135 = bitor %tmp.132 %tmp.134;
+        invoke %tmp.120 %tmp.121(%tmp.122, %tmp.127, %tmp.129, %tmp.130, %tmp.135);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_45_142_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 135 ]
+        %tmp.138 = lgetv %i.5;
+        symbol [ i %tmp.138 135 40 41 ];
+        %tmp.139 = add %tmp.138 1;
+        lputv %i.5 %tmp.139;
+        symbol [ i %i.5 135 40 41 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_135_8_142_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 145 8 ]
+        %tmp.140 = lgetv %dc;
+        symbol [ dc %tmp.140 145 8 10 ];
+        symbol [ setColor %tmp.141 145 11 19 ];
+        %tmp.141 = getv function %tmp.140 :setColor;
+        symbol [ COLOR_ORANGE %tmp.143 145 20 32 ];
+        %tmp.143 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.144 145 34 42 ];
+        %tmp.144 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.145 145 43 60 ];
+        %tmp.145 = getv %tmp.144 :COLOR_TRANSPARENT;
+        invoke %tmp.140 %tmp.141(%tmp.143, %tmp.145);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 146 8 ]
+        %tmp.146 = lgetv %dc;
+        symbol [ dc %tmp.146 146 8 10 ];
+        symbol [ drawText %tmp.147 146 11 19 ];
+        %tmp.147 = getv function %tmp.146 :drawText;
+        %tmp.148 = lgetv %cx.2;
+        symbol [ cx %tmp.148 146 20 22 ];
+        %tmp.149 = 224;
+        symbol [ Graphics %tmp.150 146 29 37 ];
+        %tmp.150 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.151 146 38 48 ];
+        %tmp.151 = getv %tmp.150 :FONT_XTINY;
+        %tmp.152 = "▶ START = commencer";
+        symbol [ Graphics %tmp.153 147 20 28 ];
+        %tmp.153 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.154 147 29 48 ];
+        %tmp.154 = getv %tmp.153 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.155 147 51 59 ];
+        %tmp.155 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.156 147 60 80 ];
+        %tmp.156 = getv %tmp.155 :TEXT_JUSTIFY_VCENTER;
+        %tmp.157 = bitor %tmp.154 %tmp.156;
+        invoke %tmp.146 %tmp.147(%tmp.148, %tmp.149, %tmp.151, %tmp.152, %tmp.157);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_115_49_148_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 151; @symbol_classdef = [RoutineStartDelegate,151,6,26]; @symbol_extends<0> = [WatchUi,151,35,42]; @symbol_extends<1> = [BehaviorDelegate,151,43,59]; ]
+class RoutineStartDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 151; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 151; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 152; @position = 16; @symbol_vardef = [_runner,152,16,23]; @symbol_type<0> = [RoutineRunner,152,27,40]; ]
+    private
+    var _runner as RoutineRunner;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 154; @symbol_functiondef = [initialize,154,13,23]; @symbol_param<0> = [runner,154,24,30]; @symbol_param<0>_type<0> = [RoutineRunner,154,34,47]; ]
+    function initialize(runner as RoutineRunner) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_154_49_157_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 155 8 ]
+        symbol [ BehaviorDelegate %tmp.2 155 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 155 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 156 8 ]
+        %tmp.4 = lgetv %runner;
+        symbol [ runner %tmp.4 156 18 24 ];
+        symbol [ _runner ? 156 8 15 ];
+        putv self :_runner %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_154_49_157_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 159; @symbol_functiondef = [onSelect,159,13,21]; @symbol_return<0> = [Boolean,159,27,34]; ]
+    function onSelect() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 160 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_stop" ]
+        %sess.1 = local;
+        symbol [ sess %sess.1 160 12 16 ];
+        symbol [ WorkoutSession %tmp.4 160 23 37 ];
+        %tmp.4 = getv ? :WorkoutSession;
+        symbol [ _runner %tmp.6 160 38 45 ];
+        %tmp.6 = getv ? :_runner;
+        symbol [ currentExerciseId %tmp.7 160 46 63 ];
+        %tmp.7 = getv function %tmp.6 :currentExerciseId;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        symbol [ _runner %tmp.10 160 67 74 ];
+        %tmp.10 = getv ? :_runner;
+        symbol [ currentTotalShots %tmp.11 160 75 92 ];
+        %tmp.11 = getv function %tmp.10 :currentTotalShots;
+        %tmp.12 = invoke %tmp.10 %tmp.11();
+        %tmp.1 = newc %tmp.4 (%tmp.8, %tmp.12);
+        lputv %sess.1 %tmp.1;
+        symbol [ sess %sess.1 160 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 161 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_stop" ]
+        %view.2 = local;
+        symbol [ view %view.2 161 12 16 ];
+        symbol [ WorkoutView %tmp.16 161 23 34 ];
+        %tmp.16 = getv ? :WorkoutView;
+        %tmp.17 = lgetv %sess.1;
+        symbol [ sess %tmp.17 161 35 39 ];
+        %tmp.18 = null;
+        %tmp.13 = newc %tmp.16 (%tmp.17, %tmp.18);
+        lputv %view.2 %tmp.13;
+        symbol [ view %view.2 161 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 162 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_stop" ]
+        %del.3 = local;
+        symbol [ del %del.3 162 12 15 ];
+        symbol [ WorkoutDelegate %tmp.22 162 23 38 ];
+        %tmp.22 = getv ? :WorkoutDelegate;
+        %tmp.23 = lgetv %sess.1;
+        symbol [ sess %tmp.23 162 39 43 ];
+        %tmp.24 = lgetv %view.2;
+        symbol [ view %tmp.24 162 45 49 ];
+        %tmp.25 = null;
+        symbol [ _runner %tmp.27 162 57 64 ];
+        %tmp.27 = getv ? :_runner;
+        %tmp.19 = newc %tmp.22 (%tmp.23, %tmp.24, %tmp.25, %tmp.27);
+        lputv %del.3 %tmp.19;
+        symbol [ del %del.3 162 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 163 8 ]
+        symbol [ WatchUi %tmp.28 163 8 15 ];
+        %tmp.28 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.29 163 16 24 ];
+        %tmp.29 = getv function %tmp.28 :pushView;
+        %tmp.30 = lgetv %view.2;
+        symbol [ view %tmp.30 163 25 29 ];
+        %tmp.31 = lgetv %del.3;
+        symbol [ del %tmp.31 163 31 34 ];
+        symbol [ WatchUi %tmp.32 163 36 43 ];
+        %tmp.32 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.33 163 44 54 ];
+        %tmp.33 = getv %tmp.32 :SLIDE_LEFT;
+        invoke %tmp.28 %tmp.29(%tmp.30, %tmp.31, %tmp.33);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 164 8 ]
+        %tmp.34 = true;
+        ret %tmp.34;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_159_35_165_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 167; @symbol_functiondef = [onBack,167,13,19]; @symbol_return<0> = [Boolean,167,25,32]; ]
+    function onBack() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_167_33_170_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 168 8 ]
+        symbol [ WatchUi %tmp.1 168 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 168 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 168 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 168 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 169 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_167_33_170_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 177; @symbol_classdef = [RoutineSeriesDoneView,177,6,27]; @symbol_extends<0> = [WatchUi,177,36,43]; @symbol_extends<1> = [View,177,44,48]; ]
+class RoutineSeriesDoneView extends WatchUi.View {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 177; ]
+    <init> {
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 182 18 ]
+        symbol [ Graphics %tmp.6 182 33 41 ];
+        %tmp.6 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.7 182 42 53 ];
+        %tmp.7 = getv %tmp.6 :COLOR_BLACK;
+        putv self :COLOR_BG %tmp.7;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 183 18 ]
+        symbol [ Graphics %tmp.8 183 33 41 ];
+        %tmp.8 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.9 183 42 53 ];
+        %tmp.9 = getv %tmp.8 :COLOR_WHITE;
+        putv self :COLOR_WHITE %tmp.9;
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 177; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 178; @position = 16; @symbol_vardef = [_session,178,16,24]; @symbol_type<0> = [WorkoutSession,178,31,45]; ]
+    private
+    var _session as WorkoutSession;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 179; @position = 16; @symbol_vardef = [_runner,179,16,23]; @symbol_type<0> = [RoutineRunner,179,31,44]; ]
+    private
+    var _runner as RoutineRunner;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 180; @position = 16; @symbol_vardef = [_completedN,180,16,27]; @symbol_type<0> = [Number,180,31,37]; ]
+    private
+    var _completedN as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 182; @position = 18; @symbol_constdef = [COLOR_BG,182,18,26]; ]
+    private
+    const COLOR_BG;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 183; @position = 18; @symbol_constdef = [COLOR_WHITE,183,18,29]; ]
+    private
+    const COLOR_WHITE;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 184; @position = 18; @symbol_constdef = [COLOR_ORANGE,184,18,30]; ]
+    private
+    const COLOR_ORANGE = 0xFF6600;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 185; @position = 18; @symbol_constdef = [COLOR_GREEN,185,18,29]; ]
+    private
+    const COLOR_GREEN = 0x33CC66;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 186; @position = 18; @symbol_constdef = [COLOR_GRAY,186,18,28]; ]
+    private
+    const COLOR_GRAY = 0x888888;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 187; @position = 18; @symbol_constdef = [COLOR_RED,187,18,27]; ]
+    private
+    const COLOR_RED = 0xFF3333;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 189; @symbol_functiondef = [initialize,189,13,23]; @symbol_param<0> = [session,189,24,31]; @symbol_param<0>_type<0> = [WorkoutSession,189,38,52]; @symbol_param<1> = [runner,190,24,30]; @symbol_param<1>_type<0> = [RoutineRunner,190,38,51]; @symbol_param<2> = [completedN,191,24,34]; @symbol_param<2>_type<0> = [Number,191,38,44]; ]
+    function initialize(session as WorkoutSession, runner as RoutineRunner, completedN as Number) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_191_46_196_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 192 8 ]
+        symbol [ View %tmp.2 192 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 192 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 193 8 ]
+        %tmp.4 = lgetv %session;
+        symbol [ session %tmp.4 193 22 29 ];
+        symbol [ _session ? 193 8 16 ];
+        putv self :_session %tmp.4;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 194 8 ]
+        %tmp.5 = lgetv %runner;
+        symbol [ runner %tmp.5 194 22 28 ];
+        symbol [ _runner ? 194 8 15 ];
+        putv self :_runner %tmp.5;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 195 8 ]
+        %tmp.6 = lgetv %completedN;
+        symbol [ completedN %tmp.6 195 22 32 ];
+        symbol [ _completedN ? 195 8 19 ];
+        putv self :_completedN %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_191_46_196_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 198; @symbol_functiondef = [onUpdate,198,13,21]; @symbol_param<0> = [dc,198,22,24]; @symbol_param<0>_type<0> = [Graphics,198,28,36]; @symbol_param<0>_type<1> = [Dc,198,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 199 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 199 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 199 17 19 ];
+        symbol [ getWidth %tmp.2 199 20 28 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %w.1 %tmp.3;
+        symbol [ w %w.1 199 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 200 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_stop" ]
+        %cx.2 = local;
+        symbol [ cx %cx.2 200 12 14 ];
+        %tmp.4 = lgetv %w.1;
+        symbol [ w %tmp.4 200 17 18 ];
+        %tmp.5 = 2;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        lputv %cx.2 %tmp.6;
+        symbol [ cx %cx.2 200 12 14 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 201 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 201 8 10 ];
+        symbol [ setColor %tmp.8 201 11 19 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ COLOR_BG %tmp.10 201 20 28 ];
+        %tmp.10 = getv ? :COLOR_BG;
+        symbol [ COLOR_BG %tmp.12 201 30 38 ];
+        %tmp.12 = getv ? :COLOR_BG;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 202 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 202 8 10 ];
+        symbol [ clear %tmp.14 202 11 16 ];
+        %tmp.14 = getv function %tmp.13 :clear;
+        invoke %tmp.13 %tmp.14();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 205 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_stop" ]
+        %label.3 = local;
+        symbol [ label %label.3 205 12 17 ];
+        %tmp.15 = "Série ";
+        symbol [ _completedN %tmp.17 205 31 42 ];
+        %tmp.17 = getv ? :_completedN;
+        symbol [ toString %tmp.18 205 43 51 ];
+        %tmp.18 = getv function %tmp.17 :toString;
+        %tmp.19 = invoke %tmp.17 %tmp.18();
+        %tmp.20 = add %tmp.15 %tmp.19;
+        %tmp.21 = "/";
+        %tmp.22 = add %tmp.20 %tmp.21;
+        symbol [ _runner %tmp.24 206 26 33 ];
+        %tmp.24 = getv ? :_runner;
+        symbol [ totalSeries %tmp.25 206 34 45 ];
+        %tmp.25 = getv function %tmp.24 :totalSeries;
+        %tmp.26 = invoke %tmp.24 %tmp.25();
+        symbol [ toString %tmp.27 206 48 56 ];
+        %tmp.27 = getv function %tmp.26 :toString;
+        %tmp.28 = invoke %tmp.26 %tmp.27();
+        %tmp.29 = add %tmp.22 %tmp.28;
+        %tmp.30 = " terminée";
+        %tmp.31 = add %tmp.29 %tmp.30;
+        lputv %label.3 %tmp.31;
+        symbol [ label %label.3 205 12 17 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 207 8 ]
+        %tmp.32 = lgetv %dc;
+        symbol [ dc %tmp.32 207 8 10 ];
+        symbol [ setColor %tmp.33 207 11 19 ];
+        %tmp.33 = getv function %tmp.32 :setColor;
+        symbol [ COLOR_GRAY %tmp.35 207 20 30 ];
+        %tmp.35 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.36 207 32 40 ];
+        %tmp.36 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.37 207 41 58 ];
+        %tmp.37 = getv %tmp.36 :COLOR_TRANSPARENT;
+        invoke %tmp.32 %tmp.33(%tmp.35, %tmp.37);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 208 8 ]
+        %tmp.38 = lgetv %dc;
+        symbol [ dc %tmp.38 208 8 10 ];
+        symbol [ drawText %tmp.39 208 11 19 ];
+        %tmp.39 = getv function %tmp.38 :drawText;
+        %tmp.40 = lgetv %cx.2;
+        symbol [ cx %tmp.40 208 20 22 ];
+        %tmp.41 = 26;
+        symbol [ Graphics %tmp.42 208 28 36 ];
+        %tmp.42 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.43 208 37 47 ];
+        %tmp.43 = getv %tmp.42 :FONT_XTINY;
+        %tmp.44 = lgetv %label.3;
+        symbol [ label %tmp.44 208 49 54 ];
+        symbol [ Graphics %tmp.45 209 20 28 ];
+        %tmp.45 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.46 209 29 48 ];
+        %tmp.46 = getv %tmp.45 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.47 209 51 59 ];
+        %tmp.47 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.48 209 60 80 ];
+        %tmp.48 = getv %tmp.47 :TEXT_JUSTIFY_VCENTER;
+        %tmp.49 = bitor %tmp.46 %tmp.48;
+        invoke %tmp.38 %tmp.39(%tmp.40, %tmp.41, %tmp.43, %tmp.44, %tmp.49);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 212 8 ]
+        %tmp.50 = lgetv %dc;
+        symbol [ dc %tmp.50 212 8 10 ];
+        symbol [ setColor %tmp.51 212 11 19 ];
+        %tmp.51 = getv function %tmp.50 :setColor;
+        symbol [ COLOR_WHITE %tmp.53 212 20 31 ];
+        %tmp.53 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.54 212 33 41 ];
+        %tmp.54 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.55 212 42 59 ];
+        %tmp.55 = getv %tmp.54 :COLOR_TRANSPARENT;
+        invoke %tmp.50 %tmp.51(%tmp.53, %tmp.55);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 213 8 ]
+        %tmp.56 = lgetv %dc;
+        symbol [ dc %tmp.56 213 8 10 ];
+        symbol [ drawText %tmp.57 213 11 19 ];
+        %tmp.57 = getv function %tmp.56 :drawText;
+        %tmp.58 = lgetv %cx.2;
+        symbol [ cx %tmp.58 213 20 22 ];
+        %tmp.59 = 50;
+        symbol [ Graphics %tmp.60 213 28 36 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.61 213 37 46 ];
+        %tmp.61 = getv %tmp.60 :FONT_TINY;
+        symbol [ _session %tmp.63 213 48 56 ];
+        %tmp.63 = getv ? :_session;
+        symbol [ exerciseName %tmp.64 213 57 69 ];
+        %tmp.64 = getv %tmp.63 :exerciseName;
+        symbol [ Graphics %tmp.65 214 20 28 ];
+        %tmp.65 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.66 214 29 48 ];
+        %tmp.66 = getv %tmp.65 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.67 214 51 59 ];
+        %tmp.67 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.68 214 60 80 ];
+        %tmp.68 = getv %tmp.67 :TEXT_JUSTIFY_VCENTER;
+        %tmp.69 = bitor %tmp.66 %tmp.68;
+        invoke %tmp.56 %tmp.57(%tmp.58, %tmp.59, %tmp.61, %tmp.64, %tmp.69);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 217 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_stop" ]
+        %score.4 = local;
+        symbol [ score %score.4 217 12 17 ];
+        symbol [ _session %tmp.71 217 20 28 ];
+        %tmp.71 = getv ? :_session;
+        symbol [ madeShots %tmp.72 217 29 38 ];
+        %tmp.72 = getv %tmp.71 :madeShots;
+        symbol [ toString %tmp.73 217 39 47 ];
+        %tmp.73 = getv function %tmp.72 :toString;
+        %tmp.74 = invoke %tmp.72 %tmp.73();
+        %tmp.75 = " / ";
+        %tmp.76 = add %tmp.74 %tmp.75;
+        symbol [ _session %tmp.78 217 60 68 ];
+        %tmp.78 = getv ? :_session;
+        symbol [ totalShots %tmp.79 217 69 79 ];
+        %tmp.79 = getv %tmp.78 :totalShots;
+        symbol [ toString %tmp.80 217 80 88 ];
+        %tmp.80 = getv function %tmp.79 :toString;
+        %tmp.81 = invoke %tmp.79 %tmp.80();
+        %tmp.82 = add %tmp.76 %tmp.81;
+        lputv %score.4 %tmp.82;
+        symbol [ score %score.4 217 12 17 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 218 8 ]
+        %tmp.83 = lgetv %dc;
+        symbol [ dc %tmp.83 218 8 10 ];
+        symbol [ setColor %tmp.84 218 11 19 ];
+        %tmp.84 = getv function %tmp.83 :setColor;
+        symbol [ COLOR_WHITE %tmp.86 218 20 31 ];
+        %tmp.86 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.87 218 33 41 ];
+        %tmp.87 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.88 218 42 59 ];
+        %tmp.88 = getv %tmp.87 :COLOR_TRANSPARENT;
+        invoke %tmp.83 %tmp.84(%tmp.86, %tmp.88);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 219 8 ]
+        %tmp.89 = lgetv %dc;
+        symbol [ dc %tmp.89 219 8 10 ];
+        symbol [ drawText %tmp.90 219 11 19 ];
+        %tmp.90 = getv function %tmp.89 :drawText;
+        %tmp.91 = lgetv %cx.2;
+        symbol [ cx %tmp.91 219 20 22 ];
+        %tmp.92 = 94;
+        symbol [ Graphics %tmp.93 219 28 36 ];
+        %tmp.93 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.94 219 37 55 ];
+        %tmp.94 = getv %tmp.93 :FONT_NUMBER_MEDIUM;
+        %tmp.95 = lgetv %score.4;
+        symbol [ score %tmp.95 219 57 62 ];
+        symbol [ Graphics %tmp.96 220 20 28 ];
+        %tmp.96 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.97 220 29 48 ];
+        %tmp.97 = getv %tmp.96 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.98 220 51 59 ];
+        %tmp.98 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.99 220 60 80 ];
+        %tmp.99 = getv %tmp.98 :TEXT_JUSTIFY_VCENTER;
+        %tmp.100 = bitor %tmp.97 %tmp.99;
+        invoke %tmp.89 %tmp.90(%tmp.91, %tmp.92, %tmp.94, %tmp.95, %tmp.100);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 223 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_stop" ]
+        %pct.5 = local;
+        symbol [ pct %pct.5 223 12 15 ];
+        symbol [ _session %tmp.102 223 23 31 ];
+        %tmp.102 = getv ? :_session;
+        symbol [ percentage %tmp.103 223 32 42 ];
+        %tmp.103 = getv function %tmp.102 :percentage;
+        %tmp.104 = invoke %tmp.102 %tmp.103();
+        lputv %pct.5 %tmp.104;
+        symbol [ pct %pct.5 223 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 224 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_stop" ]
+        %pctColor.6 = local;
+        symbol [ pctColor %pctColor.6 224 12 20 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_begin:
+        %tmp.105 = lgetv %pct.5;
+        symbol [ pct %tmp.105 224 23 26 ];
+        %tmp.106 = 70;
+        %tmp.107 = gte %tmp.105 %tmp.106;
+        bf %tmp.107 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_true:
+        symbol [ COLOR_GREEN %tmp.109 224 35 46 ];
+        %tmp.109 = getv ? :COLOR_GREEN;
+        push %tmp.109;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_begin:
+        %tmp.110 = lgetv %pct.5;
+        symbol [ pct %tmp.110 224 50 53 ];
+        %tmp.111 = 50;
+        %tmp.112 = gte %tmp.110 %tmp.111;
+        bf %tmp.112 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_true:
+        symbol [ COLOR_ORANGE %tmp.114 224 62 74 ];
+        %tmp.114 = getv ? :COLOR_ORANGE;
+        push %tmp.114;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_else_false:
+        symbol [ COLOR_RED %tmp.116 224 77 86 ];
+        %tmp.116 = getv ? :COLOR_RED;
+        push %tmp.116;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_end:
+        %tmp.117 = phi [%tmp.112 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_begin] [%tmp.114 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_true] [%tmp.116 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_else_false] [%tmp.117 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_50_224_77_end];
+        push %tmp.117;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_end:
+        %tmp.118 = phi [%tmp.107 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_begin] [%tmp.109 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_true] [%tmp.117 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_else_false] [%tmp.118 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_224_23_224_86_end];
+        lputv %pctColor.6 %tmp.118;
+        symbol [ pctColor %pctColor.6 224 12 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 225 8 ]
+        %tmp.119 = lgetv %dc;
+        symbol [ dc %tmp.119 225 8 10 ];
+        symbol [ setColor %tmp.120 225 11 19 ];
+        %tmp.120 = getv function %tmp.119 :setColor;
+        %tmp.121 = lgetv %pctColor.6;
+        symbol [ pctColor %tmp.121 225 20 28 ];
+        symbol [ Graphics %tmp.122 225 30 38 ];
+        %tmp.122 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.123 225 39 56 ];
+        %tmp.123 = getv %tmp.122 :COLOR_TRANSPARENT;
+        invoke %tmp.119 %tmp.120(%tmp.121, %tmp.123);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 226 8 ]
+        %tmp.124 = lgetv %dc;
+        symbol [ dc %tmp.124 226 8 10 ];
+        symbol [ drawText %tmp.125 226 11 19 ];
+        %tmp.125 = getv function %tmp.124 :drawText;
+        %tmp.126 = lgetv %cx.2;
+        symbol [ cx %tmp.126 226 20 22 ];
+        %tmp.127 = 136;
+        symbol [ Graphics %tmp.128 226 29 37 ];
+        %tmp.128 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.129 226 38 49 ];
+        %tmp.129 = getv %tmp.128 :FONT_MEDIUM;
+        %tmp.130 = lgetv %pct.5;
+        symbol [ pct %tmp.130 226 51 54 ];
+        symbol [ toString %tmp.131 226 55 63 ];
+        %tmp.131 = getv function %tmp.130 :toString;
+        %tmp.132 = invoke %tmp.130 %tmp.131();
+        %tmp.133 = "%";
+        %tmp.134 = add %tmp.132 %tmp.133;
+        symbol [ Graphics %tmp.135 227 20 28 ];
+        %tmp.135 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.136 227 29 48 ];
+        %tmp.136 = getv %tmp.135 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.137 227 51 59 ];
+        %tmp.137 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.138 227 60 80 ];
+        %tmp.138 = getv %tmp.137 :TEXT_JUSTIFY_VCENTER;
+        %tmp.139 = bitor %tmp.136 %tmp.138;
+        invoke %tmp.124 %tmp.125(%tmp.126, %tmp.127, %tmp.129, %tmp.134, %tmp.139);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 230 8 ]
+        %tmp.140 = lgetv %dc;
+        symbol [ dc %tmp.140 230 8 10 ];
+        symbol [ setColor %tmp.141 230 11 19 ];
+        %tmp.141 = getv function %tmp.140 :setColor;
+        %tmp.142 = 0x333333;
+        symbol [ Graphics %tmp.143 230 30 38 ];
+        %tmp.143 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.144 230 39 56 ];
+        %tmp.144 = getv %tmp.143 :COLOR_TRANSPARENT;
+        invoke %tmp.140 %tmp.141(%tmp.142, %tmp.144);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 231 8 ]
+        %tmp.145 = lgetv %dc;
+        symbol [ dc %tmp.145 231 8 10 ];
+        symbol [ drawLine %tmp.146 231 11 19 ];
+        %tmp.146 = getv function %tmp.145 :drawLine;
+        %tmp.147 = 40;
+        %tmp.148 = 156;
+        %tmp.149 = lgetv %w.1;
+        symbol [ w %tmp.149 231 29 30 ];
+        %tmp.150 = 40;
+        %tmp.151 = sub %tmp.149 %tmp.150;
+        %tmp.152 = 156;
+        invoke %tmp.145 %tmp.146(%tmp.147, %tmp.148, %tmp.151, %tmp.152);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 234 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_8_248_8_if_stmt:
+        symbol [ _runner %tmp.154 234 13 20 ];
+        %tmp.154 = getv ? :_runner;
+        symbol [ isComplete %tmp.155 234 21 31 ];
+        %tmp.155 = getv function %tmp.154 :isComplete;
+        %tmp.156 = invoke %tmp.154 %tmp.155();
+        %tmp.157 = not %tmp.156;
+        bf %tmp.157 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_8_248_8_if_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_8_248_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_35_244_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 235 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_35_244_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_35_244_8_stop" ]
+        %nextName.7 = local;
+        symbol [ nextName %nextName.7 235 16 24 ];
+        %tmp.158 = self;
+        symbol [ getExerciseName %tmp.159 235 28 43 ];
+        %tmp.159 = getv function %tmp.158 :getExerciseName;
+        symbol [ _runner %tmp.161 235 44 51 ];
+        %tmp.161 = getv ? :_runner;
+        symbol [ currentExerciseId %tmp.162 235 52 69 ];
+        %tmp.162 = getv function %tmp.161 :currentExerciseId;
+        %tmp.163 = invoke %tmp.161 %tmp.162();
+        %tmp.164 = invoke %tmp.158 %tmp.159(%tmp.163);
+        lputv %nextName.7 %tmp.164;
+        symbol [ nextName %nextName.7 235 16 24 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 236 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_35_244_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_35_244_8_stop" ]
+        %nextShots.8 = local;
+        symbol [ nextShots %nextShots.8 236 16 25 ];
+        symbol [ _runner %tmp.166 236 28 35 ];
+        %tmp.166 = getv ? :_runner;
+        symbol [ currentTotalShots %tmp.167 236 36 53 ];
+        %tmp.167 = getv function %tmp.166 :currentTotalShots;
+        %tmp.168 = invoke %tmp.166 %tmp.167();
+        lputv %nextShots.8 %tmp.168;
+        symbol [ nextShots %nextShots.8 236 16 25 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 237 12 ]
+        %tmp.169 = lgetv %dc;
+        symbol [ dc %tmp.169 237 12 14 ];
+        symbol [ setColor %tmp.170 237 15 23 ];
+        %tmp.170 = getv function %tmp.169 :setColor;
+        symbol [ COLOR_ORANGE %tmp.172 237 24 36 ];
+        %tmp.172 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.173 237 38 46 ];
+        %tmp.173 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.174 237 47 64 ];
+        %tmp.174 = getv %tmp.173 :COLOR_TRANSPARENT;
+        invoke %tmp.169 %tmp.170(%tmp.172, %tmp.174);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 238 12 ]
+        %tmp.175 = lgetv %dc;
+        symbol [ dc %tmp.175 238 12 14 ];
+        symbol [ drawText %tmp.176 238 15 23 ];
+        %tmp.176 = getv function %tmp.175 :drawText;
+        %tmp.177 = lgetv %cx.2;
+        symbol [ cx %tmp.177 238 24 26 ];
+        %tmp.178 = 172;
+        symbol [ Graphics %tmp.179 238 33 41 ];
+        %tmp.179 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.180 238 42 52 ];
+        %tmp.180 = getv %tmp.179 :FONT_XTINY;
+        %tmp.181 = "→ ";
+        %tmp.182 = lgetv %nextName.7;
+        symbol [ nextName %tmp.182 238 61 69 ];
+        %tmp.183 = add %tmp.181 %tmp.182;
+        symbol [ Graphics %tmp.184 239 24 32 ];
+        %tmp.184 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.185 239 33 52 ];
+        %tmp.185 = getv %tmp.184 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.186 239 55 63 ];
+        %tmp.186 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.187 239 64 84 ];
+        %tmp.187 = getv %tmp.186 :TEXT_JUSTIFY_VCENTER;
+        %tmp.188 = bitor %tmp.185 %tmp.187;
+        invoke %tmp.175 %tmp.176(%tmp.177, %tmp.178, %tmp.180, %tmp.183, %tmp.188);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 240 12 ]
+        %tmp.189 = lgetv %dc;
+        symbol [ dc %tmp.189 240 12 14 ];
+        symbol [ setColor %tmp.190 240 15 23 ];
+        %tmp.190 = getv function %tmp.189 :setColor;
+        symbol [ COLOR_GRAY %tmp.192 240 24 34 ];
+        %tmp.192 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.193 240 36 44 ];
+        %tmp.193 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.194 240 45 62 ];
+        %tmp.194 = getv %tmp.193 :COLOR_TRANSPARENT;
+        invoke %tmp.189 %tmp.190(%tmp.192, %tmp.194);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 241 12 ]
+        %tmp.195 = lgetv %dc;
+        symbol [ dc %tmp.195 241 12 14 ];
+        symbol [ drawText %tmp.196 241 15 23 ];
+        %tmp.196 = getv function %tmp.195 :drawText;
+        %tmp.197 = lgetv %cx.2;
+        symbol [ cx %tmp.197 241 24 26 ];
+        %tmp.198 = 188;
+        symbol [ Graphics %tmp.199 241 33 41 ];
+        %tmp.199 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.200 241 42 52 ];
+        %tmp.200 = getv %tmp.199 :FONT_XTINY;
+        %tmp.201 = "×";
+        %tmp.202 = lgetv %nextShots.8;
+        symbol [ nextShots %tmp.202 242 30 39 ];
+        symbol [ toString %tmp.203 242 40 48 ];
+        %tmp.203 = getv function %tmp.202 :toString;
+        %tmp.204 = invoke %tmp.202 %tmp.203();
+        %tmp.205 = add %tmp.201 %tmp.204;
+        %tmp.206 = " tirs";
+        %tmp.207 = add %tmp.205 %tmp.206;
+        symbol [ Graphics %tmp.208 243 24 32 ];
+        %tmp.208 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.209 243 33 52 ];
+        %tmp.209 = getv %tmp.208 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.210 243 55 63 ];
+        %tmp.210 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.211 243 64 84 ];
+        %tmp.211 = getv %tmp.210 :TEXT_JUSTIFY_VCENTER;
+        %tmp.212 = bitor %tmp.209 %tmp.211;
+        invoke %tmp.195 %tmp.196(%tmp.197, %tmp.198, %tmp.200, %tmp.207, %tmp.212);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_35_244_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_8_248_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_8_248_8_if_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_244_15_248_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 245 12 ]
+        %tmp.213 = lgetv %dc;
+        symbol [ dc %tmp.213 245 12 14 ];
+        symbol [ setColor %tmp.214 245 15 23 ];
+        %tmp.214 = getv function %tmp.213 :setColor;
+        symbol [ COLOR_GREEN %tmp.216 245 24 35 ];
+        %tmp.216 = getv ? :COLOR_GREEN;
+        symbol [ Graphics %tmp.217 245 37 45 ];
+        %tmp.217 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.218 245 46 63 ];
+        %tmp.218 = getv %tmp.217 :COLOR_TRANSPARENT;
+        invoke %tmp.213 %tmp.214(%tmp.216, %tmp.218);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 246 12 ]
+        %tmp.219 = lgetv %dc;
+        symbol [ dc %tmp.219 246 12 14 ];
+        symbol [ drawText %tmp.220 246 15 23 ];
+        %tmp.220 = getv function %tmp.219 :drawText;
+        %tmp.221 = lgetv %cx.2;
+        symbol [ cx %tmp.221 246 24 26 ];
+        %tmp.222 = 178;
+        symbol [ Graphics %tmp.223 246 33 41 ];
+        %tmp.223 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.224 246 42 52 ];
+        %tmp.224 = getv %tmp.223 :FONT_XTINY;
+        %tmp.225 = "Dernière série !";
+        symbol [ Graphics %tmp.226 247 24 32 ];
+        %tmp.226 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.227 247 33 52 ];
+        %tmp.227 = getv %tmp.226 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.228 247 55 63 ];
+        %tmp.228 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.229 247 64 84 ];
+        %tmp.229 = getv %tmp.228 :TEXT_JUSTIFY_VCENTER;
+        %tmp.230 = bitor %tmp.227 %tmp.229;
+        invoke %tmp.219 %tmp.220(%tmp.221, %tmp.222, %tmp.224, %tmp.225, %tmp.230);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_244_15_248_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_234_8_248_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 251 8 ]
+        %tmp.231 = lgetv %dc;
+        symbol [ dc %tmp.231 251 8 10 ];
+        symbol [ setColor %tmp.232 251 11 19 ];
+        %tmp.232 = getv function %tmp.231 :setColor;
+        symbol [ COLOR_ORANGE %tmp.234 251 20 32 ];
+        %tmp.234 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.235 251 34 42 ];
+        %tmp.235 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.236 251 43 60 ];
+        %tmp.236 = getv %tmp.235 :COLOR_TRANSPARENT;
+        invoke %tmp.231 %tmp.232(%tmp.234, %tmp.236);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 252 8 ]
+        %tmp.237 = lgetv %dc;
+        symbol [ dc %tmp.237 252 8 10 ];
+        symbol [ drawText %tmp.238 252 11 19 ];
+        %tmp.238 = getv function %tmp.237 :drawText;
+        %tmp.239 = lgetv %cx.2;
+        symbol [ cx %tmp.239 252 20 22 ];
+        %tmp.240 = 209;
+        symbol [ Graphics %tmp.241 252 29 37 ];
+        %tmp.241 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.242 252 38 48 ];
+        %tmp.242 = getv %tmp.241 :FONT_XTINY;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_begin:
+        symbol [ _runner %tmp.244 253 20 27 ];
+        %tmp.244 = getv ? :_runner;
+        symbol [ isComplete %tmp.245 253 28 38 ];
+        %tmp.245 = getv function %tmp.244 :isComplete;
+        %tmp.246 = invoke %tmp.244 %tmp.245();
+        bf %tmp.246 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_true:
+        %tmp.247 = "Résumé final";
+        push %tmp.247;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_else_false:
+        %tmp.248 = "▶ Continuer";
+        push %tmp.248;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_end:
+        %tmp.249 = phi [%tmp.246 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_begin] [%tmp.247 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_true] [%tmp.248 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_else_false] [%tmp.249 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_253_20_253_60_end];
+        symbol [ Graphics %tmp.250 254 20 28 ];
+        %tmp.250 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.251 254 29 48 ];
+        %tmp.251 = getv %tmp.250 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.252 254 51 59 ];
+        %tmp.252 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.253 254 60 80 ];
+        %tmp.253 = getv %tmp.252 :TEXT_JUSTIFY_VCENTER;
+        %tmp.254 = bitor %tmp.251 %tmp.253;
+        invoke %tmp.237 %tmp.238(%tmp.239, %tmp.240, %tmp.242, %tmp.249, %tmp.254);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 255 8 ]
+        %tmp.255 = lgetv %dc;
+        symbol [ dc %tmp.255 255 8 10 ];
+        symbol [ setColor %tmp.256 255 11 19 ];
+        %tmp.256 = getv function %tmp.255 :setColor;
+        symbol [ COLOR_GRAY %tmp.258 255 20 30 ];
+        %tmp.258 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.259 255 32 40 ];
+        %tmp.259 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.260 255 41 58 ];
+        %tmp.260 = getv %tmp.259 :COLOR_TRANSPARENT;
+        invoke %tmp.255 %tmp.256(%tmp.258, %tmp.260);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 256 8 ]
+        %tmp.261 = lgetv %dc;
+        symbol [ dc %tmp.261 256 8 10 ];
+        symbol [ drawText %tmp.262 256 11 19 ];
+        %tmp.262 = getv function %tmp.261 :drawText;
+        %tmp.263 = lgetv %cx.2;
+        symbol [ cx %tmp.263 256 20 22 ];
+        %tmp.264 = 228;
+        symbol [ Graphics %tmp.265 256 29 37 ];
+        %tmp.265 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.266 256 38 48 ];
+        %tmp.266 = getv %tmp.265 :FONT_XTINY;
+        %tmp.267 = "↩ Abandonner";
+        symbol [ Graphics %tmp.268 257 20 28 ];
+        %tmp.268 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.269 257 29 48 ];
+        %tmp.269 = getv %tmp.268 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.270 257 51 59 ];
+        %tmp.270 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.271 257 60 80 ];
+        %tmp.271 = getv %tmp.270 :TEXT_JUSTIFY_VCENTER;
+        %tmp.272 = bitor %tmp.269 %tmp.271;
+        invoke %tmp.261 %tmp.262(%tmp.263, %tmp.264, %tmp.266, %tmp.267, %tmp.272);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_198_49_258_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 261; @symbol_classdef = [RoutineSeriesDoneDelegate,261,6,31]; @symbol_extends<0> = [WatchUi,261,40,47]; @symbol_extends<1> = [BehaviorDelegate,261,48,64]; ]
+class RoutineSeriesDoneDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 261; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 261; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 262; @position = 16; @symbol_vardef = [_runner,262,16,23]; @symbol_type<0> = [RoutineRunner,262,27,40]; ]
+    private
+    var _runner as RoutineRunner;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 264; @symbol_functiondef = [initialize,264,13,23]; @symbol_param<0> = [runner,264,24,30]; @symbol_param<0>_type<0> = [RoutineRunner,264,34,47]; ]
+    function initialize(runner as RoutineRunner) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_264_49_267_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 265 8 ]
+        symbol [ BehaviorDelegate %tmp.2 265 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 265 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 266 8 ]
+        %tmp.4 = lgetv %runner;
+        symbol [ runner %tmp.4 266 18 24 ];
+        symbol [ _runner ? 266 8 15 ];
+        putv self :_runner %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_264_49_267_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 269; @symbol_functiondef = [onSelect,269,13,21]; @symbol_return<0> = [Boolean,269,27,34]; ]
+    function onSelect() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_269_35_281_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 270 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_8_279_8_if_stmt:
+        symbol [ _runner %tmp.2 270 12 19 ];
+        %tmp.2 = getv ? :_runner;
+        symbol [ isComplete %tmp.3 270 20 30 ];
+        %tmp.3 = getv function %tmp.2 :isComplete;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_8_279_8_if_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_8_279_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_34_274_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 271 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_34_274_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_34_274_8_stop" ]
+        %view.1 = local;
+        symbol [ view %view.1 271 16 20 ];
+        symbol [ RoutineFinalView %tmp.8 271 27 43 ];
+        %tmp.8 = getv ? :RoutineFinalView;
+        symbol [ _runner %tmp.10 271 44 51 ];
+        %tmp.10 = getv ? :_runner;
+        %tmp.5 = newc %tmp.8 (%tmp.10);
+        lputv %view.1 %tmp.5;
+        symbol [ view %view.1 271 16 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 272 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_34_274_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_34_274_8_stop" ]
+        %del.2 = local;
+        symbol [ del %del.2 272 16 19 ];
+        symbol [ RoutineFinalDelegate %tmp.14 272 27 47 ];
+        %tmp.14 = getv ? :RoutineFinalDelegate;
+        symbol [ _runner %tmp.16 272 48 55 ];
+        %tmp.16 = getv ? :_runner;
+        %tmp.11 = newc %tmp.14 (%tmp.16);
+        lputv %del.2 %tmp.11;
+        symbol [ del %del.2 272 16 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 273 12 ]
+        symbol [ WatchUi %tmp.17 273 12 19 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.18 273 20 28 ];
+        %tmp.18 = getv function %tmp.17 :pushView;
+        %tmp.19 = lgetv %view.1;
+        symbol [ view %tmp.19 273 29 33 ];
+        %tmp.20 = lgetv %del.2;
+        symbol [ del %tmp.20 273 35 38 ];
+        symbol [ WatchUi %tmp.21 273 40 47 ];
+        %tmp.21 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.22 273 48 58 ];
+        %tmp.22 = getv %tmp.21 :SLIDE_LEFT;
+        invoke %tmp.17 %tmp.18(%tmp.19, %tmp.20, %tmp.22);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_34_274_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_8_279_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_8_279_8_if_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 275 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_stop" ]
+        %sess.3 = local;
+        symbol [ sess %sess.3 275 16 20 ];
+        symbol [ WorkoutSession %tmp.26 275 27 41 ];
+        %tmp.26 = getv ? :WorkoutSession;
+        symbol [ _runner %tmp.28 275 42 49 ];
+        %tmp.28 = getv ? :_runner;
+        symbol [ currentExerciseId %tmp.29 275 50 67 ];
+        %tmp.29 = getv function %tmp.28 :currentExerciseId;
+        %tmp.30 = invoke %tmp.28 %tmp.29();
+        symbol [ _runner %tmp.32 275 71 78 ];
+        %tmp.32 = getv ? :_runner;
+        symbol [ currentTotalShots %tmp.33 275 79 96 ];
+        %tmp.33 = getv function %tmp.32 :currentTotalShots;
+        %tmp.34 = invoke %tmp.32 %tmp.33();
+        %tmp.23 = newc %tmp.26 (%tmp.30, %tmp.34);
+        lputv %sess.3 %tmp.23;
+        symbol [ sess %sess.3 275 16 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 276 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_stop" ]
+        %view.4 = local;
+        symbol [ view %view.4 276 16 20 ];
+        symbol [ WorkoutView %tmp.38 276 27 38 ];
+        %tmp.38 = getv ? :WorkoutView;
+        %tmp.39 = lgetv %sess.3;
+        symbol [ sess %tmp.39 276 39 43 ];
+        %tmp.40 = null;
+        %tmp.35 = newc %tmp.38 (%tmp.39, %tmp.40);
+        lputv %view.4 %tmp.35;
+        symbol [ view %view.4 276 16 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 277 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_stop" ]
+        %del.5 = local;
+        symbol [ del %del.5 277 16 19 ];
+        symbol [ WorkoutDelegate %tmp.44 277 27 42 ];
+        %tmp.44 = getv ? :WorkoutDelegate;
+        %tmp.45 = lgetv %sess.3;
+        symbol [ sess %tmp.45 277 43 47 ];
+        %tmp.46 = lgetv %view.4;
+        symbol [ view %tmp.46 277 49 53 ];
+        %tmp.47 = null;
+        symbol [ _runner %tmp.49 277 61 68 ];
+        %tmp.49 = getv ? :_runner;
+        %tmp.41 = newc %tmp.44 (%tmp.45, %tmp.46, %tmp.47, %tmp.49);
+        lputv %del.5 %tmp.41;
+        symbol [ del %del.5 277 16 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 278 12 ]
+        symbol [ WatchUi %tmp.50 278 12 19 ];
+        %tmp.50 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.51 278 20 28 ];
+        %tmp.51 = getv function %tmp.50 :pushView;
+        %tmp.52 = lgetv %view.4;
+        symbol [ view %tmp.52 278 29 33 ];
+        %tmp.53 = lgetv %del.5;
+        symbol [ del %tmp.53 278 35 38 ];
+        symbol [ WatchUi %tmp.54 278 40 47 ];
+        %tmp.54 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.55 278 48 58 ];
+        %tmp.55 = getv %tmp.54 :SLIDE_LEFT;
+        invoke %tmp.50 %tmp.51(%tmp.52, %tmp.53, %tmp.55);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_274_15_279_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_270_8_279_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 280 8 ]
+        %tmp.56 = true;
+        ret %tmp.56;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_269_35_281_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 284; @symbol_functiondef = [onBack,284,13,19]; @symbol_return<0> = [Boolean,284,25,32]; ]
+    function onBack() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_284_33_289_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 285 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_284_33_289_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_284_33_289_4_stop" ]
+        %view.1 = local;
+        symbol [ view %view.1 285 12 16 ];
+        symbol [ RoutineFinalView %tmp.4 285 23 39 ];
+        %tmp.4 = getv ? :RoutineFinalView;
+        symbol [ _runner %tmp.6 285 40 47 ];
+        %tmp.6 = getv ? :_runner;
+        %tmp.1 = newc %tmp.4 (%tmp.6);
+        lputv %view.1 %tmp.1;
+        symbol [ view %view.1 285 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 286 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_284_33_289_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_284_33_289_4_stop" ]
+        %del.2 = local;
+        symbol [ del %del.2 286 12 15 ];
+        symbol [ RoutineFinalDelegate %tmp.10 286 23 43 ];
+        %tmp.10 = getv ? :RoutineFinalDelegate;
+        symbol [ _runner %tmp.12 286 44 51 ];
+        %tmp.12 = getv ? :_runner;
+        %tmp.7 = newc %tmp.10 (%tmp.12);
+        lputv %del.2 %tmp.7;
+        symbol [ del %del.2 286 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 287 8 ]
+        symbol [ WatchUi %tmp.13 287 8 15 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.14 287 16 24 ];
+        %tmp.14 = getv function %tmp.13 :pushView;
+        %tmp.15 = lgetv %view.1;
+        symbol [ view %tmp.15 287 25 29 ];
+        %tmp.16 = lgetv %del.2;
+        symbol [ del %tmp.16 287 31 34 ];
+        symbol [ WatchUi %tmp.17 287 36 43 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.18 287 44 54 ];
+        %tmp.18 = getv %tmp.17 :SLIDE_LEFT;
+        invoke %tmp.13 %tmp.14(%tmp.15, %tmp.16, %tmp.18);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 288 8 ]
+        %tmp.19 = true;
+        ret %tmp.19;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_284_33_289_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 296; @symbol_classdef = [RoutineFinalView,296,6,22]; @symbol_extends<0> = [WatchUi,296,31,38]; @symbol_extends<1> = [View,296,39,43]; ]
+class RoutineFinalView extends WatchUi.View {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 296; ]
+    <init> {
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 299 18 ]
+        symbol [ Graphics %tmp.20 299 33 41 ];
+        %tmp.20 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.21 299 42 53 ];
+        %tmp.21 = getv %tmp.20 :COLOR_BLACK;
+        putv self :COLOR_BG %tmp.21;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 300 18 ]
+        symbol [ Graphics %tmp.22 300 33 41 ];
+        %tmp.22 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.23 300 42 53 ];
+        %tmp.23 = getv %tmp.22 :COLOR_WHITE;
+        putv self :COLOR_WHITE %tmp.23;
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 296; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 297; @position = 16; @symbol_vardef = [_runner,297,16,23]; @symbol_type<0> = [RoutineRunner,297,27,40]; ]
+    private
+    var _runner as RoutineRunner;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 299; @position = 18; @symbol_constdef = [COLOR_BG,299,18,26]; ]
+    private
+    const COLOR_BG;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 300; @position = 18; @symbol_constdef = [COLOR_WHITE,300,18,29]; ]
+    private
+    const COLOR_WHITE;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 301; @position = 18; @symbol_constdef = [COLOR_ORANGE,301,18,30]; ]
+    private
+    const COLOR_ORANGE = 0xFF6600;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 302; @position = 18; @symbol_constdef = [COLOR_GREEN,302,18,29]; ]
+    private
+    const COLOR_GREEN = 0x33CC66;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 303; @position = 18; @symbol_constdef = [COLOR_GRAY,303,18,28]; ]
+    private
+    const COLOR_GRAY = 0x888888;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 304; @position = 18; @symbol_constdef = [COLOR_RED,304,18,27]; ]
+    private
+    const COLOR_RED = 0xFF3333;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 306; @symbol_functiondef = [initialize,306,13,23]; @symbol_param<0> = [runner,306,24,30]; @symbol_param<0>_type<0> = [RoutineRunner,306,34,47]; ]
+    function initialize(runner as RoutineRunner) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_306_49_309_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 307 8 ]
+        symbol [ View %tmp.2 307 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 307 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 308 8 ]
+        %tmp.4 = lgetv %runner;
+        symbol [ runner %tmp.4 308 18 24 ];
+        symbol [ _runner ? 308 8 15 ];
+        putv self :_runner %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_306_49_309_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 311; @symbol_functiondef = [onUpdate,311,13,21]; @symbol_param<0> = [dc,311,22,24]; @symbol_param<0>_type<0> = [Graphics,311,28,36]; @symbol_param<0>_type<1> = [Dc,311,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 312 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 312 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 312 18 20 ];
+        symbol [ getWidth %tmp.2 312 21 29 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %w.1 %tmp.3;
+        symbol [ w %w.1 312 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 313 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %cx.2 = local;
+        symbol [ cx %cx.2 313 12 14 ];
+        %tmp.4 = lgetv %w.1;
+        symbol [ w %tmp.4 313 18 19 ];
+        %tmp.5 = 2;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        lputv %cx.2 %tmp.6;
+        symbol [ cx %cx.2 313 12 14 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 314 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %acc.3 = local;
+        symbol [ acc %acc.3 314 12 15 ];
+        symbol [ _runner %tmp.8 314 18 25 ];
+        %tmp.8 = getv ? :_runner;
+        symbol [ accumulator %tmp.9 314 26 37 ];
+        %tmp.9 = getv %tmp.8 :accumulator;
+        lputv %acc.3 %tmp.9;
+        symbol [ acc %acc.3 314 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 316 8 ]
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 316 8 10 ];
+        symbol [ setColor %tmp.11 316 11 19 ];
+        %tmp.11 = getv function %tmp.10 :setColor;
+        symbol [ COLOR_BG %tmp.13 316 20 28 ];
+        %tmp.13 = getv ? :COLOR_BG;
+        symbol [ COLOR_BG %tmp.15 316 30 38 ];
+        %tmp.15 = getv ? :COLOR_BG;
+        invoke %tmp.10 %tmp.11(%tmp.13, %tmp.15);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 317 8 ]
+        %tmp.16 = lgetv %dc;
+        symbol [ dc %tmp.16 317 8 10 ];
+        symbol [ clear %tmp.17 317 11 16 ];
+        %tmp.17 = getv function %tmp.16 :clear;
+        invoke %tmp.16 %tmp.17();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 320 8 ]
+        %tmp.18 = lgetv %dc;
+        symbol [ dc %tmp.18 320 8 10 ];
+        symbol [ setColor %tmp.19 320 11 19 ];
+        %tmp.19 = getv function %tmp.18 :setColor;
+        symbol [ COLOR_GRAY %tmp.21 320 20 30 ];
+        %tmp.21 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.22 320 32 40 ];
+        %tmp.22 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.23 320 41 58 ];
+        %tmp.23 = getv %tmp.22 :COLOR_TRANSPARENT;
+        invoke %tmp.18 %tmp.19(%tmp.21, %tmp.23);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 321 8 ]
+        %tmp.24 = lgetv %dc;
+        symbol [ dc %tmp.24 321 8 10 ];
+        symbol [ drawText %tmp.25 321 11 19 ];
+        %tmp.25 = getv function %tmp.24 :drawText;
+        %tmp.26 = lgetv %cx.2;
+        symbol [ cx %tmp.26 321 20 22 ];
+        %tmp.27 = 26;
+        symbol [ Graphics %tmp.28 321 28 36 ];
+        %tmp.28 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.29 321 37 47 ];
+        %tmp.29 = getv %tmp.28 :FONT_XTINY;
+        %tmp.30 = "Séance terminée";
+        symbol [ Graphics %tmp.31 322 20 28 ];
+        %tmp.31 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.32 322 29 48 ];
+        %tmp.32 = getv %tmp.31 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.33 322 51 59 ];
+        %tmp.33 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.34 322 60 80 ];
+        %tmp.34 = getv %tmp.33 :TEXT_JUSTIFY_VCENTER;
+        %tmp.35 = bitor %tmp.32 %tmp.34;
+        invoke %tmp.24 %tmp.25(%tmp.26, %tmp.27, %tmp.29, %tmp.30, %tmp.35);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 325 8 ]
+        %tmp.36 = lgetv %dc;
+        symbol [ dc %tmp.36 325 8 10 ];
+        symbol [ setColor %tmp.37 325 11 19 ];
+        %tmp.37 = getv function %tmp.36 :setColor;
+        symbol [ COLOR_GRAY %tmp.39 325 20 30 ];
+        %tmp.39 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.40 325 32 40 ];
+        %tmp.40 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.41 325 41 58 ];
+        %tmp.41 = getv %tmp.40 :COLOR_TRANSPARENT;
+        invoke %tmp.36 %tmp.37(%tmp.39, %tmp.41);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 326 8 ]
+        %tmp.42 = lgetv %dc;
+        symbol [ dc %tmp.42 326 8 10 ];
+        symbol [ drawText %tmp.43 326 11 19 ];
+        %tmp.43 = getv function %tmp.42 :drawText;
+        %tmp.44 = lgetv %cx.2;
+        symbol [ cx %tmp.44 326 20 22 ];
+        %tmp.45 = 46;
+        symbol [ Graphics %tmp.46 326 28 36 ];
+        %tmp.46 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.47 326 37 47 ];
+        %tmp.47 = getv %tmp.46 :FONT_XTINY;
+        %tmp.48 = lgetv %acc.3;
+        symbol [ acc %tmp.48 327 20 23 ];
+        symbol [ seriesCount %tmp.49 327 24 35 ];
+        %tmp.49 = getv function %tmp.48 :seriesCount;
+        %tmp.50 = invoke %tmp.48 %tmp.49();
+        symbol [ toString %tmp.51 327 38 46 ];
+        %tmp.51 = getv function %tmp.50 :toString;
+        %tmp.52 = invoke %tmp.50 %tmp.51();
+        %tmp.53 = " séries";
+        %tmp.54 = add %tmp.52 %tmp.53;
+        symbol [ Graphics %tmp.55 328 20 28 ];
+        %tmp.55 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.56 328 29 48 ];
+        %tmp.56 = getv %tmp.55 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.57 328 51 59 ];
+        %tmp.57 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.58 328 60 80 ];
+        %tmp.58 = getv %tmp.57 :TEXT_JUSTIFY_VCENTER;
+        %tmp.59 = bitor %tmp.56 %tmp.58;
+        invoke %tmp.42 %tmp.43(%tmp.44, %tmp.45, %tmp.47, %tmp.54, %tmp.59);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 331 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %scoreText.4 = local;
+        symbol [ scoreText %scoreText.4 331 12 21 ];
+        %tmp.60 = lgetv %acc.3;
+        symbol [ acc %tmp.60 331 24 27 ];
+        symbol [ totalMade %tmp.61 331 28 37 ];
+        %tmp.61 = getv function %tmp.60 :totalMade;
+        %tmp.62 = invoke %tmp.60 %tmp.61();
+        symbol [ toString %tmp.63 331 40 48 ];
+        %tmp.63 = getv function %tmp.62 :toString;
+        %tmp.64 = invoke %tmp.62 %tmp.63();
+        %tmp.65 = " / ";
+        %tmp.66 = add %tmp.64 %tmp.65;
+        %tmp.67 = lgetv %acc.3;
+        symbol [ acc %tmp.67 331 61 64 ];
+        symbol [ totalShots %tmp.68 331 65 75 ];
+        %tmp.68 = getv function %tmp.67 :totalShots;
+        %tmp.69 = invoke %tmp.67 %tmp.68();
+        symbol [ toString %tmp.70 331 78 86 ];
+        %tmp.70 = getv function %tmp.69 :toString;
+        %tmp.71 = invoke %tmp.69 %tmp.70();
+        %tmp.72 = add %tmp.66 %tmp.71;
+        lputv %scoreText.4 %tmp.72;
+        symbol [ scoreText %scoreText.4 331 12 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 332 8 ]
+        %tmp.73 = lgetv %dc;
+        symbol [ dc %tmp.73 332 8 10 ];
+        symbol [ setColor %tmp.74 332 11 19 ];
+        %tmp.74 = getv function %tmp.73 :setColor;
+        symbol [ COLOR_WHITE %tmp.76 332 20 31 ];
+        %tmp.76 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.77 332 33 41 ];
+        %tmp.77 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.78 332 42 59 ];
+        %tmp.78 = getv %tmp.77 :COLOR_TRANSPARENT;
+        invoke %tmp.73 %tmp.74(%tmp.76, %tmp.78);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 333 8 ]
+        %tmp.79 = lgetv %dc;
+        symbol [ dc %tmp.79 333 8 10 ];
+        symbol [ drawText %tmp.80 333 11 19 ];
+        %tmp.80 = getv function %tmp.79 :drawText;
+        %tmp.81 = lgetv %cx.2;
+        symbol [ cx %tmp.81 333 20 22 ];
+        %tmp.82 = 94;
+        symbol [ Graphics %tmp.83 333 28 36 ];
+        %tmp.83 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.84 333 37 55 ];
+        %tmp.84 = getv %tmp.83 :FONT_NUMBER_MEDIUM;
+        %tmp.85 = lgetv %scoreText.4;
+        symbol [ scoreText %tmp.85 333 57 66 ];
+        symbol [ Graphics %tmp.86 334 20 28 ];
+        %tmp.86 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.87 334 29 48 ];
+        %tmp.87 = getv %tmp.86 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.88 334 51 59 ];
+        %tmp.88 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.89 334 60 80 ];
+        %tmp.89 = getv %tmp.88 :TEXT_JUSTIFY_VCENTER;
+        %tmp.90 = bitor %tmp.87 %tmp.89;
+        invoke %tmp.79 %tmp.80(%tmp.81, %tmp.82, %tmp.84, %tmp.85, %tmp.90);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 337 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %pct.5 = local;
+        symbol [ pct %pct.5 337 12 15 ];
+        %tmp.91 = lgetv %acc.3;
+        symbol [ acc %tmp.91 337 23 26 ];
+        symbol [ percentage %tmp.92 337 27 37 ];
+        %tmp.92 = getv function %tmp.91 :percentage;
+        %tmp.93 = invoke %tmp.91 %tmp.92();
+        lputv %pct.5 %tmp.93;
+        symbol [ pct %pct.5 337 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 338 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %pctColor.6 = local;
+        symbol [ pctColor %pctColor.6 338 12 20 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_begin:
+        %tmp.94 = lgetv %pct.5;
+        symbol [ pct %tmp.94 338 23 26 ];
+        %tmp.95 = 70;
+        %tmp.96 = gte %tmp.94 %tmp.95;
+        bf %tmp.96 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_true:
+        symbol [ COLOR_GREEN %tmp.98 338 35 46 ];
+        %tmp.98 = getv ? :COLOR_GREEN;
+        push %tmp.98;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_begin:
+        %tmp.99 = lgetv %pct.5;
+        symbol [ pct %tmp.99 338 50 53 ];
+        %tmp.100 = 50;
+        %tmp.101 = gte %tmp.99 %tmp.100;
+        bf %tmp.101 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_true:
+        symbol [ COLOR_ORANGE %tmp.103 338 62 74 ];
+        %tmp.103 = getv ? :COLOR_ORANGE;
+        push %tmp.103;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_else_false:
+        symbol [ COLOR_RED %tmp.105 338 77 86 ];
+        %tmp.105 = getv ? :COLOR_RED;
+        push %tmp.105;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_end:
+        %tmp.106 = phi [%tmp.101 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_begin] [%tmp.103 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_true] [%tmp.105 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_else_false] [%tmp.106 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_50_338_77_end];
+        push %tmp.106;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_end:
+        %tmp.107 = phi [%tmp.96 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_begin] [%tmp.98 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_true] [%tmp.106 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_else_false] [%tmp.107 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_338_23_338_86_end];
+        lputv %pctColor.6 %tmp.107;
+        symbol [ pctColor %pctColor.6 338 12 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 339 8 ]
+        %tmp.108 = lgetv %dc;
+        symbol [ dc %tmp.108 339 8 10 ];
+        symbol [ setColor %tmp.109 339 11 19 ];
+        %tmp.109 = getv function %tmp.108 :setColor;
+        %tmp.110 = lgetv %pctColor.6;
+        symbol [ pctColor %tmp.110 339 20 28 ];
+        symbol [ Graphics %tmp.111 339 30 38 ];
+        %tmp.111 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.112 339 39 56 ];
+        %tmp.112 = getv %tmp.111 :COLOR_TRANSPARENT;
+        invoke %tmp.108 %tmp.109(%tmp.110, %tmp.112);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 340 8 ]
+        %tmp.113 = lgetv %dc;
+        symbol [ dc %tmp.113 340 8 10 ];
+        symbol [ drawText %tmp.114 340 11 19 ];
+        %tmp.114 = getv function %tmp.113 :drawText;
+        %tmp.115 = lgetv %cx.2;
+        symbol [ cx %tmp.115 340 20 22 ];
+        %tmp.116 = 136;
+        symbol [ Graphics %tmp.117 340 29 37 ];
+        %tmp.117 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.118 340 38 49 ];
+        %tmp.118 = getv %tmp.117 :FONT_MEDIUM;
+        %tmp.119 = lgetv %pct.5;
+        symbol [ pct %tmp.119 340 51 54 ];
+        symbol [ toString %tmp.120 340 55 63 ];
+        %tmp.120 = getv function %tmp.119 :toString;
+        %tmp.121 = invoke %tmp.119 %tmp.120();
+        %tmp.122 = "%";
+        %tmp.123 = add %tmp.121 %tmp.122;
+        symbol [ Graphics %tmp.124 341 20 28 ];
+        %tmp.124 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.125 341 29 48 ];
+        %tmp.125 = getv %tmp.124 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.126 341 51 59 ];
+        %tmp.126 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.127 341 60 80 ];
+        %tmp.127 = getv %tmp.126 :TEXT_JUSTIFY_VCENTER;
+        %tmp.128 = bitor %tmp.125 %tmp.127;
+        invoke %tmp.113 %tmp.114(%tmp.115, %tmp.116, %tmp.118, %tmp.123, %tmp.128);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 344 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %elapsed.7 = local;
+        symbol [ elapsed %elapsed.7 344 12 19 ];
+        %tmp.129 = lgetv %acc.3;
+        symbol [ acc %tmp.129 344 22 25 ];
+        symbol [ elapsedSeconds %tmp.130 344 26 40 ];
+        %tmp.130 = getv function %tmp.129 :elapsedSeconds;
+        %tmp.131 = invoke %tmp.129 %tmp.130();
+        lputv %elapsed.7 %tmp.131;
+        symbol [ elapsed %elapsed.7 344 12 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 345 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %mins.8 = local;
+        symbol [ mins %mins.8 345 12 16 ];
+        %tmp.132 = lgetv %elapsed.7;
+        symbol [ elapsed %tmp.132 345 22 29 ];
+        %tmp.133 = 60;
+        %tmp.134 = div %tmp.132 %tmp.133;
+        lputv %mins.8 %tmp.134;
+        symbol [ mins %mins.8 345 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 346 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop" ]
+        %secs.9 = local;
+        symbol [ secs %secs.9 346 12 16 ];
+        %tmp.135 = lgetv %elapsed.7;
+        symbol [ elapsed %tmp.135 346 22 29 ];
+        %tmp.136 = 60;
+        %tmp.137 = mod %tmp.135 %tmp.136;
+        lputv %secs.9 %tmp.137;
+        symbol [ secs %secs.9 346 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 347 8 ]
+        %tmp.138 = lgetv %dc;
+        symbol [ dc %tmp.138 347 8 10 ];
+        symbol [ setColor %tmp.139 347 11 19 ];
+        %tmp.139 = getv function %tmp.138 :setColor;
+        symbol [ COLOR_GRAY %tmp.141 347 20 30 ];
+        %tmp.141 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.142 347 32 40 ];
+        %tmp.142 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.143 347 41 58 ];
+        %tmp.143 = getv %tmp.142 :COLOR_TRANSPARENT;
+        invoke %tmp.138 %tmp.139(%tmp.141, %tmp.143);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 348 8 ]
+        %tmp.144 = lgetv %dc;
+        symbol [ dc %tmp.144 348 8 10 ];
+        symbol [ drawText %tmp.145 348 11 19 ];
+        %tmp.145 = getv function %tmp.144 :drawText;
+        %tmp.146 = lgetv %cx.2;
+        symbol [ cx %tmp.146 348 20 22 ];
+        %tmp.147 = 163;
+        symbol [ Graphics %tmp.148 348 29 37 ];
+        %tmp.148 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.149 348 38 48 ];
+        %tmp.149 = getv %tmp.148 :FONT_XTINY;
+        %tmp.150 = lgetv %mins.8;
+        symbol [ mins %tmp.150 349 20 24 ];
+        symbol [ format %tmp.151 349 25 31 ];
+        %tmp.151 = getv function %tmp.150 :format;
+        %tmp.152 = "%d";
+        %tmp.153 = invoke %tmp.150 %tmp.151(%tmp.152);
+        %tmp.154 = "min ";
+        %tmp.155 = add %tmp.153 %tmp.154;
+        %tmp.156 = lgetv %secs.9;
+        symbol [ secs %tmp.156 349 49 53 ];
+        symbol [ format %tmp.157 349 54 60 ];
+        %tmp.157 = getv function %tmp.156 :format;
+        %tmp.158 = "%02d";
+        %tmp.159 = invoke %tmp.156 %tmp.157(%tmp.158);
+        %tmp.160 = add %tmp.155 %tmp.159;
+        %tmp.161 = "s";
+        %tmp.162 = add %tmp.160 %tmp.161;
+        symbol [ Graphics %tmp.163 350 20 28 ];
+        %tmp.163 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.164 350 29 48 ];
+        %tmp.164 = getv %tmp.163 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.165 350 51 59 ];
+        %tmp.165 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.166 350 60 80 ];
+        %tmp.166 = getv %tmp.165 :TEXT_JUSTIFY_VCENTER;
+        %tmp.167 = bitor %tmp.164 %tmp.166;
+        invoke %tmp.144 %tmp.145(%tmp.146, %tmp.147, %tmp.149, %tmp.162, %tmp.167);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 353 8 ]
+        %tmp.168 = lgetv %dc;
+        symbol [ dc %tmp.168 353 8 10 ];
+        symbol [ setColor %tmp.169 353 11 19 ];
+        %tmp.169 = getv function %tmp.168 :setColor;
+        symbol [ COLOR_ORANGE %tmp.171 353 20 32 ];
+        %tmp.171 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.172 353 34 42 ];
+        %tmp.172 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.173 353 43 60 ];
+        %tmp.173 = getv %tmp.172 :COLOR_TRANSPARENT;
+        invoke %tmp.168 %tmp.169(%tmp.171, %tmp.173);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 354 8 ]
+        %tmp.174 = lgetv %dc;
+        symbol [ dc %tmp.174 354 8 10 ];
+        symbol [ drawText %tmp.175 354 11 19 ];
+        %tmp.175 = getv function %tmp.174 :drawText;
+        %tmp.176 = lgetv %cx.2;
+        symbol [ cx %tmp.176 354 20 22 ];
+        %tmp.177 = 208;
+        symbol [ Graphics %tmp.178 354 29 37 ];
+        %tmp.178 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.179 354 38 48 ];
+        %tmp.179 = getv %tmp.178 :FONT_XTINY;
+        %tmp.180 = "▶ Terminer";
+        symbol [ Graphics %tmp.181 355 20 28 ];
+        %tmp.181 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.182 355 29 48 ];
+        %tmp.182 = getv %tmp.181 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.183 355 51 59 ];
+        %tmp.183 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.184 355 60 80 ];
+        %tmp.184 = getv %tmp.183 :TEXT_JUSTIFY_VCENTER;
+        %tmp.185 = bitor %tmp.182 %tmp.184;
+        invoke %tmp.174 %tmp.175(%tmp.176, %tmp.177, %tmp.179, %tmp.180, %tmp.185);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_311_49_356_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 359; @symbol_classdef = [RoutineFinalDelegate,359,6,26]; @symbol_extends<0> = [WatchUi,359,35,42]; @symbol_extends<1> = [BehaviorDelegate,359,43,59]; ]
+class RoutineFinalDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 359; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 359; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 360; @position = 16; @symbol_vardef = [_runner,360,16,23]; @symbol_type<0> = [RoutineRunner,360,27,40]; ]
+    private
+    var _runner as RoutineRunner;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 362; @symbol_functiondef = [initialize,362,13,23]; @symbol_param<0> = [runner,362,24,30]; @symbol_param<0>_type<0> = [RoutineRunner,362,34,47]; ]
+    function initialize(runner as RoutineRunner) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_362_49_365_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 363 8 ]
+        symbol [ BehaviorDelegate %tmp.2 363 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 363 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 364 8 ]
+        %tmp.4 = lgetv %runner;
+        symbol [ runner %tmp.4 364 18 24 ];
+        symbol [ _runner ? 364 8 15 ];
+        putv self :_runner %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_362_49_365_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 367; @symbol_functiondef = [onSelect,367,13,21]; @symbol_return<0> = [Boolean,367,27,34]; ]
+    function onSelect() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_367_35_367_63_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 367 37 ]
+        %tmp.1 = self;
+        symbol [ popToRoot %tmp.2 367 37 46 ];
+        %tmp.2 = getv function %tmp.1 :popToRoot;
+        invoke %tmp.1 %tmp.2();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 367 50 ]
+        %tmp.3 = true;
+        ret %tmp.3;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_367_35_367_63_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 368; @symbol_functiondef = [onBack,368,13,19]; @symbol_return<0> = [Boolean,368,27,34]; ]
+    function onBack() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_368_35_368_63_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 368 37 ]
+        %tmp.1 = self;
+        symbol [ popToRoot %tmp.2 368 37 46 ];
+        %tmp.2 = getv function %tmp.1 :popToRoot;
+        invoke %tmp.1 %tmp.2();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 368 50 ]
+        %tmp.3 = true;
+        ret %tmp.3;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_368_35_368_63_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 370; @symbol_functiondef = [popToRoot,370,21,30]; ]
+    private
+    function popToRoot() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_370_41_379_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 374 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_370_41_379_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_370_41_379_4_stop" ]
+        %k.1 = local;
+        symbol [ k %k.1 374 12 13 ];
+        symbol [ _runner %tmp.2 374 19 26 ];
+        %tmp.2 = getv ? :_runner;
+        symbol [ accumulator %tmp.3 374 27 38 ];
+        %tmp.3 = getv %tmp.2 :accumulator;
+        symbol [ seriesCount %tmp.4 374 39 50 ];
+        %tmp.4 = getv function %tmp.3 :seriesCount;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %k.1 %tmp.5;
+        symbol [ k %k.1 374 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 375 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_370_41_379_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_370_41_379_4_stop" ]
+        %pops.2 = local;
+        symbol [ pops %pops.2 375 12 16 ];
+        %tmp.6 = lgetv %k.1;
+        symbol [ k %tmp.6 375 19 20 ];
+        %tmp.7 = 2;
+        %tmp.8 = mul %tmp.6 %tmp.7;
+        %tmp.9 = 2;
+        %tmp.10 = add %tmp.8 %tmp.9;
+        lputv %pops.2 %tmp.10;
+        symbol [ pops %pops.2 375 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 376 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 376 17 18 ];
+        %tmp.11 = 0;
+        lputv %i.3 %tmp.11;
+        symbol [ i %i.3 376 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_test:
+        %tmp.12 = lgetv %i.3;
+        symbol [ i %tmp.12 376 24 25 ];
+        %tmp.13 = lgetv %pops.2;
+        symbol [ pops %tmp.13 376 28 32 ];
+        %tmp.14 = lt %tmp.12 %tmp.13;
+        bf %tmp.14 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_39_378_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 377 12 ]
+        symbol [ WatchUi %tmp.15 377 12 19 ];
+        %tmp.15 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.16 377 20 27 ];
+        %tmp.16 = getv function %tmp.15 :popView;
+        symbol [ WatchUi %tmp.17 377 28 35 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.18 377 36 47 ];
+        %tmp.18 = getv %tmp.17 :SLIDE_RIGHT;
+        invoke %tmp.15 %tmp.16(%tmp.18);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_39_378_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc" 376 ]
+        %tmp.21 = lgetv %i.3;
+        symbol [ i %tmp.21 376 34 35 ];
+        %tmp.22 = add %tmp.21 1;
+        lputv %i.3 %tmp.22;
+        symbol [ i %i.3 376 34 35 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_376_8_378_8_for_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_RoutineRunner_mc_370_41_379_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/RoutineRunner.mc"; @line = 1; ]
+<init> {
+}

@@ -767,216 +767,307 @@ class WorkoutDelegate extends WatchUi.BehaviorDelegate {
     [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 136; @position = 16; @symbol_vardef = [_accumulator,136,16,28]; @symbol_type<0> = [SessionAccumulator,136,32,50]; ]
     private
     var _accumulator as SessionAccumulator or Null;
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 138; @symbol_functiondef = [initialize,138,13,23]; @symbol_param<0> = [session,138,24,31]; @symbol_param<0>_type<0> = [WorkoutSession,138,35,49]; @symbol_param<1> = [view,138,51,55]; @symbol_param<1>_type<0> = [WorkoutView,138,59,70]; @symbol_param<2> = [accumulator,138,72,83]; @symbol_param<2>_type<0> = [SessionAccumulator,138,87,105]; ]
-    function initialize(session as WorkoutSession, view as WorkoutView, accumulator as SessionAccumulator or Null) as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_138_115_142_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 139 8 ]
-        symbol [ BehaviorDelegate %tmp.2 139 8 24 ];
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 137; @position = 16; @symbol_vardef = [_runner,137,16,23]; @symbol_type<0> = [RoutineRunner,137,32,45]; ]
+    private
+    var _runner as RoutineRunner or Null;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 139; @symbol_functiondef = [initialize,139,13,23]; @symbol_param<0> = [session,139,24,31]; @symbol_param<0>_type<0> = [WorkoutSession,139,39,53]; @symbol_param<1> = [view,140,24,28]; @symbol_param<1>_type<0> = [WorkoutView,140,39,50]; @symbol_param<2> = [accumulator,141,24,35]; @symbol_param<2>_type<0> = [SessionAccumulator,141,39,57]; @symbol_param<3> = [runner,142,24,30]; @symbol_param<3>_type<0> = [RoutineRunner,142,39,52]; ]
+    function initialize(session as WorkoutSession, view as WorkoutView, accumulator as SessionAccumulator or Null, runner as RoutineRunner or Null) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_142_62_147_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 143 8 ]
+        symbol [ BehaviorDelegate %tmp.2 143 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
-        symbol [ initialize %tmp.3 139 25 35 ];
+        symbol [ initialize %tmp.3 143 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 140 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 144 8 ]
         %tmp.4 = lgetv %session;
-        symbol [ session %tmp.4 140 23 30 ];
-        symbol [ _session ? 140 8 16 ];
+        symbol [ session %tmp.4 144 23 30 ];
+        symbol [ _session ? 144 8 16 ];
         putv self :_session %tmp.4;
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 141 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 145 8 ]
         %tmp.5 = lgetv %accumulator;
-        symbol [ accumulator %tmp.5 141 23 34 ];
-        symbol [ _accumulator ? 141 8 20 ];
+        symbol [ accumulator %tmp.5 145 23 34 ];
+        symbol [ _accumulator ? 145 8 20 ];
         putv self :_accumulator %tmp.5;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_138_115_142_4_stop:
-    }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 145; @symbol_functiondef = [onNextPage,145,13,23]; @symbol_return<0> = [Boolean,145,29,36]; ]
-    function onNextPage() as Boolean {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_145_37_148_4_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 146 8 ]
+        %tmp.6 = lgetv %runner;
+        symbol [ runner %tmp.6 146 23 29 ];
+        symbol [ _runner ? 146 8 15 ];
+        putv self :_runner %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_142_62_147_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 149; @symbol_functiondef = [onNextPage,149,13,23]; @symbol_return<0> = [Boolean,149,29,36]; ]
+    function onNextPage() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_149_37_152_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 150 8 ]
         %tmp.1 = self;
-        symbol [ recordAndAdvance %tmp.2 146 8 24 ];
+        symbol [ recordAndAdvance %tmp.2 150 8 24 ];
         %tmp.2 = getv function %tmp.1 :recordAndAdvance;
         %tmp.3 = true;
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 147 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 151 8 ]
         %tmp.4 = true;
         ret %tmp.4;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_145_37_148_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_149_37_152_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 151; @symbol_functiondef = [onPreviousPage,151,13,27]; @symbol_return<0> = [Boolean,151,33,40]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 154; @symbol_functiondef = [onPreviousPage,154,13,27]; @symbol_return<0> = [Boolean,154,33,40]; ]
     function onPreviousPage() as Boolean {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_151_41_154_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 152 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_154_41_157_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 155 8 ]
         %tmp.1 = self;
-        symbol [ recordAndAdvance %tmp.2 152 8 24 ];
+        symbol [ recordAndAdvance %tmp.2 155 8 24 ];
         %tmp.2 = getv function %tmp.1 :recordAndAdvance;
         %tmp.3 = false;
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 153 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 156 8 ]
         %tmp.4 = true;
         ret %tmp.4;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_151_41_154_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_154_41_157_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 157; @symbol_functiondef = [onBack,157,13,19]; @symbol_return<0> = [Boolean,157,25,32]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 159; @symbol_functiondef = [onBack,159,13,19]; @symbol_return<0> = [Boolean,159,25,32]; ]
     function onBack() as Boolean {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_157_33_160_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 158 8 ]
-        symbol [ WatchUi %tmp.1 158 8 15 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_159_33_162_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 160 8 ]
+        symbol [ WatchUi %tmp.1 160 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 158 16 23 ];
+        symbol [ popView %tmp.2 160 16 23 ];
         %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 158 24 31 ];
+        symbol [ WatchUi %tmp.3 160 24 31 ];
         %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 158 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.4 160 32 43 ];
         %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
         invoke %tmp.1 %tmp.2(%tmp.4);
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 159 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 161 8 ]
         %tmp.5 = true;
         ret %tmp.5;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_157_33_160_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_159_33_162_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 162; @symbol_functiondef = [recordAndAdvance,162,21,37]; @symbol_param<0> = [made,162,38,42]; @symbol_param<0>_type<0> = [Boolean,162,46,53]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 164; @symbol_functiondef = [recordAndAdvance,164,21,37]; @symbol_param<0> = [made,164,38,42]; @symbol_param<0>_type<0> = [Boolean,164,46,53]; ]
     private
     function recordAndAdvance(made as Boolean) as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_162_63_182_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 163 8 ]
-        symbol [ _session %tmp.2 163 8 16 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_164_63_192_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 165 8 ]
+        symbol [ _session %tmp.2 165 8 16 ];
         %tmp.2 = getv ? :_session;
-        symbol [ recordShot %tmp.3 163 17 27 ];
+        symbol [ recordShot %tmp.3 165 17 27 ];
         %tmp.3 = getv function %tmp.2 :recordShot;
         %tmp.4 = lgetv %made;
-        symbol [ made %tmp.4 163 28 32 ];
+        symbol [ made %tmp.4 165 28 32 ];
         invoke %tmp.2 %tmp.3(%tmp.4);
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 165 8 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_8_181_8_if_stmt:
-        symbol [ _session %tmp.6 165 12 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 167 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_8_191_8_if_stmt:
+        symbol [ _session %tmp.6 167 12 20 ];
         %tmp.6 = getv ? :_session;
-        symbol [ isFinished %tmp.7 165 21 31 ];
+        symbol [ isFinished %tmp.7 167 21 31 ];
         %tmp.7 = getv function %tmp.6 :isFinished;
         %tmp.8 = invoke %tmp.6 %tmp.7();
-        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_8_181_8_if_else_false;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_8_181_8_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_35_179_8_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 166 12 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_12_178_12_if_stmt:
-        symbol [ _accumulator %tmp.10 166 16 28 ];
-        %tmp.10 = getv ? :_accumulator;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_8_191_8_if_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_8_191_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_35_189_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 168 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_12_188_12_if_stmt:
+        symbol [ _runner %tmp.10 168 16 23 ];
+        %tmp.10 = getv ? :_runner;
         %tmp.11 = null;
         %tmp.12 = ne %tmp.10 %tmp.11;
-        bf %tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_12_178_12_if_else_false;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_12_178_12_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 168 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_stop" ]
-        %acc.1 = local;
-        symbol [ acc %acc.1 168 20 23 ];
-        symbol [ _accumulator %tmp.14 168 26 38 ];
-        %tmp.14 = getv ? :_accumulator;
-        %tmp.15 = as %tmp.14 { (!Null) };
-        %tmp.16 = as %tmp.15 SessionAccumulator;
-        symbol [ SessionAccumulator %tmp.16 168 42 60 ];
-        lputv %acc.1 %tmp.16;
-        symbol [ acc %acc.1 168 20 23 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 169 16 ]
-        %tmp.17 = lgetv %acc.1;
-        symbol [ acc %tmp.17 169 16 19 ];
-        symbol [ addSeries %tmp.18 169 20 29 ];
-        %tmp.18 = getv function %tmp.17 :addSeries;
-        symbol [ _session %tmp.20 169 30 38 ];
-        %tmp.20 = getv ? :_session;
-        invoke %tmp.17 %tmp.18(%tmp.20);
+        bf %tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_12_188_12_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_12_188_12_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 170 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_stop" ]
-        %doneView.2 = local;
-        symbol [ doneView %doneView.2 170 20 28 ];
-        symbol [ SeriesDoneView %tmp.24 170 35 49 ];
-        %tmp.24 = getv ? :SeriesDoneView;
-        symbol [ _session %tmp.26 170 50 58 ];
-        %tmp.26 = getv ? :_session;
-        %tmp.27 = lgetv %acc.1;
-        symbol [ acc %tmp.27 170 60 63 ];
-        %tmp.21 = newc %tmp.24 (%tmp.26, %tmp.27);
-        lputv %doneView.2 %tmp.21;
-        symbol [ doneView %doneView.2 170 20 28 ];
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_stop" ]
+        %runner.1 = local;
+        symbol [ runner %runner.1 170 20 26 ];
+        symbol [ _runner %tmp.14 170 33 40 ];
+        %tmp.14 = getv ? :_runner;
+        %tmp.15 = as %tmp.14 { (!Null) };
+        %tmp.16 = as %tmp.15 RoutineRunner;
+        symbol [ RoutineRunner %tmp.16 170 44 57 ];
+        lputv %runner.1 %tmp.16;
+        symbol [ runner %runner.1 170 20 26 ];
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 171 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_stop" ]
-        %doneDel.3 = local;
-        symbol [ doneDel %doneDel.3 171 20 27 ];
-        symbol [ SeriesDoneDelegate %tmp.31 171 35 53 ];
-        %tmp.31 = getv ? :SeriesDoneDelegate;
-        %tmp.32 = lgetv %acc.1;
-        symbol [ acc %tmp.32 171 54 57 ];
-        %tmp.28 = newc %tmp.31 (%tmp.32);
-        lputv %doneDel.3 %tmp.28;
-        symbol [ doneDel %doneDel.3 171 20 27 ];
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_stop" ]
+        %completedN.2 = local;
+        symbol [ completedN %completedN.2 171 20 30 ];
+        %tmp.17 = lgetv %runner.1;
+        symbol [ runner %tmp.17 171 33 39 ];
+        symbol [ seriesNumber %tmp.18 171 40 52 ];
+        %tmp.18 = getv function %tmp.17 :seriesNumber;
+        %tmp.19 = invoke %tmp.17 %tmp.18();
+        lputv %completedN.2 %tmp.19;
+        symbol [ completedN %completedN.2 171 20 30 ];
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 172 16 ]
-        symbol [ WatchUi %tmp.33 172 16 23 ];
-        %tmp.33 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.34 172 24 32 ];
-        %tmp.34 = getv function %tmp.33 :pushView;
-        %tmp.35 = lgetv %doneView.2;
-        symbol [ doneView %tmp.35 172 33 41 ];
-        %tmp.36 = lgetv %doneDel.3;
-        symbol [ doneDel %tmp.36 172 43 50 ];
-        symbol [ WatchUi %tmp.37 172 52 59 ];
-        %tmp.37 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.38 172 60 70 ];
-        %tmp.38 = getv %tmp.37 :SLIDE_LEFT;
-        invoke %tmp.33 %tmp.34(%tmp.35, %tmp.36, %tmp.38);
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_38_173_12_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_12_178_12_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_12_178_12_if_else_false:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_173_19_178_12_start:
+        %tmp.20 = lgetv %runner.1;
+        symbol [ runner %tmp.20 172 16 22 ];
+        symbol [ onSeriesComplete %tmp.21 172 23 39 ];
+        %tmp.21 = getv function %tmp.20 :onSeriesComplete;
+        symbol [ _session %tmp.23 172 40 48 ];
+        %tmp.23 = getv ? :_session;
+        invoke %tmp.20 %tmp.21(%tmp.23);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 173 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_stop" ]
+        %doneView.3 = local;
+        symbol [ doneView %doneView.3 173 20 28 ];
+        symbol [ RoutineSeriesDoneView %tmp.27 173 35 56 ];
+        %tmp.27 = getv ? :RoutineSeriesDoneView;
+        symbol [ _session %tmp.29 173 57 65 ];
+        %tmp.29 = getv ? :_session;
+        %tmp.30 = lgetv %runner.1;
+        symbol [ runner %tmp.30 173 67 73 ];
+        %tmp.31 = lgetv %completedN.2;
+        symbol [ completedN %tmp.31 173 75 85 ];
+        %tmp.24 = newc %tmp.27 (%tmp.29, %tmp.30, %tmp.31);
+        lputv %doneView.3 %tmp.24;
+        symbol [ doneView %doneView.3 173 20 28 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 174 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_stop" ]
+        %doneDel.4 = local;
+        symbol [ doneDel %doneDel.4 174 20 27 ];
+        symbol [ RoutineSeriesDoneDelegate %tmp.35 174 35 60 ];
+        %tmp.35 = getv ? :RoutineSeriesDoneDelegate;
+        %tmp.36 = lgetv %runner.1;
+        symbol [ runner %tmp.36 174 61 67 ];
+        %tmp.32 = newc %tmp.35 (%tmp.36);
+        lputv %doneDel.4 %tmp.32;
+        symbol [ doneDel %doneDel.4 174 20 27 ];
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 175 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_173_19_178_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_173_19_178_12_stop" ]
-        %summaryView.4 = local;
-        symbol [ summaryView %summaryView.4 175 20 31 ];
-        symbol [ SummaryView %tmp.42 175 38 49 ];
-        %tmp.42 = getv ? :SummaryView;
-        symbol [ _session %tmp.44 175 50 58 ];
-        %tmp.44 = getv ? :_session;
-        %tmp.39 = newc %tmp.42 (%tmp.44);
-        lputv %summaryView.4 %tmp.39;
-        symbol [ summaryView %summaryView.4 175 20 31 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 176 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_173_19_178_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_173_19_178_12_stop" ]
-        %summaryDel.5 = local;
-        symbol [ summaryDel %summaryDel.5 176 20 30 ];
-        symbol [ SummaryDelegate %tmp.48 176 38 53 ];
-        %tmp.48 = getv ? :SummaryDelegate;
-        symbol [ _session %tmp.50 176 54 62 ];
-        %tmp.50 = getv ? :_session;
-        %tmp.45 = newc %tmp.48 (%tmp.50);
-        lputv %summaryDel.5 %tmp.45;
-        symbol [ summaryDel %summaryDel.5 176 20 30 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 177 16 ]
-        symbol [ WatchUi %tmp.51 177 16 23 ];
-        %tmp.51 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.52 177 24 32 ];
-        %tmp.52 = getv function %tmp.51 :pushView;
-        %tmp.53 = lgetv %summaryView.4;
-        symbol [ summaryView %tmp.53 177 33 44 ];
-        %tmp.54 = lgetv %summaryDel.5;
-        symbol [ summaryDel %tmp.54 177 46 56 ];
-        symbol [ WatchUi %tmp.55 177 58 65 ];
-        %tmp.55 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.56 177 66 76 ];
-        %tmp.56 = getv %tmp.55 :SLIDE_LEFT;
-        invoke %tmp.51 %tmp.52(%tmp.53, %tmp.54, %tmp.56);
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_173_19_178_12_stop:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_166_12_178_12_if_end:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_35_179_8_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_8_181_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_8_181_8_if_else_false:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_179_15_181_8_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 180 12 ]
-        symbol [ WatchUi %tmp.57 180 12 19 ];
-        %tmp.57 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.58 180 20 33 ];
-        %tmp.58 = getv function %tmp.57 :requestUpdate;
-        invoke %tmp.57 %tmp.58();
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_179_15_181_8_stop:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_165_8_181_8_if_end:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_162_63_182_4_stop:
+        symbol [ WatchUi %tmp.37 175 16 23 ];
+        %tmp.37 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.38 175 24 32 ];
+        %tmp.38 = getv function %tmp.37 :pushView;
+        %tmp.39 = lgetv %doneView.3;
+        symbol [ doneView %tmp.39 175 33 41 ];
+        %tmp.40 = lgetv %doneDel.4;
+        symbol [ doneDel %tmp.40 175 43 50 ];
+        symbol [ WatchUi %tmp.41 175 52 59 ];
+        %tmp.41 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.42 175 60 70 ];
+        %tmp.42 = getv %tmp.41 :SLIDE_LEFT;
+        invoke %tmp.37 %tmp.38(%tmp.39, %tmp.40, %tmp.42);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_33_176_12_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_12_188_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_12_188_12_if_false:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 176 19 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_19_188_12_if_stmt:
+        symbol [ _accumulator %tmp.44 176 23 35 ];
+        %tmp.44 = getv ? :_accumulator;
+        %tmp.45 = null;
+        %tmp.46 = ne %tmp.44 %tmp.45;
+        bf %tmp.46 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_19_188_12_if_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_19_188_12_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 178 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_stop" ]
+        %acc.5 = local;
+        symbol [ acc %acc.5 178 20 23 ];
+        symbol [ _accumulator %tmp.48 178 26 38 ];
+        %tmp.48 = getv ? :_accumulator;
+        %tmp.49 = as %tmp.48 { (!Null) };
+        %tmp.50 = as %tmp.49 SessionAccumulator;
+        symbol [ SessionAccumulator %tmp.50 178 42 60 ];
+        lputv %acc.5 %tmp.50;
+        symbol [ acc %acc.5 178 20 23 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 179 16 ]
+        %tmp.51 = lgetv %acc.5;
+        symbol [ acc %tmp.51 179 16 19 ];
+        symbol [ addSeries %tmp.52 179 20 29 ];
+        %tmp.52 = getv function %tmp.51 :addSeries;
+        symbol [ _session %tmp.54 179 30 38 ];
+        %tmp.54 = getv ? :_session;
+        invoke %tmp.51 %tmp.52(%tmp.54);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 180 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_stop" ]
+        %doneView.6 = local;
+        symbol [ doneView %doneView.6 180 20 28 ];
+        symbol [ SeriesDoneView %tmp.58 180 35 49 ];
+        %tmp.58 = getv ? :SeriesDoneView;
+        symbol [ _session %tmp.60 180 50 58 ];
+        %tmp.60 = getv ? :_session;
+        %tmp.61 = lgetv %acc.5;
+        symbol [ acc %tmp.61 180 60 63 ];
+        %tmp.55 = newc %tmp.58 (%tmp.60, %tmp.61);
+        lputv %doneView.6 %tmp.55;
+        symbol [ doneView %doneView.6 180 20 28 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 181 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_stop" ]
+        %doneDel.7 = local;
+        symbol [ doneDel %doneDel.7 181 20 27 ];
+        symbol [ SeriesDoneDelegate %tmp.65 181 35 53 ];
+        %tmp.65 = getv ? :SeriesDoneDelegate;
+        %tmp.66 = lgetv %acc.5;
+        symbol [ acc %tmp.66 181 54 57 ];
+        %tmp.62 = newc %tmp.65 (%tmp.66);
+        lputv %doneDel.7 %tmp.62;
+        symbol [ doneDel %doneDel.7 181 20 27 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 182 16 ]
+        symbol [ WatchUi %tmp.67 182 16 23 ];
+        %tmp.67 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.68 182 24 32 ];
+        %tmp.68 = getv function %tmp.67 :pushView;
+        %tmp.69 = lgetv %doneView.6;
+        symbol [ doneView %tmp.69 182 33 41 ];
+        %tmp.70 = lgetv %doneDel.7;
+        symbol [ doneDel %tmp.70 182 43 50 ];
+        symbol [ WatchUi %tmp.71 182 52 59 ];
+        %tmp.71 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.72 182 60 70 ];
+        %tmp.72 = getv %tmp.71 :SLIDE_LEFT;
+        invoke %tmp.67 %tmp.68(%tmp.69, %tmp.70, %tmp.72);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_45_183_12_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_19_188_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_19_188_12_if_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_183_19_188_12_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 185 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_183_19_188_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_183_19_188_12_stop" ]
+        %summaryView.8 = local;
+        symbol [ summaryView %summaryView.8 185 20 31 ];
+        symbol [ SummaryView %tmp.76 185 38 49 ];
+        %tmp.76 = getv ? :SummaryView;
+        symbol [ _session %tmp.78 185 50 58 ];
+        %tmp.78 = getv ? :_session;
+        %tmp.73 = newc %tmp.76 (%tmp.78);
+        lputv %summaryView.8 %tmp.73;
+        symbol [ summaryView %summaryView.8 185 20 31 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 186 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_183_19_188_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_183_19_188_12_stop" ]
+        %summaryDel.9 = local;
+        symbol [ summaryDel %summaryDel.9 186 20 30 ];
+        symbol [ SummaryDelegate %tmp.82 186 38 53 ];
+        %tmp.82 = getv ? :SummaryDelegate;
+        symbol [ _session %tmp.84 186 54 62 ];
+        %tmp.84 = getv ? :_session;
+        %tmp.79 = newc %tmp.82 (%tmp.84);
+        lputv %summaryDel.9 %tmp.79;
+        symbol [ summaryDel %summaryDel.9 186 20 30 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 187 16 ]
+        symbol [ WatchUi %tmp.85 187 16 23 ];
+        %tmp.85 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.86 187 24 32 ];
+        %tmp.86 = getv function %tmp.85 :pushView;
+        %tmp.87 = lgetv %summaryView.8;
+        symbol [ summaryView %tmp.87 187 33 44 ];
+        %tmp.88 = lgetv %summaryDel.9;
+        symbol [ summaryDel %tmp.88 187 46 56 ];
+        symbol [ WatchUi %tmp.89 187 58 65 ];
+        %tmp.89 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.90 187 66 76 ];
+        %tmp.90 = getv %tmp.89 :SLIDE_LEFT;
+        invoke %tmp.85 %tmp.86(%tmp.87, %tmp.88, %tmp.90);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_183_19_188_12_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_176_19_188_12_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_168_12_188_12_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_35_189_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_8_191_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_8_191_8_if_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_189_15_191_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc" 190 12 ]
+        symbol [ WatchUi %tmp.91 190 12 19 ];
+        %tmp.91 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.92 190 20 33 ];
+        %tmp.92 = getv function %tmp.91 :requestUpdate;
+        invoke %tmp.91 %tmp.92();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_189_15_191_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_167_8_191_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_WorkoutView_mc_164_63_192_4_stop:
     }
 }
 [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/WorkoutView.mc"; @line = 1; ]
