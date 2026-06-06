@@ -14,8 +14,9 @@ class GoalSession {
     var totalShots   as Number;  // tirs au total (réussis + ratés)
     var results      as Array;   // [Boolean] — true=réussi, false=raté
     var startTime    as Number;  // timestamp Unix
+    var shotType     as Number;  // type de tir (Catch & Shoot / Avec dribble / À l'arrêt)
 
-    function initialize(exId as Number, target as Number) {
+    function initialize(exId as Number, target as Number, shotTypeId as Number) {
         exerciseId   = exId;
         exerciseName = getExerciseName(exId);
         targetMade   = target;
@@ -23,6 +24,7 @@ class GoalSession {
         totalShots   = 0;
         results      = new [0];
         startTime    = Time.now().value();
+        shotType     = shotTypeId;
     }
 
     // Enregistre un tir
@@ -54,7 +56,8 @@ class GoalSession {
             "startTime"    => startTime,
             "results"      => results,
             "duration"     => Time.now().value() - startTime,
-            "targetMade"   => targetMade
+            "targetMade"   => targetMade,
+            "shotTypeId"   => shotType
         };
     }
 }

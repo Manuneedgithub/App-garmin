@@ -13,8 +13,9 @@ class WorkoutSession {
     var madeShots    as Number;
     var results      as Array;   // tableau de Boolean : true=réussi, false=raté
     var startTime    as Number;  // timestamp Unix
+    var shotType     as Number;  // type de tir (Catch & Shoot / Avec dribble / À l'arrêt)
 
-    function initialize(exId as Number, total as Number) {
+    function initialize(exId as Number, total as Number, shotTypeId as Number) {
         exerciseId   = exId;
         exerciseName = getExerciseName(exId);
         totalShots   = total;
@@ -22,6 +23,7 @@ class WorkoutSession {
         madeShots    = 0;
         results      = new [0];
         startTime    = Time.now().value();
+        shotType     = shotTypeId;
     }
 
     // Enregistre un tir et avance le compteur
@@ -53,7 +55,8 @@ class WorkoutSession {
             "percentage"   => percentage(),
             "startTime"    => startTime,
             "results"      => results,
-            "duration"     => Time.now().value() - startTime
+            "duration"     => Time.now().value() - startTime,
+            "shotTypeId"   => shotType
         };
     }
 }
