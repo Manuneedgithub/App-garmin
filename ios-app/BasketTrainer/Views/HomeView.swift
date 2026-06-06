@@ -33,9 +33,7 @@ struct HomeView: View {
                         newWorkoutButton
                             .padding(.horizontal, 20)
 
-                        if !store.templates.isEmpty {
-                            templatesSection
-                        }
+                        templatesSection
 
                         if !store.recentSessions.isEmpty {
                             recentSessionsList
