@@ -8,6 +8,7 @@ struct HomeView: View {
     @EnvironmentObject var garmin: GarminManager
     @State private var showManualEntry  = false
     @State private var prefillTemplate: ComplexTemplate? = nil
+    @State private var showRoutineBuilder = false
 
     var body: some View {
         NavigationStack {
@@ -58,6 +59,10 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showManualEntry, onDismiss: { prefillTemplate = nil }) {
                 ManualSessionView(prefillTemplate: prefillTemplate)
+            }
+            .sheet(isPresented: $showRoutineBuilder) {
+                RoutineBuilderView()
+                    .environmentObject(store)
             }
         }
     }
@@ -128,41 +133,26 @@ struct HomeView: View {
 
     private var templatesSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text("Templates")
-                .font(.headline)
-                .foregroundStyle(.primary)
-                .padding(.horizontal, 20)
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(store.templates) { template in
-                        Button {
-                            prefillTemplate = template
-                            showManualEntry = true
-                        } label: {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(template.name)
-                                    .font(.subheadline.weight(.semibold))
-                                    .foregroundStyle(.primary)
-                                    .lineLimit(1)
-                                Text("\(template.series.count) séries · \(template.series.reduce(0) { $0 + $1.totalShots }) tirs")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 12)
-                            .background(Color(.systemBackground))
-                            .overlay(alignment: .leading) {
-                                Rectangle()
-                                    .fill(Color.orange)
-                                    .frame(width: 3)
-                            }
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                        }
-                    }
+            HStack {
+                Text("Routines")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Spacer()
+                Button {
+                    showRoutineBuilder = true
+                } label: {
+                    Image(systemName: "plus.circle")
+                        .foregroundStyle(.orange)
+                        .font(.title3)
                 }
-                .padding(.horizontal, 20)
             }
+            .padding(.horizontal, 20)
+
+            TemplatesView(onLaunchManual: { t in
+                prefillTemplate = t
+                showManualEntry = true
+            })
+            .padding(.horizontal, 20)
         }
     }
 
