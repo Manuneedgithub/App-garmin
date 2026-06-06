@@ -9,6 +9,7 @@ struct HomeView: View {
     @State private var showManualEntry  = false
     @State private var prefillTemplate: ComplexTemplate? = nil
     @State private var showRoutineBuilder = false
+    @State private var showSlotsConfig = false
 
     var body: some View {
         NavigationStack {
@@ -20,6 +21,27 @@ struct HomeView: View {
 
                         watchConnectionRow
                             .padding(.horizontal, 20)
+
+                        Button {
+                            showSlotsConfig = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "dumbbell.fill")
+                                    .foregroundStyle(.orange)
+                                Text("Configurer les entraînements montre")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 12)
+                            .background(Color(.systemBackground))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                        .padding(.horizontal, 20)
 
                         quickStats
                             .padding(.horizontal, 20)
@@ -54,6 +76,11 @@ struct HomeView: View {
             .sheet(isPresented: $showRoutineBuilder) {
                 RoutineBuilderView()
                     .environmentObject(store)
+            }
+            .sheet(isPresented: $showSlotsConfig) {
+                SlotsView()
+                    .environmentObject(store)
+                    .environmentObject(garmin)
             }
         }
     }
