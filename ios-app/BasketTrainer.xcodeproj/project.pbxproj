@@ -24,6 +24,7 @@
 		AA00000000000000000000DD /* ManualSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CF /* ManualSessionView.swift */; };
 		AA00000000000000000000DE /* EditSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000D0 /* EditSessionView.swift */; };
 		AA00000000000000000000DF /* TemplatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000010 /* TemplatesView.swift */; };
+		AA00000000000000000000E4 /* RoutineBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000E0 /* RoutineBuilderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +45,7 @@
 		32CB2D8D2F7D123200FB5A89 /* connectiq-companion-app-sdk-ios-1.8.0 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "connectiq-companion-app-sdk-ios-1.8.0"; path = "../../../../Downloads/connectiq-companion-app-sdk-ios-1.8.0"; sourceTree = "<group>"; };
 		32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ConnectIQ.xcframework; path = ConnectIQ.xcframework; sourceTree = "<group>"; };
 		AA0000000000000000000010 /* TemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesView.swift; sourceTree = "<group>"; };
+		AA00000000000000000000E0 /* RoutineBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineBuilderView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000B1 /* BasketTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00000000000000000000C1 /* BasketTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTrainerApp.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				AA00000000000000000000CF /* ManualSessionView.swift */,
 				AA00000000000000000000D0 /* EditSessionView.swift */,
 				AA0000000000000000000010 /* TemplatesView.swift */,
+				AA00000000000000000000E0 /* RoutineBuilderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				AA00000000000000000000DD /* ManualSessionView.swift in Sources */,
 				AA00000000000000000000DE /* EditSessionView.swift in Sources */,
 				AA00000000000000000000DF /* TemplatesView.swift in Sources */,
+				AA00000000000000000000E4 /* RoutineBuilderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
