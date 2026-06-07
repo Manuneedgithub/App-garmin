@@ -13,6 +13,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
     @Published var lastSyncDate: Date? = nil
     @Published var connectedDevice: IQDevice? = nil
+    @Published var lastSlotSendMessage: String? = nil
 
     func setup() {
         sdk.initialize(withUrlScheme: "baskettrainer", uiOverrideDelegate: nil)
@@ -117,7 +118,10 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     }
 
     func sendSlot(_ index: Int, template: ComplexTemplate) {
-        guard let device = connectedDevice else { return }
+        guard let device = connectedDevice else {
+            lastSlotSendMessage = "Montre non connectée"
+            return
+        }
         let app = IQApp(uuid: appUUID, store: appUUID, device: device)
         let payload: [String: Any] = [
             "type": "slot",
@@ -130,7 +134,19 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
                 ]
             }
         ]
-        sdk.sendMessage(payload, to: app, progress: nil) { _ in }
+        // Réveille l'app montre avant d'envoyer — sendMessage exige que l'app
+        // cible soit active sur la montre pour recevoir le message (cf. le
+        // même besoin déjà rencontré pour la sync au moment de la connexion).
+        sdk.openAppRequest(app) { [weak self] _ in
+            self?.sdk.sendMessage(payload, to: app, progress: nil) { result in
+                print("sendSlot(\(index)) → \(NSStringFromSendMessageResult(result))")
+                DispatchQueue.main.async {
+                    self?.lastSlotSendMessage = result == .success
+                        ? "Entraînement \(index + 1) envoyé à la montre ✅"
+                        : "Échec de l'envoi : \(NSStringFromSendMessageResult(result))"
+                }
+            }
+        }
     }
 
     func addMockSession() {

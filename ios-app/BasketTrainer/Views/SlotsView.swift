@@ -42,6 +42,14 @@ struct SlotsView: View {
                 SlotEditorView(index: req.id, existing: store.watchSlots[req.id])
                     .environmentObject(store)
             }
+            .alert("Envoi à la montre", isPresented: Binding(
+                get: { garmin.lastSlotSendMessage != nil },
+                set: { if !$0 { garmin.lastSlotSendMessage = nil } }
+            )) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(garmin.lastSlotSendMessage ?? "")
+            }
         }
     }
 }
