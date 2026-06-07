@@ -6,29 +6,33 @@ import Foundation
 
 // Types d'exercices (même ordre que la montre)
 enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
-    case freethrow      = 0
-    case threeCenter    = 1
-    case threeRight45   = 2
-    case threeLeft45    = 3
-    case threeCornerR   = 4
-    case threeCornerL   = 5
-    case midCenter      = 6
-    case midRight       = 7
-    case midLeft        = 8
+    case freethrow            = 0
+    case threeCenter          = 1
+    case threeRight45         = 2
+    case threeLeft45          = 3
+    case threeCornerR         = 4
+    case threeCornerL         = 5
+    case midCenter            = 6
+    case midRight             = 7
+    case midLeft              = 8
+    case floater              = 9
+    case formShotSideToSide   = 10
 
     var id: Int { rawValue }
 
     var name: String {
         switch self {
-        case .freethrow:    return "Lancer Franc"
-        case .threeCenter:  return "3pts Centre"
-        case .threeRight45: return "3pts 45° Droite"
-        case .threeLeft45:  return "3pts 45° Gauche"
-        case .threeCornerR: return "3pts Coin Droite"
-        case .threeCornerL: return "3pts Coin Gauche"
-        case .midCenter:    return "Mi-distance Centre"
-        case .midRight:     return "Mi-distance Droite"
-        case .midLeft:      return "Mi-distance Gauche"
+        case .freethrow:            return "Lancer Franc"
+        case .threeCenter:          return "3pts Centre"
+        case .threeRight45:         return "3pts 45° Droite"
+        case .threeLeft45:          return "3pts 45° Gauche"
+        case .threeCornerR:         return "3pts Coin Droite"
+        case .threeCornerL:         return "3pts Coin Gauche"
+        case .midCenter:            return "Mi-distance Centre"
+        case .midRight:             return "Mi-distance Droite"
+        case .midLeft:              return "Mi-distance Gauche"
+        case .floater:              return "Flotteur"
+        case .formShotSideToSide:   return "Form Shot Side to Side"
         }
     }
 
@@ -39,6 +43,8 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
         case .threeRight45, .threeLeft45:       return "↗️"
         case .threeCornerR, .threeCornerL:      return "📐"
         case .midCenter, .midRight, .midLeft:   return "🎳"
+        case .floater:                          return "🪶"
+        case .formShotSideToSide:               return "↔️"
         }
     }
 
@@ -50,6 +56,7 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
              .threeLeft45, .threeCornerR,
              .threeCornerL:                     return "3 Points"
         case .midCenter, .midRight, .midLeft:   return "Mi-distance"
+        case .floater, .formShotSideToSide:     return "Technique"
         }
     }
 }

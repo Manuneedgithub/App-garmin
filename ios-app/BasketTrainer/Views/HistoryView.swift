@@ -6,7 +6,7 @@ struct HistoryView: View {
     @State private var searchText = ""
     @State private var showManualEntry = false
 
-    private let categories = ["Lancer Franc", "3 Points", "Mi-distance"]
+    private let categories = ["Lancer Franc", "3 Points", "Mi-distance", "Technique"]
 
     private var filteredSessions: [WorkoutSession] {
         var sessions = store.sessions.sorted { $0.date > $1.date }
