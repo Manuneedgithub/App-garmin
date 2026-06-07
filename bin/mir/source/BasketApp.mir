@@ -1,269 +1,293 @@
 [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Application,1,14,25]; ]
 import Toybox.Application;
-[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Communications,2,14,28]; ]
+import Toybox.Communications;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
 import Toybox.Lang;
-[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [WatchUi,4,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 5; @symbol_classdef = [BasketApp,5,6,15]; @symbol_extends<0> = [Application,5,24,35]; @symbol_extends<1> = [AppBase,5,36,43]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 6; @symbol_classdef = [BasketApp,6,6,15]; @symbol_extends<0> = [Application,6,24,35]; @symbol_extends<1> = [AppBase,6,36,43]; ]
 class BasketApp extends Application.AppBase {
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 5; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 6; ]
     <init> {
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 5; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 6; ]
     static
     <init> {
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 6; @position = 16; @symbol_vardef = [_sync,6,16,21]; @symbol_type<0> = [SyncManager,6,25,36]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 7; @position = 16; @symbol_vardef = [_sync,7,16,21]; @symbol_type<0> = [SyncManager,7,25,36]; ]
     private
     var _sync as SyncManager or Null;
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; ]
     function initialize() as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_8_26_11_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 9 8 ]
-        symbol [ AppBase %tmp.2 9 8 15 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_9_26_12_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 10 8 ]
+        symbol [ AppBase %tmp.2 10 8 15 ];
         %tmp.2 = getv ? :AppBase;
-        symbol [ initialize %tmp.3 9 16 26 ];
+        symbol [ initialize %tmp.3 10 16 26 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 10 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 11 8 ]
         %tmp.4 = null;
-        symbol [ _sync ? 10 8 13 ];
+        symbol [ _sync ? 11 8 13 ];
         putv self :_sync %tmp.4;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_8_26_11_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_9_26_12_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 13; @symbol_functiondef = [onStart,13,13,20]; @symbol_param<0> = [state,13,21,26]; @symbol_param<0>_type<0> = [Dictionary,13,30,40]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 14; @symbol_functiondef = [onStart,14,13,20]; @symbol_param<0> = [state,14,21,26]; @symbol_param<0>_type<0> = [Dictionary,14,30,40]; ]
     function onStart(state as Dictionary or Null) as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_13_51_16_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 14 8 ]
-        symbol [ SyncManager %tmp.4 14 20 31 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_14_51_20_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 15 8 ]
+        symbol [ SyncManager %tmp.4 15 20 31 ];
         %tmp.4 = getv ? :SyncManager;
         %tmp.1 = newc %tmp.4 ();
-        symbol [ _sync ? 14 8 13 ];
+        symbol [ _sync ? 15 8 13 ];
         putv self :_sync %tmp.1;
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 15 8 ]
-        symbol [ _sync %tmp.6 15 8 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 16 8 ]
+        symbol [ _sync %tmp.6 16 8 13 ];
         %tmp.6 = getv ? :_sync;
-        symbol [ initialize %tmp.7 15 14 24 ];
+        symbol [ initialize %tmp.7 16 14 24 ];
         %tmp.7 = getv function %tmp.6 :initialize;
         invoke %tmp.6 %tmp.7();
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_13_51_16_4_stop:
-    }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 18; @symbol_functiondef = [onStop,18,13,19]; @symbol_param<0> = [state,18,20,25]; @symbol_param<0>_type<0> = [Dictionary,18,29,39]; ]
-    function onStop(state as Dictionary or Null) as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_18_50_20_4_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 19 8 ]
-        %tmp.1 = null;
-        symbol [ _sync ? 19 8 13 ];
-        putv self :_sync %tmp.1;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_18_50_20_4_stop:
+        symbol [ Communications %tmp.8 19 8 22 ];
+        %tmp.8 = getm $.Toybox.Communications;
+        symbol [ registerForPhoneAppMessages %tmp.9 19 23 50 ];
+        %tmp.9 = getv function %tmp.8 :registerForPhoneAppMessages;
+        %tmp.10 = self;
+        symbol [ method %tmp.11 19 51 57 ];
+        %tmp.11 = getv function %tmp.10 :method;
+        %tmp.13 = const :onPhoneAppMessage;
+        symbol [ onPhoneAppMessage %tmp.13 19 59 76 const ];
+        %tmp.14 = invoke %tmp.10 %tmp.11(%tmp.13);
+        invoke %tmp.8 %tmp.9(%tmp.14);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_14_51_20_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 22; @symbol_functiondef = [getInitialView,22,13,27]; @symbol_return<0> = [WatchUi,22,34,41]; @symbol_return<1> = [Views,22,42,47]; @symbol_return<2> = [WatchUi,22,53,60]; @symbol_return<3> = [Views,22,61,66]; @symbol_return<4> = [WatchUi,22,68,75]; @symbol_return<5> = [InputDelegates,22,76,90]; ]
-    function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_92_26_4_start:
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 22; @symbol_functiondef = [onStop,22,13,19]; @symbol_param<0> = [state,22,20,25]; @symbol_param<0>_type<0> = [Dictionary,22,29,39]; ]
+    function onStop(state as Dictionary or Null) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_50_24_4_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 23 8 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_92_26_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_92_26_4_stop" ]
+        %tmp.1 = null;
+        symbol [ _sync ? 23 8 13 ];
+        putv self :_sync %tmp.1;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_50_24_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 26; @symbol_functiondef = [getInitialView,26,13,27]; @symbol_return<0> = [WatchUi,26,34,41]; @symbol_return<1> = [Views,26,42,47]; @symbol_return<2> = [WatchUi,26,53,60]; @symbol_return<3> = [Views,26,61,66]; @symbol_return<4> = [WatchUi,26,68,75]; @symbol_return<5> = [InputDelegates,26,76,90]; ]
+    function getInitialView() as [WatchUi.Views] or [WatchUi.Views, WatchUi.InputDelegates] {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_26_92_30_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 27 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_26_92_30_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_26_92_30_4_stop" ]
         %menu.1 = local;
-        symbol [ menu %menu.1 23 12 16 ];
-        symbol [ MainMenuView %tmp.4 23 27 39 ];
+        symbol [ menu %menu.1 27 12 16 ];
+        symbol [ MainMenuView %tmp.4 27 27 39 ];
         %tmp.4 = getv ? :MainMenuView;
         %tmp.1 = newc %tmp.4 ();
         lputv %menu.1 %tmp.1;
-        symbol [ menu %menu.1 23 12 16 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 24 8 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_92_26_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_92_26_4_stop" ]
+        symbol [ menu %menu.1 27 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 28 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_26_92_30_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_26_92_30_4_stop" ]
         %delegate.2 = local;
-        symbol [ delegate %delegate.2 24 12 20 ];
-        symbol [ MainMenuDelegate %tmp.8 24 27 43 ];
+        symbol [ delegate %delegate.2 28 12 20 ];
+        symbol [ MainMenuDelegate %tmp.8 28 27 43 ];
         %tmp.8 = getv ? :MainMenuDelegate;
         %tmp.5 = newc %tmp.8 ();
         lputv %delegate.2 %tmp.5;
-        symbol [ delegate %delegate.2 24 12 20 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 25 8 ]
+        symbol [ delegate %delegate.2 28 12 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 29 8 ]
         %tmp.9 = newa 2;
         %tmp.10 = lgetv %menu.1;
-        symbol [ menu %tmp.10 25 16 20 ];
+        symbol [ menu %tmp.10 29 16 20 ];
         %tmp.11 = dup %tmp.9;
         %tmp.12 = aputv %tmp.11 0 %tmp.10;
         %tmp.13 = lgetv %delegate.2;
-        symbol [ delegate %tmp.13 25 22 30 ];
+        symbol [ delegate %tmp.13 29 22 30 ];
         %tmp.14 = dup %tmp.12;
         %tmp.15 = aputv %tmp.14 1 %tmp.13;
         ret %tmp.15;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_22_92_26_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_26_92_30_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 28; @symbol_functiondef = [onMessage,28,13,22]; @symbol_param<0> = [message,28,23,30]; @symbol_param<0>_type<0> = [Object,28,34,40]; ]
-    function onMessage(message as Object) as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_28_50_38_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 29 8 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_29_8_29_56_if_stmt:
-        %tmp.1 = lgetv %message;
-        symbol [ message %tmp.1 29 14 21 ];
-        symbol [ Dictionary %tmp.3 29 33 43 ];
-        %tmp.3 = getv ? :Dictionary;
-        %tmp.4 = isa %tmp.1 %tmp.3;
-        %tmp.5 = not %tmp.4;
-        bf %tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_29_8_29_56_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_29_8_29_56_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_29_46_29_56_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 29 48 ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 32; @symbol_functiondef = [onPhoneAppMessage,32,13,30]; @symbol_param<0> = [msg,32,31,34]; @symbol_param<0>_type<0> = [Communications,32,38,52]; @symbol_param<0>_type<1> = [PhoneAppMessage,32,53,68]; ]
+    function onPhoneAppMessage(msg as Communications.PhoneAppMessage) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_78_43_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 33 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_78_43_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_78_43_4_stop" ]
+        %message.1 = local;
+        symbol [ message %message.1 33 12 19 ];
+        %tmp.1 = lgetv %msg;
+        symbol [ msg %tmp.1 33 22 25 ];
+        symbol [ data %tmp.2 33 26 30 ];
+        %tmp.2 = getv %tmp.1 :data;
+        lputv %message.1 %tmp.2;
+        symbol [ message %message.1 33 12 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 34 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_8_34_56_if_stmt:
+        %tmp.3 = lgetv %message.1;
+        symbol [ message %tmp.3 34 14 21 ];
+        symbol [ Dictionary %tmp.5 34 33 43 ];
+        %tmp.5 = getv ? :Dictionary;
+        %tmp.6 = isa %tmp.3 %tmp.5;
+        %tmp.7 = not %tmp.6;
+        bf %tmp.7 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_8_34_56_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_8_34_56_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_46_34_56_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 34 48 ]
         ret ?;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_29_46_29_56_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_29_8_29_56_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_29_8_29_56_if_end:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 30 8 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_28_50_38_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_28_50_38_4_stop" ]
-        %dict.1 = local;
-        symbol [ dict %dict.1 30 12 16 ];
-        %tmp.6 = lgetv %message;
-        symbol [ message %tmp.6 30 19 26 ];
-        %tmp.7 = as %tmp.6 Dictionary;
-        symbol [ Dictionary %tmp.7 30 30 40 ];
-        lputv %dict.1 %tmp.7;
-        symbol [ dict %dict.1 30 12 16 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 31 8 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_8_37_8_if_stmt:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_12_31_84_begin:
-        %tmp.8 = lgetv %dict.1;
-        symbol [ dict %tmp.8 31 12 16 ];
-        %tmp.9 = "type";
-        %tmp.10 = agetv %tmp.8 %tmp.9;
-        symbol [ String %tmp.12 31 36 42 ];
-        %tmp.12 = getv ? :String;
-        %tmp.13 = isa %tmp.10 %tmp.12;
-        bf %tmp.13 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_8_37_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_46_31_84_true:
-        %tmp.14 = lgetv %dict.1;
-        symbol [ dict %tmp.14 31 47 51 ];
-        %tmp.15 = "type";
-        %tmp.16 = agetv %tmp.14 %tmp.15;
-        %tmp.17 = as %tmp.16 String;
-        symbol [ String %tmp.17 31 63 69 ];
-        symbol [ equals %tmp.18 31 71 77 ];
-        %tmp.18 = getv function %tmp.17 :equals;
-        %tmp.19 = "slot";
-        %tmp.20 = invoke %tmp.17 %tmp.18(%tmp.19);
-        push %tmp.20;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_46_31_84_end:
-        %tmp.21 = phi [%tmp.13 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_12_31_84_begin] [%tmp.20 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_46_31_84_true] [%tmp.21 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_46_31_84_end];
-        bf %tmp.21 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_8_37_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_8_37_8_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_87_37_8_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 32 12 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_12_32_100_if_stmt:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_16_32_87_begin:
-        %tmp.22 = lgetv %dict.1;
-        symbol [ dict %tmp.22 32 18 22 ];
-        %tmp.23 = "index";
-        %tmp.24 = agetv %tmp.22 %tmp.23;
-        symbol [ Number %tmp.26 32 43 49 ];
-        %tmp.26 = getv ? :Number;
-        %tmp.27 = isa %tmp.24 %tmp.26;
-        %tmp.28 = not %tmp.27;
-        bt %tmp.28 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_12_32_100_if_true;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_54_32_87_false:
-        %tmp.29 = lgetv %dict.1;
-        symbol [ dict %tmp.29 32 56 60 ];
-        %tmp.30 = "series";
-        %tmp.31 = agetv %tmp.29 %tmp.30;
-        symbol [ Array %tmp.33 32 82 87 ];
-        %tmp.33 = getv ? :Array;
-        %tmp.34 = isa %tmp.31 %tmp.33;
-        %tmp.35 = not %tmp.34;
-        push %tmp.35;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_54_32_87_end:
-        %tmp.36 = phi [%tmp.28 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_16_32_87_begin] [%tmp.35 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_54_32_87_false] [%tmp.36 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_54_32_87_end];
-        bf %tmp.36 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_12_32_100_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_12_32_100_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_90_32_100_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 32 92 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_46_34_56_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_8_34_56_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_8_34_56_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 35 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_78_43_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_78_43_4_stop" ]
+        %dict.2 = local;
+        symbol [ dict %dict.2 35 12 16 ];
+        %tmp.8 = lgetv %message.1;
+        symbol [ message %tmp.8 35 19 26 ];
+        %tmp.9 = as %tmp.8 Dictionary;
+        symbol [ Dictionary %tmp.9 35 30 40 ];
+        lputv %dict.2 %tmp.9;
+        symbol [ dict %dict.2 35 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 36 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_8_42_8_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_12_36_84_begin:
+        %tmp.10 = lgetv %dict.2;
+        symbol [ dict %tmp.10 36 12 16 ];
+        %tmp.11 = "type";
+        %tmp.12 = agetv %tmp.10 %tmp.11;
+        symbol [ String %tmp.14 36 36 42 ];
+        %tmp.14 = getv ? :String;
+        %tmp.15 = isa %tmp.12 %tmp.14;
+        bf %tmp.15 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_8_42_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_46_36_84_true:
+        %tmp.16 = lgetv %dict.2;
+        symbol [ dict %tmp.16 36 47 51 ];
+        %tmp.17 = "type";
+        %tmp.18 = agetv %tmp.16 %tmp.17;
+        %tmp.19 = as %tmp.18 String;
+        symbol [ String %tmp.19 36 63 69 ];
+        symbol [ equals %tmp.20 36 71 77 ];
+        %tmp.20 = getv function %tmp.19 :equals;
+        %tmp.21 = "slot";
+        %tmp.22 = invoke %tmp.19 %tmp.20(%tmp.21);
+        push %tmp.22;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_46_36_84_end:
+        %tmp.23 = phi [%tmp.15 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_12_36_84_begin] [%tmp.22 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_46_36_84_true] [%tmp.23 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_46_36_84_end];
+        bf %tmp.23 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_8_42_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_8_42_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_87_42_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 37 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_12_37_100_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_16_37_87_begin:
+        %tmp.24 = lgetv %dict.2;
+        symbol [ dict %tmp.24 37 18 22 ];
+        %tmp.25 = "index";
+        %tmp.26 = agetv %tmp.24 %tmp.25;
+        symbol [ Number %tmp.28 37 43 49 ];
+        %tmp.28 = getv ? :Number;
+        %tmp.29 = isa %tmp.26 %tmp.28;
+        %tmp.30 = not %tmp.29;
+        bt %tmp.30 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_12_37_100_if_true;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_54_37_87_false:
+        %tmp.31 = lgetv %dict.2;
+        symbol [ dict %tmp.31 37 56 60 ];
+        %tmp.32 = "series";
+        %tmp.33 = agetv %tmp.31 %tmp.32;
+        symbol [ Array %tmp.35 37 82 87 ];
+        %tmp.35 = getv ? :Array;
+        %tmp.36 = isa %tmp.33 %tmp.35;
+        %tmp.37 = not %tmp.36;
+        push %tmp.37;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_54_37_87_end:
+        %tmp.38 = phi [%tmp.30 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_16_37_87_begin] [%tmp.37 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_54_37_87_false] [%tmp.38 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_54_37_87_end];
+        bf %tmp.38 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_12_37_100_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_12_37_100_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_90_37_100_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 37 92 ]
         ret ?;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_90_32_100_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_12_32_100_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_12_32_100_if_end:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 33 12 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_87_37_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_87_37_8_stop" ]
-        %index.2 = local;
-        symbol [ index %index.2 33 16 21 ];
-        %tmp.37 = lgetv %dict.1;
-        symbol [ dict %tmp.37 33 25 29 ];
-        %tmp.38 = "index";
-        %tmp.39 = agetv %tmp.37 %tmp.38;
-        %tmp.40 = as %tmp.39 Number;
-        symbol [ Number %tmp.40 33 42 48 ];
-        lputv %index.2 %tmp.40;
-        symbol [ index %index.2 33 16 21 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 34 12 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_12_34_50_if_stmt:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_16_34_37_begin:
-        %tmp.41 = lgetv %index.2;
-        symbol [ index %tmp.41 34 16 21 ];
-        %tmp.42 = 0;
-        %tmp.43 = lt %tmp.41 %tmp.42;
-        bt %tmp.43 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_12_34_50_if_true;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_29_34_37_false:
-        %tmp.44 = lgetv %index.2;
-        symbol [ index %tmp.44 34 29 34 ];
-        %tmp.45 = 4;
-        %tmp.46 = gt %tmp.44 %tmp.45;
-        push %tmp.46;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_29_34_37_end:
-        %tmp.47 = phi [%tmp.43 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_16_34_37_begin] [%tmp.46 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_29_34_37_false] [%tmp.47 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_29_34_37_end];
-        bf %tmp.47 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_12_34_50_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_12_34_50_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_40_34_50_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 34 42 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_90_37_100_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_12_37_100_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_37_12_37_100_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 38 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_87_42_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_87_42_8_stop" ]
+        %index.3 = local;
+        symbol [ index %index.3 38 16 21 ];
+        %tmp.39 = lgetv %dict.2;
+        symbol [ dict %tmp.39 38 25 29 ];
+        %tmp.40 = "index";
+        %tmp.41 = agetv %tmp.39 %tmp.40;
+        %tmp.42 = as %tmp.41 Number;
+        symbol [ Number %tmp.42 38 42 48 ];
+        lputv %index.3 %tmp.42;
+        symbol [ index %index.3 38 16 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 39 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_12_39_50_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_16_39_37_begin:
+        %tmp.43 = lgetv %index.3;
+        symbol [ index %tmp.43 39 16 21 ];
+        %tmp.44 = 0;
+        %tmp.45 = lt %tmp.43 %tmp.44;
+        bt %tmp.45 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_12_39_50_if_true;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_29_39_37_false:
+        %tmp.46 = lgetv %index.3;
+        symbol [ index %tmp.46 39 29 34 ];
+        %tmp.47 = 4;
+        %tmp.48 = gt %tmp.46 %tmp.47;
+        push %tmp.48;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_29_39_37_end:
+        %tmp.49 = phi [%tmp.45 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_16_39_37_begin] [%tmp.48 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_29_39_37_false] [%tmp.49 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_29_39_37_end];
+        bf %tmp.49 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_12_39_50_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_12_39_50_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_40_39_50_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 39 42 ]
         ret ?;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_40_34_50_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_12_34_50_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_34_12_34_50_if_end:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 35 12 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_87_37_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_87_37_8_stop" ]
-        %series.3 = local;
-        symbol [ series %series.3 35 16 22 ];
-        %tmp.48 = lgetv %dict.1;
-        symbol [ dict %tmp.48 35 25 29 ];
-        %tmp.49 = "series";
-        %tmp.50 = agetv %tmp.48 %tmp.49;
-        %tmp.51 = as %tmp.50 Array;
-        symbol [ Array %tmp.51 35 43 48 ];
-        lputv %series.3 %tmp.51;
-        symbol [ series %series.3 35 16 22 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 36 12 ]
-        symbol [ Application %tmp.52 36 12 23 ];
-        %tmp.52 = getm $.Toybox.Application;
-        symbol [ Storage %tmp.53 36 24 31 ];
-        %tmp.53 = getv %tmp.52 :Storage;
-        symbol [ setValue %tmp.54 36 32 40 ];
-        %tmp.54 = getv function %tmp.53 :setValue;
-        %tmp.55 = "slot_";
-        %tmp.56 = lgetv %index.2;
-        symbol [ index %tmp.56 36 51 56 ];
-        symbol [ toString %tmp.57 36 57 65 ];
-        %tmp.57 = getv function %tmp.56 :toString;
-        %tmp.58 = invoke %tmp.56 %tmp.57();
-        %tmp.59 = add %tmp.55 %tmp.58;
-        %tmp.60 = lgetv %series.3;
-        symbol [ series %tmp.60 36 69 75 ];
-        invoke %tmp.53 %tmp.54(%tmp.59, %tmp.60);
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_87_37_8_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_8_37_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_31_8_37_8_if_end:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_28_50_38_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_40_39_50_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_12_39_50_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_39_12_39_50_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 40 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_87_42_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_87_42_8_stop" ]
+        %series.4 = local;
+        symbol [ series %series.4 40 16 22 ];
+        %tmp.50 = lgetv %dict.2;
+        symbol [ dict %tmp.50 40 25 29 ];
+        %tmp.51 = "series";
+        %tmp.52 = agetv %tmp.50 %tmp.51;
+        %tmp.53 = as %tmp.52 Array;
+        symbol [ Array %tmp.53 40 43 48 ];
+        lputv %series.4 %tmp.53;
+        symbol [ series %series.4 40 16 22 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 41 12 ]
+        symbol [ Application %tmp.54 41 12 23 ];
+        %tmp.54 = getm $.Toybox.Application;
+        symbol [ Storage %tmp.55 41 24 31 ];
+        %tmp.55 = getv %tmp.54 :Storage;
+        symbol [ setValue %tmp.56 41 32 40 ];
+        %tmp.56 = getv function %tmp.55 :setValue;
+        %tmp.57 = "slot_";
+        %tmp.58 = lgetv %index.3;
+        symbol [ index %tmp.58 41 51 56 ];
+        symbol [ toString %tmp.59 41 57 65 ];
+        %tmp.59 = getv function %tmp.58 :toString;
+        %tmp.60 = invoke %tmp.58 %tmp.59();
+        %tmp.61 = add %tmp.57 %tmp.60;
+        %tmp.62 = lgetv %series.4;
+        symbol [ series %tmp.62 41 69 75 ];
+        invoke %tmp.55 %tmp.56(%tmp.61, %tmp.62);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_87_42_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_8_42_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_36_8_42_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_32_78_43_4_stop:
     }
 }
-[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 41; @symbol_functiondef = [getApp,41,9,15]; @symbol_return<0> = [BasketApp,41,21,30]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 46; @symbol_functiondef = [getApp,46,9,15]; @symbol_return<0> = [BasketApp,46,21,30]; ]
 function getApp() as BasketApp {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_41_31_43_0_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 42 4 ]
-    symbol [ Application %tmp.1 42 11 22 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_46_31_48_0_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc" 47 4 ]
+    symbol [ Application %tmp.1 47 11 22 ];
     %tmp.1 = getm $.Toybox.Application;
-    symbol [ getApp %tmp.2 42 23 29 ];
+    symbol [ getApp %tmp.2 47 23 29 ];
     %tmp.2 = getv function %tmp.1 :getApp;
     %tmp.3 = invoke %tmp.1 %tmp.2();
     %tmp.4 = as %tmp.3 BasketApp;
-    symbol [ BasketApp %tmp.4 42 35 44 ];
+    symbol [ BasketApp %tmp.4 47 35 44 ];
     ret %tmp.4;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_41_31_43_0_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_BasketApp_mc_46_31_48_0_stop:
 }
 [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/BasketApp.mc"; @line = 1; ]
 <init> {

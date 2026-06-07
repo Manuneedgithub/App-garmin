@@ -1,4 +1,5 @@
 import Toybox.Application;
+import Toybox.Communications;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
@@ -13,6 +14,9 @@ class BasketApp extends Application.AppBase {
     function onStart(state as Dictionary?) as Void {
         _sync = new SyncManager();
         _sync.initialize();
+        // The runtime only delivers incoming phone messages to a callback
+        // registered here — it does not call any AppBase method on its own.
+        Communications.registerForPhoneAppMessages(method(:onPhoneAppMessage));
     }
 
     function onStop(state as Dictionary?) as Void {
@@ -25,7 +29,8 @@ class BasketApp extends Application.AppBase {
         return [menu, delegate];
     }
 
-    function onMessage(message as Object) as Void {
+    function onPhoneAppMessage(msg as Communications.PhoneAppMessage) as Void {
+        var message = msg.data;
         if (!(message instanceof Dictionary)) { return; }
         var dict = message as Dictionary;
         if (dict["type"] instanceof String && (dict["type"] as String).equals("slot")) {
