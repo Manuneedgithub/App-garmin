@@ -15,6 +15,8 @@ const EX_THREE_CORNER_L  = 5;
 const EX_MID_CENTER      = 6;
 const EX_MID_RIGHT       = 7;
 const EX_MID_LEFT        = 8;
+const EX_FLOATER         = 9;
+const EX_FORM_SHOT_S2S   = 10;
 
 // Retourne le nom lisible d'un exercice
 function getExerciseName(id as Number) as String {
@@ -27,6 +29,8 @@ function getExerciseName(id as Number) as String {
     if (id == EX_MID_CENTER)     { return "Mi-dist Centre"; }
     if (id == EX_MID_RIGHT)      { return "Mi-dist Droite"; }
     if (id == EX_MID_LEFT)       { return "Mi-dist Gauche"; }
+    if (id == EX_FLOATER)        { return "Flotteur"; }
+    if (id == EX_FORM_SHOT_S2S)  { return "Form S2S"; }
     return "Inconnu";
 }
 
@@ -43,6 +47,8 @@ class ExerciseMenuView extends WatchUi.Menu2 {
         addItem(new WatchUi.MenuItem("Mi-dist Centre", null, EX_MID_CENTER,     null));
         addItem(new WatchUi.MenuItem("Mi-dist Droite", null, EX_MID_RIGHT,      null));
         addItem(new WatchUi.MenuItem("Mi-dist Gauche", null, EX_MID_LEFT,       null));
+        addItem(new WatchUi.MenuItem("Flotteur",       null, EX_FLOATER,        null));
+        addItem(new WatchUi.MenuItem("Form S2S",       null, EX_FORM_SHOT_S2S,  null));
     }
 }
 
