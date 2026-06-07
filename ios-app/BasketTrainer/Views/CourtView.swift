@@ -30,6 +30,10 @@ private let courtSpots: [CourtSpot] = [
 struct CourtView: View {
     @EnvironmentObject var store: SessionStore
 
+    // Looked up once — the photo's pixel size never changes, so there's no
+    // need to re-query UIImage(named:) on every GeometryReader layout pass.
+    private static let courtImageSize: CGSize = UIImage(named: "CourtDiagram")?.size ?? CGSize(width: 1, height: 1)
+
     @State private var isEditing = false
     @State private var dragOffsets: [ExerciseType: CGSize] = [:]
     @State private var showResetConfirmation = false
@@ -43,7 +47,6 @@ struct CourtView: View {
                     ZStack {
                         Image("CourtDiagram")
                             .resizable()
-                            .aspectRatio(contentMode: .fit)
                             .frame(width: rect.width, height: rect.height)
                             .position(x: rect.midX, y: rect.midY)
 
@@ -164,7 +167,7 @@ struct CourtView: View {
     // actual pixel dimensions rather than a hardcoded court constant,
     // because the spots must line up with what's printed on THIS photo.
     private func courtRect(in size: CGSize) -> CGRect {
-        let imgSize = UIImage(named: "CourtDiagram")?.size ?? size
+        let imgSize = Self.courtImageSize
         let aspect: CGFloat = imgSize.height == 0 ? 1 : imgSize.width / imgSize.height
         var w = size.width
         var h = w / aspect
