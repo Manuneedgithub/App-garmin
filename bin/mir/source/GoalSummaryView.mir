@@ -481,9 +481,9 @@ _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_95_
     }
     [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 101; @symbol_functiondef = [onSelect,101,13,21]; @symbol_return<0> = [Boolean,101,27,34]; ]
     function onSelect() as Boolean {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_109_4_start:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_110_4_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 102 8 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_109_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_109_4_stop" ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_110_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_110_4_stop" ]
         %dict.1 = local;
         symbol [ dict %dict.1 102 12 16 ];
         symbol [ _session %tmp.2 102 19 27 ];
@@ -538,94 +538,114 @@ _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101
         %tmp.25 = getv %tmp.24 :SLIDE_RIGHT;
         invoke %tmp.22 %tmp.23(%tmp.25);
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 108 8 ]
-        %tmp.26 = true;
-        ret %tmp.26;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_109_4_stop:
+        symbol [ WatchUi %tmp.26 108 8 15 ];
+        %tmp.26 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.27 108 16 23 ];
+        %tmp.27 = getv function %tmp.26 :popView;
+        symbol [ WatchUi %tmp.28 108 24 31 ];
+        %tmp.28 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.29 108 32 43 ];
+        %tmp.29 = getv %tmp.28 :SLIDE_RIGHT;
+        invoke %tmp.26 %tmp.27(%tmp.29);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 109 8 ]
+        %tmp.30 = true;
+        ret %tmp.30;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_101_35_110_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 112; @symbol_functiondef = [onBack,112,13,19]; @symbol_return<0> = [Boolean,112,25,32]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 113; @symbol_functiondef = [onBack,113,13,19]; @symbol_return<0> = [Boolean,113,25,32]; ]
     function onBack() as Boolean {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_112_33_117_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 113 8 ]
-        symbol [ WatchUi %tmp.1 113 8 15 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_113_33_119_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 114 8 ]
+        symbol [ WatchUi %tmp.1 114 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 113 16 23 ];
+        symbol [ popView %tmp.2 114 16 23 ];
         %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 113 24 31 ];
+        symbol [ WatchUi %tmp.3 114 24 31 ];
         %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 113 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.4 114 32 43 ];
         %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
         invoke %tmp.1 %tmp.2(%tmp.4);
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 114 8 ]
-        symbol [ WatchUi %tmp.5 114 8 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 115 8 ]
+        symbol [ WatchUi %tmp.5 115 8 15 ];
         %tmp.5 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.6 114 16 23 ];
+        symbol [ popView %tmp.6 115 16 23 ];
         %tmp.6 = getv function %tmp.5 :popView;
-        symbol [ WatchUi %tmp.7 114 24 31 ];
+        symbol [ WatchUi %tmp.7 115 24 31 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.8 114 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.8 115 32 43 ];
         %tmp.8 = getv %tmp.7 :SLIDE_RIGHT;
         invoke %tmp.5 %tmp.6(%tmp.8);
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 115 8 ]
-        symbol [ WatchUi %tmp.9 115 8 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 116 8 ]
+        symbol [ WatchUi %tmp.9 116 8 15 ];
         %tmp.9 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.10 115 16 23 ];
+        symbol [ popView %tmp.10 116 16 23 ];
         %tmp.10 = getv function %tmp.9 :popView;
-        symbol [ WatchUi %tmp.11 115 24 31 ];
+        symbol [ WatchUi %tmp.11 116 24 31 ];
         %tmp.11 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.12 115 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.12 116 32 43 ];
         %tmp.12 = getv %tmp.11 :SLIDE_RIGHT;
         invoke %tmp.9 %tmp.10(%tmp.12);
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 116 8 ]
-        %tmp.13 = true;
-        ret %tmp.13;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_112_33_117_4_stop:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 117 8 ]
+        symbol [ WatchUi %tmp.13 117 8 15 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.14 117 16 23 ];
+        %tmp.14 = getv function %tmp.13 :popView;
+        symbol [ WatchUi %tmp.15 117 24 31 ];
+        %tmp.15 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.16 117 32 43 ];
+        %tmp.16 = getv %tmp.15 :SLIDE_RIGHT;
+        invoke %tmp.13 %tmp.14(%tmp.16);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 118 8 ]
+        %tmp.17 = true;
+        ret %tmp.17;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_113_33_119_4_stop:
     }
 }
-[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 120; @symbol_classdef = [GoalTransmitListener,120,6,26]; @symbol_extends<0> = [Communications,120,35,49]; @symbol_extends<1> = [ConnectionListener,120,50,68]; ]
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 122; @symbol_classdef = [GoalTransmitListener,122,6,26]; @symbol_extends<0> = [Communications,122,35,49]; @symbol_extends<1> = [ConnectionListener,122,50,68]; ]
 class GoalTransmitListener extends Communications.ConnectionListener {
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 120; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 122; ]
     <init> {
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 120; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 122; ]
     static
     <init> {
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 121; @position = 16; @symbol_vardef = [_dict,121,16,21]; @symbol_type<0> = [Dictionary,121,25,35]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 123; @position = 16; @symbol_vardef = [_dict,123,16,21]; @symbol_type<0> = [Dictionary,123,25,35]; ]
     private
     var _dict as Dictionary;
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 123; @symbol_functiondef = [initialize,123,13,23]; @symbol_param<0> = [dict,123,24,28]; @symbol_param<0>_type<0> = [Dictionary,123,32,42]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 125; @symbol_functiondef = [initialize,125,13,23]; @symbol_param<0> = [dict,125,24,28]; @symbol_param<0>_type<0> = [Dictionary,125,32,42]; ]
     function initialize(dict as Dictionary) as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_123_44_126_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 124 8 ]
-        symbol [ Communications %tmp.1 124 8 22 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_125_44_128_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 126 8 ]
+        symbol [ Communications %tmp.1 126 8 22 ];
         %tmp.1 = getm $.Toybox.Communications;
-        symbol [ ConnectionListener %tmp.2 124 23 41 ];
+        symbol [ ConnectionListener %tmp.2 126 23 41 ];
         %tmp.2 = getv %tmp.1 :ConnectionListener;
-        symbol [ initialize %tmp.3 124 42 52 ];
+        symbol [ initialize %tmp.3 126 42 52 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 125 8 ]
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 127 8 ]
         %tmp.4 = lgetv %dict;
-        symbol [ dict %tmp.4 125 16 20 ];
-        symbol [ _dict ? 125 8 13 ];
+        symbol [ dict %tmp.4 127 16 20 ];
+        symbol [ _dict ? 127 8 13 ];
         putv self :_dict %tmp.4;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_123_44_126_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_125_44_128_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 128; @symbol_functiondef = [onComplete,128,13,23]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 130; @symbol_functiondef = [onComplete,130,13,23]; ]
     function onComplete() as Void {
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 131; @symbol_functiondef = [onError,131,13,20]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 133; @symbol_functiondef = [onError,133,13,20]; ]
     function onError() as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_131_31_133_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 132 8 ]
-        symbol [ PendingQueue %tmp.2 132 8 20 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_133_31_135_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc" 134 8 ]
+        symbol [ PendingQueue %tmp.2 134 8 20 ];
         %tmp.2 = getv ? :PendingQueue;
-        symbol [ enqueue %tmp.3 132 21 28 ];
+        symbol [ enqueue %tmp.3 134 21 28 ];
         %tmp.3 = getv function %tmp.2 :enqueue;
-        symbol [ _dict %tmp.5 132 29 34 ];
+        symbol [ _dict %tmp.5 134 29 34 ];
         %tmp.5 = getv ? :_dict;
         invoke %tmp.2 %tmp.3(%tmp.5);
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_131_31_133_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_GoalSummaryView_mc_133_31_135_4_stop:
     }
 }
 [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/GoalSummaryView.mc"; @line = 1; ]

@@ -62,7 +62,7 @@ _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_6_26_11_4_
         %tmp.34 = getm $.Toybox.WatchUi;
         symbol [ MenuItem %tmp.35 10 28 36 ];
         %tmp.35 = getv function ? %tmp.34 :MenuItem;
-        %tmp.36 = "Objectif complexe";
+        %tmp.36 = "Entraînements";
         %tmp.37 = null;
         %tmp.38 = 2;
         %tmp.39 = null;
@@ -93,9 +93,9 @@ _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_15_26_17_4
     }
     [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc"; @line = 19; @symbol_functiondef = [onSelect,19,13,21]; @symbol_param<0> = [item,19,22,26]; @symbol_param<0>_type<0> = [WatchUi,19,30,37]; @symbol_param<0>_type<1> = [MenuItem,19,38,46]; ]
     function onSelect(item as WatchUi.MenuItem) as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_45_4_start:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_36_4_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 20 8 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_45_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_45_4_stop" ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_36_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_36_4_stop" ]
         %id.1 = local;
         symbol [ id %id.1 20 12 14 ];
         %tmp.1 = lgetv %item;
@@ -108,13 +108,13 @@ _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_45_4
         lputv %id.1 %tmp.4;
         symbol [ id %id.1 20 12 14 ];
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 21 8 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_44_8_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_35_8_if_stmt:
         %tmp.5 = lgetv %id.1;
         symbol [ id %tmp.5 21 12 14 ];
         %tmp.6 = 0;
         %tmp.7 = eq %tmp.5 %tmp.6;
-        bf %tmp.7 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_44_8_if_false;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_44_8_if_true:
+        bf %tmp.7 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_35_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_35_8_if_true:
 _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_21_26_8_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 23 12 ]
         [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_21_26_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_21_26_8_stop" ]
@@ -150,16 +150,16 @@ _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_21_26_8
         %tmp.22 = getv %tmp.21 :SLIDE_LEFT;
         invoke %tmp.17 %tmp.18(%tmp.19, %tmp.20, %tmp.22);
 _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_21_26_8_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_44_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_44_8_if_false:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_35_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_35_8_if_false:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 26 15 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_44_8_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_35_8_if_stmt:
         %tmp.23 = lgetv %id.1;
         symbol [ id %tmp.23 26 19 21 ];
         %tmp.24 = 1;
         %tmp.25 = eq %tmp.23 %tmp.24;
-        bf %tmp.25 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_44_8_if_false;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_44_8_if_true:
+        bf %tmp.25 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_35_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_35_8_if_true:
 _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_28_31_8_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 28 12 ]
         [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_28_31_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_28_31_8_stop" ]
@@ -194,154 +194,70 @@ _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_28_31_8
         %tmp.39 = getv %tmp.38 :SLIDE_LEFT;
         invoke %tmp.34 %tmp.35(%tmp.36, %tmp.37, %tmp.39);
 _Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_28_31_8_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_44_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_44_8_if_false:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_35_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_35_8_if_false:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 31 15 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_44_8_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_35_8_if_stmt:
         %tmp.40 = lgetv %id.1;
         symbol [ id %tmp.40 31 19 21 ];
         %tmp.41 = 2;
         %tmp.42 = eq %tmp.40 %tmp.41;
-        bf %tmp.42 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_44_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_44_8_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_44_8_start:
+        bf %tmp.42 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_35_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_35_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_35_8_start:
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 32 12 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_44_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_44_8_stop" ]
-        %routine.6 = local;
-        symbol [ routine %routine.6 32 16 23 ];
-        %tmp.43 = self;
-        symbol [ getApp %tmp.44 32 26 32 ];
-        %tmp.44 = getv function %tmp.43 :getApp;
-        %tmp.45 = invoke %tmp.43 %tmp.44();
-        symbol [ getPendingRoutine %tmp.46 32 35 52 ];
-        %tmp.46 = getv function %tmp.45 :getPendingRoutine;
-        %tmp.47 = invoke %tmp.45 %tmp.46();
-        lputv %routine.6 %tmp.47;
-        symbol [ routine %routine.6 32 16 23 ];
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_35_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_35_8_stop" ]
+        %menu.6 = local;
+        symbol [ menu %menu.6 32 16 20 ];
+        symbol [ SlotMenuView %tmp.46 32 27 39 ];
+        %tmp.46 = getv ? :SlotMenuView;
+        %tmp.43 = newc %tmp.46 ();
+        lputv %menu.6 %tmp.43;
+        symbol [ menu %menu.6 32 16 20 ];
 [ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 33 12 ]
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_12_43_12_if_stmt:
-        %tmp.48 = lgetv %routine.6;
-        symbol [ routine %tmp.48 33 16 23 ];
-        %tmp.49 = null;
-        %tmp.50 = eq %tmp.48 %tmp.49;
-        bf %tmp.50 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_12_43_12_if_else_false;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_12_43_12_if_true:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_33_37_12_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 34 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_33_37_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_33_37_12_stop" ]
-        %view.7 = local;
-        symbol [ view %view.7 34 20 24 ];
-        symbol [ RoutineWaitView %tmp.54 34 31 46 ];
-        %tmp.54 = getv ? :RoutineWaitView;
-        %tmp.51 = newc %tmp.54 ();
-        lputv %view.7 %tmp.51;
-        symbol [ view %view.7 34 20 24 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 35 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_33_37_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_33_37_12_stop" ]
-        %del.8 = local;
-        symbol [ del %del.8 35 20 23 ];
-        symbol [ RoutineWaitDelegate %tmp.58 35 31 50 ];
-        %tmp.58 = getv ? :RoutineWaitDelegate;
-        %tmp.55 = newc %tmp.58 ();
-        lputv %del.8 %tmp.55;
-        symbol [ del %del.8 35 20 23 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 36 16 ]
-        symbol [ WatchUi %tmp.59 36 16 23 ];
-        %tmp.59 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.60 36 24 32 ];
-        %tmp.60 = getv function %tmp.59 :pushView;
-        %tmp.61 = lgetv %view.7;
-        symbol [ view %tmp.61 36 33 37 ];
-        %tmp.62 = lgetv %del.8;
-        symbol [ del %tmp.62 36 39 42 ];
-        symbol [ WatchUi %tmp.63 36 44 51 ];
-        %tmp.63 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.64 36 52 62 ];
-        %tmp.64 = getv %tmp.63 :SLIDE_LEFT;
-        invoke %tmp.59 %tmp.60(%tmp.61, %tmp.62, %tmp.64);
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_33_37_12_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_12_43_12_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_12_43_12_if_else_false:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 38 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_stop" ]
-        %runner.9 = local;
-        symbol [ runner %runner.9 38 20 26 ];
-        symbol [ RoutineRunner %tmp.68 38 33 46 ];
-        %tmp.68 = getv ? :RoutineRunner;
-        %tmp.69 = lgetv %routine.6;
-        symbol [ routine %tmp.69 38 47 54 ];
-        %tmp.70 = as %tmp.69 { (!Null) };
-        %tmp.65 = newc %tmp.68 (%tmp.70);
-        lputv %runner.9 %tmp.65;
-        symbol [ runner %runner.9 38 20 26 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 39 16 ]
-        %tmp.71 = self;
-        symbol [ getApp %tmp.72 39 16 22 ];
-        %tmp.72 = getv function %tmp.71 :getApp;
-        %tmp.73 = invoke %tmp.71 %tmp.72();
-        symbol [ clearPendingRoutine %tmp.74 39 25 44 ];
-        %tmp.74 = getv function %tmp.73 :clearPendingRoutine;
-        invoke %tmp.73 %tmp.74();
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 40 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_stop" ]
-        %view.10 = local;
-        symbol [ view %view.10 40 20 24 ];
-        symbol [ RoutineStartView %tmp.78 40 33 49 ];
-        %tmp.78 = getv ? :RoutineStartView;
-        %tmp.79 = lgetv %runner.9;
-        symbol [ runner %tmp.79 40 50 56 ];
-        %tmp.75 = newc %tmp.78 (%tmp.79);
-        lputv %view.10 %tmp.75;
-        symbol [ view %view.10 40 20 24 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 41 16 ]
-        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_stop" ]
-        %del.11 = local;
-        symbol [ del %del.11 41 20 23 ];
-        symbol [ RoutineStartDelegate %tmp.83 41 33 53 ];
-        %tmp.83 = getv ? :RoutineStartDelegate;
-        %tmp.84 = lgetv %runner.9;
-        symbol [ runner %tmp.84 41 54 60 ];
-        %tmp.80 = newc %tmp.83 (%tmp.84);
-        lputv %del.11 %tmp.80;
-        symbol [ del %del.11 41 20 23 ];
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 42 16 ]
-        symbol [ WatchUi %tmp.85 42 16 23 ];
-        %tmp.85 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.86 42 24 32 ];
-        %tmp.86 = getv function %tmp.85 :pushView;
-        %tmp.87 = lgetv %view.10;
-        symbol [ view %tmp.87 42 33 37 ];
-        %tmp.88 = lgetv %del.11;
-        symbol [ del %tmp.88 42 39 42 ];
-        symbol [ WatchUi %tmp.89 42 44 51 ];
-        %tmp.89 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_LEFT %tmp.90 42 52 62 ];
-        %tmp.90 = getv %tmp.89 :SLIDE_LEFT;
-        invoke %tmp.85 %tmp.86(%tmp.87, %tmp.88, %tmp.90);
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_37_19_43_12_stop:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_33_12_43_12_if_end:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_44_8_stop:
-        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_44_8_if_end;
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_44_8_if_end:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_44_8_if_end:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_44_8_if_end:
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_45_4_stop:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_35_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_35_8_stop" ]
+        %del.7 = local;
+        symbol [ del %del.7 33 16 19 ];
+        symbol [ SlotMenuDelegate %tmp.50 33 27 43 ];
+        %tmp.50 = getv ? :SlotMenuDelegate;
+        %tmp.47 = newc %tmp.50 ();
+        lputv %del.7 %tmp.47;
+        symbol [ del %del.7 33 16 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 34 12 ]
+        symbol [ WatchUi %tmp.51 34 12 19 ];
+        %tmp.51 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.52 34 20 28 ];
+        %tmp.52 = getv function %tmp.51 :pushView;
+        %tmp.53 = lgetv %menu.6;
+        symbol [ menu %tmp.53 34 29 33 ];
+        %tmp.54 = lgetv %del.7;
+        symbol [ del %tmp.54 34 35 38 ];
+        symbol [ WatchUi %tmp.55 34 40 47 ];
+        %tmp.55 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.56 34 48 58 ];
+        %tmp.56 = getv %tmp.55 :SLIDE_LEFT;
+        invoke %tmp.51 %tmp.52(%tmp.53, %tmp.54, %tmp.56);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_28_35_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_35_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_31_15_35_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_26_15_35_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_21_8_35_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_19_56_36_4_stop:
     }
-    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc"; @line = 47; @symbol_functiondef = [onBack,47,13,19]; ]
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc"; @line = 38; @symbol_functiondef = [onBack,38,13,19]; ]
     function onBack() as Void {
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_47_30_49_4_start:
-[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 48 8 ]
-        symbol [ WatchUi %tmp.1 48 8 15 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_38_30_40_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc" 39 8 ]
+        symbol [ WatchUi %tmp.1 39 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 48 16 23 ];
+        symbol [ popView %tmp.2 39 16 23 ];
         %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 48 24 31 ];
+        symbol [ WatchUi %tmp.3 39 24 31 ];
         %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 48 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.4 39 32 43 ];
         %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
         invoke %tmp.1 %tmp.2(%tmp.4);
-_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_47_30_49_4_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_MainMenu_mc_38_30_40_4_stop:
     }
 }
 [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/MainMenu.mc"; @line = 1; ]

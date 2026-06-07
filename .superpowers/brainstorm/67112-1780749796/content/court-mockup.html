@@ -1,0 +1,132 @@
+<h2>Mockup — Vue Terrain</h2>
+<p class="subtitle">Les spots sont colorés par % de réussite. Clique un spot pour voir le détail.</p>
+
+<div class="split" style="gap:24px;align-items:flex-start;">
+
+  <!-- Court view -->
+  <div class="mockup" style="flex:1;min-width:280px;">
+    <div class="mockup-header">Onglet "Terrain"</div>
+    <div class="mockup-body" style="background:#1a1a1a;padding:12px;">
+      <svg viewBox="0 0 300 340" width="100%" style="display:block;">
+        <!-- Court outline -->
+        <rect x="10" y="10" width="280" height="320" rx="8" fill="#2d5a1b" stroke="#fff" stroke-width="2"/>
+        <!-- Paint / raquette -->
+        <rect x="95" y="200" width="110" height="120" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <!-- Free throw circle -->
+        <ellipse cx="150" cy="200" rx="45" ry="22" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <!-- Basket -->
+        <circle cx="150" cy="305" r="8" fill="none" stroke="white" stroke-width="2"/>
+        <line x1="130" y1="305" x2="170" y2="305" stroke="white" stroke-width="1.5"/>
+        <!-- 3pt arc approximation -->
+        <path d="M 30 310 Q 30 80 150 60 Q 270 80 270 310" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <!-- Corner 3pt lines -->
+        <line x1="30" y1="230" x2="30" y2="310" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <line x1="270" y1="230" x2="270" y2="310" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+
+        <!-- SPOTS -->
+        <!-- Lancer Franc -->
+        <circle cx="150" cy="215" r="14" fill="#FF6600" opacity="0.9"/>
+        <text x="150" y="219" text-anchor="middle" fill="white" font-size="9" font-weight="bold">68%</text>
+
+        <!-- 3pts Centre -->
+        <circle cx="150" cy="72" r="14" fill="#33CC66" opacity="0.9"/>
+        <text x="150" y="76" text-anchor="middle" fill="white" font-size="9" font-weight="bold">74%</text>
+
+        <!-- 3pts 45° D -->
+        <circle cx="230" cy="105" r="14" fill="#FF3333" opacity="0.9"/>
+        <text x="230" y="109" text-anchor="middle" fill="white" font-size="9" font-weight="bold">41%</text>
+
+        <!-- 3pts 45° G -->
+        <circle cx="70" cy="105" r="14" fill="#FF6600" opacity="0.9"/>
+        <text x="70" y="109" text-anchor="middle" fill="white" font-size="9" font-weight="bold">58%</text>
+
+        <!-- 3pts Coin D -->
+        <circle cx="255" cy="240" r="14" fill="#33CC66" opacity="0.9"/>
+        <text x="255" y="244" text-anchor="middle" fill="white" font-size="9" font-weight="bold">71%</text>
+
+        <!-- 3pts Coin G -->
+        <circle cx="45" cy="240" r="14" fill="#FF3333" opacity="0.9"/>
+        <text x="45" y="244" text-anchor="middle" fill="white" font-size="9" font-weight="bold">39%</text>
+
+        <!-- Mi-dist Centre -->
+        <circle cx="150" cy="155" r="14" fill="#33CC66" opacity="0.9"/>
+        <text x="150" y="159" text-anchor="middle" fill="white" font-size="9" font-weight="bold">79%</text>
+
+        <!-- Mi-dist D -->
+        <circle cx="195" cy="170" r="14" fill="#FF6600" opacity="0.9"/>
+        <text x="195" y="174" text-anchor="middle" fill="white" font-size="9" font-weight="bold">62%</text>
+
+        <!-- Mi-dist G -->
+        <circle cx="105" cy="170" r="14" fill="#FF6600" opacity="0.9"/>
+        <text x="105" y="174" text-anchor="middle" fill="white" font-size="9" font-weight="bold">65%</text>
+      </svg>
+
+      <!-- Legend -->
+      <div style="display:flex;gap:12px;justify-content:center;margin-top:8px;">
+        <span style="font-size:11px;color:#33CC66;">● ≥70%</span>
+        <span style="font-size:11px;color:#FF6600;">● 50–69%</span>
+        <span style="font-size:11px;color:#FF3333;">● &lt;50%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail view -->
+  <div class="mockup" style="flex:1;min-width:240px;">
+    <div class="mockup-header">Détail — 3pts 45° Droite</div>
+    <div class="mockup-body" style="background:#1a1a1a;padding:16px;color:white;">
+
+      <div style="text-align:center;margin-bottom:16px;">
+        <div style="font-size:36px;font-weight:bold;color:#FF3333;">41%</div>
+        <div style="font-size:12px;color:#888;margin-top:2px;">127 tirs · 52 réussis</div>
+      </div>
+
+      <!-- Progress bar global -->
+      <div style="background:#333;border-radius:4px;height:6px;margin-bottom:20px;">
+        <div style="background:#FF3333;width:41%;height:6px;border-radius:4px;"></div>
+      </div>
+
+      <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Par type de tir</div>
+
+      <!-- Shot types -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div style="background:#2a2a2a;border-radius:8px;padding:12px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:13px;">Catch &amp; Shoot</span>
+            <span style="font-size:13px;color:#FF6600;font-weight:bold;">51%</span>
+          </div>
+          <div style="background:#333;border-radius:3px;height:4px;">
+            <div style="background:#FF6600;width:51%;height:4px;border-radius:3px;"></div>
+          </div>
+          <div style="font-size:10px;color:#666;margin-top:4px;">45 tirs · 23 réussis</div>
+        </div>
+
+        <div style="background:#2a2a2a;border-radius:8px;padding:12px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:13px;">Avec dribble</span>
+            <span style="font-size:13px;color:#FF3333;font-weight:bold;">33%</span>
+          </div>
+          <div style="background:#333;border-radius:3px;height:4px;">
+            <div style="background:#FF3333;width:33%;height:4px;border-radius:3px;"></div>
+          </div>
+          <div style="font-size:10px;color:#666;margin-top:4px;">52 tirs · 17 réussis</div>
+        </div>
+
+        <div style="background:#2a2a2a;border-radius:8px;padding:12px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:13px;">À l'arrêt</span>
+            <span style="font-size:13px;color:#FF6600;font-weight:bold;">40%</span>
+          </div>
+          <div style="background:#333;border-radius:3px;height:4px;">
+            <div style="background:#FF6600;width:40%;height:4px;border-radius:3px;"></div>
+          </div>
+          <div style="font-size:10px;color:#666;margin-top:4px;">30 tirs · 12 réussis</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;">Le % sur le spot = toutes séances confondues (tous types de tir agrégés). Le détail décompose par type.</p>

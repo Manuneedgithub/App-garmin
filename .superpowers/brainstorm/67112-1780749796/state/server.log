@@ -1,0 +1,25 @@
+{"type":"server-started","port":51293,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:51293","screen_dir":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content","state_dir":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/state"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/test.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/test.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/test.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/test.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/navigation.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/navigation.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/navigation.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/navigation.html"}
+{"source":"user-event","type":"click","text":"A\n    \n      4ème onglet — \"Terrain\"\n      Accueil · Historique · Stats · Terrain\n      Stats textuelles restent, Terrain s'ajoute. Barre de navigation à 4 items.","choice":"a","id":null,"timestamp":1780750066280}
+{"source":"user-event","type":"click","text":"A\n    \n      4ème onglet — \"Terrain\"\n      Accueil · Historique · Stats · Terrain\n      Stats textuelles restent, Terrain s'ajoute. Barre de navigation à 4 items.","choice":"a","id":null,"timestamp":1780750072187}
+{"source":"user-event","type":"click","text":"A\n    \n      4ème onglet — \"Terrain\"\n      Accueil · Historique · Stats · Terrain\n      Stats textuelles restent, Terrain s'ajoute. Barre de navigation à 4 items.","choice":"a","id":null,"timestamp":1780750072351}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/court-mockup.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/court-mockup.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/court-mockup.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/court-mockup.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/garmin-flow.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/garmin-flow.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/garmin-flow.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/garmin-flow.html"}
+{"type":"screen-added","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/waiting.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/waiting.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/waiting.html"}
+{"type":"screen-updated","file":"/Users/manu/Documents/GitHub/App-garmin/.superpowers/brainstorm/67112-1780749796/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

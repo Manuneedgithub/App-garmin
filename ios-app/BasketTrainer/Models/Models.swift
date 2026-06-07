@@ -330,5 +330,5 @@ struct SpotStats {
     var percentage: Double {
         totalShots == 0 ? 0 : Double(totalMade) / Double(totalShots) * 100
     }
-    var byType: [ShotType: (shots: Int, made: Int)]
+    let byType: [ShotType: (shots: Int, made: Int)]
 }

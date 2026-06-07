@@ -1,0 +1,29 @@
+<h2>Où placer la vue Terrain ?</h2>
+<p class="subtitle">L'app a actuellement 3 onglets : Accueil · Historique · Stats</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>4ème onglet — "Terrain"</h3>
+      <p>Accueil · Historique · Stats · Terrain<br>
+      <small style="opacity:.6">Stats textuelles restent, Terrain s'ajoute. Barre de navigation à 4 items.</small></p>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Remplace l'onglet Stats</h3>
+      <p>Accueil · Historique · Terrain<br>
+      <small style="opacity:.6">La vue terrain <em>intègre</em> les stats. L'onglet Stats actuel disparaît.</small></p>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Accessible depuis Stats</h3>
+      <p>Accueil · Historique · Stats → bouton "Vue terrain"<br>
+      <small style="opacity:.6">Pas de nouvel onglet. Le terrain est une vue enfant de Stats.</small></p>
+    </div>
+  </div>
+</div>
