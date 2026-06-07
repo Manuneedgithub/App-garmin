@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 private struct CourtSpot {
     let type: ExerciseType
@@ -6,11 +7,14 @@ private struct CourtSpot {
     let ny: CGFloat
 }
 
-// Court is drawn with the basket at the TOP (baseline at top edge),
-// matching the reference half-court diagram. ny = screen fraction from
-// the bottom (0=bottom edge, 1=top edge); canvas mapping: cy = (1 - ny) * h
-// Court features: baseline/basket near ny≈1.0, FT line at ny≈0.70,
-// arc corners at ny≈0.55, arc apex (deepest point) at ny≈0.28
+// Default layout — used whenever no override exists yet (first launch, or
+// any spot the user hasn't repositioned). ny = fraction of the court rect
+// from the bottom (0=bottom edge, 1=top edge); mapping: cy = rect.minY
+// + (1 - ny) * rect.height. The rect — not the raw canvas — is what's
+// proportioned like the photo, so spots line up with its markings
+// regardless of the screen's aspect ratio. Drag-and-reposition (below)
+// lets the user correct any spot that doesn't quite land on this photo's
+// actual lines.
 private let courtSpots: [CourtSpot] = [
     CourtSpot(type: .freethrow,    nx: 0.50, ny: 0.70),  // ligne de lancer franc
     CourtSpot(type: .threeCenter,  nx: 0.50, ny: 0.28),  // 3pts sommet de l'arc
@@ -26,33 +30,60 @@ private let courtSpots: [CourtSpot] = [
 struct CourtView: View {
     @EnvironmentObject var store: SessionStore
 
+    @State private var isEditing = false
+    @State private var dragOffsets: [ExerciseType: CGSize] = [:]
+    @State private var showResetConfirmation = false
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 GeometryReader { geo in
-                    let w = geo.size.width
-                    let h = geo.size.height
+                    let rect = courtRect(in: geo.size)
 
                     ZStack {
-                        courtShape()
+                        Image("CourtDiagram")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: rect.width, height: rect.height)
+                            .position(x: rect.midX, y: rect.midY)
 
                         ForEach(courtSpots, id: \.type) { spot in
                             let stats   = store.spotStats(for: spot.type)
-                            let cx      = spot.nx * w
-                            let cy      = (1.0 - spot.ny) * h
+                            let pos     = resolvedPosition(for: spot)
+                            let baseX   = rect.minX + pos.nx * rect.width
+                            let baseY   = rect.minY + (1.0 - pos.ny) * rect.height
+                            let offset  = dragOffsets[spot.type] ?? .zero
+                            let cx      = baseX + offset.width
+                            let cy      = baseY + offset.height
                             let hasData = stats.totalShots > 0
                             let color   = hasData ? spotColor(stats.percentage) : Color(.systemFill)
+                            let label   = hasData ? String(format: "%.0f%%", stats.percentage) : "–"
 
-                            NavigationLink(destination: SpotDetailView(stats: stats)) {
-                                ZStack {
-                                    Circle()
-                                        .fill(color.opacity(0.9))
-                                        .frame(width: 44, height: 44)
-                                    Text(hasData
-                                         ? String(format: "%.0f%%", stats.percentage)
-                                         : "–")
-                                        .font(.system(size: 11, weight: .bold))
-                                        .foregroundStyle(.white)
+                            Group {
+                                if isEditing {
+                                    spotBubble(color: color, label: label)
+                                        .overlay(
+                                            Circle().strokeBorder(Color.orange,
+                                                style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
+                                        )
+                                        .gesture(
+                                            DragGesture(minimumDistance: 0)
+                                                .onChanged { value in
+                                                    dragOffsets[spot.type] = value.translation
+                                                }
+                                                .onEnded { value in
+                                                    let finalX = baseX + value.translation.width
+                                                    let finalY = baseY + value.translation.height
+                                                    let nx = min(max((finalX - rect.minX) / rect.width, 0), 1)
+                                                    let ny = min(max(1 - (finalY - rect.minY) / rect.height, 0), 1)
+                                                    store.setSpotPosition(spot.type, nx: nx, ny: ny)
+                                                    dragOffsets[spot.type] = nil
+                                                }
+                                        )
+                                } else {
+                                    NavigationLink(destination: SpotDetailView(stats: stats)) {
+                                        spotBubble(color: color, label: label)
+                                    }
                                 }
                             }
                             .position(x: cx, y: cy)
@@ -63,6 +94,21 @@ struct CourtView: View {
             .navigationTitle("Terrain")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    HStack(spacing: 14) {
+                        Button(isEditing ? "Terminé" : "Modifier") {
+                            isEditing.toggle()
+                        }
+                        .foregroundStyle(.orange)
+
+                        if isEditing {
+                            Button("Réinitialiser") {
+                                showResetConfirmation = true
+                            }
+                            .foregroundStyle(.red)
+                        }
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: 6) {
                         legendDot(Color(red: 0.2, green: 0.8, blue: 0.4), "≥70%")
@@ -72,6 +118,30 @@ struct CourtView: View {
                     .font(.caption2)
                 }
             }
+            .alert("Réinitialiser les positions ?", isPresented: $showResetConfirmation) {
+                Button("Annuler", role: .cancel) {}
+                Button("Réinitialiser", role: .destructive) {
+                    store.resetSpotPositions()
+                }
+            } message: {
+                Text("Les repères retrouveront leur position d'origine sur le terrain.")
+            }
+        }
+    }
+
+    private func resolvedPosition(for spot: CourtSpot) -> SpotPosition {
+        store.spotPositionOverrides[spot.type] ?? SpotPosition(nx: spot.nx, ny: spot.ny)
+    }
+
+    @ViewBuilder
+    private func spotBubble(color: Color, label: String) -> some View {
+        ZStack {
+            Circle()
+                .fill(color.opacity(0.9))
+                .frame(width: 44, height: 44)
+            Text(label)
+                .font(.system(size: 11, weight: .bold))
+                .foregroundStyle(.white)
         }
     }
 
@@ -88,91 +158,20 @@ struct CourtView: View {
         return Color(red: 1, green: 0.2, blue: 0.2)
     }
 
-    // Half-court diagram drawn with the basket at the TOP (baseline at the
-    // top edge), wood/parquet floor, white markings — mirrors the reference
-    // photo. All y-coordinates are the vertical flip (ch - y) of the
-    // previous bottom-basket layout, which is why courtSpots use ny' = 1 - ny.
-    @ViewBuilder
-    private func courtShape() -> some View {
-        Canvas { ctx, size in
-            let cw = size.width
-            let ch = size.height
-            let cx = cw / 2
-
-            // Wood / parquet floor base color
-            ctx.fill(Path(CGRect(origin: .zero, size: size)),
-                     with: .color(Color(red: 0.80, green: 0.67, blue: 0.46)))
-
-            // Subtle plank lines for wood-grain texture
-            let plankCount = 9
-            for i in 1..<plankCount {
-                let x = cw * CGFloat(i) / CGFloat(plankCount)
-                var plank = Path()
-                plank.move(to: CGPoint(x: x, y: 4))
-                plank.addLine(to: CGPoint(x: x, y: ch - 4))
-                ctx.stroke(plank,
-                           with: .color(Color(red: 0.70, green: 0.56, blue: 0.36).opacity(0.35)),
-                           lineWidth: 1)
-            }
-
-            let lineColor = Color.white.opacity(0.85)
-
-            var border = Path()
-            border.addRect(CGRect(x: 4, y: 4, width: cw - 8, height: ch - 8))
-            ctx.stroke(border, with: .color(lineColor), lineWidth: 1.5)
-
-            // Baseline — top edge, drawn slightly heavier
-            var baseline = Path()
-            baseline.move(to: CGPoint(x: 4, y: 4))
-            baseline.addLine(to: CGPoint(x: cw - 4, y: 4))
-            ctx.stroke(baseline, with: .color(lineColor), lineWidth: 2.5)
-
-            // Paint / key — extends down from the baseline
-            let paintW: CGFloat = cw * 0.37
-            let paintH: CGFloat = ch * 0.30
-            var paint = Path()
-            paint.addRect(CGRect(x: cx - paintW/2, y: 4, width: paintW, height: paintH))
-            ctx.stroke(paint, with: .color(lineColor), lineWidth: 1.5)
-
-            // Free-throw circle — straddles the open (bottom) edge of the paint
-            var ftCircle = Path()
-            ftCircle.addEllipse(in: CGRect(x: cx - paintW/2, y: 4 + paintH - paintW * 0.28,
-                                            width: paintW, height: paintW * 0.56))
-            ctx.stroke(ftCircle, with: .color(lineColor), lineWidth: 1.5)
-
-            // Backboard + basket, just below the baseline
-            var backboard = Path()
-            backboard.move(to: CGPoint(x: cx - 16, y: 12))
-            backboard.addLine(to: CGPoint(x: cx + 16, y: 12))
-            ctx.stroke(backboard, with: .color(.white), lineWidth: 2.5)
-
-            var basket = Path()
-            basket.addEllipse(in: CGRect(x: cx - 10, y: 18, width: 20, height: 12))
-            ctx.stroke(basket, with: .color(.white), lineWidth: 2)
-
-            // 3-point arc — corners near the baseline, apex toward mid-court
-            var arc = Path()
-            arc.move(to: CGPoint(x: 4, y: ch * 0.45))
-            arc.addQuadCurve(to: CGPoint(x: cw - 4, y: ch * 0.45),
-                             control: CGPoint(x: cx, y: ch * 0.98))
-            ctx.stroke(arc, with: .color(lineColor), lineWidth: 1.5)
-
-            var cornerL = Path()
-            cornerL.move(to: CGPoint(x: 4, y: ch * 0.45))
-            cornerL.addLine(to: CGPoint(x: 4, y: 4))
-            ctx.stroke(cornerL, with: .color(lineColor), lineWidth: 1.5)
-
-            var cornerR = Path()
-            cornerR.move(to: CGPoint(x: cw - 4, y: ch * 0.45))
-            cornerR.addLine(to: CGPoint(x: cw - 4, y: 4))
-            ctx.stroke(cornerR, with: .color(lineColor), lineWidth: 1.5)
-
-            // Center-court circle — only its top arc peeks in at the bottom edge
-            let centerR: CGFloat = cw * 0.22
-            var centerCircle = Path()
-            centerCircle.addEllipse(in: CGRect(x: cx - centerR, y: ch - centerR * 0.6,
-                                                width: centerR * 2, height: centerR * 2))
-            ctx.stroke(centerCircle, with: .color(lineColor), lineWidth: 1.5)
+    // The image's own proportions define the displayed rect — same
+    // centered, aspect-locked approach as the previous drawn-court fix
+    // (never stretched), but the aspect ratio now comes from the photo's
+    // actual pixel dimensions rather than a hardcoded court constant,
+    // because the spots must line up with what's printed on THIS photo.
+    private func courtRect(in size: CGSize) -> CGRect {
+        let imgSize = UIImage(named: "CourtDiagram")?.size ?? size
+        let aspect: CGFloat = imgSize.height == 0 ? 1 : imgSize.width / imgSize.height
+        var w = size.width
+        var h = w / aspect
+        if h > size.height {
+            h = size.height
+            w = h * aspect
         }
+        return CGRect(x: (size.width - w) / 2, y: (size.height - h) / 2, width: w, height: h)
     }
 }
