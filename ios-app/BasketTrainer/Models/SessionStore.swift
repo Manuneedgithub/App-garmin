@@ -12,10 +12,12 @@ class SessionStore: ObservableObject {
     @Published private(set) var sessions:   [WorkoutSession]   = []
     @Published private(set) var templates:  [ComplexTemplate]  = []
     @Published private(set) var watchSlots: [ComplexTemplate?] = Array(repeating: nil, count: maxWatchSlots)
+    @Published private(set) var spotPositionOverrides: [ExerciseType: SpotPosition] = [:]
 
     private let storageKey   = "basket_sessions"
     private let templateKey  = "basket_templates"
     private let slotsKey     = "basket_watch_slots"
+    private let spotPositionsKey = "basket_spot_positions"
 
     static let maxTemplates  = 5
     static let maxWatchSlots = 5
@@ -24,6 +26,7 @@ class SessionStore: ObservableObject {
         load()
         loadTemplates()
         loadSlots()
+        loadSpotPositions()
     }
 
     // ── Lecture ──
@@ -169,6 +172,39 @@ class SessionStore: ObservableObject {
               decoded.count == Self.maxWatchSlots
         else { return }
         watchSlots = decoded
+    }
+
+    // ── Spot Positions ──
+
+    func setSpotPosition(_ type: ExerciseType, nx: CGFloat, ny: CGFloat) {
+        spotPositionOverrides[type] = SpotPosition(nx: nx, ny: ny)
+        saveSpotPositions()
+    }
+
+    func resetSpotPositions() {
+        spotPositionOverrides = [:]
+        saveSpotPositions()
+    }
+
+    private func saveSpotPositions() {
+        let wire = Dictionary(uniqueKeysWithValues:
+            spotPositionOverrides.map { (key, value) in (key.rawValue, value) })
+        if let data = try? JSONEncoder().encode(wire) {
+            UserDefaults.standard.set(data, forKey: spotPositionsKey)
+        }
+    }
+
+    private func loadSpotPositions() {
+        guard let data = UserDefaults.standard.data(forKey: spotPositionsKey),
+              let decoded = try? JSONDecoder().decode([Int: SpotPosition].self, from: data)
+        else { return }
+        var result: [ExerciseType: SpotPosition] = [:]
+        for (rawValue, position) in decoded {
+            if let type = ExerciseType(rawValue: rawValue) {
+                result[type] = position
+            }
+        }
+        spotPositionOverrides = result
     }
 
     // ── Persistence ──
