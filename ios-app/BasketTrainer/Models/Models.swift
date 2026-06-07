@@ -332,3 +332,13 @@ struct SpotStats {
     }
     let byType: [ShotType: (shots: Int, made: Int)]
 }
+
+// ─────────────────────────────────────────────────
+// Position personnalisée d'un repère sur le terrain
+// (coordonnées normalisées, même convention que CourtSpot :
+// nx/ny = fraction du rectangle du terrain depuis bas-gauche)
+// ─────────────────────────────────────────────────
+struct SpotPosition: Codable {
+    var nx: CGFloat
+    var ny: CGFloat
+}
