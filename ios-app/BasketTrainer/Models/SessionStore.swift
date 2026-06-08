@@ -12,17 +12,21 @@ class SessionStore: ObservableObject {
     @Published private(set) var sessions:   [WorkoutSession]   = []
     @Published private(set) var watchSlots: [ComplexTemplate?] = Array(repeating: nil, count: maxWatchSlots)
     @Published private(set) var spotPositionOverrides: [ExerciseType: SpotPosition] = [:]
+    @Published private(set) var customSpots: [CustomSpot] = []
 
-    private let storageKey   = "basket_sessions"
-    private let slotsKey     = "basket_watch_slots"
+    private let storageKey       = "basket_sessions"
+    private let slotsKey         = "basket_watch_slots"
     private let spotPositionsKey = "basket_spot_positions"
+    private let customSpotsKey   = "basket_custom_spots"
 
-    static let maxWatchSlots = 5
+    static let maxWatchSlots  = 5
+    static let maxCustomSpots = 5
 
     init() {
         load()
         loadSlots()
         loadSpotPositions()
+        loadCustomSpots()
     }
 
     // ── Lecture ──
@@ -193,6 +197,42 @@ class SessionStore: ObservableObject {
             }
         }
         spotPositionOverrides = result
+    }
+
+    // ── Custom Spots ──
+
+    func saveCustomSpot(_ spot: CustomSpot) {
+        if let i = customSpots.firstIndex(where: { $0.id == spot.id }) {
+            customSpots[i] = spot
+        } else {
+            customSpots.append(spot)
+        }
+        persistCustomSpots()
+    }
+
+    func deleteCustomSpot(id: Int) {
+        customSpots.removeAll { $0.id == id }
+        if let type = ExerciseType(rawValue: id) {
+            resetSpotPositions(for: [type])   // évite une position-override orpheline
+        }
+        persistCustomSpots()
+    }
+
+    func nextAvailableCustomSpotID() -> Int? {
+        ExerciseType.customIDRange.first { id in !customSpots.contains { $0.id == id } }
+    }
+
+    private func persistCustomSpots() {
+        if let data = try? JSONEncoder().encode(customSpots) {
+            UserDefaults.standard.set(data, forKey: customSpotsKey)
+        }
+    }
+
+    private func loadCustomSpots() {
+        guard let data = UserDefaults.standard.data(forKey: customSpotsKey),
+              let decoded = try? JSONDecoder().decode([CustomSpot].self, from: data)
+        else { return }
+        customSpots = decoded
     }
 
     // ── Persistence ──
