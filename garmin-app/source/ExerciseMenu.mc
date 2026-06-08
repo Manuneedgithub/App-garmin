@@ -1,5 +1,6 @@
 import Toybox.WatchUi;
 import Toybox.Lang;
+import Toybox.Application;
 
 // ─────────────────────────────────────────────────
 // MENU 1 — Choix du type d'exercice
@@ -31,6 +32,13 @@ function getExerciseName(id as Number) as String {
     if (id == EX_MID_LEFT)       { return "Mi-dist Gauche"; }
     if (id == EX_FLOATER)        { return "Flotteur"; }
     if (id == EX_FORM_SHOT_S2S)  { return "Form S2S"; }
+    if (id >= 11 && id <= 15) {
+        var def = Application.Storage.getValue("customSpot_" + id.toString());
+        if (def instanceof Dictionary && def["name"] instanceof String) {
+            return def["name"] as String;
+        }
+        return "Inconnu";
+    }
     return "Inconnu";
 }
 
@@ -49,6 +57,15 @@ class ExerciseMenuView extends WatchUi.Menu2 {
         addItem(new WatchUi.MenuItem("Mi-dist Gauche", null, EX_MID_LEFT,       null));
         addItem(new WatchUi.MenuItem("Flotteur",       null, EX_FLOATER,        null));
         addItem(new WatchUi.MenuItem("Form S2S",       null, EX_FORM_SHOT_S2S,  null));
+
+        // Spots personnalisés configurés depuis l'iPhone (emplacements 11-15) —
+        // seuls ceux ayant une définition stockée apparaissent, comme SlotMenuView.
+        for (var id = 11; id <= 15; id++) {
+            var def = Application.Storage.getValue("customSpot_" + id.toString());
+            if (def instanceof Dictionary && def["name"] instanceof String && def["emoji"] instanceof String) {
+                addItem(new WatchUi.MenuItem(def["name"] as String, def["emoji"] as String, id, null));
+            }
+        }
     }
 }
 

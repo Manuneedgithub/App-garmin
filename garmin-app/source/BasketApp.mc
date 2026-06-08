@@ -39,6 +39,29 @@ class BasketApp extends Application.AppBase {
             var series = dict["series"] as Array;
             Application.Storage.setValue("slot_" + index.toString(), series);
         }
+        if (dict["type"] instanceof String && (dict["type"] as String).equals("customSpots")) {
+            if (!(dict["spots"] instanceof Array)) { return; }
+            var spots = dict["spots"] as Array;
+
+            var seenIds = {};
+            for (var i = 0; i < spots.size(); i++) {
+                var entry = spots[i];
+                if (!(entry instanceof Dictionary)) { continue; }
+                var id = entry["id"];
+                if (!(id instanceof Number) || id < 11 || id > 15) { continue; }
+                if (!(entry["name"] instanceof String) || !(entry["emoji"] instanceof String)) { continue; }
+                Application.Storage.setValue("customSpot_" + id.toString(),
+                    { "name" => entry["name"], "emoji" => entry["emoji"] });
+                seenIds[id] = true;
+            }
+            // Remplacement complet : tout emplacement réservé absent du
+            // message est effacé — couvre les suppressions côté iPhone.
+            for (var id = 11; id <= 15; id++) {
+                if (!seenIds.hasKey(id)) {
+                    Application.Storage.setValue("customSpot_" + id.toString(), null);
+                }
+            }
+        }
     }
 }
 
