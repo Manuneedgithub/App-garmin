@@ -10,21 +10,17 @@ class SessionStore: ObservableObject {
     static let shared = SessionStore()
 
     @Published private(set) var sessions:   [WorkoutSession]   = []
-    @Published private(set) var templates:  [ComplexTemplate]  = []
     @Published private(set) var watchSlots: [ComplexTemplate?] = Array(repeating: nil, count: maxWatchSlots)
     @Published private(set) var spotPositionOverrides: [ExerciseType: SpotPosition] = [:]
 
     private let storageKey   = "basket_sessions"
-    private let templateKey  = "basket_templates"
     private let slotsKey     = "basket_watch_slots"
     private let spotPositionsKey = "basket_spot_positions"
 
-    static let maxTemplates  = 5
     static let maxWatchSlots = 5
 
     init() {
         load()
-        loadTemplates()
         loadSlots()
         loadSpotPositions()
     }
@@ -49,6 +45,10 @@ class SessionStore: ObservableObject {
     }
 
     func spotStats(for exerciseType: ExerciseType) -> SpotStats {
+        spotStats(for: exerciseType, in: sessions)
+    }
+
+    func spotStats(for exerciseType: ExerciseType, in sessions: [WorkoutSession]) -> SpotStats {
         var totalShots = 0
         var totalMade  = 0
         var byType: [ShotType: (shots: Int, made: Int)] = [:]
@@ -138,20 +138,6 @@ class SessionStore: ObservableObject {
         save()
     }
 
-    // ── Templates ──
-
-    func addTemplate(_ t: ComplexTemplate) {
-        var all = templates.filter { $0.id != t.id }
-        all.append(t)
-        templates = Array(all.suffix(SessionStore.maxTemplates))
-        saveTemplates()
-    }
-
-    func deleteTemplate(_ t: ComplexTemplate) {
-        templates.removeAll { $0.id == t.id }
-        saveTemplates()
-    }
-
     // ── Watch Slots ──
 
     func setWatchSlot(_ index: Int, template: ComplexTemplate?) {
@@ -181,8 +167,10 @@ class SessionStore: ObservableObject {
         saveSpotPositions()
     }
 
-    func resetSpotPositions() {
-        spotPositionOverrides = [:]
+    func resetSpotPositions(for types: [ExerciseType]) {
+        for type in types {
+            spotPositionOverrides.removeValue(forKey: type)
+        }
         saveSpotPositions()
     }
 
@@ -222,16 +210,4 @@ class SessionStore: ObservableObject {
         sessions = decoded
     }
 
-    private func saveTemplates() {
-        if let data = try? JSONEncoder().encode(templates) {
-            UserDefaults.standard.set(data, forKey: templateKey)
-        }
-    }
-
-    private func loadTemplates() {
-        guard let data = UserDefaults.standard.data(forKey: templateKey),
-              let decoded = try? JSONDecoder().decode([ComplexTemplate].self, from: data)
-        else { return }
-        templates = decoded
-    }
 }

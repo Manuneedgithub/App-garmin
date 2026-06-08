@@ -216,24 +216,6 @@ struct WorkoutSession: Codable, Identifiable {
         self.shotType      = nil
     }
 
-    // Constructeur séance complexe (plusieurs séries)
-    static func makeComplex(series: [ShotSeries], date: Date = Date()) -> WorkoutSession {
-        let total   = series.reduce(0) { $0 + $1.totalShots }
-        let made    = series.reduce(0) { $0 + $1.madeShots }
-        let results = series.flatMap { $0.results }
-        var s = WorkoutSession(
-            exerciseType: series.first?.exerciseType ?? .freethrow,
-            totalShots: total,
-            madeShots: made,
-            results: results
-        )
-        s.date     = date
-        s.series   = series
-        s.duration = nil
-        s.shotType = nil
-        return s
-    }
-
     private enum CodingKeys: String, CodingKey {
         case id, exerciseType, totalShots, madeShots, results, date,
              sentFromWatch, series, duration, shotType

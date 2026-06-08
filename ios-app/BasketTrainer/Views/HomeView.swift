@@ -5,13 +5,11 @@ import SwiftUI
 // ─────────────────────────────────────────────────
 private enum HomeSheet: Identifiable {
     case manual
-    case routineBuilder
     case slotsConfig
 
     var id: String {
         switch self {
         case .manual:          return "manual"
-        case .routineBuilder:  return "routineBuilder"
         case .slotsConfig:     return "slotsConfig"
         }
     }
@@ -21,7 +19,6 @@ struct HomeView: View {
     @EnvironmentObject var store:  SessionStore
     @EnvironmentObject var garmin: GarminManager
     @State private var activeSheet: HomeSheet? = nil
-    @State private var prefillTemplate: ComplexTemplate? = nil
 
     var body: some View {
         NavigationStack {
@@ -61,8 +58,6 @@ struct HomeView: View {
                         newWorkoutButton
                             .padding(.horizontal, 20)
 
-                        templatesSection
-
                         if !store.recentSessions.isEmpty {
                             recentSessionsList
                                 .padding(.horizontal, 20)
@@ -82,13 +77,10 @@ struct HomeView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .sheet(item: $activeSheet, onDismiss: { prefillTemplate = nil }) { sheet in
+            .sheet(item: $activeSheet) { sheet in
                 switch sheet {
                 case .manual:
-                    ManualSessionView(prefillTemplate: prefillTemplate)
-                case .routineBuilder:
-                    RoutineBuilderView()
-                        .environmentObject(store)
+                    ManualSessionView()
                 case .slotsConfig:
                     SlotsView()
                         .environmentObject(store)
@@ -130,7 +122,6 @@ struct HomeView: View {
 
     private var newWorkoutButton: some View {
         Button {
-            prefillTemplate = nil
             activeSheet = .manual
         } label: {
             HStack(spacing: 12) {
@@ -160,17 +151,6 @@ struct HomeView: View {
             .background(Color.orange)
             .clipShape(RoundedRectangle(cornerRadius: 16))
         }
-    }
-
-    private var templatesSection: some View {
-        TemplatesView(
-            onLaunchManual: { t in
-                prefillTemplate = t
-                activeSheet = .manual
-            },
-            onAdd: store.templates.count < SessionStore.maxTemplates ? { activeSheet = .routineBuilder } : nil
-        )
-        .padding(.horizontal, 20)
     }
 
     private var recentSessionsList: some View {

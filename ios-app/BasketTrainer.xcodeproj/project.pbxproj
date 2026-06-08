@@ -23,8 +23,6 @@
 		AA00000000000000000000DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CC /* Preview Assets.xcassets */; };
 		AA00000000000000000000DD /* ManualSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000CF /* ManualSessionView.swift */; };
 		AA00000000000000000000DE /* EditSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000D0 /* EditSessionView.swift */; };
-		AA00000000000000000000DF /* TemplatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000010 /* TemplatesView.swift */; };
-		AA00000000000000000000E4 /* RoutineBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000E0 /* RoutineBuilderView.swift */; };
 		AA00000000000000000000E7 /* CourtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000E6 /* CourtView.swift */; };
 		AA00000000000000000000E9 /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000E8 /* SpotDetailView.swift */; };
 		AA00000000000000000000EB /* SlotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000EA /* SlotsView.swift */; };
@@ -47,8 +45,6 @@
 /* Begin PBXFileReference section */
 		32CB2D8D2F7D123200FB5A89 /* connectiq-companion-app-sdk-ios-1.8.0 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "connectiq-companion-app-sdk-ios-1.8.0"; path = "../../../../Downloads/connectiq-companion-app-sdk-ios-1.8.0"; sourceTree = "<group>"; };
 		32CB2D8E2F7D125700FB5A89 /* ConnectIQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ConnectIQ.xcframework; path = ConnectIQ.xcframework; sourceTree = "<group>"; };
-		AA0000000000000000000010 /* TemplatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesView.swift; sourceTree = "<group>"; };
-		AA00000000000000000000E0 /* RoutineBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineBuilderView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000E6 /* CourtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000E8 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000EA /* SlotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotsView.swift; sourceTree = "<group>"; };
@@ -150,8 +146,6 @@
 				AA00000000000000000000CA /* StatsView.swift */,
 				AA00000000000000000000CF /* ManualSessionView.swift */,
 				AA00000000000000000000D0 /* EditSessionView.swift */,
-				AA0000000000000000000010 /* TemplatesView.swift */,
-				AA00000000000000000000E0 /* RoutineBuilderView.swift */,
 				AA00000000000000000000E6 /* CourtView.swift */,
 				AA00000000000000000000E8 /* SpotDetailView.swift */,
 				AA00000000000000000000EA /* SlotsView.swift */,
@@ -252,8 +246,6 @@
 				AA00000000000000000000DA /* StatsView.swift in Sources */,
 				AA00000000000000000000DD /* ManualSessionView.swift in Sources */,
 				AA00000000000000000000DE /* EditSessionView.swift in Sources */,
-				AA00000000000000000000DF /* TemplatesView.swift in Sources */,
-				AA00000000000000000000E4 /* RoutineBuilderView.swift in Sources */,
 				AA00000000000000000000E7 /* CourtView.swift in Sources */,
 				AA00000000000000000000E9 /* SpotDetailView.swift in Sources */,
 				AA00000000000000000000EB /* SlotsView.swift in Sources */,
