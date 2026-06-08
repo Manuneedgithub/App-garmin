@@ -96,13 +96,30 @@ private func courtRect(in size: CGSize) -> CGRect {
     return CGRect(x: (size.width - w) / 2, y: (size.height - h) / 2, width: w, height: h)
 }
 
+// Cible de la feuille d'édition de spot personnalisé : création sur un
+// terrain donné, ou modification d'un spot existant.
+private enum SpotEditorTarget: Identifiable {
+    case create(courtIndex: Int)
+    case edit(CustomSpot)
+
+    var id: String {
+        switch self {
+        case .create(let courtIndex): return "create-\(courtIndex)"
+        case .edit(let spot):         return "edit-\(spot.id)"
+        }
+    }
+}
+
 struct CourtView: View {
-    @EnvironmentObject var store: SessionStore
+    @EnvironmentObject var store:  SessionStore
+    @EnvironmentObject var garmin: GarminManager
 
     @State private var period: CourtPeriod = .all
     @State private var isEditing = false
     @State private var dragOffsets: [ExerciseType: CGSize] = [:]
     @State private var showResetConfirmation = false
+    @State private var spotEditorTarget: SpotEditorTarget? = nil
+    @State private var showCustomSpotLimitAlert = false
 
     // store.spotStats(for:) parcourt toutes les séances à chaque appel. Le
     // recalculer pour chaque repère dans `body` faisait saccader le drag,
@@ -114,6 +131,21 @@ struct CourtView: View {
     private var filteredSessions: [WorkoutSession] {
         guard let start = period.startDate() else { return store.sessions }
         return store.sessions.filter { $0.date >= start }
+    }
+
+    // Fusionne les spots intégrés (statiques) avec les spots personnalisés
+    // de l'utilisateur, groupés par terrain — page.spots reste la source
+    // unique pour le rendu, le drag et les stats, sans changement ailleurs.
+    private var pages: [CourtPage] {
+        courtPages.enumerated().map { index, page in
+            let customs = store.customSpots
+                .filter { $0.courtIndex == index }
+                .compactMap { spot -> CourtSpot? in
+                    guard let type = ExerciseType(rawValue: spot.id) else { return nil }
+                    return CourtSpot(type: type, nx: spot.position.nx, ny: spot.position.ny)
+                }
+            return CourtPage(title: page.title, subtitle: page.subtitle, spots: page.spots + customs)
+        }
     }
 
     private var periodPicker: some View {
@@ -131,12 +163,15 @@ struct CourtView: View {
                 ScrollView {
                     VStack(spacing: 20) {
                         periodPicker
-                        ForEach(courtPages.indices, id: \.self) { index in
+                        ForEach(pages.indices, id: \.self) { index in
                             CourtPageCard(
-                                page: courtPages[index],
+                                page: pages[index],
+                                pageIndex: index,
                                 isEditing: isEditing,
                                 dragOffsets: $dragOffsets,
-                                spotStatsCache: spotStatsCache
+                                spotStatsCache: spotStatsCache,
+                                onAddSpot: { presentSpotEditor(forCourt: index) },
+                                onEditCustomSpot: { spotEditorTarget = .edit($0) }
                             )
                         }
                     }
@@ -160,6 +195,11 @@ struct CourtView: View {
                                 showResetConfirmation = true
                             }
                             .foregroundStyle(.red)
+
+                            Button("Synchroniser") {
+                                garmin.sendCustomSpots(store.customSpots)
+                            }
+                            .foregroundStyle(.orange)
                         }
                     }
                 }
@@ -167,10 +207,23 @@ struct CourtView: View {
             .alert("Réinitialiser les positions ?", isPresented: $showResetConfirmation) {
                 Button("Annuler", role: .cancel) {}
                 Button("Réinitialiser", role: .destructive) {
-                    store.resetSpotPositions(for: courtPages.flatMap { $0.spots.map { $0.type } })
+                    store.resetSpotPositions(for: pages.flatMap { $0.spots.map { $0.type } })
                 }
             } message: {
                 Text("Tous les repères retrouveront leur position d'origine sur chaque terrain.")
+            }
+            .alert("Limite atteinte (5/5)", isPresented: $showCustomSpotLimitAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text("Supprimez un spot personnalisé existant avant d'en créer un nouveau.")
+            }
+            .sheet(item: $spotEditorTarget) { target in
+                switch target {
+                case .create(let courtIndex):
+                    CustomSpotEditorView(editingSpot: nil, courtIndex: courtIndex)
+                case .edit(let spot):
+                    CustomSpotEditorView(editingSpot: spot, courtIndex: spot.courtIndex)
+                }
             }
             .onAppear(perform: refreshSpotStatsCache)
             .onReceive(store.$sessions) { _ in refreshSpotStatsCache() }
@@ -178,8 +231,16 @@ struct CourtView: View {
         }
     }
 
+    private func presentSpotEditor(forCourt courtIndex: Int) {
+        if store.customSpots.count >= SessionStore.maxCustomSpots {
+            showCustomSpotLimitAlert = true
+        } else {
+            spotEditorTarget = .create(courtIndex: courtIndex)
+        }
+    }
+
     private func refreshSpotStatsCache() {
-        let allSpots   = courtPages.flatMap { $0.spots }
+        let allSpots   = pages.flatMap { $0.spots }
         let inPeriod   = filteredSessions
         spotStatsCache = Dictionary(uniqueKeysWithValues:
             allSpots.map { ($0.type, store.spotStats(for: $0.type, in: inPeriod)) })
@@ -193,19 +254,32 @@ private struct CourtPageCard: View {
     @EnvironmentObject var store: SessionStore
 
     let page: CourtPage
+    let pageIndex: Int
     let isEditing: Bool
     @Binding var dragOffsets: [ExerciseType: CGSize]
     let spotStatsCache: [ExerciseType: SpotStats]
+    let onAddSpot: () -> Void
+    let onEditCustomSpot: (CustomSpot) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(page.title)
-                    .font(.headline)
-                    .foregroundStyle(.primary)
-                Text(page.subtitle)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(page.title)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                    Text(page.subtitle)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                if isEditing {
+                    Button(action: onAddSpot) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title3)
+                            .foregroundStyle(.orange)
+                    }
+                }
             }
 
             if !page.spots.isEmpty {
@@ -233,6 +307,7 @@ private struct CourtPageCard: View {
                         let hasData = stats.totalShots > 0
                         let color   = hasData ? spotColor(stats.percentage) : Color(.systemFill)
                         let label   = hasData ? String(format: "%.0f%%", stats.percentage) : "–"
+                        let custom  = store.customSpots.first { $0.id == spot.type.rawValue }
 
                         Group {
                             if isEditing {
@@ -241,6 +316,18 @@ private struct CourtPageCard: View {
                                         Circle().strokeBorder(Color.orange,
                                             style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
                                     )
+                                    .overlay(alignment: .topTrailing) {
+                                        if let custom {
+                                            Button {
+                                                onEditCustomSpot(custom)
+                                            } label: {
+                                                Image(systemName: "pencil.circle.fill")
+                                                    .font(.caption)
+                                                    .foregroundStyle(.white, .orange)
+                                            }
+                                            .offset(x: 4, y: -4)
+                                        }
+                                    }
                                     .gesture(
                                         DragGesture(minimumDistance: 0)
                                             .onChanged { value in
