@@ -17,10 +17,20 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
     case midLeft              = 8
     case floater              = 9
     case formShotSideToSide   = 10
+    case custom1              = 11
+    case custom2              = 12
+    case custom3              = 13
+    case custom4              = 14
+    case custom5              = 15
 
     var id: Int { rawValue }
 
+    private var customDefinition: CustomSpot? {
+        SessionStore.shared.customSpots.first { $0.id == rawValue }
+    }
+
     var name: String {
+        if let custom = customDefinition { return custom.name }
         switch self {
         case .freethrow:            return "Lancer Franc"
         case .threeCenter:          return "3pts Centre"
@@ -33,10 +43,13 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
         case .midLeft:              return "Mi-distance Gauche"
         case .floater:              return "Flotteur"
         case .formShotSideToSide:   return "Form Shot Side to Side"
+        case .custom1, .custom2, .custom3, .custom4, .custom5:
+            return "Spot personnalisé"
         }
     }
 
     var emoji: String {
+        if let custom = customDefinition { return custom.emoji }
         switch self {
         case .freethrow:                        return "🎯"
         case .threeCenter:                      return "🏀"
@@ -45,6 +58,8 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
         case .midCenter, .midRight, .midLeft:   return "🎳"
         case .floater:                          return "🪶"
         case .formShotSideToSide:               return "↔️"
+        case .custom1, .custom2, .custom3, .custom4, .custom5:
+            return "📍"
         }
     }
 
@@ -57,7 +72,22 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
              .threeCornerL:                     return "3 Points"
         case .midCenter, .midRight, .midLeft:   return "Mi-distance"
         case .floater, .formShotSideToSide:     return "Technique"
+        case .custom1, .custom2, .custom3, .custom4, .custom5:
+            return "Personnalisé"
         }
+    }
+
+    // Remplace l'implémentation synthétisée de CaseIterable : seuls les
+    // emplacements personnalisés *configurés* doivent apparaître dans les
+    // pickers, filtres et stats — pas les 5 emplacements vides par défaut.
+    static var allCases: [ExerciseType] {
+        let builtIns: [ExerciseType] = [.freethrow, .threeCenter, .threeRight45, .threeLeft45,
+                                        .threeCornerR, .threeCornerL, .midCenter, .midRight,
+                                        .midLeft, .floater, .formShotSideToSide]
+        let customs = SessionStore.shared.customSpots
+            .sorted { $0.id < $1.id }
+            .compactMap { ExerciseType(rawValue: $0.id) }
+        return builtIns + customs
     }
 }
 
