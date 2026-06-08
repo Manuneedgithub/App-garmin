@@ -217,6 +217,14 @@ struct CourtView: View {
             } message: {
                 Text("Supprimez un spot personnalisé existant avant d'en créer un nouveau.")
             }
+            .alert("Envoi à la montre", isPresented: Binding(
+                get: { garmin.lastCustomSpotsSendMessage != nil },
+                set: { if !$0 { garmin.lastCustomSpotsSendMessage = nil } }
+            )) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(garmin.lastCustomSpotsSendMessage ?? "")
+            }
             .sheet(item: $spotEditorTarget) { target in
                 switch target {
                 case .create(let courtIndex):
