@@ -13,7 +13,6 @@ class BasketApp extends Application.AppBase {
 
     function onStart(state as Dictionary?) as Void {
         _sync = new SyncManager();
-        _sync.initialize();
         // The runtime only delivers incoming phone messages to a callback
         // registered here — it does not call any AppBase method on its own.
         Communications.registerForPhoneAppMessages(method(:onPhoneAppMessage));
