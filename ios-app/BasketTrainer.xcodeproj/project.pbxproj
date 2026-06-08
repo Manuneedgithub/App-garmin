@@ -26,6 +26,7 @@
 		AA00000000000000000000E7 /* CourtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000E6 /* CourtView.swift */; };
 		AA00000000000000000000E9 /* SpotDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000E8 /* SpotDetailView.swift */; };
 		AA00000000000000000000EB /* SlotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000EA /* SlotsView.swift */; };
+		AA00000000000000000000ED /* CustomSpotEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000EC /* CustomSpotEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +49,7 @@
 		AA00000000000000000000E6 /* CourtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourtView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000E8 /* SpotDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000EA /* SlotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlotsView.swift; sourceTree = "<group>"; };
+		AA00000000000000000000EC /* CustomSpotEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpotEditorView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000B1 /* BasketTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA00000000000000000000C1 /* BasketTrainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTrainerApp.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C2 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				AA00000000000000000000E6 /* CourtView.swift */,
 				AA00000000000000000000E8 /* SpotDetailView.swift */,
 				AA00000000000000000000EA /* SlotsView.swift */,
+				AA00000000000000000000EC /* CustomSpotEditorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				AA00000000000000000000E7 /* CourtView.swift in Sources */,
 				AA00000000000000000000E9 /* SpotDetailView.swift in Sources */,
 				AA00000000000000000000EB /* SlotsView.swift in Sources */,
+				AA00000000000000000000ED /* CustomSpotEditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
