@@ -327,7 +327,23 @@ struct SpotStats {
 // (coordonnées normalisées, même convention que CourtSpot :
 // nx/ny = fraction du rectangle du terrain depuis bas-gauche)
 // ─────────────────────────────────────────────────
-struct SpotPosition: Codable {
+struct SpotPosition: Codable, Equatable {
     var nx: CGFloat
     var ny: CGFloat
+}
+
+// ─────────────────────────────────────────────────
+// Spot personnalisé créé par l'utilisateur
+// ─────────────────────────────────────────────────
+struct CustomSpot: Codable, Identifiable, Equatable {
+    var id: Int             // un des ExerciseType.customIDRange (11...15)
+    var name: String
+    var emoji: String       // une seule emoji
+    var courtIndex: Int     // index de la page-terrain — fixé à la création
+    var position: SpotPosition   // position de départ ; ajustable ensuite par drag
+}
+
+extension ExerciseType {
+    // Plage d'IDs réservée aux spots personnalisés (5 emplacements fixes)
+    static let customIDRange = 11...15
 }
