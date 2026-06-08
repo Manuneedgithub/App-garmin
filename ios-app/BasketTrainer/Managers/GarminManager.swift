@@ -14,6 +14,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     @Published var lastSyncDate: Date? = nil
     @Published var connectedDevice: IQDevice? = nil
     @Published var lastSlotSendMessage: String? = nil
+    @Published var lastCustomSpotsSendMessage: String? = nil
 
     func setup() {
         sdk.initialize(withUrlScheme: "baskettrainer", uiOverrideDelegate: nil)
@@ -143,6 +144,28 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
                 DispatchQueue.main.async {
                     self?.lastSlotSendMessage = result == .success
                         ? "Entraînement \(index + 1) envoyé à la montre ✅"
+                        : "Échec de l'envoi : \(NSStringFromSendMessageResult(result))"
+                }
+            }
+        }
+    }
+
+    func sendCustomSpots(_ spots: [CustomSpot]) {
+        guard let device = connectedDevice else {
+            lastCustomSpotsSendMessage = "Montre non connectée"
+            return
+        }
+        let app = IQApp(uuid: appUUID, store: appUUID, device: device)
+        let payload: [String: Any] = [
+            "type": "customSpots",
+            "spots": spots.map { ["id": $0.id, "name": $0.name, "emoji": $0.emoji] }
+        ]
+        sdk.openAppRequest(app) { [weak self] _ in
+            self?.sdk.sendMessage(payload, to: app, progress: nil) { result in
+                print("sendCustomSpots → \(NSStringFromSendMessageResult(result))")
+                DispatchQueue.main.async {
+                    self?.lastCustomSpotsSendMessage = result == .success
+                        ? "Spots personnalisés envoyés à la montre ✅"
                         : "Échec de l'envoi : \(NSStringFromSendMessageResult(result))"
                 }
             }
