@@ -34,9 +34,25 @@
 **Files:**
 - Modify: `ios-app/BasketTrainer/Models/Models.swift`
 
-- [ ] **Step 1: Append `CustomSpot` and the reserved-range extension after `SpotPosition`**
+- [ ] **Step 1: Make `SpotPosition` conform to `Equatable`**
 
-At the end of `Models.swift` (after the closing brace of `SpotPosition` on line 333), add:
+`CustomSpot` (added in Step 2) declares `Equatable` conformance, which Swift can only synthesize if every stored property is itself `Equatable`. `SpotPosition` currently conforms only to `Codable`. Both its stored properties are `CGFloat` (already `Equatable`), so adding `Equatable` here is a pure, side-effect-free prerequisite — it doesn't change behavior anywhere `SpotPosition` is already used.
+
+Replace (`Models.swift:330`):
+
+```swift
+struct SpotPosition: Codable {
+```
+
+With:
+
+```swift
+struct SpotPosition: Codable, Equatable {
+```
+
+- [ ] **Step 2: Append `CustomSpot` and the reserved-range extension after `SpotPosition`**
+
+At the end of `Models.swift` (after the closing brace of `SpotPosition`, now ending at line 333), add:
 
 ```swift
 
@@ -57,7 +73,7 @@ extension ExerciseType {
 }
 ```
 
-- [ ] **Step 2: Build to verify it compiles**
+- [ ] **Step 3: Build to verify it compiles**
 
 ```bash
 xcodebuild -project ios-app/BasketTrainer.xcodeproj -scheme BasketTrainer \
@@ -66,7 +82,7 @@ xcodebuild -project ios-app/BasketTrainer.xcodeproj -scheme BasketTrainer \
 
 Expected: `** BUILD SUCCEEDED **`
 
-- [ ] **Step 3: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
 git add ios-app/BasketTrainer/Models/Models.swift
