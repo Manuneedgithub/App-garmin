@@ -58,28 +58,45 @@ object GarminManager {
                 emptyList()
             }
 
-            devices.forEach { device ->
-                connectIQ.unregisterForDeviceEvents(device)
-                connectIQ.registerForDeviceEvents(device) { updatedDevice, status ->
-                    if (status == IQDevice.IQDeviceStatus.CONNECTED) {
-                        _connectedDevice.value = updatedDevice
-                        registerForAppMessages(updatedDevice)
-                    } else if (_connectedDevice.value?.deviceIdentifier == updatedDevice.deviceIdentifier) {
-                        _connectedDevice.value = null
+            try {
+                devices.forEach { device ->
+                    connectIQ.unregisterForDeviceEvents(device)
+                    connectIQ.registerForDeviceEvents(device) { updatedDevice, status ->
+                        if (status == IQDevice.IQDeviceStatus.CONNECTED) {
+                            _connectedDevice.value = updatedDevice
+                            registerForAppMessages(updatedDevice)
+                        } else if (_connectedDevice.value?.deviceIdentifier == updatedDevice.deviceIdentifier) {
+                            _connectedDevice.value = null
+                        }
+                    }
+                    // Le SDK ne rejoue pas forcément le callback ci-dessus pour un
+                    // appareil déjà connecté au lancement de l'app : on initialise
+                    // aussi l'état à partir du statut courant.
+                    if (device.status == IQDevice.IQDeviceStatus.CONNECTED) {
+                        _connectedDevice.value = device
+                        registerForAppMessages(device)
                     }
                 }
+            } catch (e: InvalidStateException) {
+                _garminConnectAvailable.value = false
+            } catch (e: ServiceUnavailableException) {
+                _garminConnectAvailable.value = false
             }
         }
     }
 
     private fun registerForAppMessages(device: IQDevice) {
         try {
-            connectIQ.registerForAppEvents(device, IQApp(APP_UUID)) { _, _, message, status ->
+            val app = IQApp(APP_UUID)
+            connectIQ.registerForAppEvents(device, app) { _, _, message, status ->
                 if (status == ConnectIQ.IQMessageStatus.SUCCESS) {
                     val dict = message.firstOrNull() as? Map<*, *> ?: return@registerForAppEvents
                     SessionRepository.add(GarminMessageParser.parse(dict))
                 }
             }
+            // Réveille l'app montre → BasketApp.onStart() → SyncManager flush de la
+            // PendingQueue (sessions accumulées hors portée / app iPhone fermée).
+            connectIQ.openApplication(device, app) { _, _, _ -> }
         } catch (e: InvalidStateException) {
             _garminConnectAvailable.value = false
         } catch (e: ServiceUnavailableException) {
