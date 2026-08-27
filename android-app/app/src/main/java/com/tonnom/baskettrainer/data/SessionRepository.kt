@@ -7,6 +7,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.tonnom.baskettrainer.model.WorkoutSession
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,9 +25,11 @@ object SessionRepository {
     private val _sessions = MutableStateFlow<List<WorkoutSession>>(emptyList())
     val sessions: StateFlow<List<WorkoutSession>> get() = _sessions
 
+    private var loadJob: Job? = null
+
     fun init(context: Context) {
         appContext = context.applicationContext
-        scope.launch {
+        loadJob = scope.launch {
             val raw = appContext.dataStore.data.first()[SESSIONS_KEY]
             _sessions.value = SessionJsonCodec.decode(raw)
         }
@@ -34,6 +37,7 @@ object SessionRepository {
 
     fun add(session: WorkoutSession) {
         scope.launch {
+            loadJob?.join()
             val updated = _sessions.value + session
             _sessions.value = updated
             persist(updated)
@@ -42,6 +46,7 @@ object SessionRepository {
 
     fun delete(sessionId: String) {
         scope.launch {
+            loadJob?.join()
             val updated = _sessions.value.filterNot { it.id == sessionId }
             _sessions.value = updated
             persist(updated)
