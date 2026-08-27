@@ -29,6 +29,8 @@ object GarminManager {
     private val _garminConnectAvailable = MutableStateFlow(true)
     val garminConnectAvailable: StateFlow<Boolean> get() = _garminConnectAvailable
 
+    private val appMessageRegisteredDevices = mutableSetOf<Long>()
+
     private val connectIQListener = object : ConnectIQ.ConnectIQListener {
         override fun onSdkReady() {
             connectWatch()
@@ -72,7 +74,7 @@ object GarminManager {
                     // Le SDK ne rejoue pas forcément le callback ci-dessus pour un
                     // appareil déjà connecté au lancement de l'app : on initialise
                     // aussi l'état à partir du statut courant.
-                    if (device.status == IQDevice.IQDeviceStatus.CONNECTED) {
+                    if (connectIQ.getDeviceStatus(device) == IQDevice.IQDeviceStatus.CONNECTED) {
                         _connectedDevice.value = device
                         registerForAppMessages(device)
                     }
@@ -86,6 +88,7 @@ object GarminManager {
     }
 
     private fun registerForAppMessages(device: IQDevice) {
+        if (!appMessageRegisteredDevices.add(device.deviceIdentifier)) return
         try {
             val app = IQApp(APP_UUID)
             connectIQ.registerForAppEvents(device, app) { _, _, message, status ->
