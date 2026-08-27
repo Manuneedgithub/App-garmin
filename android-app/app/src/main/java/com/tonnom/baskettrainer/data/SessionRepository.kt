@@ -19,7 +19,7 @@ object SessionRepository {
     private val SESSIONS_KEY = stringPreferencesKey("basket_sessions")
 
     private lateinit var appContext: Context
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO.limitedParallelism(1))
 
     private val _sessions = MutableStateFlow<List<WorkoutSession>>(emptyList())
     val sessions: StateFlow<List<WorkoutSession>> get() = _sessions
