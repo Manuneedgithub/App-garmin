@@ -2,9 +2,11 @@ package com.tonnom.baskettrainer.garmin
 
 import android.content.Context
 import com.garmin.android.connectiq.ConnectIQ
+import com.garmin.android.connectiq.IQApp
 import com.garmin.android.connectiq.IQDevice
 import com.garmin.android.connectiq.exception.InvalidStateException
 import com.garmin.android.connectiq.exception.ServiceUnavailableException
+import com.tonnom.baskettrainer.data.SessionRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -71,6 +73,17 @@ object GarminManager {
     }
 
     private fun registerForAppMessages(device: IQDevice) {
-        // Extended in Task 6 to parse and store incoming sessions.
+        try {
+            connectIQ.registerForAppEvents(device, IQApp(APP_UUID)) { _, _, message, status ->
+                if (status == ConnectIQ.IQMessageStatus.SUCCESS) {
+                    val dict = message.firstOrNull() as? Map<*, *> ?: return@registerForAppEvents
+                    SessionRepository.add(GarminMessageParser.parse(dict))
+                }
+            }
+        } catch (e: InvalidStateException) {
+            _garminConnectAvailable.value = false
+        } catch (e: ServiceUnavailableException) {
+            _garminConnectAvailable.value = false
+        }
     }
 }
