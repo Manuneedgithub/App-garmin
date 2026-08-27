@@ -1,0 +1,30 @@
+# Gradle
+.gradle/
+/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.jar
+
+# Build
+/build
+app/build/
+*.apk
+*.aar
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Local properties
+/local.properties
+
+# Android native
+.externalNativeBuild
+.cxx
+
+# Gradle wrapper (not ignored - keep tracked)
+# gradlew, gradlew.bat, gradle/wrapper/gradle-wrapper.properties are tracked
+
+# Captures
+/captures
