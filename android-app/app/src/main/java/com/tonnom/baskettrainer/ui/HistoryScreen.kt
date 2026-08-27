@@ -7,13 +7,18 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -61,11 +66,27 @@ fun HistoryScreen() {
 
 @Composable
 private fun HistoryRow(session: WorkoutSession, onDelete: () -> Unit) {
+    var showConfirm by remember { mutableStateOf(false) }
+
     Row(verticalAlignment = Alignment.CenterVertically) {
         SessionRow(session, modifier = Modifier.weight(1f))
-        IconButton(onClick = onDelete) {
+        IconButton(onClick = { showConfirm = true }) {
             Icon(Icons.Default.Delete, contentDescription = "Supprimer")
         }
+    }
+
+    if (showConfirm) {
+        AlertDialog(
+            onDismissRequest = { showConfirm = false },
+            title = { Text("Supprimer cette séance ?") },
+            text = { Text("Cette action est irréversible.") },
+            confirmButton = {
+                TextButton(onClick = { showConfirm = false; onDelete() }) { Text("Supprimer") }
+            },
+            dismissButton = {
+                TextButton(onClick = { showConfirm = false }) { Text("Annuler") }
+            }
+        )
     }
 }
 
