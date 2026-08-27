@@ -43,7 +43,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
-    implementation("com.garmin.connectiq:ciq-companion-app-sdk:2.4.0@aar")
+    implementation("com.garmin.connectiq:ciq-companion-app-sdk:2.4.0")
     implementation("androidx.navigation:navigation-compose:2.8.4")
     // Icons.Default.Delete/Home are in the core icon set bundled with material3,
     // but Icons.Default.History (used below and in MainActivity) is not — pull
