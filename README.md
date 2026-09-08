@@ -1,10 +1,9 @@
 # Basket Trainer
 
-Application de suivi d'entraînement au tir au basket, en trois parties :
+Application de suivi d'entraînement au tir au basket, en deux parties :
 
 - ⌚ **App Garmin** (Monkey C) — tourne sur la montre, enregistre les tirs pendant l'entraînement
 - 📱 **App iPhone** (SwiftUI) — reçoit les séances, historique, statistiques, configuration
-- 🤖 **App Android** (Kotlin / Jetpack Compose) — équivalent Android, en cours de portage
 
 La montre fait le tracking pendant que tu es sur le terrain (mains prises par le ballon, pas envie de sortir le téléphone). Le téléphone récupère les séances automatiquement en Bluetooth et sert d'historique, de tableau de stats et d'écran de configuration.
 
@@ -18,7 +17,6 @@ La montre fait le tracking pendant que tu es sur le terrain (mains prises par le
 - [Installation](#installation)
   - [1. Montre Garmin](#1-montre-garmin-monkey-c)
   - [2. iPhone](#2-iphone-swiftui)
-  - [3. Android](#3-android-kotlin--jetpack-compose)
   - [Faire communiquer montre et téléphone](#faire-communiquer-montre-et-téléphone)
 - [État d'avancement](#état-davancement)
 - [Dépannage](#dépannage)
@@ -29,8 +27,8 @@ La montre fait le tracking pendant que tu es sur le terrain (mains prises par le
 
 ```
 ┌─────────────────┐   Bluetooth (Connect IQ SDK)   ┌──────────────────────┐
-│  Montre Garmin   │ ──────────────────────────────▶│  Téléphone (iPhone /  │
-│  (Monkey C)      │   Communications.transmit()    │  Android)             │
+│  Montre Garmin   │ ──────────────────────────────▶│  App iPhone           │
+│  (Monkey C)      │   Communications.transmit()    │                       │
 │                   │◀────────────────────────────── │                       │
 │ - Choix exercice │   Envoi routine / slot / spots │ - Historique          │
 │ - Comptage tirs  │                                 │ - Statistiques        │
@@ -47,7 +45,7 @@ La montre fait le tracking pendant que tu es sur le terrain (mains prises par le
 
 Aucun serveur, aucun compte, aucune synchronisation cloud : tout reste en local entre la montre et le téléphone, connectés via l'app **Garmin Connect Mobile** (qui doit être installée et faire tourner le pont Bluetooth en arrière-plan).
 
-**UUID de l'app** (doit être identique sur la montre et sur chaque app téléphone — ne jamais changer) :
+**UUID de l'app** (doit être identique sur la montre et sur l'app iPhone — ne jamais changer) :
 ```
 a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a
 ```
@@ -76,15 +74,6 @@ a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a
 - **Spots personnalisés** : création/édition/suppression (jusqu'à 5), avec envoi automatique vers la montre
 - **Configuration des slots montre** et des routines guidées
 - **Saisie manuelle** d'une séance (sans passer par la montre) et édition d'une séance existante
-
-### Sur Android
-
-Portage en cours (voir [État d'avancement](#état-davancement)). La v1 disponible couvre :
-- Connexion à la montre et réception d'une séance en direct
-- Persistance locale des séances
-- Écran Accueil (statut montre, stats rapides, séances récentes) et Historique (groupé par date, suppression avec confirmation)
-
-Le Terrain, les Statistiques, les spots personnalisés et les séances complexes/slots arrivent dans de prochains sous-projets — voir `docs/superpowers/specs/2026-08-26-android-mvp-core-design.md` pour le détail du découpage prévu.
 
 ---
 
@@ -134,15 +123,6 @@ App garmin/
 │           ├── WorkoutConfigView.swift / ManualSessionView.swift
 │           └── SlotsView.swift            Configuration des slots montre
 │
-├── android-app/                       App Android (Kotlin / Jetpack Compose)
-│   └── app/src/main/java/com/tonnom/baskettrainer/
-│       ├── BasketTrainerApp.kt           Point d'entrée (Application)
-│       ├── MainActivity.kt               Navigation (bottom bar)
-│       ├── model/Models.kt               Portage des modèles de données
-│       ├── data/                         Persistance (DataStore) + codec JSON
-│       ├── garmin/                       Intégration Connect IQ SDK Android
-│       └── ui/                           Écrans Compose (Accueil, Historique)
-│
 ├── docs/superpowers/
 │   ├── specs/                          Design specs de chaque fonctionnalité (une par feature)
 │   └── plans/                          Plans d'implémentation détaillés correspondants
@@ -156,7 +136,7 @@ App garmin/
 
 ## Installation
 
-Chaque plateforme est indépendante — tu n'as besoin d'installer que celles qui t'intéressent. Pour que la communication montre ↔ téléphone fonctionne, il te faut au minimum la montre **et** un des deux téléphones.
+Chaque plateforme est indépendante — tu n'as besoin d'installer que celle qui t'intéresse. Pour que la communication montre ↔ téléphone fonctionne, il te faut la montre **et** l'iPhone.
 
 ### 1. Montre Garmin (Monkey C)
 
@@ -189,24 +169,10 @@ Chaque plateforme est indépendante — tu n'as besoin d'installer que celles qu
 4. Branche ton iPhone en USB, sélectionne-le comme destination dans Xcode, puis `Cmd+R`.
 5. Au premier lancement : **Réglages → Général → VPN et gestion de l'appareil** sur l'iPhone → fais confiance au certificat développeur.
 
-### 3. Android (Kotlin / Jetpack Compose)
-
-**Prérequis :** Android Studio (ou le SDK Android en ligne de commande) et un téléphone Android avec l'app **Garmin Connect Mobile** installée.
-
-1. Ouvre le dossier `android-app/` dans Android Studio — il détecte et synchronise le SDK Connect IQ automatiquement (dépendance Gradle publiée sur Maven Central, pas de téléchargement manuel nécessaire).
-2. Si Android Studio ne trouve pas de SDK Android, laisse-le proposer d'en installer un (Setup Wizard), ou renseigne toi-même `android-app/local.properties` :
-   ```properties
-   sdk.dir=/chemin/vers/ton/Android/sdk
-   ```
-3. Build : `./gradlew assembleDebug` depuis `android-app/` (ou bouton ▶ Run dans Android Studio).
-4. Installe sur un appareil physique connecté en USB (le débogage Bluetooth réel avec la montre nécessite un vrai téléphone, pas un émulateur) : `./gradlew installDebug`.
-
 ### Faire communiquer montre et téléphone
 
-Quel que soit le téléphone utilisé :
-
 1. Installe et connecte-toi à **Garmin Connect Mobile**, avec la montre appairée.
-2. Lance l'app Basket Trainer (iPhone ou Android) — elle se connecte automatiquement à la montre déjà appairée.
+2. Lance l'app Basket Trainer sur l'iPhone — elle se connecte automatiquement à la montre déjà appairée.
 3. Lance une séance sur la montre, tire, termine-la.
 4. La séance apparaît automatiquement dans l'historique du téléphone, sans action supplémentaire.
 
@@ -220,7 +186,6 @@ Si le téléphone n'a pas de connexion au moment où la séance se termine sur l
 |---|---|---|
 | ⌚ Garmin (Monkey C) | ✅ Terminée et fonctionnelle | Toutes les fonctionnalités listées ci-dessus sont en place |
 | 📱 iPhone (SwiftUI) | ✅ Fonctionnelle | Toutes les fonctionnalités listées ci-dessus sont en place |
-| 🤖 Android (Kotlin/Compose) | 🚧 MVP core | Réception montre + persistance + Accueil/Historique. Reste à porter : Terrain/spots, Stats, séances complexes/slots (voir `docs/superpowers/plans/`) |
 
 Chaque fonctionnalité de l'app a son propre document de conception dans `docs/superpowers/specs/` et son plan d'implémentation détaillé dans `docs/superpowers/plans/`, utile pour comprendre pourquoi telle décision a été prise avant de modifier le code correspondant.
 
@@ -238,6 +203,4 @@ Chaque fonctionnalité de l'app a son propre document de conception dans `docs/s
 
 **Build iOS échoue sur `import Charts`** → Swift Charts nécessite iOS 16+ ; l'app cible déjà ce minimum, vérifie la version de déploiement du projet si l'erreur apparaît.
 
-**Build Android échoue avec "SDK location not found"** → aucun SDK Android n'est configuré sur la machine ; ouvre le projet dans Android Studio pour qu'il t'en propose l'installation, ou renseigne `android-app/local.properties` manuellement.
-
-**L'UUID ne correspond pas entre plateformes** → l'UUID `a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a` doit être identique dans `garmin-app/manifest.xml`, `ios-app/BasketTrainer/Managers/GarminManager.swift` et `android-app/.../garmin/GarminManager.kt` — ne jamais le régénérer, la reconnaissance entre montre et téléphone en dépend entièrement.
+**L'UUID ne correspond pas entre plateformes** → l'UUID `a3d5e7f9-1b2c-4d6e-8f0a-2b4c6d8e0f1a` doit être identique dans `garmin-app/manifest.xml` et `ios-app/BasketTrainer/Managers/GarminManager.swift` — ne jamais le régénérer, la reconnaissance entre montre et téléphone en dépend entièrement.
