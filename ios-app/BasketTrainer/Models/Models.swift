@@ -27,6 +27,12 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
     case custom8              = 18
     case custom9              = 19
     case custom10             = 20
+    case layupRight           = 21
+    case layupLeft            = 22
+    case eurostepRight        = 23
+    case eurostepLeft         = 24
+    case reverseRight         = 25
+    case reverseLeft          = 26
 
     var id: Int { rawValue }
 
@@ -48,6 +54,12 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
         case .midLeft:              return "Mi-distance Gauche"
         case .floater:              return "Flotteur"
         case .formShotSideToSide:   return "Form Shot Side to Side"
+        case .layupRight:           return "Lay Up Main Droite"
+        case .layupLeft:            return "Lay Up Main Gauche"
+        case .eurostepRight:        return "Eurostep Main Droite"
+        case .eurostepLeft:         return "Eurostep Main Gauche"
+        case .reverseRight:         return "Reverse Main Droite"
+        case .reverseLeft:          return "Reverse Main Gauche"
         case .custom1, .custom2, .custom3, .custom4, .custom5,
              .custom6, .custom7, .custom8, .custom9, .custom10:
             return "Spot personnalisé"
@@ -64,6 +76,9 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
         case .midCenter, .midRight, .midLeft:   return "🎳"
         case .floater:                          return "🪶"
         case .formShotSideToSide:               return "↔️"
+        case .layupRight, .layupLeft:           return "🏀"
+        case .eurostepRight, .eurostepLeft:     return "🌀"
+        case .reverseRight, .reverseLeft:       return "🔁"
         case .custom1, .custom2, .custom3, .custom4, .custom5,
              .custom6, .custom7, .custom8, .custom9, .custom10:
             return "📍"
@@ -84,6 +99,9 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
              .threeCornerL:                     return "3 Points"
         case .midCenter, .midRight, .midLeft:   return "Mi-distance"
         case .floater, .formShotSideToSide:     return "Technique"
+        case .layupRight, .layupLeft,
+             .eurostepRight, .eurostepLeft,
+             .reverseRight, .reverseLeft:       return "Lay Up"
         case .custom1, .custom2, .custom3, .custom4, .custom5,
              .custom6, .custom7, .custom8, .custom9, .custom10:
             return "Personnalisé"
@@ -96,7 +114,9 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
     static var allCases: [ExerciseType] {
         let builtIns: [ExerciseType] = [.freethrow, .threeCenter, .threeRight45, .threeLeft45,
                                         .threeCornerR, .threeCornerL, .midCenter, .midRight,
-                                        .midLeft, .floater, .formShotSideToSide]
+                                        .midLeft, .floater, .formShotSideToSide,
+                                        .layupRight, .layupLeft, .eurostepRight, .eurostepLeft,
+                                        .reverseRight, .reverseLeft]
         let customs = SessionStore.shared.customSpots
             .sorted { $0.id < $1.id }
             .compactMap { ExerciseType(rawValue: $0.id) }

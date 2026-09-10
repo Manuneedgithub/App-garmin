@@ -18,6 +18,12 @@ const EX_MID_RIGHT       = 7;
 const EX_MID_LEFT        = 8;
 const EX_FLOATER         = 9;
 const EX_FORM_SHOT_S2S   = 10;
+const EX_LAYUP_RIGHT     = 21;
+const EX_LAYUP_LEFT      = 22;
+const EX_EUROSTEP_RIGHT  = 23;
+const EX_EUROSTEP_LEFT   = 24;
+const EX_REVERSE_RIGHT   = 25;
+const EX_REVERSE_LEFT    = 26;
 
 // Retourne le nom lisible d'un exercice
 function getExerciseName(id as Number) as String {
@@ -32,6 +38,12 @@ function getExerciseName(id as Number) as String {
     if (id == EX_MID_LEFT)       { return "Mi-dist Gauche"; }
     if (id == EX_FLOATER)        { return "Flotteur"; }
     if (id == EX_FORM_SHOT_S2S)  { return "Form S2S"; }
+    if (id == EX_LAYUP_RIGHT)    { return "Layup Dr."; }
+    if (id == EX_LAYUP_LEFT)     { return "Layup Ga."; }
+    if (id == EX_EUROSTEP_RIGHT) { return "Eurostep Dr."; }
+    if (id == EX_EUROSTEP_LEFT)  { return "Eurostep Ga."; }
+    if (id == EX_REVERSE_RIGHT)  { return "Reverse Dr."; }
+    if (id == EX_REVERSE_LEFT)   { return "Reverse Ga."; }
     if (id >= 11 && id <= 20) {
         var def = Application.Storage.getValue("customSpot_" + id.toString());
         if (def instanceof Dictionary && def["name"] instanceof String) {
@@ -57,6 +69,12 @@ class ExerciseMenuView extends WatchUi.Menu2 {
         addItem(new WatchUi.MenuItem("Mi-dist Gauche", null, EX_MID_LEFT,       null));
         addItem(new WatchUi.MenuItem("Flotteur",       null, EX_FLOATER,        null));
         addItem(new WatchUi.MenuItem("Form S2S",       null, EX_FORM_SHOT_S2S,  null));
+        addItem(new WatchUi.MenuItem("Layup Dr.",      null, EX_LAYUP_RIGHT,    null));
+        addItem(new WatchUi.MenuItem("Layup Ga.",      null, EX_LAYUP_LEFT,     null));
+        addItem(new WatchUi.MenuItem("Eurostep Dr.",   null, EX_EUROSTEP_RIGHT, null));
+        addItem(new WatchUi.MenuItem("Eurostep Ga.",   null, EX_EUROSTEP_LEFT,  null));
+        addItem(new WatchUi.MenuItem("Reverse Dr.",    null, EX_REVERSE_RIGHT,  null));
+        addItem(new WatchUi.MenuItem("Reverse Ga.",    null, EX_REVERSE_LEFT,   null));
 
         // Spots personnalisés configurés depuis l'iPhone (emplacements 11-20) —
         // seuls ceux ayant une définition stockée apparaissent, comme SlotMenuView.

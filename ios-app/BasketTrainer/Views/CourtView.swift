@@ -34,6 +34,18 @@ private let techniqueSpots: [CourtSpot] = [
     CourtSpot(type: .formShotSideToSide, nx: 0.62, ny: 0.85),
 ]
 
+// Lay up — les 3 paires main droite/gauche démarrent groupées près du
+// cercle, la ligne droite/eurostep/reverse allant du plus proche du panier
+// au plus large mouvement latéral.
+private let layupSpots: [CourtSpot] = [
+    CourtSpot(type: .layupRight,    nx: 0.58, ny: 0.92),
+    CourtSpot(type: .layupLeft,     nx: 0.42, ny: 0.92),
+    CourtSpot(type: .eurostepRight, nx: 0.68, ny: 0.85),
+    CourtSpot(type: .eurostepLeft,  nx: 0.32, ny: 0.85),
+    CourtSpot(type: .reverseRight,  nx: 0.55, ny: 0.97),
+    CourtSpot(type: .reverseLeft,   nx: 0.45, ny: 0.97),
+]
+
 // Période de filtrage des repères — même esprit que StatsPeriod (StatsView),
 // mais avec les bornes demandées pour le terrain : aujourd'hui, 7 jours,
 // 1 mois, tout.
@@ -61,8 +73,7 @@ private struct CourtPage {
     let spots:    [CourtSpot]
 }
 
-// Trois terrains défilables : zones de tir, zones technique, et un terrain
-// vierge réservé pour une future catégorie d'exercice.
+// Trois terrains défilables : zones de tir, zones technique, et lay up.
 private let courtPages: [CourtPage] = [
     CourtPage(title: "Zones de tir",
               subtitle: "Lancer franc · 3 points · mi-distance",
@@ -70,9 +81,9 @@ private let courtPages: [CourtPage] = [
     CourtPage(title: "Technique",
               subtitle: "Flotteur · Form Shot Side to Side",
               spots: techniqueSpots),
-    CourtPage(title: "Réservé",
-              subtitle: "Bientôt disponible",
-              spots: []),
+    CourtPage(title: "Lay Up",
+              subtitle: "Main droite · Main gauche · Eurostep · Reverse",
+              spots: layupSpots),
 ]
 
 // Looké une seule fois au niveau du fichier — la taille de la photo ne
