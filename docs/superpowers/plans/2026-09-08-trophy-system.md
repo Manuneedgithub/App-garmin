@@ -22,7 +22,7 @@
 - The very first evaluation ever run (inside `SessionStore.init()`) must backfill silently — no celebration popups for trophies that were already earned before this feature existed.
 - New tab is named "Trophées" with SF Symbol `trophy.fill`, placed between Stats and Terrain.
 - This project has **no Xcode test target** (confirmed: no `.xctestplan`, no unit-test bundle in `project.pbxproj`, no `.xcscheme` files at all — Xcode generates a scheme on the fly). Pure logic (no SwiftUI/UIKit) is verified via `swiftc`-compiled command-line scripts against the real source files (no duplicated logic). Anything touching SwiftUI or `UserDefaults`-backed `SessionStore` behavior is verified by building for iOS Simulator and a manual pass — call this out explicitly in each such task, don't skip it.
-- This project also has no shared Xcode scheme, so build-verification commands use `-target BasketTrainer`, not `-scheme BasketTrainer`.
+- This project has no persisted `.xcscheme` file, but Xcode/`xcodebuild` auto-creates one on the fly for `-scheme BasketTrainer` — **use `-scheme`, not `-target`** (verified: `-target` alone ignores `-destination` and defaults to the `iphoneos` SDK, which then fails at the CodeSign step). The verified build-verification command (run from `ios-app/`) is: `xcodebuild build -project BasketTrainer.xcodeproj -scheme BasketTrainer -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug -derivedDataPath ./DerivedData CODE_SIGNING_ALLOWED=NO` — `-derivedDataPath` points build output inside the worktree (the project's default build folder is an absolute path shared across worktrees, which trips sandbox root checks); `-sdk iphonesimulator` forces the simulator SDK; `CODE_SIGNING_ALLOWED=NO` skips signing, which isn't needed for a compile-only check.
 
 ---
 
@@ -657,7 +657,7 @@ with:
 - [ ] **Step 6: Build for iOS Simulator to verify it compiles**
 
 ```bash
-cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -target BasketTrainer -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug 2>&1 | tail -30
+cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -scheme BasketTrainer -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug -derivedDataPath ./DerivedData CODE_SIGNING_ALLOWED=NO 2>&1 | tail -30
 ```
 Expected: `** BUILD SUCCEEDED **`. (This project has no shared scheme, hence `-target` rather than `-scheme`.)
 
@@ -826,7 +826,7 @@ private extension Color {
 - [ ] **Step 3: Build for iOS Simulator to verify it compiles**
 
 ```bash
-cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -target BasketTrainer -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug 2>&1 | tail -30
+cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -scheme BasketTrainer -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug -derivedDataPath ./DerivedData CODE_SIGNING_ALLOWED=NO 2>&1 | tail -30
 ```
 Expected: `** BUILD SUCCEEDED **`. (`TrophiesView` isn't referenced from `ContentView` yet, so this only proves the file itself is valid Swift/SwiftUI — that's the point of doing it now rather than waiting for Task 8.)
 
@@ -889,7 +889,7 @@ struct CelebrationOverlayView: View {
 - [ ] **Step 2: Build for iOS Simulator to verify it compiles**
 
 ```bash
-cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -target BasketTrainer -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug 2>&1 | tail -30
+cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -scheme BasketTrainer -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug -derivedDataPath ./DerivedData CODE_SIGNING_ALLOWED=NO 2>&1 | tail -30
 ```
 Expected: `** BUILD SUCCEEDED **`. (Not wired into `ContentView` yet — Task 8 does that and is where this actually gets exercised on screen.)
 
@@ -955,7 +955,7 @@ struct ContentView: View {
 - [ ] **Step 2: Build for iOS Simulator to verify it compiles**
 
 ```bash
-cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -target BasketTrainer -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug 2>&1 | tail -30
+cd ios-app && xcodebuild build -project BasketTrainer.xcodeproj -scheme BasketTrainer -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16' -configuration Debug -derivedDataPath ./DerivedData CODE_SIGNING_ALLOWED=NO 2>&1 | tail -30
 ```
 Expected: `** BUILD SUCCEEDED **`.
 
