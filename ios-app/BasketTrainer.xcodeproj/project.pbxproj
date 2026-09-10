@@ -30,6 +30,7 @@
 		AA00000000000000000000F5 /* Trophies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000F4 /* Trophies.swift */; };
 		AA00000000000000000000F7 /* TrophyEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000F6 /* TrophyEngine.swift */; };
 		AA00000000000000000000F9 /* TrophiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000F8 /* TrophiesView.swift */; };
+		AA00000000000000000000FB /* CelebrationOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000FA /* CelebrationOverlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +73,7 @@
 		AA00000000000000000000F4 /* Trophies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trophies.swift; sourceTree = "<group>"; };
 		AA00000000000000000000F6 /* TrophyEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyEngine.swift; sourceTree = "<group>"; };
 		AA00000000000000000000F8 /* TrophiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophiesView.swift; sourceTree = "<group>"; };
+		AA00000000000000000000FA /* CelebrationOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationOverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				AA00000000000000000000EA /* SlotsView.swift */,
 				AA00000000000000000000EC /* CustomSpotEditorView.swift */,
 				AA00000000000000000000F8 /* TrophiesView.swift */,
+				AA00000000000000000000FA /* CelebrationOverlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				AA00000000000000000000F5 /* Trophies.swift in Sources */,
 				AA00000000000000000000F7 /* TrophyEngine.swift in Sources */,
 				AA00000000000000000000F9 /* TrophiesView.swift in Sources */,
+				AA00000000000000000000FB /* CelebrationOverlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
