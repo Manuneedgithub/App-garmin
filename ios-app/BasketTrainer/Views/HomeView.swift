@@ -44,7 +44,7 @@ struct HomeView: View {
                             HStack {
                                 Image(systemName: "dumbbell.fill")
                                     .foregroundStyle(.orange)
-                                Text("Configurer les entraînements montre")
+                                Text("Mes entraînements")
                                     .font(.subheadline)
                                     .foregroundStyle(.primary)
                                 Spacer()

@@ -2,10 +2,11 @@ import SwiftUI
 
 // ─────────────────────────────────────────────────
 // ENTRAÎNEMENT COMPLET EN DIRECT — routine multi-séries jouée et suivie
-// tir par tir directement sur l'iPhone, équivalent des "Entraînements
-// montre" (SlotsView) mais sans passer par la montre. Réutilise les
-// mêmes composants de configuration (SeriesRow, TemplateSeries) que
-// SlotsView.swift pour rester cohérent avec ce qui existe déjà.
+// tir par tir directement sur l'iPhone. Mutualisé avec les entraînements
+// montre (SlotsView.swift) : peut partir de zéro, ou charger un des
+// entraînements déjà enregistrés dans SessionStore.watchSlots — même
+// modèle de données (ComplexTemplate/TemplateSeries), que la séance soit
+// ensuite jouée sur la montre ou suivie ici.
 // ─────────────────────────────────────────────────
 
 private enum LiveRoutinePhase {
@@ -20,7 +21,7 @@ struct LiveRoutineView: View {
     @Environment(\.dismiss) var dismiss
 
     @State private var phase: LiveRoutinePhase = .configure
-    @State private var seriesList: [TemplateSeries] = [TemplateSeries(exerciseType: .freethrow, totalShots: 10)]
+    @State private var seriesList: [TemplateSeries]
     @State private var currentSeriesIndex = 0
     @State private var currentResults: [Bool] = []
     @State private var completedSeries: [ShotSeries] = []
@@ -28,6 +29,13 @@ struct LiveRoutineView: View {
     @State private var showDiscardConfirm = false
 
     private let maxSeries = 6
+
+    // preloadedSeries: passe les séries d'un entraînement déjà enregistré
+    // (SlotCard → "Lancer sur le tél.") pour ne pas reconfigurer de zéro —
+    // mêmes templates que ceux envoyés à la montre (SessionStore.watchSlots).
+    init(preloadedSeries: [TemplateSeries]? = nil) {
+        _seriesList = State(initialValue: preloadedSeries ?? [TemplateSeries(exerciseType: .freethrow, totalShots: 10)])
+    }
 
     private var hasProgress: Bool { !completedSeries.isEmpty || !currentResults.isEmpty }
 
@@ -78,8 +86,31 @@ struct LiveRoutineView: View {
 
     // ── Configuration ──
 
+    private var savedTemplates: [(index: Int, template: ComplexTemplate)] {
+        store.watchSlots.enumerated().compactMap { idx, t in t.map { (idx, $0) } }
+    }
+
     private var configureContent: some View {
         Form {
+            if !savedTemplates.isEmpty {
+                Section("Charger un entraînement enregistré") {
+                    ForEach(savedTemplates, id: \.index) { _, template in
+                        Button {
+                            seriesList = template.series
+                        } label: {
+                            HStack {
+                                Text(template.name)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Text("\(template.series.count) série\(template.series.count > 1 ? "s" : "")")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                        }
+                    }
+                }
+            }
+
             Section("Séries (\(seriesList.count)/\(maxSeries))") {
                 ForEach(seriesList.indices, id: \.self) { idx in
                     SeriesRow(series: $seriesList[idx])

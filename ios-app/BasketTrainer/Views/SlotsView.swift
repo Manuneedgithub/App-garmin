@@ -10,6 +10,7 @@ struct SlotsView: View {
     @Environment(\.dismiss) var dismiss
 
     @State private var editRequest: SlotEditRequest? = nil
+    @State private var launchRequest: SlotEditRequest? = nil
 
     var body: some View {
         NavigationStack {
@@ -25,13 +26,14 @@ struct SlotsView: View {
                                 if let t = store.watchSlots[i] {
                                     garmin.sendSlot(i, template: t)
                                 }
-                            }
+                            },
+                            onLaunchOnPhone: { launchRequest = SlotEditRequest(id: i) }
                         )
                     }
                 }
                 .padding(20)
             }
-            .navigationTitle("Entraînements montre")
+            .navigationTitle("Mes entraînements")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -40,6 +42,10 @@ struct SlotsView: View {
             }
             .sheet(item: $editRequest) { req in
                 SlotEditorView(index: req.id, existing: store.watchSlots[req.id])
+                    .environmentObject(store)
+            }
+            .sheet(item: $launchRequest) { req in
+                LiveRoutineView(preloadedSeries: store.watchSlots[req.id]?.series)
                     .environmentObject(store)
             }
             .alert("Envoi à la montre", isPresented: Binding(
@@ -55,11 +61,12 @@ struct SlotsView: View {
 }
 
 private struct SlotCard: View {
-    let index:       Int
-    let template:    ComplexTemplate?
-    let isConnected: Bool
-    let onEdit:      () -> Void
-    let onSend:      () -> Void
+    let index:          Int
+    let template:       ComplexTemplate?
+    let isConnected:    Bool
+    let onEdit:         () -> Void
+    let onSend:         () -> Void
+    let onLaunchOnPhone: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -102,11 +109,21 @@ private struct SlotCard: View {
 
                 Spacer()
 
+                Button(action: onLaunchOnPhone) {
+                    Label("Sur le tél.", systemImage: "iphone")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 12).padding(.vertical, 8)
+                        .background(template != nil ? Color.blue : Color(.systemFill))
+                        .clipShape(Capsule())
+                }
+                .disabled(template == nil)
+
                 Button(action: onSend) {
                     Label("Envoyer", systemImage: "applewatch.radiowaves.left.and.right")
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.white)
-                        .padding(.horizontal, 14).padding(.vertical, 8)
+                        .padding(.horizontal, 12).padding(.vertical, 8)
                         .background(template != nil && isConnected ? Color.orange : Color(.systemFill))
                         .clipShape(Capsule())
                 }
