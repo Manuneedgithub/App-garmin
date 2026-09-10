@@ -13,19 +13,35 @@ private enum LiveWorkoutPhase {
     case summary
 }
 
+// Mode "Nombre de tirs" (s'arrête après N tirs) vs "Objectif de paniers"
+// (s'arrête dès que N paniers sont rentrés, tirs illimités) — même
+// distinction que "Tirs libres"/"Objectif simple" sur la montre.
+private enum WorkoutMode: String, CaseIterable, Identifiable {
+    case shotCount = "Nombre de tirs"
+    case goal      = "Objectif de paniers"
+    var id: String { rawValue }
+}
+
 struct LiveWorkoutView: View {
     @EnvironmentObject var store: SessionStore
     @Environment(\.dismiss) var dismiss
 
     @State private var phase: LiveWorkoutPhase = .setup
     @State private var exercise: ExerciseType = .freethrow
+    @State private var mode: WorkoutMode = .shotCount
     @State private var totalShots: Int = 10
+    @State private var targetMade: Int = 10
     @State private var shotType: ShotType = .catchAndShoot
     @State private var results: [Bool] = []
     @State private var startTime: Date = Date()
     @State private var showDiscardConfirm = false
 
     private let shotOptions = [5, 10, 15, 20, 25, 30]
+
+    // Le lancer franc se tire toujours à l'arrêt — pas de dribble/catch & shoot à choisir.
+    private var effectiveShotType: ShotType {
+        exercise == .freethrow ? .standing : shotType
+    }
 
     var body: some View {
         NavigationStack {
@@ -83,24 +99,49 @@ struct LiveWorkoutView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 14) {
-                    SectionLabel(title: "Nombre de tirs", icon: "basketball")
+                    SectionLabel(title: "Mode", icon: "target")
+                    Picker("Mode", selection: $mode) {
+                        ForEach(WorkoutMode.allCases) { m in Text(m.rawValue).tag(m) }
+                    }
+                    .pickerStyle(.segmented)
+                }
+
+                VStack(alignment: .leading, spacing: 14) {
+                    SectionLabel(title: mode == .shotCount ? "Nombre de tirs" : "Objectif de paniers",
+                                 icon: "basketball")
                     HStack(spacing: 10) {
                         ForEach(shotOptions, id: \.self) { n in
-                            ShotCountChip(count: n, isSelected: totalShots == n)
-                                .onTapGesture { totalShots = n }
+                            ShotCountChip(count: n, isSelected: (mode == .shotCount ? totalShots : targetMade) == n)
+                                .onTapGesture {
+                                    if mode == .shotCount { totalShots = n } else { targetMade = n }
+                                }
                         }
                     }
                 }
 
-                VStack(alignment: .leading, spacing: 14) {
-                    SectionLabel(title: "Type de tir", icon: "figure.basketball")
-                    Picker("Type de tir", selection: $shotType) {
-                        ForEach(ShotType.allCases, id: \.self) { t in Text(t.name).tag(t) }
+                if exercise == .freethrow {
+                    HStack(spacing: 10) {
+                        Image(systemName: "figure.stand")
+                            .foregroundStyle(.secondary)
+                        Text("Lancer franc : toujours à l'arrêt")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        Spacer()
                     }
-                    .pickerStyle(.segmented)
                     .padding(16)
                     .background(Color(.systemBackground))
                     .clipShape(RoundedRectangle(cornerRadius: 14))
+                } else {
+                    VStack(alignment: .leading, spacing: 14) {
+                        SectionLabel(title: "Type de tir", icon: "figure.basketball")
+                        Picker("Type de tir", selection: $shotType) {
+                            ForEach(ShotType.allCases, id: \.self) { t in Text(t.name).tag(t) }
+                        }
+                        .pickerStyle(.segmented)
+                        .padding(16)
+                        .background(Color(.systemBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                    }
                 }
 
                 Button {
@@ -135,10 +176,15 @@ struct LiveWorkoutView: View {
             Spacer()
 
             VStack(spacing: 6) {
-                Text("\(currentIndex) / \(totalShots)")
+                Text(mode == .shotCount ? "\(currentIndex) / \(totalShots)" : "\(madeCount) / \(targetMade)")
                     .font(.system(size: 40, weight: .bold))
                     .monospacedDigit()
                     .foregroundStyle(.primary)
+                if mode == .goal {
+                    Text("\(currentIndex) tir\(currentIndex > 1 ? "s" : "") pris")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
                 Text(String(format: "%.0f%%", percentage))
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(percentageColor(percentage))
@@ -195,7 +241,8 @@ struct LiveWorkoutView: View {
 
     private func recordShot(made: Bool) {
         withAnimation { results.append(made) }
-        if results.count >= totalShots {
+        let finished = mode == .shotCount ? results.count >= totalShots : madeCount >= targetMade
+        if finished {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                 withAnimation { phase = .summary }
             }
@@ -210,13 +257,18 @@ struct LiveWorkoutView: View {
                 VStack(spacing: 4) {
                     Text(exercise.emoji).font(.system(size: 44))
                     Text(exercise.name).font(.title3.bold()).foregroundStyle(.primary)
-                    Text("\(madeCount) / \(totalShots)")
+                    Text("\(madeCount) / \(currentIndex)")
                         .font(.system(size: 44, weight: .bold))
                         .monospacedDigit()
                         .foregroundStyle(.primary)
                     Text(String(format: "%.0f%%", percentage))
                         .font(.title2.weight(.semibold))
                         .foregroundStyle(percentageColor(percentage))
+                    if mode == .goal {
+                        Text("Objectif de \(targetMade) atteint 🎯")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.orange)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 24)
@@ -261,9 +313,16 @@ struct LiveWorkoutView: View {
     }
 
     private func save() {
-        var s = WorkoutSession(exerciseType: exercise, totalShots: totalShots,
+        var s = WorkoutSession(exerciseType: exercise, totalShots: currentIndex,
                                 madeShots: madeCount, results: results, date: startTime)
-        s.shotType = shotType
+        s.shotType = effectiveShotType
+        if mode == .goal {
+            var series = ShotSeries(exerciseType: exercise, totalShots: currentIndex,
+                                     madeShots: madeCount, results: results)
+            series.targetMade = targetMade
+            series.shotType = effectiveShotType
+            s.series = [series]
+        }
         store.add(s)
         dismiss()
     }
