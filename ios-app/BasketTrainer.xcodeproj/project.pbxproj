@@ -29,6 +29,7 @@
 		AA00000000000000000000ED /* CustomSpotEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000EC /* CustomSpotEditorView.swift */; };
 		AA00000000000000000000F5 /* Trophies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000F4 /* Trophies.swift */; };
 		AA00000000000000000000F7 /* TrophyEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000F6 /* TrophyEngine.swift */; };
+		AA00000000000000000000F9 /* TrophiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000F8 /* TrophiesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +71,7 @@
 		AA00000000000000000000D0 /* EditSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSessionView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000F4 /* Trophies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trophies.swift; sourceTree = "<group>"; };
 		AA00000000000000000000F6 /* TrophyEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyEngine.swift; sourceTree = "<group>"; };
+		AA00000000000000000000F8 /* TrophiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophiesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				AA00000000000000000000E8 /* SpotDetailView.swift */,
 				AA00000000000000000000EA /* SlotsView.swift */,
 				AA00000000000000000000EC /* CustomSpotEditorView.swift */,
+				AA00000000000000000000F8 /* TrophiesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				AA00000000000000000000ED /* CustomSpotEditorView.swift in Sources */,
 				AA00000000000000000000F5 /* Trophies.swift in Sources */,
 				AA00000000000000000000F7 /* TrophyEngine.swift in Sources */,
+				AA00000000000000000000F9 /* TrophiesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
