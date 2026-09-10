@@ -76,5 +76,63 @@ struct TrophyTests {
         assert(TrophyEngine.longestConsecutiveDayRun([testDay(1)], cal: utcCal) == 1)
 
         print("Task 3 assertions passed")
+
+        // MARK: - Task 4: TrophyEngine.evaluate
+
+        let cal2026 = Calendar(identifier: .gregorian)
+        func date2026(_ month: Int, _ day: Int) -> Date {
+            var c = DateComponents()
+            c.year = 2026; c.month = month; c.day = day; c.hour = 12
+            return Calendar(identifier: .gregorian).date(from: c)!
+        }
+
+        // (a) Out-of-order input still resolves chronologically, and tiers are
+        //     attributed to the session that actually crossed them (first-crossing-wins).
+        let sessionB = WorkoutSession(exerciseType: .freethrow, totalShots: 150, madeShots: 100,
+                                       results: Array(repeating: true, count: 100) + Array(repeating: false, count: 50),
+                                       date: date2026(2, 1))   // pushes total to 300 -> crosses tier1 (250)
+        let sessionA = WorkoutSession(exerciseType: .freethrow, totalShots: 150, madeShots: 90,
+                                       results: Array(repeating: true, count: 90) + Array(repeating: false, count: 60),
+                                       date: date2026(1, 1))   // pushes total to 150 -> crosses tier0 (100) only
+
+        let progress = TrophyEngine.evaluate(sessions: [sessionB, sessionA])   // deliberately reversed order
+        let tier0 = TrophyID(category: .totalShots, tierIndex: 0)
+        let tier1 = TrophyID(category: .totalShots, tierIndex: 1)
+        assert(progress.unlocks[tier0] == date2026(1, 1), "tier0 (100) must be dated to sessionA, the one that actually crossed it")
+        assert(progress.unlocks[tier1] == date2026(2, 1), "tier1 (250) must be dated to sessionB, not overwritten back to sessionA")
+        assert(progress.currentValues[.totalShots] == 300)
+
+        // (b) Category isolation: an all-freethrow history must not unlock 3pt volume tiers.
+        let freeThrowOnlyTier0 = TrophyID(category: .freeThrowVolume, tierIndex: 0)
+        let threePointTier0    = TrophyID(category: .threePointVolume, tierIndex: 0)
+        assert(progress.unlocks[freeThrowOnlyTier0] != nil)
+        assert(progress.unlocks[threePointTier0] == nil)
+        assert(progress.currentValues[.threePointVolume] == 0)
+
+        // (c) bestAccuracy ignores segments under 15 shots; makeStreak does not cross segment boundaries.
+        //     Evaluated on complexSession alone: its 10-shot series (100%, <15 shots) must be excluded from
+        //     bestAccuracy, and its 20-shot series' 60% must be the answer; the two series' streaks must not merge.
+        var complexSession = WorkoutSession(exerciseType: .freethrow, totalShots: 0, madeShots: 0, results: [], date: date2026(3, 1))
+        complexSession.series = [
+            ShotSeries(exerciseType: .freethrow, totalShots: 10, madeShots: 10,
+                       results: Array(repeating: true, count: 10)),               // 100% but only 10 shots -> ignored for bestAccuracy
+            ShotSeries(exerciseType: .threeCenter, totalShots: 20, madeShots: 12,
+                       results: [true,true,true,true, false, true,true,true,true, false,
+                                 true,true,true,true, false,false,false,false,false,false])  // 12/20 = 60%, longest run = 4
+        ]
+        let progress2 = TrophyEngine.evaluate(sessions: [complexSession])
+        assert(progress2.currentValues[.bestAccuracy] == 60, "the 10-shot 100% segment must not count (< 15 shots)")
+        assert(progress2.currentValues[.makeStreak] == 10, "longest run is the 10-shot all-makes segment; must not merge with the second series")
+
+        // (d) sessionCount tier crossing at exact threshold.
+        var fiveSessions: [WorkoutSession] = []
+        for i in 1...5 {
+            fiveSessions.append(WorkoutSession(exerciseType: .freethrow, totalShots: 1, madeShots: 1,
+                                                results: [true], date: date2026(4, i)))
+        }
+        let progress3 = TrophyEngine.evaluate(sessions: fiveSessions)
+        assert(progress3.unlocks[TrophyID(category: .sessionCount, tierIndex: 0)] == date2026(4, 5))
+
+        print("Task 4 assertions passed")
     }
 }
