@@ -14,6 +14,8 @@ struct EditProfileView: View {
     @State private var age: Int?
     @State private var sex: Sex?
     @State private var position: PlayerPosition?
+    @State private var heightCm: Int?
+    @State private var weightKg: Int?
     @State private var photoData: Data?
     @State private var photoItem: PhotosPickerItem?
 
@@ -24,6 +26,8 @@ struct EditProfileView: View {
         _age       = State(initialValue: existing?.age)
         _sex       = State(initialValue: existing?.sex)
         _position  = State(initialValue: existing?.position)
+        _heightCm  = State(initialValue: existing?.heightCm)
+        _weightKg  = State(initialValue: existing?.weightKg)
         _photoData = State(initialValue: existing?.photoData)
     }
 
@@ -67,6 +71,12 @@ struct EditProfileView: View {
                         Text("—").tag(PlayerPosition?.none)
                         ForEach(PlayerPosition.allCases) { p in Text(p.label).tag(PlayerPosition?.some(p)) }
                     }
+
+                    Stepper(heightCm.map { "\($0) cm" } ?? "Taille non renseignée",
+                            value: Binding(get: { heightCm ?? 180 }, set: { heightCm = $0 }), in: 100...230)
+
+                    Stepper(weightKg.map { "\($0) kg" } ?? "Poids non renseigné",
+                            value: Binding(get: { weightKg ?? 75 }, set: { weightKg = $0 }), in: 30...200)
                 }
             }
             .navigationTitle(isOnboarding ? "Compléter mon profil" : "Modifier le profil")
@@ -101,6 +111,8 @@ struct EditProfileView: View {
             age: age,
             sex: sex,
             position: position,
+            heightCm: heightCm,
+            weightKg: weightKg,
             photoData: photoData,
             statsSummary: .empty
         )

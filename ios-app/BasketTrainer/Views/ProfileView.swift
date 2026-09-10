@@ -57,7 +57,7 @@ struct ProfileView: View {
                 .font(.title2.bold())
                 .foregroundStyle(.primary)
 
-            HStack(spacing: 10) {
+            HStack(spacing: 8) {
                 if let age = profile.age {
                     infoPill("\(age) ans")
                 }
@@ -66,6 +66,12 @@ struct ProfileView: View {
                 }
                 if let position = profile.position {
                     infoPill(position.label)
+                }
+                if let heightCm = profile.heightCm {
+                    infoPill("\(heightCm) cm")
+                }
+                if let weightKg = profile.weightKg {
+                    infoPill("\(weightKg) kg")
                 }
             }
         }

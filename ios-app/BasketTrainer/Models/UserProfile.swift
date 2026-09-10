@@ -51,6 +51,8 @@ struct UserProfile: Codable {
     var age: Int?
     var sex: Sex?
     var position: PlayerPosition?
+    var heightCm: Int?
+    var weightKg: Int?
     var photoData: Data?
     var statsSummary: ProfileStatsSummary
 }
