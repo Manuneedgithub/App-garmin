@@ -5,6 +5,7 @@ import SwiftUI
 // ─────────────────────────────────────────────────
 private enum HomeSheet: Identifiable {
     case manual
+    case routine
     case slotsConfig
     case profile
     case watchSetup
@@ -12,6 +13,7 @@ private enum HomeSheet: Identifiable {
     var id: String {
         switch self {
         case .manual:          return "manual"
+        case .routine:         return "routine"
         case .slotsConfig:     return "slotsConfig"
         case .profile:         return "profile"
         case .watchSetup:      return "watchSetup"
@@ -60,6 +62,9 @@ struct HomeView: View {
                         newWorkoutButton
                             .padding(.horizontal, 20)
 
+                        routineButton
+                            .padding(.horizontal, 20)
+
                         if !store.recentSessions.isEmpty {
                             recentSessionsList
                                 .padding(.horizontal, 20)
@@ -99,6 +104,8 @@ struct HomeView: View {
                 switch sheet {
                 case .manual:
                     LiveWorkoutView()
+                case .routine:
+                    LiveRoutineView()
                 case .slotsConfig:
                     SlotsView()
                         .environmentObject(store)
@@ -171,6 +178,39 @@ struct HomeView: View {
             .padding(.vertical, 16)
             .background(Color.orange)
             .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+    }
+
+    private var routineButton: some View {
+        Button {
+            activeSheet = .routine
+        } label: {
+            HStack(spacing: 12) {
+                ZStack {
+                    Circle()
+                        .fill(Color.orange.opacity(0.15))
+                        .frame(width: 30, height: 30)
+                    Image(systemName: "square.stack.3d.up.fill")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(.orange)
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Entraînement complet")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text("Plusieurs séries, comme sur la montre")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .background(Color(.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
     }
 
