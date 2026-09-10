@@ -55,9 +55,6 @@ struct HomeView: View {
                         }
                         .padding(.horizontal, 20)
 
-                        quickStats
-                            .padding(.horizontal, 20)
-
                         newWorkoutButton
                             .padding(.horizontal, 20)
 
@@ -99,7 +96,7 @@ struct HomeView: View {
             .sheet(item: $activeSheet) { sheet in
                 switch sheet {
                 case .manual:
-                    ManualSessionView()
+                    LiveWorkoutView()
                 case .slotsConfig:
                     SlotsView()
                         .environmentObject(store)
@@ -139,14 +136,6 @@ struct HomeView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    private var quickStats: some View {
-        HStack(spacing: 12) {
-            MiniStatCard(value: "\(store.totalSessions)", label: "Séances",  icon: "figure.basketball")
-            MiniStatCard(value: "\(store.totalShots)",   label: "Tirs",      icon: "basketball")
-            MiniStatCard(value: String(format: "%.0f%%", store.overallPct),  label: "Réussite", icon: "percent")
-        }
-    }
-
     private var newWorkoutButton: some View {
         Button {
             activeSheet = .manual
@@ -164,7 +153,7 @@ struct HomeView: View {
                     Text("Nouvel entraînement")
                         .font(.headline)
                         .foregroundStyle(.white)
-                    Text("Saisie manuelle ou depuis la montre")
+                    Text("Suivi tir par tir, sans la montre")
                         .font(.caption)
                         .foregroundStyle(.white.opacity(0.75))
                 }
@@ -196,34 +185,6 @@ struct HomeView: View {
                 .buttonStyle(.plain)
             }
         }
-    }
-}
-
-// ─────────────────────────────────────────────────
-// Petite carte stat (pour l'accueil)
-// ─────────────────────────────────────────────────
-struct MiniStatCard: View {
-    let value: String
-    let label: String
-    let icon:  String
-
-    var body: some View {
-        VStack(spacing: 6) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundStyle(.orange)
-            Text(value)
-                .font(.title3.bold())
-                .foregroundStyle(.primary)
-                .monospacedDigit()
-            Text(label)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .background(Color(.systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
 
