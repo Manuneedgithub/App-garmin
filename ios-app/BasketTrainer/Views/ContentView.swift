@@ -1,6 +1,6 @@
 import SwiftUI
 
-// ── Navigation principale : 4 onglets ──
+// ── Navigation principale : 5 onglets ──
 struct ContentView: View {
     var body: some View {
         TabView {
@@ -19,11 +19,17 @@ struct ContentView: View {
                     Label("Stats",      systemImage: "chart.bar.fill")
                 }
 
+            TrophiesView()
+                .tabItem {
+                    Label("Trophées",   systemImage: "trophy.fill")
+                }
+
             CourtView()
                 .tabItem {
                     Label("Terrain",    systemImage: "sportscourt")
                 }
         }
         .accentColor(.orange)
+        .overlay(CelebrationOverlayView())
     }
 }
