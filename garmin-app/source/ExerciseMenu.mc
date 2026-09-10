@@ -54,6 +54,19 @@ function getExerciseName(id as Number) as String {
     return "Inconnu";
 }
 
+// Certains exercices n'ont qu'un seul type de tir logique — pas de menu à
+// proposer, la valeur est forcée (0=Catch & Shoot, 1=Avec dribble,
+// 2=A l'arret, cf. ShotTypeMenu.mc). Retourne null si le choix est libre.
+function forcedShotTypeId(exerciseId as Number) as Number or Null {
+    if (exerciseId == EX_FREETHROW) { return 2; }
+    if (exerciseId == EX_LAYUP_RIGHT || exerciseId == EX_LAYUP_LEFT ||
+        exerciseId == EX_EUROSTEP_RIGHT || exerciseId == EX_EUROSTEP_LEFT ||
+        exerciseId == EX_REVERSE_RIGHT || exerciseId == EX_REVERSE_LEFT) {
+        return 1;
+    }
+    return null;
+}
+
 // Menu WatchUi natif : liste scrollable avec les noms d'exercices
 class ExerciseMenuView extends WatchUi.Menu2 {
     function initialize() {
@@ -96,13 +109,14 @@ class ExerciseMenuDelegate extends WatchUi.Menu2InputDelegate {
         _accumulator = accumulator;
     }
 
-    // Lancer franc : toujours à l'arrêt (shotTypeId 2), on saute le menu
-    // de type de tir — pas de choix Catch & Shoot / Avec dribble possible.
+    // Certains exercices ont un type de tir forcé (lancer franc, lay up) —
+    // on saute le menu de type de tir dans ce cas.
     function onSelect(item as WatchUi.MenuItem) as Void {
         var exerciseId = item.getId() as Number;
-        if (exerciseId == EX_FREETHROW) {
+        var forced     = forcedShotTypeId(exerciseId);
+        if (forced != null) {
             var menu = new ShotCountMenuView(exerciseId);
-            var del  = new ShotCountMenuDelegate(exerciseId, 2, _accumulator);
+            var del  = new ShotCountMenuDelegate(exerciseId, forced as Number, _accumulator);
             WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
         } else {
             var shotMenu = new ShotTypeMenuView(exerciseId);
@@ -123,13 +137,14 @@ class ExerciseMenuGoalDelegate extends WatchUi.Menu2InputDelegate {
         Menu2InputDelegate.initialize();
     }
 
-    // Même règle que ExerciseMenuDelegate : lancer franc → toujours à
-    // l'arrêt, on saute directement le menu de type de tir.
+    // Même règle que ExerciseMenuDelegate : type de tir forcé → on saute
+    // directement le menu de type de tir.
     function onSelect(item as WatchUi.MenuItem) as Void {
         var exerciseId = item.getId() as Number;
-        if (exerciseId == EX_FREETHROW) {
+        var forced     = forcedShotTypeId(exerciseId);
+        if (forced != null) {
             var view = new GoalMenuView(exerciseId, 10);
-            var del  = new GoalMenuDelegate(view, exerciseId, 2);
+            var del  = new GoalMenuDelegate(view, exerciseId, forced as Number);
             WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
         } else {
             var shotMenu = new ShotTypeMenuView(exerciseId);

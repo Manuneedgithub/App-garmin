@@ -468,4 +468,17 @@ struct CustomSpot: Codable, Identifiable, Equatable {
 extension ExerciseType {
     // Plage d'IDs réservée aux spots personnalisés (10 emplacements fixes)
     static let customIDRange = 11...20
+
+    // Certains exercices n'ont qu'un seul type de tir logique — pas de
+    // choix à proposer dans l'UI, la valeur est forcée. nil = choix libre.
+    var forcedShotType: ShotType? {
+        switch self {
+        case .freethrow:
+            return .standing
+        case .layupRight, .layupLeft, .eurostepRight, .eurostepLeft, .reverseRight, .reverseLeft:
+            return .offDribble
+        default:
+            return nil
+        }
+    }
 }

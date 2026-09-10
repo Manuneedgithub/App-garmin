@@ -209,8 +209,8 @@ struct SeriesRow: View {
                 ExercisePickerSheet(selected: $series.exerciseType)
             }
             Spacer()
-            if series.exerciseType == .freethrow {
-                Text("À l'arrêt")
+            if let forced = series.exerciseType.forcedShotType {
+                Text(forced.name)
                     .font(.caption.weight(.medium))
                     .foregroundStyle(.secondary)
                     .padding(.horizontal, 10)
@@ -241,7 +241,7 @@ struct SeriesRow: View {
             .fixedSize()
         }
         .onChange(of: series.exerciseType) { newValue in
-            if newValue == .freethrow { series.shotType = .standing }
+            if let forced = newValue.forcedShotType { series.shotType = forced }
         }
     }
 }

@@ -38,9 +38,10 @@ struct LiveWorkoutView: View {
 
     private let shotOptions = [5, 10, 15, 20, 25, 30]
 
-    // Le lancer franc se tire toujours à l'arrêt — pas de dribble/catch & shoot à choisir.
+    // Certains exercices (lancer franc, familles de lay up) n'ont qu'un
+    // seul type de tir logique — voir ExerciseType.forcedShotType.
     private var effectiveShotType: ShotType {
-        exercise == .freethrow ? .standing : shotType
+        exercise.forcedShotType ?? shotType
     }
 
     var body: some View {
@@ -119,11 +120,11 @@ struct LiveWorkoutView: View {
                     }
                 }
 
-                if exercise == .freethrow {
+                if let forced = exercise.forcedShotType {
                     HStack(spacing: 10) {
-                        Image(systemName: "figure.stand")
+                        Image(systemName: "lock.fill")
                             .foregroundStyle(.secondary)
-                        Text("Lancer franc : toujours à l'arrêt")
+                        Text("\(exercise.name) : toujours \(forced.name.lowercased())")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                         Spacer()
