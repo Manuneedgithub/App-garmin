@@ -68,6 +68,37 @@ struct TrophyCategoryCard: View {
         }
     }
 
+    // Médaillon d'un palier : dégradé + icône trophée pour les débloqués,
+    // pastille grise et sobre pour les verrouillés, anneau doré autour
+    // du palier le plus haut atteint pour marquer "tu es ici".
+    @ViewBuilder
+    private func badge(for tier: Int) -> some View {
+        let unlocked = isUnlocked(tier)
+        let tierColor = Color(hex: TrophyTier.colorHex[tier])
+        let isCurrent = unlocked && tier == highestUnlockedTier
+
+        ZStack {
+            Circle()
+                .fill(unlocked
+                      ? AnyShapeStyle(RadialGradient(colors: [tierColor.opacity(0.85), tierColor],
+                                                      center: .topLeading, startRadius: 1, endRadius: 18))
+                      : AnyShapeStyle(Color(.tertiarySystemFill)))
+                .frame(width: 26, height: 26)
+                .overlay(Circle().stroke(unlocked ? Color.clear : Color(.separator), lineWidth: 1))
+                .shadow(color: unlocked ? tierColor.opacity(0.5) : .clear, radius: 3, y: 1.5)
+
+            Image(systemName: "trophy.fill")
+                .font(.system(size: 11, weight: .bold))
+                .foregroundStyle(unlocked ? .white : Color(.tertiaryLabel))
+        }
+        .overlay(
+            Circle()
+                .stroke(tierColor, lineWidth: 2)
+                .frame(width: 32, height: 32)
+                .opacity(isCurrent ? 1 : 0)
+        )
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
@@ -81,14 +112,9 @@ struct TrophyCategoryCard: View {
                 Spacer()
             }
 
-            HStack(spacing: 6) {
+            HStack(spacing: 5) {
                 ForEach(0..<8, id: \.self) { tier in
-                    Circle()
-                        .fill(isUnlocked(tier) ? Color(hex: TrophyTier.colorHex[tier]) : Color(.tertiarySystemFill))
-                        .frame(width: 18, height: 18)
-                        .overlay(
-                            Circle().stroke(isUnlocked(tier) ? Color.clear : Color(.separator), lineWidth: 1)
-                        )
+                    badge(for: tier)
                         .onTapGesture { selectedTier = tier }
                 }
             }
