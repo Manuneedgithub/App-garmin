@@ -22,8 +22,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct BasketTrainerApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject private var store  = SessionStore.shared
-    @StateObject private var garmin = GarminManager.shared
+    @StateObject private var store        = SessionStore.shared
+    @StateObject private var garmin       = GarminManager.shared
+    @StateObject private var profileStore = ProfileStore.shared
 
     init() {
         GarminManager.shared.setup()
@@ -34,6 +35,7 @@ struct BasketTrainerApp: App {
             ContentView()
                 .environmentObject(store)
                 .environmentObject(garmin)
+                .environmentObject(profileStore)
                 .onOpenURL { url in
                     print("[App] onOpenURL: \(url)")
                     garmin.handleIncomingURL(url)

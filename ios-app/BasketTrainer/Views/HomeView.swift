@@ -6,18 +6,21 @@ import SwiftUI
 private enum HomeSheet: Identifiable {
     case manual
     case slotsConfig
+    case profile
 
     var id: String {
         switch self {
         case .manual:          return "manual"
         case .slotsConfig:     return "slotsConfig"
+        case .profile:         return "profile"
         }
     }
 }
 
 struct HomeView: View {
-    @EnvironmentObject var store:  SessionStore
-    @EnvironmentObject var garmin: GarminManager
+    @EnvironmentObject var store:        SessionStore
+    @EnvironmentObject var garmin:       GarminManager
+    @EnvironmentObject var profileStore: ProfileStore
     @State private var activeSheet: HomeSheet? = nil
 
     var body: some View {
@@ -71,6 +74,22 @@ struct HomeView: View {
             .navigationTitle("Basket Trainer")
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        activeSheet = .profile
+                    } label: {
+                        if let data = profileStore.profile?.photoData, let uiImage = UIImage(data: data) {
+                            Image(uiImage: uiImage)
+                                .resizable().scaledToFill()
+                                .frame(width: 30, height: 30)
+                                .clipShape(Circle())
+                        } else {
+                            Image(systemName: "person.crop.circle.fill")
+                                .font(.title2)
+                                .foregroundStyle(.orange)
+                        }
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Text(Date().formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated)))
                         .font(.caption)
@@ -85,6 +104,14 @@ struct HomeView: View {
                     SlotsView()
                         .environmentObject(store)
                         .environmentObject(garmin)
+                case .profile:
+                    if profileStore.profile != nil {
+                        ProfileView()
+                            .environmentObject(profileStore)
+                    } else {
+                        EditProfileView(isOnboarding: true)
+                            .environmentObject(profileStore)
+                    }
                 }
             }
         }
