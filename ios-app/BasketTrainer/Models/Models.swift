@@ -22,6 +22,11 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
     case custom3              = 13
     case custom4              = 14
     case custom5              = 15
+    case custom6              = 16
+    case custom7              = 17
+    case custom8              = 18
+    case custom9              = 19
+    case custom10             = 20
 
     var id: Int { rawValue }
 
@@ -43,7 +48,8 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
         case .midLeft:              return "Mi-distance Gauche"
         case .floater:              return "Flotteur"
         case .formShotSideToSide:   return "Form Shot Side to Side"
-        case .custom1, .custom2, .custom3, .custom4, .custom5:
+        case .custom1, .custom2, .custom3, .custom4, .custom5,
+             .custom6, .custom7, .custom8, .custom9, .custom10:
             return "Spot personnalisé"
         }
     }
@@ -58,7 +64,8 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
         case .midCenter, .midRight, .midLeft:   return "🎳"
         case .floater:                          return "🪶"
         case .formShotSideToSide:               return "↔️"
-        case .custom1, .custom2, .custom3, .custom4, .custom5:
+        case .custom1, .custom2, .custom3, .custom4, .custom5,
+             .custom6, .custom7, .custom8, .custom9, .custom10:
             return "📍"
         }
     }
@@ -77,14 +84,15 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
              .threeCornerL:                     return "3 Points"
         case .midCenter, .midRight, .midLeft:   return "Mi-distance"
         case .floater, .formShotSideToSide:     return "Technique"
-        case .custom1, .custom2, .custom3, .custom4, .custom5:
+        case .custom1, .custom2, .custom3, .custom4, .custom5,
+             .custom6, .custom7, .custom8, .custom9, .custom10:
             return "Personnalisé"
         }
     }
 
     // Remplace l'implémentation synthétisée de CaseIterable : seuls les
     // emplacements personnalisés *configurés* doivent apparaître dans les
-    // pickers, filtres et stats — pas les 5 emplacements vides par défaut.
+    // pickers, filtres et stats — pas les 10 emplacements vides par défaut.
     static var allCases: [ExerciseType] {
         let builtIns: [ExerciseType] = [.freethrow, .threeCenter, .threeRight45, .threeLeft45,
                                         .threeCornerR, .threeCornerL, .midCenter, .midRight,
@@ -296,6 +304,41 @@ extension WorkoutSession {
 }
 
 // ─────────────────────────────────────────────────
+// Agrégat "toutes séances d'un jour" pour l'Historique groupé —
+// dérivé de shotSegments pour rester cohérent avec le calcul des trophées.
+// ─────────────────────────────────────────────────
+struct DayStats {
+    let totalShots: Int
+    let madeShots: Int
+    let threePtShots: Int
+    let threePtMade: Int
+
+    var fgPercentage: Double { totalShots == 0 ? 0 : Double(madeShots) / Double(totalShots) * 100 }
+    // nil = aucun tir à 3 points ce jour-là (à distinguer de 0%)
+    var threePtPercentage: Double? {
+        threePtShots == 0 ? nil : Double(threePtMade) / Double(threePtShots) * 100
+    }
+}
+
+extension Array where Element == WorkoutSession {
+    var dayStats: DayStats {
+        var totalShots = 0, madeShots = 0, threePtShots = 0, threePtMade = 0
+        for session in self {
+            for segment in session.shotSegments {
+                totalShots += segment.totalShots
+                madeShots  += segment.madeShots
+                if segment.exerciseType.category == "3 Points" {
+                    threePtShots += segment.totalShots
+                    threePtMade  += segment.madeShots
+                }
+            }
+        }
+        return DayStats(totalShots: totalShots, madeShots: madeShots,
+                         threePtShots: threePtShots, threePtMade: threePtMade)
+    }
+}
+
+// ─────────────────────────────────────────────────
 // Templates de séance complexe (max 5)
 // ─────────────────────────────────────────────────
 
@@ -395,7 +438,7 @@ struct SpotPosition: Codable, Equatable {
 // Spot personnalisé créé par l'utilisateur
 // ─────────────────────────────────────────────────
 struct CustomSpot: Codable, Identifiable, Equatable {
-    var id: Int             // un des ExerciseType.customIDRange (11...15)
+    var id: Int             // un des ExerciseType.customIDRange (11...20)
     var name: String
     var emoji: String       // une seule emoji
     var courtIndex: Int     // index de la page-terrain — fixé à la création
@@ -403,6 +446,6 @@ struct CustomSpot: Codable, Identifiable, Equatable {
 }
 
 extension ExerciseType {
-    // Plage d'IDs réservée aux spots personnalisés (5 emplacements fixes)
-    static let customIDRange = 11...15
+    // Plage d'IDs réservée aux spots personnalisés (10 emplacements fixes)
+    static let customIDRange = 11...20
 }

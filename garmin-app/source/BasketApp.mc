@@ -48,7 +48,10 @@ class BasketApp extends Application.AppBase {
                 var entry = spots[i];
                 if (!(entry instanceof Dictionary)) { continue; }
                 var id = entry["id"];
-                if (!(id instanceof Number) || id < 11 || id > 15) { continue; }
+                // Les entiers imbriqués dans un tableau de dictionnaires reçus depuis
+                // le téléphone peuvent arriver typés Long plutôt que Number selon le
+                // SDK — on accepte les deux pour ne pas rejeter silencieusement l'entrée.
+                if (!(id instanceof Number || id instanceof Long) || id < 11 || id > 20) { continue; }
                 if (!(entry["name"] instanceof String) || !(entry["emoji"] instanceof String)) { continue; }
                 Application.Storage.setValue("customSpot_" + id.toString(),
                     { "name" => entry["name"], "emoji" => entry["emoji"] });
@@ -56,7 +59,7 @@ class BasketApp extends Application.AppBase {
             }
             // Remplacement complet : tout emplacement réservé absent du
             // message est effacé — couvre les suppressions côté iPhone.
-            for (var id = 11; id <= 15; id++) {
+            for (var id = 11; id <= 20; id++) {
                 if (!seenIds.hasKey(id)) {
                     Application.Storage.setValue("customSpot_" + id.toString(), null);
                 }

@@ -23,7 +23,7 @@ class SessionStore: ObservableObject {
     private let trophiesKey = "basket_unlocked_trophies"
 
     static let maxWatchSlots  = 5
-    static let maxCustomSpots = 5
+    static let maxCustomSpots = 10
 
     init() {
         load()

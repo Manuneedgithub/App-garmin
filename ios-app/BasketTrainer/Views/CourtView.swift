@@ -212,7 +212,7 @@ struct CourtView: View {
             } message: {
                 Text("Tous les repères retrouveront leur position d'origine sur chaque terrain.")
             }
-            .alert("Limite atteinte (5/5)", isPresented: $showCustomSpotLimitAlert) {
+            .alert("Limite atteinte (\(SessionStore.maxCustomSpots)/\(SessionStore.maxCustomSpots))", isPresented: $showCustomSpotLimitAlert) {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text("Supprimez un spot personnalisé existant avant d'en créer un nouveau.")
