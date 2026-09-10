@@ -13,11 +13,14 @@ class SessionStore: ObservableObject {
     @Published private(set) var watchSlots: [ComplexTemplate?] = Array(repeating: nil, count: maxWatchSlots)
     @Published private(set) var spotPositionOverrides: [ExerciseType: SpotPosition] = [:]
     @Published private(set) var customSpots: [CustomSpot] = []
+    @Published private(set) var unlockedTrophies: [String: Date] = [:]
+    @Published var pendingCelebrations: [TrophyID] = []
 
     private let storageKey       = "basket_sessions"
     private let slotsKey         = "basket_watch_slots"
     private let spotPositionsKey = "basket_spot_positions"
     private let customSpotsKey   = "basket_custom_spots"
+    private let trophiesKey = "basket_unlocked_trophies"
 
     static let maxWatchSlots  = 5
     static let maxCustomSpots = 5
@@ -27,6 +30,8 @@ class SessionStore: ObservableObject {
         loadSlots()
         loadSpotPositions()
         loadCustomSpots()
+        loadTrophies()
+        evaluateTrophies(announceNew: false)
     }
 
     // ── Lecture ──
@@ -118,12 +123,14 @@ class SessionStore: ObservableObject {
     func add(_ session: WorkoutSession) {
         sessions.append(session)
         save()
+        evaluateTrophies(announceNew: true)
     }
 
     func update(_ session: WorkoutSession) {
         if let i = sessions.firstIndex(where: { $0.id == session.id }) {
             sessions[i] = session
             save()
+            evaluateTrophies(announceNew: true)
         }
     }
 
@@ -233,6 +240,39 @@ class SessionStore: ObservableObject {
               let decoded = try? JSONDecoder().decode([CustomSpot].self, from: data)
         else { return }
         customSpots = decoded
+    }
+
+    // ── Trophies ──
+
+    private func evaluateTrophies(announceNew: Bool) {
+        let progress = TrophyEngine.evaluate(sessions: sessions)
+        var newlyUnlocked: [TrophyID] = []
+        for (id, date) in progress.unlocks where unlockedTrophies[id.storageKey] == nil {
+            unlockedTrophies[id.storageKey] = date
+            newlyUnlocked.append(id)
+        }
+        guard !newlyUnlocked.isEmpty else { return }
+        persistTrophies()
+        if announceNew {
+            pendingCelebrations.append(contentsOf: newlyUnlocked.sorted { $0.category.rawValue < $1.category.rawValue })
+        }
+    }
+
+    func dismissTopCelebration() {
+        if !pendingCelebrations.isEmpty { pendingCelebrations.removeFirst() }
+    }
+
+    private func persistTrophies() {
+        if let data = try? JSONEncoder().encode(unlockedTrophies) {
+            UserDefaults.standard.set(data, forKey: trophiesKey)
+        }
+    }
+
+    private func loadTrophies() {
+        guard let data = UserDefaults.standard.data(forKey: trophiesKey),
+              let decoded = try? JSONDecoder().decode([String: Date].self, from: data)
+        else { return }
+        unlockedTrophies = decoded
     }
 
     // ── Persistence ──
