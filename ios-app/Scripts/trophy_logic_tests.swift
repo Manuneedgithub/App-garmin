@@ -57,5 +57,24 @@ struct TrophyTests {
         assert(complex.shotSegments[1].totalShots == 8)
 
         print("Task 2 assertions passed")
+
+        // MARK: - Task 3: TrophyEngine pure helpers
+
+        assert(TrophyEngine.longestRun([]) == 0)
+        assert(TrophyEngine.longestRun([false, false]) == 0)
+        assert(TrophyEngine.longestRun([true, true, true]) == 3)
+        assert(TrophyEngine.longestRun([true, false, true, true, false, true, true, true]) == 3)
+
+        var utcCal = Calendar(identifier: .gregorian)
+        utcCal.timeZone = TimeZone(identifier: "UTC")!
+        func testDay(_ day: Int) -> Date {
+            utcCal.date(from: DateComponents(year: 2026, month: 1, day: day))!
+        }
+        let scatteredDays: Set<Date> = [testDay(1), testDay(2), testDay(3), testDay(5), testDay(8), testDay(9)]
+        assert(TrophyEngine.longestConsecutiveDayRun(scatteredDays, cal: utcCal) == 3)
+        assert(TrophyEngine.longestConsecutiveDayRun([], cal: utcCal) == 0)
+        assert(TrophyEngine.longestConsecutiveDayRun([testDay(1)], cal: utcCal) == 1)
+
+        print("Task 3 assertions passed")
     }
 }
