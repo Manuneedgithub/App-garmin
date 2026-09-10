@@ -10,7 +10,6 @@ struct SlotsView: View {
     @Environment(\.dismiss) var dismiss
 
     @State private var editRequest: SlotEditRequest? = nil
-    @State private var launchRequest: SlotEditRequest? = nil
 
     var body: some View {
         NavigationStack {
@@ -26,8 +25,7 @@ struct SlotsView: View {
                                 if let t = store.watchSlots[i] {
                                     garmin.sendSlot(i, template: t)
                                 }
-                            },
-                            onLaunchOnPhone: { launchRequest = SlotEditRequest(id: i) }
+                            }
                         )
                     }
                 }
@@ -44,10 +42,6 @@ struct SlotsView: View {
                 SlotEditorView(index: req.id, existing: store.watchSlots[req.id])
                     .environmentObject(store)
             }
-            .sheet(item: $launchRequest) { req in
-                LiveRoutineView(preloadedSeries: store.watchSlots[req.id]?.series)
-                    .environmentObject(store)
-            }
             .alert("Envoi à la montre", isPresented: Binding(
                 get: { garmin.lastSlotSendMessage != nil },
                 set: { if !$0 { garmin.lastSlotSendMessage = nil } }
@@ -61,17 +55,16 @@ struct SlotsView: View {
 }
 
 private struct SlotCard: View {
-    let index:          Int
-    let template:       ComplexTemplate?
-    let isConnected:    Bool
-    let onEdit:         () -> Void
-    let onSend:         () -> Void
-    let onLaunchOnPhone: () -> Void
+    let index:       Int
+    let template:    ComplexTemplate?
+    let isConnected: Bool
+    let onEdit:      () -> Void
+    let onSend:      () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Entraînement \(index + 1)")
+                Text(template?.name ?? "Entraînement \(index + 1)")
                     .font(.headline)
                 Spacer()
                 if let t = template {
@@ -109,21 +102,11 @@ private struct SlotCard: View {
 
                 Spacer()
 
-                Button(action: onLaunchOnPhone) {
-                    Label("Sur le tél.", systemImage: "iphone")
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 12).padding(.vertical, 8)
-                        .background(template != nil ? Color.blue : Color(.systemFill))
-                        .clipShape(Capsule())
-                }
-                .disabled(template == nil)
-
                 Button(action: onSend) {
                     Label("Envoyer", systemImage: "applewatch.radiowaves.left.and.right")
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.white)
-                        .padding(.horizontal, 12).padding(.vertical, 8)
+                        .padding(.horizontal, 14).padding(.vertical, 8)
                         .background(template != nil && isConnected ? Color.orange : Color(.systemFill))
                         .clipShape(Capsule())
                 }
@@ -141,11 +124,13 @@ struct SlotEditorView: View {
     @EnvironmentObject var store: SessionStore
     @Environment(\.dismiss) var dismiss
 
+    @State private var name: String
     @State private var seriesList: [TemplateSeries]
     private let maxSeries = 6
 
     init(index: Int, existing: ComplexTemplate?) {
         self.index = index
+        _name = State(initialValue: existing?.name ?? "Entraînement \(index + 1)")
         _seriesList = State(initialValue:
             existing?.series ?? [TemplateSeries(exerciseType: .freethrow, totalShots: 10)]
         )
@@ -154,6 +139,9 @@ struct SlotEditorView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section("Nom") {
+                    TextField("Nom de l'entraînement", text: $name)
+                }
                 Section("Séries (\(seriesList.count)/\(maxSeries))") {
                     ForEach(seriesList.indices, id: \.self) { idx in
                         SeriesRow(series: $seriesList[idx])
@@ -184,8 +172,9 @@ struct SlotEditorView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Sauvegarder") {
+                        let trimmed = name.trimmingCharacters(in: .whitespaces)
                         let t = ComplexTemplate(
-                            name: "Entraînement \(index + 1)",
+                            name: trimmed.isEmpty ? "Entraînement \(index + 1)" : trimmed,
                             series: seriesList
                         )
                         store.setWatchSlot(index, template: t)
