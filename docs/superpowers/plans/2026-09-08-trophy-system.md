@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add an 8-track, 8-tier achievement system to the iPhone app, computed from full session history, persisted once unlocked, and browsable in a new "Trophées" tab with a celebration popup on new unlocks.
+**Goal:** Add a 9-track, 8-tier achievement system to the iPhone app, computed from full session history, persisted once unlocked, and browsable in a new "Trophées" tab with a celebration popup on new unlocks.
 
 **Architecture:** Two new dependency-free model files (`Trophies.swift` for the static catalog of categories/tiers, `TrophyEngine.swift` for the pure history-replay algorithm) feed a small amount of new state on the existing `SessionStore` singleton (`unlockedTrophies` persisted dict + `pendingCelebrations` queue). Two new SwiftUI views (`TrophiesView`, `CelebrationOverlayView`) read that state; `ContentView` wires in the new tab and the overlay.
 
@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - iOS app only — no watch-side code, no sync to the Garmin device.
-- Exactly 8 tracks: `totalShots`, `freeThrowVolume`, `threePointVolume`, `midRangeVolume`, `techniqueVolume`, `sessionCount`, `streakDays`, `bestAccuracy`, `makeStreak`.
+- Exactly 9 tracks: `totalShots`, `freeThrowVolume`, `threePointVolume`, `midRangeVolume`, `techniqueVolume`, `sessionCount`, `streakDays`, `bestAccuracy`, `makeStreak`.
 - Exactly 8 tiers per track, named (index 0→7): Bronze, Argent, Or, Platine, Diamant, Maître, Champion, Légende.
 - Thresholds are fixed per the spec's table (repeated in Task 1) — do not invent different numbers.
 - Once a tier is recorded as unlocked it is **never** removed, even if the sessions that earned it are later deleted.
@@ -982,6 +982,6 @@ If any of the above doesn't match, treat it as a bug in this feature (not a pre-
 
 ## Self-Review Notes
 
-- **Spec coverage:** all 8 tracks/64 trophies (Task 1), retroactive-with-correct-dates unlocking via full replay (Task 4), never-revoke persistence (Task 5), silent backfill vs. celebration-worthy new unlocks (Task 5), Trophées tab placement between Stats and Terrain (Task 8), celebration popup queued one-at-a-time (Task 7/8), custom spots folding into total-only (implicit — `byCategory` keys only ever match the 4 named categories, "Personnalisé" never matches any `exerciseCategoryFilter`, verified indirectly by Task 4's category-isolation assertion). No spec section is unaddressed.
+- **Spec coverage:** all 9 tracks/72 trophies (Task 1), retroactive-with-correct-dates unlocking via full replay (Task 4), never-revoke persistence (Task 5), silent backfill vs. celebration-worthy new unlocks (Task 5), Trophées tab placement between Stats and Terrain (Task 8), celebration popup queued one-at-a-time (Task 7/8), custom spots folding into total-only (implicit — `byCategory` keys only ever match the 4 named categories, "Personnalisé" never matches any `exerciseCategoryFilter`, verified indirectly by Task 4's category-isolation assertion). No spec section is unaddressed.
 - **Placeholder scan:** no TBD/TODO; every step has literal code or a literal shell command with expected output.
 - **Type consistency:** `TrophyEngine.evaluate(sessions:) -> TrophyProgress` is the single name used everywhere it's called (Task 5's `evaluateTrophies`, Task 6's `TrophiesView.body`) — no drift from an earlier `computeUnlocks` naming used only in the design spec's illustrative sketch. `TrophyID.storageKey` / `TrophyID(storageKey:)` are the only (de)serialization path, used identically in Task 5 (`SessionStore`) and Task 6 (`TrophyCategoryCard.isUnlocked`).

@@ -62,7 +62,7 @@ extension TrophyEngine {
                 totalShots += segment.totalShots
                 byCategory[segment.exerciseType.category, default: 0] += segment.totalShots
                 if segment.totalShots >= 15 {
-                    let pct = Int((Double(segment.results.filter { $0 }.count) / Double(segment.totalShots) * 100).rounded())
+                    let pct = Int((Double(segment.madeShots) / Double(segment.totalShots) * 100).rounded())
                     bestAccuracyPct = max(bestAccuracyPct, pct)
                 }
                 bestMakeStreak = max(bestMakeStreak, longestRun(segment.results))

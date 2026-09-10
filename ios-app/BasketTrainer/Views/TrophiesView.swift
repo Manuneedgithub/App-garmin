@@ -43,6 +43,7 @@ struct TrophyCategoryCard: View {
     let category: TrophyCategory
     let currentValue: Int
     let unlockedTrophies: [String: Date]
+    @State private var selectedTier: Int? = nil
 
     private func isUnlocked(_ tier: Int) -> Bool {
         unlockedTrophies[TrophyID(category: category, tierIndex: tier).storageKey] != nil
@@ -55,6 +56,16 @@ struct TrophyCategoryCard: View {
     private var nextTierIndex: Int? {
         let next = (highestUnlockedTier ?? -1) + 1
         return next < category.thresholds.count ? next : nil
+    }
+
+    private var tierAlertMessage: String {
+        guard let tier = selectedTier else { return "" }
+        let threshold = category.thresholds[tier]
+        if let date = unlockedTrophies[TrophyID(category: category, tierIndex: tier).storageKey] {
+            return "Obtenu le \(date.formatted(date: .abbreviated, time: .omitted)) — seuil : \(threshold)\(category.unitSuffix)"
+        } else {
+            return "À débloquer : \(threshold)\(category.unitSuffix)"
+        }
     }
 
     var body: some View {
@@ -78,6 +89,7 @@ struct TrophyCategoryCard: View {
                         .overlay(
                             Circle().stroke(isUnlocked(tier) ? Color.clear : Color(.separator), lineWidth: 1)
                         )
+                        .onTapGesture { selectedTier = tier }
                 }
             }
 
@@ -112,6 +124,17 @@ struct TrophyCategoryCard: View {
         .padding(16)
         .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
+        .alert(
+            selectedTier.map { TrophyTier.names[$0] } ?? "",
+            isPresented: Binding(
+                get: { selectedTier != nil },
+                set: { if !$0 { selectedTier = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) { selectedTier = nil }
+        } message: {
+            Text(tierAlertMessage)
+        }
     }
 }
 

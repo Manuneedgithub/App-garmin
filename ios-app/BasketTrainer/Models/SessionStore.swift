@@ -14,7 +14,7 @@ class SessionStore: ObservableObject {
     @Published private(set) var spotPositionOverrides: [ExerciseType: SpotPosition] = [:]
     @Published private(set) var customSpots: [CustomSpot] = []
     @Published private(set) var unlockedTrophies: [String: Date] = [:]
-    @Published var pendingCelebrations: [TrophyID] = []
+    @Published private(set) var pendingCelebrations: [TrophyID] = []
 
     private let storageKey       = "basket_sessions"
     private let slotsKey         = "basket_watch_slots"
@@ -31,6 +31,12 @@ class SessionStore: ObservableObject {
         loadSpotPositions()
         loadCustomSpots()
         loadTrophies()
+        // WARNING: `.shared` is still being constructed while this init() body runs.
+        // Nothing reachable from here (directly or transitively) may touch
+        // SessionStore.shared — that would re-enter the lazy static initializer
+        // and deadlock at app launch. evaluateTrophies() -> shotSegments ->
+        // ExerciseType.category is currently safe only because `.category`
+        // never reads `customDefinition` (see the comment on `.category` below).
         evaluateTrophies(announceNew: false)
     }
 

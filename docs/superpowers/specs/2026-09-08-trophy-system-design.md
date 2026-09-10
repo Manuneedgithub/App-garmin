@@ -18,7 +18,7 @@ The app already tracks rich session history (`SessionStore.sessions`) and surfac
 |---|---|
 | Platform | iPhone only — trophies depend on full historical aggregates the watch never holds; no watch UI or sync involved |
 | Tracks | 8: total shots, 4× per-category volume (Lancer Franc / 3 Points / Mi-distance / Technique), session count, training-day streak, best-session accuracy, longest made-shot streak |
-| Tiers per track | 8, named Bronze → Argent → Or → Platine → Diamant → Maître → Champion → Légende (64 trophies total) |
+| Tiers per track | 8, named Bronze → Argent → Or → Platine → Diamant → Maître → Champion → Légende (72 trophies total) |
 | Custom spots | Count toward "Volume total" only; no dedicated track (thresholds wouldn't generalize across arbitrary user-defined spots) |
 | Revocation | Never — once a tier is crossed it's recorded with a date and stays unlocked, even if the underlying session is later deleted |
 | Unlock dates | Computed by replaying full history chronologically, so a trophy's date reflects the actual session where the threshold was first crossed — including retroactively, on first launch after this feature ships |

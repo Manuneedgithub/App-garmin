@@ -64,6 +64,11 @@ enum ExerciseType: Int, CaseIterable, Codable, Identifiable {
     }
 
     // Catégorie pour regrouper dans les stats
+    // IMPORTANT: unlike `.name`/`.emoji`, this must stay free of `customDefinition`
+    // (i.e. must never touch SessionStore.shared). SessionStore.init() calls into
+    // trophy evaluation, which calls `.category` on every session's segments while
+    // `.shared` is still being constructed — reading `customDefinition` here would
+    // re-enter `SessionStore.shared` and deadlock at app launch.
     var category: String {
         switch self {
         case .freethrow:                        return "Lancer Franc"
@@ -275,6 +280,7 @@ struct WorkoutSession: Codable, Identifiable {
 struct ShotSegment {
     let exerciseType: ExerciseType
     let totalShots: Int
+    let madeShots: Int
     let results: [Bool]
 }
 
@@ -282,10 +288,10 @@ extension WorkoutSession {
     var shotSegments: [ShotSegment] {
         if let series = series {
             return series.map {
-                ShotSegment(exerciseType: $0.exerciseType, totalShots: $0.totalShots, results: $0.results)
+                ShotSegment(exerciseType: $0.exerciseType, totalShots: $0.totalShots, madeShots: $0.madeShots, results: $0.results)
             }
         }
-        return [ShotSegment(exerciseType: exerciseType, totalShots: totalShots, results: results)]
+        return [ShotSegment(exerciseType: exerciseType, totalShots: totalShots, madeShots: madeShots, results: results)]
     }
 }
 
