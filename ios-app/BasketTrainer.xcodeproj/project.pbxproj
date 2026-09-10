@@ -17,6 +17,7 @@
 		AA0000000000000000000AC8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000AC7 /* ProfileView.swift */; };
 		AA0000000000000000000ACA /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000AC9 /* EditProfileView.swift */; };
 		AA0000000000000000000ACC /* LiveWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000ACB /* LiveWorkoutView.swift */; };
+		AA0000000000000000000ACE /* WatchSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000ACD /* WatchSetupView.swift */; };
 		AA00000000000000000000D4 /* GarminManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C4 /* GarminManager.swift */; };
 		AA00000000000000000000D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C5 /* ContentView.swift */; };
 		AA00000000000000000000D6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C6 /* HomeView.swift */; };
@@ -69,6 +70,7 @@
 		AA0000000000000000000AC7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AA0000000000000000000AC9 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		AA0000000000000000000ACB /* LiveWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkoutView.swift; sourceTree = "<group>"; };
+		AA0000000000000000000ACD /* WatchSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSetupView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C4 /* GarminManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminManager.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				AA0000000000000000000AC7 /* ProfileView.swift */,
 				AA0000000000000000000AC9 /* EditProfileView.swift */,
 				AA0000000000000000000ACB /* LiveWorkoutView.swift */,
+				AA0000000000000000000ACD /* WatchSetupView.swift */,
 				AA00000000000000000000CA /* StatsView.swift */,
 				AA00000000000000000000CF /* ManualSessionView.swift */,
 				AA00000000000000000000D0 /* EditSessionView.swift */,
@@ -282,6 +285,7 @@
 				AA0000000000000000000AC8 /* ProfileView.swift in Sources */,
 				AA0000000000000000000ACA /* EditProfileView.swift in Sources */,
 				AA0000000000000000000ACC /* LiveWorkoutView.swift in Sources */,
+				AA0000000000000000000ACE /* WatchSetupView.swift in Sources */,
 				AA00000000000000000000DA /* StatsView.swift in Sources */,
 				AA00000000000000000000DD /* ManualSessionView.swift in Sources */,
 				AA00000000000000000000DE /* EditSessionView.swift in Sources */,

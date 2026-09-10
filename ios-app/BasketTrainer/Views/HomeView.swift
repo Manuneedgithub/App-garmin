@@ -7,12 +7,14 @@ private enum HomeSheet: Identifiable {
     case manual
     case slotsConfig
     case profile
+    case watchSetup
 
     var id: String {
         switch self {
         case .manual:          return "manual"
         case .slotsConfig:     return "slotsConfig"
         case .profile:         return "profile"
+        case .watchSetup:      return "watchSetup"
         }
     }
 }
@@ -109,6 +111,9 @@ struct HomeView: View {
                         EditProfileView(isOnboarding: true)
                             .environmentObject(profileStore)
                     }
+                case .watchSetup:
+                    WatchSetupView()
+                        .environmentObject(garmin)
                 }
             }
         }
@@ -124,7 +129,7 @@ struct HomeView: View {
             Spacer()
             if garmin.connectedDevice == nil {
                 Button("Connecter") {
-                    garmin.connectWatch()
+                    activeSheet = .watchSetup
                 }
                 .font(.subheadline.weight(.medium))
                 .foregroundStyle(.orange)
