@@ -59,6 +59,16 @@ class SessionStore: ObservableObject {
         ExerciseStats(exerciseType: type, sessions: sessions(for: type))
     }
 
+    // La montre peut retransmettre une séance déjà livrée si elle se ferme
+    // avant de recevoir la confirmation d'envoi (PendingQueue/SyncManager
+    // ne retire l'élément qu'après un callback qui peut ne jamais arriver).
+    // `date` vient du startTime de la montre, identique bit-à-bit entre deux
+    // envois du même message — une correspondance exacte suffit à détecter
+    // un doublon sans risquer de rejeter deux séances réellement distinctes.
+    func hasSession(exerciseType: ExerciseType, date: Date) -> Bool {
+        sessions.contains { $0.exerciseType == exerciseType && $0.date == date }
+    }
+
     func spotStats(for exerciseType: ExerciseType) -> SpotStats {
         spotStats(for: exerciseType, in: sessions)
     }

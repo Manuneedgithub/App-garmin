@@ -114,6 +114,14 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
         DispatchQueue.main.async {
             self.lastSyncDate = Date()
+            // La montre peut renvoyer la même séance si elle se ferme avant de
+            // recevoir la confirmation d'un envoi pourtant déjà livré (cf.
+            // PendingQueue/SyncManager côté Garmin) — on l'ignore silencieusement
+            // plutôt que de dupliquer l'historique et les stats/trophées.
+            guard !self.store.hasSession(exerciseType: session.exerciseType, date: session.date) else {
+                print("parseAndStore → doublon ignoré (\(session.exerciseType.name) @ \(session.date))")
+                return
+            }
             self.store.add(session)
         }
     }
