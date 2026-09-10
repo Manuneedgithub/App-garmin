@@ -19,6 +19,11 @@ struct ManualSessionView: View {
 
     private let shotOptions = [5, 10, 15, 20, 25, 30]
 
+    // Le lancer franc se tire toujours à l'arrêt — pas de dribble/catch & shoot à choisir.
+    private var effectiveShotType: ShotType {
+        exercise == .freethrow ? .standing : shotType
+    }
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -94,17 +99,31 @@ struct ManualSessionView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 14))
             }
 
-            VStack(alignment: .leading, spacing: 14) {
-                SectionLabel(title: "Type de tir", icon: "figure.basketball")
-                Picker("Type de tir", selection: $shotType) {
-                    ForEach(ShotType.allCases, id: \.self) { t in
-                        Text(t.name).tag(t)
-                    }
+            if exercise == .freethrow {
+                HStack(spacing: 10) {
+                    Image(systemName: "figure.stand")
+                        .foregroundStyle(.secondary)
+                    Text("Lancer franc : toujours à l'arrêt")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Spacer()
                 }
-                .pickerStyle(.segmented)
                 .padding(16)
                 .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
+            } else {
+                VStack(alignment: .leading, spacing: 14) {
+                    SectionLabel(title: "Type de tir", icon: "figure.basketball")
+                    Picker("Type de tir", selection: $shotType) {
+                        ForEach(ShotType.allCases, id: \.self) { t in
+                            Text(t.name).tag(t)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(16)
+                    .background(Color(.systemBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                }
             }
         }
     }
@@ -142,7 +161,7 @@ struct ManualSessionView: View {
     private func save() {
         var s = WorkoutSession(exerciseType: exercise, totalShots: totalShots, madeShots: madeShots)
         s.date     = date
-        s.shotType = shotType
+        s.shotType = effectiveShotType
         store.add(s)
         dismiss()
     }

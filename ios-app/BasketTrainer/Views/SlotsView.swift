@@ -132,7 +132,7 @@ struct SlotEditorView: View {
         self.index = index
         _name = State(initialValue: existing?.name ?? "Entraînement \(index + 1)")
         _seriesList = State(initialValue:
-            existing?.series ?? [TemplateSeries(exerciseType: .freethrow, totalShots: 10)]
+            existing?.series ?? [TemplateSeries(exerciseType: .freethrow, totalShots: 10, shotType: .standing)]
         )
     }
 
@@ -149,7 +149,7 @@ struct SlotEditorView: View {
                     .onDelete { offsets in seriesList.remove(atOffsets: offsets) }
                     if seriesList.count < maxSeries {
                         Button {
-                            seriesList.append(TemplateSeries(exerciseType: .freethrow, totalShots: 10))
+                            seriesList.append(TemplateSeries(exerciseType: .freethrow, totalShots: 10, shotType: .standing))
                         } label: {
                             Label("Ajouter une série", systemImage: "plus.circle")
                                 .foregroundStyle(.orange)
@@ -209,19 +209,29 @@ struct SeriesRow: View {
                 ExercisePickerSheet(selected: $series.exerciseType)
             }
             Spacer()
-            Button {
-                showShotTypePicker = true
-            } label: {
-                Label(series.shotType.name, systemImage: "figure.basketball")
+            if series.exerciseType == .freethrow {
+                Text("À l'arrêt")
                     .font(.caption.weight(.medium))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.secondary)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 7)
-                    .background(Color.orange)
+                    .background(Color(.tertiarySystemFill))
                     .clipShape(Capsule())
-            }
-            .sheet(isPresented: $showShotTypePicker) {
-                ShotTypePickerSheet(selected: $series.shotType)
+            } else {
+                Button {
+                    showShotTypePicker = true
+                } label: {
+                    Label(series.shotType.name, systemImage: "figure.basketball")
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 7)
+                        .background(Color.orange)
+                        .clipShape(Capsule())
+                }
+                .sheet(isPresented: $showShotTypePicker) {
+                    ShotTypePickerSheet(selected: $series.shotType)
+                }
             }
             Stepper(
                 "\(series.totalShots) tirs",
@@ -229,6 +239,9 @@ struct SeriesRow: View {
                 in: 1...100
             )
             .fixedSize()
+        }
+        .onChange(of: series.exerciseType) { newValue in
+            if newValue == .freethrow { series.shotType = .standing }
         }
     }
 }

@@ -96,11 +96,19 @@ class ExerciseMenuDelegate extends WatchUi.Menu2InputDelegate {
         _accumulator = accumulator;
     }
 
+    // Lancer franc : toujours à l'arrêt (shotTypeId 2), on saute le menu
+    // de type de tir — pas de choix Catch & Shoot / Avec dribble possible.
     function onSelect(item as WatchUi.MenuItem) as Void {
         var exerciseId = item.getId() as Number;
-        var shotMenu   = new ShotTypeMenuView(exerciseId);
-        var del        = new ShotTypeMenuDelegate(exerciseId, 0, _accumulator);
-        WatchUi.pushView(shotMenu, del, WatchUi.SLIDE_LEFT);
+        if (exerciseId == EX_FREETHROW) {
+            var menu = new ShotCountMenuView(exerciseId);
+            var del  = new ShotCountMenuDelegate(exerciseId, 2, _accumulator);
+            WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
+        } else {
+            var shotMenu = new ShotTypeMenuView(exerciseId);
+            var del      = new ShotTypeMenuDelegate(exerciseId, 0, _accumulator);
+            WatchUi.pushView(shotMenu, del, WatchUi.SLIDE_LEFT);
+        }
     }
 
     function onBack() as Void {
@@ -115,11 +123,19 @@ class ExerciseMenuGoalDelegate extends WatchUi.Menu2InputDelegate {
         Menu2InputDelegate.initialize();
     }
 
+    // Même règle que ExerciseMenuDelegate : lancer franc → toujours à
+    // l'arrêt, on saute directement le menu de type de tir.
     function onSelect(item as WatchUi.MenuItem) as Void {
         var exerciseId = item.getId() as Number;
-        var shotMenu   = new ShotTypeMenuView(exerciseId);
-        var del        = new ShotTypeMenuDelegate(exerciseId, 1, null);
-        WatchUi.pushView(shotMenu, del, WatchUi.SLIDE_LEFT);
+        if (exerciseId == EX_FREETHROW) {
+            var view = new GoalMenuView(exerciseId, 10);
+            var del  = new GoalMenuDelegate(view, exerciseId, 2);
+            WatchUi.pushView(view, del, WatchUi.SLIDE_LEFT);
+        } else {
+            var shotMenu = new ShotTypeMenuView(exerciseId);
+            var del      = new ShotTypeMenuDelegate(exerciseId, 1, null);
+            WatchUi.pushView(shotMenu, del, WatchUi.SLIDE_LEFT);
+        }
     }
 
     function onBack() as Void {

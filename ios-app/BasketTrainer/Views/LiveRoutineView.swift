@@ -21,7 +21,7 @@ struct LiveRoutineView: View {
     @Environment(\.dismiss) var dismiss
 
     @State private var phase: LiveRoutinePhase = .configure
-    @State private var seriesList: [TemplateSeries] = [TemplateSeries(exerciseType: .freethrow, totalShots: 10)]
+    @State private var seriesList: [TemplateSeries] = [TemplateSeries(exerciseType: .freethrow, totalShots: 10, shotType: .standing)]
     @State private var currentSeriesIndex = 0
     @State private var currentResults: [Bool] = []
     @State private var completedSeries: [ShotSeries] = []
@@ -111,7 +111,7 @@ struct LiveRoutineView: View {
                 .onDelete { offsets in seriesList.remove(atOffsets: offsets) }
                 if seriesList.count < maxSeries {
                     Button {
-                        seriesList.append(TemplateSeries(exerciseType: .freethrow, totalShots: 10))
+                        seriesList.append(TemplateSeries(exerciseType: .freethrow, totalShots: 10, shotType: .standing))
                     } label: {
                         Label("Ajouter une série", systemImage: "plus.circle")
                             .foregroundStyle(.orange)
