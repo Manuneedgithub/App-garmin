@@ -267,6 +267,29 @@ struct WorkoutSession: Codable, Identifiable {
 }
 
 // ─────────────────────────────────────────────────
+// Segment de tirs uniforme : une séance simple = 1 segment,
+// une séance complexe = 1 segment par série. Utilisé par le
+// moteur de trophées pour calculer les volumes/streaks sans
+// dupliquer la logique simple/complexe déjà éparpillée ailleurs.
+// ─────────────────────────────────────────────────
+struct ShotSegment {
+    let exerciseType: ExerciseType
+    let totalShots: Int
+    let results: [Bool]
+}
+
+extension WorkoutSession {
+    var shotSegments: [ShotSegment] {
+        if let series = series {
+            return series.map {
+                ShotSegment(exerciseType: $0.exerciseType, totalShots: $0.totalShots, results: $0.results)
+            }
+        }
+        return [ShotSegment(exerciseType: exerciseType, totalShots: totalShots, results: results)]
+    }
+}
+
+// ─────────────────────────────────────────────────
 // Templates de séance complexe (max 5)
 // ─────────────────────────────────────────────────
 

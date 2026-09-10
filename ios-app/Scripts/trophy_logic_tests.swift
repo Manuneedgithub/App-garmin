@@ -34,5 +34,28 @@ struct TrophyTests {
         assert(TrophyID(storageKey: "totalShots_0")?.category == .totalShots)
 
         print("Task 1 assertions passed")
+
+        // MARK: - Task 2: WorkoutSession.shotSegments
+
+        let simple = WorkoutSession(exerciseType: .freethrow, totalShots: 10, madeShots: 7,
+                                     results: [true, true, true, true, true, true, true, false, false, false])
+        assert(simple.shotSegments.count == 1)
+        assert(simple.shotSegments[0].exerciseType == .freethrow)
+        assert(simple.shotSegments[0].totalShots == 10)
+        assert(simple.shotSegments[0].results.count == 10)
+
+        var complex = WorkoutSession(exerciseType: .freethrow, totalShots: 999, madeShots: 999, results: [])
+        complex.series = [
+            ShotSeries(exerciseType: .freethrow, totalShots: 5, madeShots: 3, results: [true, true, true, false, false]),
+            ShotSeries(exerciseType: .threeCenter, totalShots: 8, madeShots: 4,
+                       results: [true, false, true, false, true, false, true, false])
+        ]
+        assert(complex.shotSegments.count == 2, "must read from series, not the placeholder top-level fields")
+        assert(complex.shotSegments[0].exerciseType == .freethrow)
+        assert(complex.shotSegments[0].totalShots == 5)
+        assert(complex.shotSegments[1].exerciseType == .threeCenter)
+        assert(complex.shotSegments[1].totalShots == 8)
+
+        print("Task 2 assertions passed")
     }
 }
