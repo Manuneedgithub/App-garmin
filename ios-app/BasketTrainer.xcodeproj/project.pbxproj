@@ -22,6 +22,7 @@
 		AA0000000000000000000AD2 /* Dribble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000AD1 /* Dribble.swift */; };
 		AA0000000000000000000AD4 /* DribbleTimerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000AD3 /* DribbleTimerEngine.swift */; };
 		AA0000000000000000000AD6 /* DribbleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000AD5 /* DribbleStore.swift */; };
+		AA0000000000000000000AD8 /* DribbleRoutineEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000AD7 /* DribbleRoutineEditorView.swift */; };
 		AA00000000000000000000D4 /* GarminManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C4 /* GarminManager.swift */; };
 		AA00000000000000000000D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C5 /* ContentView.swift */; };
 		AA00000000000000000000D6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000C6 /* HomeView.swift */; };
@@ -79,6 +80,7 @@
 		AA0000000000000000000AD1 /* Dribble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dribble.swift; sourceTree = "<group>"; };
 		AA0000000000000000000AD3 /* DribbleTimerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DribbleTimerEngine.swift; sourceTree = "<group>"; };
 		AA0000000000000000000AD5 /* DribbleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DribbleStore.swift; sourceTree = "<group>"; };
+		AA0000000000000000000AD7 /* DribbleRoutineEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DribbleRoutineEditorView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C4 /* GarminManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarminManager.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA00000000000000000000C6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				AA0000000000000000000ACB /* LiveWorkoutView.swift */,
 				AA0000000000000000000ACD /* WatchSetupView.swift */,
 				AA0000000000000000000ACF /* LiveRoutineView.swift */,
+				AA0000000000000000000AD7 /* DribbleRoutineEditorView.swift */,
 				AA00000000000000000000CA /* StatsView.swift */,
 				AA00000000000000000000CF /* ManualSessionView.swift */,
 				AA00000000000000000000D0 /* EditSessionView.swift */,
@@ -302,6 +305,7 @@
 				AA0000000000000000000AD2 /* Dribble.swift in Sources */,
 				AA0000000000000000000AD4 /* DribbleTimerEngine.swift in Sources */,
 				AA0000000000000000000AD6 /* DribbleStore.swift in Sources */,
+				AA0000000000000000000AD8 /* DribbleRoutineEditorView.swift in Sources */,
 				AA00000000000000000000DA /* StatsView.swift in Sources */,
 				AA00000000000000000000DD /* ManualSessionView.swift in Sources */,
 				AA00000000000000000000DE /* EditSessionView.swift in Sources */,
