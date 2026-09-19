@@ -15,6 +15,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     @Published var connectedDevice: IQDevice? = nil
     @Published var lastSlotSendMessage: String? = nil
     @Published var lastCustomSpotsSendMessage: String? = nil
+    @Published var lastDribbleSlotSendMessage: String? = nil
 
     func setup() {
         sdk.initialize(withUrlScheme: "baskettrainer", uiOverrideDelegate: nil)
@@ -78,7 +79,34 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
     func receivedMessage(_ message: Any, from app: IQApp) {
         guard let dict = message as? [String: Any] else { return }
+        // Les séances de tirs n'ont pas de clé "type" — elles gardent leur chemin habituel.
+        if (dict["type"] as? String) == "dribbleSession" {
+            parseDribbleSession(dict)
+            return
+        }
         parseAndStore(dict)
+    }
+
+    private func parseDribbleSession(_ dict: [String: Any]) {
+        let routineName = dict["routineName"] as? String ?? "Routine"
+        let startTime   = dict["startTime"]   as? Int ?? 0
+        let totalSecs   = dict["totalSeconds"] as? Int ?? 0
+        let rawTimes    = dict["drillTimes"]  as? [[String: Any]] ?? []
+        let drillTimes  = rawTimes.compactMap { entry -> DribbleDrillTime? in
+            guard let drill = entry["drill"] as? String,
+                  let secs  = entry["seconds"] as? Int else { return nil }
+            return DribbleDrillTime(drill: drill, seconds: secs)
+        }
+        let session = DribbleSession(
+            routineName: routineName,
+            date: Date(timeIntervalSince1970: TimeInterval(startTime)),
+            totalSeconds: totalSecs,
+            drillTimes: drillTimes,
+            sentFromWatch: true
+        )
+        DispatchQueue.main.async {
+            DribbleStore.shared.add(session)   // ignore un renvoi identique de la montre
+        }
     }
 
     private func parseAndStore(_ dict: [String: Any]) {
@@ -174,6 +202,33 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
                 DispatchQueue.main.async {
                     self?.lastCustomSpotsSendMessage = result == .success
                         ? "Spots personnalisés envoyés à la montre ✅"
+                        : "Échec de l'envoi : \(NSStringFromSendMessageResult(result))"
+                }
+            }
+        }
+    }
+
+    func sendDribbleSlot(_ index: Int, routine: DribbleRoutine) {
+        guard let device = connectedDevice else {
+            lastDribbleSlotSendMessage = "Montre non connectée"
+            return
+        }
+        let app = IQApp(uuid: appUUID, store: appUUID, device: device)
+        let steps: [[String: Any]] = routine.steps.map {
+            ["drill": $0.drill ?? "", "seconds": $0.seconds]
+        }
+        let payload: [String: Any] = [
+            "type": "dribbleSlot",
+            "index": index,
+            "name": routine.name,
+            "steps": steps
+        ]
+        sdk.openAppRequest(app) { [weak self] _ in
+            self?.sdk.sendMessage(payload, to: app, progress: nil) { result in
+                print("sendDribbleSlot(\(index)) → \(NSStringFromSendMessageResult(result))")
+                DispatchQueue.main.async {
+                    self?.lastDribbleSlotSendMessage = result == .success
+                        ? "Routine envoyée à la montre ✅"
                         : "Échec de l'envoi : \(NSStringFromSendMessageResult(result))"
                 }
             }
