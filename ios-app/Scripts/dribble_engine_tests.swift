@@ -71,12 +71,34 @@ func testFormat() {
     expectEqual(DribbleFormat.clock(-3), "0:00")
 }
 
+func testState() {
+    // Example routine: Cross 0–30, rest 30–40, BTB 40–70, rest 70–90, Between 90–150.
+    func s(_ e: Int) -> DribbleTimerState { DribbleTimerEngine.state(for: exampleSteps, elapsed: e) }
+    expectEqual(s(0),   DribbleTimerState(stepIndex: 0, secondsLeftInStep: 30, isFinished: false))
+    expectEqual(s(29),  DribbleTimerState(stepIndex: 0, secondsLeftInStep: 1,  isFinished: false))
+    expectEqual(s(30),  DribbleTimerState(stepIndex: 1, secondsLeftInStep: 10, isFinished: false))
+    expectEqual(s(39),  DribbleTimerState(stepIndex: 1, secondsLeftInStep: 1,  isFinished: false))
+    expectEqual(s(40),  DribbleTimerState(stepIndex: 2, secondsLeftInStep: 30, isFinished: false))
+    expectEqual(s(70),  DribbleTimerState(stepIndex: 3, secondsLeftInStep: 20, isFinished: false))
+    expectEqual(s(90),  DribbleTimerState(stepIndex: 4, secondsLeftInStep: 60, isFinished: false))
+    expectEqual(s(149), DribbleTimerState(stepIndex: 4, secondsLeftInStep: 1,  isFinished: false))
+    // finished exactly at the total, and stays finished
+    expectEqual(s(150), DribbleTimerState(stepIndex: 5, secondsLeftInStep: 0, isFinished: true))
+    expectEqual(s(9999), DribbleTimerState(stepIndex: 5, secondsLeftInStep: 0, isFinished: true))
+    // negative elapsed behaves like 0
+    expectEqual(s(-5), s(0))
+    // empty routine is immediately finished
+    expectEqual(DribbleTimerEngine.state(for: [], elapsed: 0),
+                DribbleTimerState(stepIndex: 0, secondsLeftInStep: 0, isFinished: true))
+}
+
 @main
 struct DribbleTests {
     static func main() {
         testModels()
         testResolveDrill()
         testFormat()
-        print("Task 1 assertions passed")
+        testState()
+        print("Task 1-2 assertions passed")
     }
 }
