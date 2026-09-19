@@ -208,7 +208,7 @@ class DribbleRunView extends WatchUi.View {
             dc.drawText(cx, 60, Graphics.FONT_SMALL, "Routine terminée",
                         Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             dc.setColor(COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, 100, Graphics.FONT_TINY, _run.name,
+            dc.drawText(cx, 100, Graphics.FONT_TINY, dribbleFit(dc, _run.name, Graphics.FONT_TINY, 220),
                         Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             dc.drawText(cx, 140, Graphics.FONT_NUMBER_MEDIUM, dribbleClock(_run.total),
                         Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);

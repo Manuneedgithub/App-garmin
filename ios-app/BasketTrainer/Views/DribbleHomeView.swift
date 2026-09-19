@@ -71,18 +71,20 @@ struct DribbleHomeView: View {
             Button {
                 runningRoutine = routine
             } label: {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(routine.name)
-                        .font(.headline)
-                        .foregroundStyle(.primary)
-                    Text("\(routine.steps.count) étapes · \(DribbleFormat.duration(routine.totalSeconds))")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                HStack {
+                    VStack(alignment: .leading, spacing: 3) {
+                        Text(routine.name)
+                            .font(.headline)
+                            .foregroundStyle(.primary)
+                        Text("\(routine.steps.count) étapes · \(DribbleFormat.duration(routine.totalSeconds))")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    Spacer()
+                    Image(systemName: "play.circle.fill")
+                        .font(.title2)
+                        .foregroundStyle(.orange)
                 }
-                Spacer()
-                Image(systemName: "play.circle.fill")
-                    .font(.title2)
-                    .foregroundStyle(.orange)
             }
             .buttonStyle(.borderless)
 

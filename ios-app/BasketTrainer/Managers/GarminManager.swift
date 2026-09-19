@@ -89,7 +89,10 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
 
     private func parseDribbleSession(_ dict: [String: Any]) {
         let routineName = dict["routineName"] as? String ?? "Routine"
-        let startTime   = dict["startTime"]   as? Int ?? 0
+        guard let startTime = dict["startTime"] as? Int, startTime > 0 else {
+            print("parseDribbleSession → startTime absent ou invalide, séance ignorée")
+            return
+        }
         let totalSecs   = dict["totalSeconds"] as? Int ?? 0
         let rawTimes    = dict["drillTimes"]  as? [[String: Any]] ?? []
         let drillTimes  = rawTimes.compactMap { entry -> DribbleDrillTime? in

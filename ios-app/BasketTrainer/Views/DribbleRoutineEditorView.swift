@@ -89,7 +89,7 @@ struct DribbleRoutineEditorView: View {
     }
 
     private func save() {
-        let trimmed = name.trimmingCharacters(in: .whitespaces)
+        let trimmed = String(name.trimmingCharacters(in: .whitespaces).prefix(DribbleLibrary.maxDrillNameLength))
         dribbleStore.save(DribbleRoutine(id: routineID, name: trimmed, steps: steps))
         dismiss()
     }
