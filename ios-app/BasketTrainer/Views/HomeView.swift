@@ -6,6 +6,7 @@ import SwiftUI
 private enum HomeSheet: Identifiable {
     case manual
     case routine
+    case dribble
     case slotsConfig
     case profile
     case watchSetup
@@ -14,6 +15,7 @@ private enum HomeSheet: Identifiable {
         switch self {
         case .manual:          return "manual"
         case .routine:         return "routine"
+        case .dribble:         return "dribble"
         case .slotsConfig:     return "slotsConfig"
         case .profile:         return "profile"
         case .watchSetup:      return "watchSetup"
@@ -65,6 +67,9 @@ struct HomeView: View {
                         routineButton
                             .padding(.horizontal, 20)
 
+                        dribbleButton
+                            .padding(.horizontal, 20)
+
                         if !store.recentSessions.isEmpty {
                             recentSessionsList
                                 .padding(.horizontal, 20)
@@ -106,6 +111,8 @@ struct HomeView: View {
                     LiveWorkoutView()
                 case .routine:
                     LiveRoutineView()
+                case .dribble:
+                    DribbleHomeView()
                 case .slotsConfig:
                     SlotsView()
                         .environmentObject(store)
@@ -199,6 +206,39 @@ struct HomeView: View {
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.primary)
                     Text("Plusieurs séries, comme sur la montre")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .background(Color(.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+    }
+
+    private var dribbleButton: some View {
+        Button {
+            activeSheet = .dribble
+        } label: {
+            HStack(spacing: 12) {
+                ZStack {
+                    Circle()
+                        .fill(Color.orange.opacity(0.15))
+                        .frame(width: 30, height: 30)
+                    Image(systemName: "timer")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(.orange)
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Dribble")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text("Routines chronométrées, sur le tél. ou la montre")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
