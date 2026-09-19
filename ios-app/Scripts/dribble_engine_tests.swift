@@ -92,6 +92,64 @@ func testState() {
                 DribbleTimerState(stepIndex: 0, secondsLeftInStep: 0, isFinished: true))
 }
 
+func testAlerts() {
+    func a(_ from: Int, _ to: Int, _ steps: [DribbleStep] = exampleSteps) -> [DribbleAlert] {
+        DribbleTimerEngine.alerts(for: steps, from: from, to: to)
+    }
+    // First step: countdown 3-2-1 then the change to step 1, all within 0→30.
+    expectEqual(a(0, 30), [.countdown(secondsLeft: 3), .countdown(secondsLeft: 2), .countdown(secondsLeft: 1),
+                           .stepChanged(newIndex: 1)])
+    // One second at a time: nothing until 27, then exactly one alert per second.
+    expectEqual(a(0, 26), [])
+    expectEqual(a(26, 27), [.countdown(secondsLeft: 3)])
+    expectEqual(a(29, 30), [.stepChanged(newIndex: 1)])
+    expectEqual(a(30, 31), [])
+    // Big jump (app was backgrounded): every crossed boundary reported once, ascending.
+    expectEqual(a(25, 41), [
+        .countdown(secondsLeft: 3), .countdown(secondsLeft: 2), .countdown(secondsLeft: 1),
+        .stepChanged(newIndex: 1),
+        .countdown(secondsLeft: 3), .countdown(secondsLeft: 2), .countdown(secondsLeft: 1),
+        .stepChanged(newIndex: 2),
+    ])
+    // Whole routine: 5 steps × (3 countdowns + 1 boundary) = 20 alerts, 4 stepChanged, ends with finished.
+    let all = a(0, 150)
+    expectEqual(all.count, 20)
+    expectEqual(all.filter { if case .stepChanged = $0 { return true } else { return false } }.count, 4)
+    expectEqual(all.last, .finished)
+    // finished exactly once, whatever the partition, and never after the end
+    expectEqual(a(0, 500).filter { $0 == .finished }.count, 1)
+    expectEqual(a(150, 200), [])
+    expectEqual(a(0, 75).count + a(75, 150).count, 20)
+    // Short steps (≤ 3 s) never emit a countdown.
+    let short = [drill("A", 3), drill("B", 5)]
+    expectEqual(a(0, 8, short), [
+        .stepChanged(newIndex: 1),
+        .countdown(secondsLeft: 3), .countdown(secondsLeft: 2), .countdown(secondsLeft: 1),
+        .finished,
+    ])
+    // Degenerate ranges
+    expectEqual(a(10, 10), [])
+    expectEqual(a(20, 10), [])
+    expectEqual(a(0, 5, []), [])
+    expectEqual(a(-5, 30).count, a(0, 30).count)
+}
+
+func testDrillTimes() {
+    // Rests excluded; repeated drill summed; order of first appearance.
+    let steps = [drill("Cross", 30), rest(10), drill("Cross", 20), drill("Behind the back", 15), rest(5)]
+    expectEqual(DribbleTimerEngine.drillTimes(for: steps), [
+        DribbleDrillTime(drill: "Cross", seconds: 50),
+        DribbleDrillTime(drill: "Behind the back", seconds: 15),
+    ])
+    expectEqual(DribbleTimerEngine.drillTimes(for: exampleSteps), [
+        DribbleDrillTime(drill: "Cross", seconds: 30),
+        DribbleDrillTime(drill: "Behind the back", seconds: 30),
+        DribbleDrillTime(drill: "Between the legs", seconds: 60),
+    ])
+    expectEqual(DribbleTimerEngine.drillTimes(for: [rest(10)]), [])
+    expectEqual(DribbleTimerEngine.drillTimes(for: []), [])
+}
+
 @main
 struct DribbleTests {
     static func main() {
@@ -99,6 +157,8 @@ struct DribbleTests {
         testResolveDrill()
         testFormat()
         testState()
-        print("Task 1-2 assertions passed")
+        testAlerts()
+        testDrillTimes()
+        print("Task 1-3 assertions passed")
     }
 }
