@@ -18,6 +18,19 @@ function dribbleVibe(durationMs as Number) as Void {
     }
 }
 
+// Shortens text with ".." so it fits maxWidth pixels on the round display.
+function dribbleFit(dc as Graphics.Dc, text as String, font as Graphics.FontType,
+                    maxWidth as Number) as String {
+    if (dc.getTextWidthInPixels(text, font) <= maxWidth) { return text; }
+    var len = text.length();
+    while (len > 0) {
+        len--;
+        var candidate = text.substring(0, len) + "..";
+        if (dc.getTextWidthInPixels(candidate, font) <= maxWidth) { return candidate; }
+    }
+    return "..";
+}
+
 class DribbleRun {
     var name      as String;
     var steps     as Array;    // [{"drill" => String ("" = rest), "seconds" => Number}]
@@ -216,13 +229,15 @@ class DribbleRunView extends WatchUi.View {
 
         // Header: routine name + step counter
         dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 28, Graphics.FONT_XTINY,
-                    _run.name + "  " + (idx + 1).toString() + "/" + n.toString(),
+        var counter = "  " + (idx + 1).toString() + "/" + n.toString();
+        var counterW = dc.getTextWidthInPixels(counter, Graphics.FONT_XTINY);
+        var headerName = dribbleFit(dc, _run.name, Graphics.FONT_XTINY, 150 - counterW);
+        dc.drawText(cx, 28, Graphics.FONT_XTINY, headerName + counter,
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Current step
         dc.setColor(isRest ? COLOR_BLUE : COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 64, Graphics.FONT_SMALL, label,
+        dc.drawText(cx, 64, Graphics.FONT_SMALL, dribbleFit(dc, label, Graphics.FONT_SMALL, 200),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Seconds left in the step
@@ -237,7 +252,8 @@ class DribbleRunView extends WatchUi.View {
             nextText = nd.equals("") ? "Repos" : nd;
         }
         dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 188, Graphics.FONT_XTINY, "Ensuite : " + nextText,
+        dc.drawText(cx, 188, Graphics.FONT_XTINY,
+                    dribbleFit(dc, "Ensuite : " + nextText, Graphics.FONT_XTINY, 200),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(cx, 222, Graphics.FONT_XTINY, "↩ Abandonner",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
