@@ -39,6 +39,29 @@ class BasketApp extends Application.AppBase {
             var series = dict["series"] as Array;
             Application.Storage.setValue("slot_" + index.toString(), series);
         }
+        if (dict["type"] instanceof String && (dict["type"] as String).equals("dribbleSlot")) {
+            var dSlot = dict["index"];
+            // Nested/Top-level integers from the phone can arrive as Long — accept both.
+            if (!(dSlot instanceof Number || dSlot instanceof Long) || dSlot < 0 || dSlot > 4) { return; }
+            if (!(dict["name"] instanceof String) || !(dict["steps"] instanceof Array)) { return; }
+            var dRaw   = dict["steps"] as Array;
+            var dClean = [];
+            for (var d = 0; d < dRaw.size(); d++) {
+                var dEntry = dRaw[d];
+                if (!(dEntry instanceof Dictionary)) { continue; }
+                var dSecs = dEntry["seconds"];
+                if (!(dSecs instanceof Number || dSecs instanceof Long) || dSecs < 1) { continue; }
+                var dDrill = dEntry["drill"];
+                if (!(dDrill instanceof String)) { dDrill = ""; }
+                dClean.add({ "drill" => dDrill, "seconds" => dSecs.toNumber() });
+            }
+            if (dClean.size() == 0) {
+                Application.Storage.setValue("dribbleSlot_" + dSlot.toString(), null);
+            } else {
+                Application.Storage.setValue("dribbleSlot_" + dSlot.toString(),
+                    { "name" => dict["name"], "steps" => dClean });
+            }
+        }
         if (dict["type"] instanceof String && (dict["type"] as String).equals("customSpots")) {
             if (!(dict["spots"] instanceof Array)) { return; }
             var spots = dict["spots"] as Array;
