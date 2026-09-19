@@ -8,6 +8,7 @@ class MainMenuView extends WatchUi.Menu2 {
         addItem(new WatchUi.MenuItem("Tirs libres",       null, 0, null));
         addItem(new WatchUi.MenuItem("Objectif simple",   null, 1, null));
         addItem(new WatchUi.MenuItem("Entraînements",     null, 2, null));
+        addItem(new WatchUi.MenuItem("Dribble",           null, 3, null));
     }
 }
 
@@ -31,6 +32,10 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
         } else if (id == 2) {
             var menu = new SlotMenuView();
             var del  = new SlotMenuDelegate();
+            WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
+        } else if (id == 3) {
+            var menu = new DribbleSlotMenuView();
+            var del  = new DribbleSlotMenuDelegate();
             WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
         }
     }
