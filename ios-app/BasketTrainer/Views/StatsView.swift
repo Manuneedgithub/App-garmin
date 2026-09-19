@@ -90,6 +90,37 @@ struct StatsView: View {
         return streak
     }
 
+    // Jours du calendrier couverts par la série en cours (pour la bordure du heatmap)
+    private var currentStreakDays: Set<Date> {
+        guard currentStreak > 0 else { return [] }
+        let cal = Calendar.current
+        let today = cal.startOfDay(for: Date())
+        return Set((0..<currentStreak).compactMap { cal.date(byAdding: .day, value: -$0, to: today) })
+    }
+
+    // Taille/couleur de la flamme : grandit et change de teinte avec la série
+    private func flameSize(for streak: Int) -> CGFloat {
+        switch streak {
+        case 0:      return 20
+        case 1...2:  return 24
+        case 3...6:  return 30
+        case 7...13: return 36
+        case 14...29: return 42
+        default:     return 48
+        }
+    }
+
+    private func flameColor(for streak: Int) -> Color {
+        switch streak {
+        case 0:      return Color(.tertiaryLabel)
+        case 1...2:  return .gray
+        case 3...6:  return .orange.opacity(0.75)
+        case 7...13: return .orange
+        case 14...29: return Color(red: 1.0, green: 0.35, blue: 0.1)
+        default:     return Color(red: 0.9, green: 0.1, blue: 0.5)
+        }
+    }
+
     private var longestStreak: Int {
         let cal = Calendar.current
         let days = Set(store.sessions.map { cal.startOfDay(for: $0.date) }).sorted()
@@ -273,8 +304,9 @@ struct StatsView: View {
                 .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 14))
                 .overlay(alignment: .topTrailing) {
-                    Text(currentStreak >= 7 ? "🔥" : currentStreak >= 3 ? "⚡" : "💤")
-                        .font(.title2)
+                    Image(systemName: "flame.fill")
+                        .font(.system(size: flameSize(for: currentStreak)))
+                        .foregroundStyle(flameColor(for: currentStreak))
                         .padding(10)
                 }
             }
@@ -346,9 +378,22 @@ struct StatsView: View {
         let dayLetters = ["L", "M", "M", "J", "V", "S", "D"]
 
         return VStack(alignment: .leading, spacing: 12) {
-            Text("Calendrier d'entraînement")
-                .font(.headline)
-                .foregroundStyle(.primary)
+            HStack {
+                Text("Calendrier d'entraînement")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Spacer()
+                if currentStreak > 0 {
+                    HStack(spacing: 4) {
+                        Image(systemName: "flame.fill")
+                            .font(.caption)
+                            .foregroundStyle(flameColor(for: currentStreak))
+                        Text("\(currentStreak) j")
+                            .font(.caption.bold())
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
 
             HStack(alignment: .top, spacing: 4) {
                 // Étiquettes jours
@@ -370,6 +415,12 @@ struct StatsView: View {
                                 RoundedRectangle(cornerRadius: 3)
                                     .fill(heatColor(count: count, isFuture: day > today))
                                     .frame(width: 14, height: 14)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 3)
+                                            .stroke(currentStreakDays.contains(day)
+                                                    ? flameColor(for: currentStreak) : .clear,
+                                                    lineWidth: 1.5)
+                                    )
                             }
                         }
                     }

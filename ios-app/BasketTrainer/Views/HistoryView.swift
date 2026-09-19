@@ -113,22 +113,11 @@ struct HistoryView: View {
                             .padding(.top, 16)
                             .padding(.bottom, 6)
 
-                        VStack(spacing: 8) {
-                            ForEach(group.sessions) { session in
-                                NavigationLink(destination: SessionDetailView(session: session)) {
-                                    SessionRowView(session: session)
-                                        .padding(.horizontal, 16)
-                                }
-                                .buttonStyle(.plain)
-                                .swipeActions(edge: .trailing) {
-                                    Button(role: .destructive) {
-                                        store.deleteSession(session)
-                                    } label: {
-                                        Label("Supprimer", systemImage: "trash")
-                                    }
-                                }
-                            }
+                        NavigationLink(destination: DayDetailView(dateLabel: group.key, sessions: group.sessions)) {
+                            DaySummaryRowView(sessions: group.sessions)
+                                .padding(.horizontal, 16)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
                 Spacer(minLength: 40)
@@ -168,6 +157,74 @@ struct HistoryView: View {
             }
             Spacer()
         }
+    }
+}
+
+// ─────────────────────────────────────────────────
+// Résumé d'une journée : nombre de tirs, FG% global, FG3pts%.
+// Tap → DayDetailView (liste des séances/séries de ce jour).
+// ─────────────────────────────────────────────────
+struct DaySummaryRowView: View {
+    let sessions: [WorkoutSession]
+
+    private var stats: DayStats { sessions.dayStats }
+
+    var body: some View {
+        HStack(spacing: 14) {
+            Image(systemName: "basketball.fill")
+                .font(.title2)
+                .foregroundStyle(.orange)
+                .frame(width: 44, height: 44)
+                .background(Color(.secondarySystemBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+
+            VStack(alignment: .leading, spacing: 3) {
+                Text("\(sessions.count) séance\(sessions.count > 1 ? "s" : "")")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                Text("\(stats.totalShots) tirs")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+
+            Spacer()
+
+            HStack(spacing: 14) {
+                percentageTile(value: stats.fgPercentage, label: "FG%")
+                percentageTile(value: stats.threePtPercentage, label: "FG3%")
+            }
+
+            Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
+        }
+        .padding(14)
+        .background(Color(.systemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
+    }
+
+    @ViewBuilder
+    private func percentageTile(value: Double?, label: String) -> some View {
+        VStack(spacing: 2) {
+            if let value {
+                Text(String(format: "%.0f%%", value))
+                    .font(.subheadline.bold())
+                    .foregroundStyle(percentageColor(value))
+            } else {
+                Text("—")
+                    .font(.subheadline.bold())
+                    .foregroundStyle(.secondary)
+            }
+            Text(label)
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+        }
+    }
+
+    private func percentageColor(_ pct: Double) -> Color {
+        if pct >= 70 { return .green }
+        if pct >= 50 { return .orange }
+        return .red
     }
 }
 
