@@ -26,6 +26,7 @@ struct BasketTrainerApp: App {
     @StateObject private var garmin       = GarminManager.shared
     @StateObject private var profileStore = ProfileStore.shared
     @StateObject private var dribbleStore = DribbleStore.shared
+    @StateObject private var physicalStore = PhysicalStore.shared
 
     init() {
         GarminManager.shared.setup()
@@ -38,6 +39,7 @@ struct BasketTrainerApp: App {
                 .environmentObject(garmin)
                 .environmentObject(profileStore)
                 .environmentObject(dribbleStore)
+                .environmentObject(physicalStore)
                 .onOpenURL { url in
                     print("[App] onOpenURL: \(url)")
                     garmin.handleIncomingURL(url)
