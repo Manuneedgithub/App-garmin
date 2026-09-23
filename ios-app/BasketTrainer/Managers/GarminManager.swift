@@ -16,6 +16,7 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     @Published var lastSlotSendMessage: String? = nil
     @Published var lastCustomSpotsSendMessage: String? = nil
     @Published var lastDribbleSlotSendMessage: String? = nil
+    @Published var lastPhysicalSlotSendMessage: String? = nil
 
     func setup() {
         sdk.initialize(withUrlScheme: "baskettrainer", uiOverrideDelegate: nil)
@@ -80,11 +81,44 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
     func receivedMessage(_ message: Any, from app: IQApp) {
         guard let dict = message as? [String: Any] else { return }
         // Les séances de tirs n'ont pas de clé "type" — elles gardent leur chemin habituel.
-        if (dict["type"] as? String) == "dribbleSession" {
+        let type = dict["type"] as? String
+        if type == "dribbleSession" {
             parseDribbleSession(dict)
             return
         }
+        if type == "physicalSession" {
+            parsePhysicalSession(dict)
+            return
+        }
         parseAndStore(dict)
+    }
+
+    private func parsePhysicalSession(_ dict: [String: Any]) {
+        let exerciseName = dict["exerciseName"] as? String ?? "Exercice"
+        guard let kindRaw = dict["kind"] as? String, let kind = PhysicalExerciseKind(rawValue: kindRaw) else {
+            print("parsePhysicalSession → kind absent ou invalide, séance ignorée")
+            return
+        }
+        guard let startTime = dict["startTime"] as? Int, startTime > 0 else {
+            print("parsePhysicalSession → startTime absent ou invalide, séance ignorée")
+            return
+        }
+        let rawAttempts = dict["attempts"] as? [[String: Any]] ?? []
+        let attempts = rawAttempts.map { entry -> PhysicalAttempt in
+            let seconds = entry["seconds"] as? Double
+            let reps = entry["reps"] as? Int
+            return PhysicalAttempt(seconds: seconds, reps: reps)
+        }
+        let session = PhysicalSession(
+            exerciseName: exerciseName,
+            kind: kind,
+            date: Date(timeIntervalSince1970: TimeInterval(startTime)),
+            attempts: attempts,
+            sentFromWatch: true
+        )
+        DispatchQueue.main.async {
+            PhysicalStore.shared.add(session)   // ignore un renvoi identique de la montre
+        }
     }
 
     private func parseDribbleSession(_ dict: [String: Any]) {
@@ -232,6 +266,33 @@ class GarminManager: NSObject, ObservableObject, IQDeviceEventDelegate, IQAppMes
                 DispatchQueue.main.async {
                     self?.lastDribbleSlotSendMessage = result == .success
                         ? "Routine envoyée à la montre ✅"
+                        : "Échec de l'envoi : \(NSStringFromSendMessageResult(result))"
+                }
+            }
+        }
+    }
+
+    func sendPhysicalSlot(_ index: Int, exercise: PhysicalExercise) {
+        guard let device = connectedDevice else {
+            lastPhysicalSlotSendMessage = "Montre non connectée"
+            return
+        }
+        let app = IQApp(uuid: appUUID, store: appUUID, device: device)
+        var payload: [String: Any] = [
+            "type": "physicalSlot",
+            "index": index,
+            "name": exercise.name,
+            "kind": exercise.kind.rawValue
+        ]
+        if let seconds = exercise.fixedSeconds {
+            payload["seconds"] = seconds
+        }
+        sdk.openAppRequest(app) { [weak self] _ in
+            self?.sdk.sendMessage(payload, to: app, progress: nil) { result in
+                print("sendPhysicalSlot(\(index)) → \(NSStringFromSendMessageResult(result))")
+                DispatchQueue.main.async {
+                    self?.lastPhysicalSlotSendMessage = result == .success
+                        ? "Exercice envoyé à la montre ✅"
                         : "Échec de l'envoi : \(NSStringFromSendMessageResult(result))"
                 }
             }
