@@ -7,6 +7,7 @@ private enum HomeSheet: Identifiable {
     case manual
     case routine
     case dribble
+    case physical
     case slotsConfig
     case profile
     case watchSetup
@@ -16,6 +17,7 @@ private enum HomeSheet: Identifiable {
         case .manual:          return "manual"
         case .routine:         return "routine"
         case .dribble:         return "dribble"
+        case .physical:        return "physical"
         case .slotsConfig:     return "slotsConfig"
         case .profile:         return "profile"
         case .watchSetup:      return "watchSetup"
@@ -70,6 +72,9 @@ struct HomeView: View {
                         dribbleButton
                             .padding(.horizontal, 20)
 
+                        physicalButton
+                            .padding(.horizontal, 20)
+
                         if !store.recentSessions.isEmpty {
                             recentSessionsList
                                 .padding(.horizontal, 20)
@@ -113,6 +118,8 @@ struct HomeView: View {
                     LiveRoutineView()
                 case .dribble:
                     DribbleHomeView()
+                case .physical:
+                    PhysicalHomeView()
                 case .slotsConfig:
                     SlotsView()
                         .environmentObject(store)
@@ -239,6 +246,39 @@ struct HomeView: View {
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(.primary)
                     Text("Routines chronométrées, sur le tél. ou la montre")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .background(Color(.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+    }
+
+    private var physicalButton: some View {
+        Button {
+            activeSheet = .physical
+        } label: {
+            HStack(spacing: 12) {
+                ZStack {
+                    Circle()
+                        .fill(Color.orange.opacity(0.15))
+                        .frame(width: 30, height: 30)
+                    Image(systemName: "figure.run")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(.orange)
+                }
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Physique")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text("Sprints et exercices chronométrés, sur le tél. ou la montre")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
