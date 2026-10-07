@@ -9,6 +9,7 @@ class MainMenuView extends WatchUi.Menu2 {
         addItem(new WatchUi.MenuItem("Objectif simple",   null, 1, null));
         addItem(new WatchUi.MenuItem("Entraînements",     null, 2, null));
         addItem(new WatchUi.MenuItem("Dribble",           null, 3, null));
+        addItem(new WatchUi.MenuItem("Physique",          null, 4, null));
     }
 }
 
@@ -36,6 +37,10 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
         } else if (id == 3) {
             var menu = new DribbleSlotMenuView();
             var del  = new DribbleSlotMenuDelegate();
+            WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
+        } else if (id == 4) {
+            var menu = new PhysicalSlotMenuView();
+            var del  = new PhysicalSlotMenuDelegate();
             WatchUi.pushView(menu, del, WatchUi.SLIDE_LEFT);
         }
     }
