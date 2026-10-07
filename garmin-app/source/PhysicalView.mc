@@ -3,6 +3,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Time;
 import Toybox.Timer;
+import Toybox.System;
 import Toybox.Attention;
 import Toybox.Communications;
 
@@ -53,9 +54,10 @@ class PhysicalRun {
     var startTime    as Number;    // unix seconds, set once when the run starts
     var attempts     as Array;     // [{"seconds" => Double} or {"reps" => Number}]
 
-    var phase        as Number;    // PHYS_*
-    var attemptStart as Number;    // unix seconds when the current chrono/countdown attempt began
-    var repsInput    as Number;
+    var phase          as Number;    // PHYS_*
+    var attemptStart   as Number;    // unix seconds when the current chrono/countdown attempt began
+    var attemptStartMs as Number;    // System.getTimer() ms when the current attempt began (precise delta)
+    var repsInput      as Number;
 
     function initialize(def as Dictionary) {
         name         = def["name"] as String;
@@ -63,20 +65,22 @@ class PhysicalRun {
         fixedSeconds = (def["seconds"] instanceof Number) ? def["seconds"] as Number : 0;
         startTime    = Time.now().value();
         attempts     = [];
-        phase        = PHYS_IDLE;
-        attemptStart = 0;
-        repsInput    = 0;
+        phase          = PHYS_IDLE;
+        attemptStart   = 0;
+        attemptStartMs = 0;
+        repsInput      = 0;
     }
 
     function elapsedInAttempt() as Double {
-        var e = Time.now().value() - attemptStart;
-        return (e < 0) ? 0.0 : e.toDouble();
+        var e = System.getTimer() - attemptStartMs;
+        return (e < 0) ? 0.0 : e.toDouble() / 1000.0;
     }
 
     // HAUT
     function onUp() as Void {
         if (phase == PHYS_IDLE) {
-            attemptStart = Time.now().value();
+            attemptStart   = Time.now().value();
+            attemptStartMs = System.getTimer();
             phase = kind.equals("duration") ? PHYS_COUNTDOWN : PHYS_RUNNING;
         } else if (phase == PHYS_RUNNING) {
             attempts.add({ "seconds" => elapsedInAttempt() });
@@ -98,9 +102,10 @@ class PhysicalRun {
     function onConfirm() as Void {
         if (phase != PHYS_ENTERING_REPS) { return; }
         attempts.add({ "reps" => repsInput });
-        repsInput     = 0;
-        attemptStart  = Time.now().value();
-        phase         = PHYS_COUNTDOWN;   // relance automatiquement le minuteur
+        repsInput      = 0;
+        attemptStart   = Time.now().value();
+        attemptStartMs = System.getTimer();
+        phase          = PHYS_COUNTDOWN;   // relance automatiquement le minuteur
     }
 
     // Appelé chaque seconde ; renvoie true si le compte à rebours vient de
@@ -180,7 +185,7 @@ class PhysicalRunView extends WatchUi.View {
         dc.clear();
 
         dc.setColor(COLOR_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 24, Graphics.FONT_XTINY, physicalFit(dc, _run.name, Graphics.FONT_XTINY, 220),
+        dc.drawText(cx, 24, Graphics.FONT_XTINY, physicalFit(dc, _run.name, Graphics.FONT_XTINY, 150),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(cx, 48, Graphics.FONT_XTINY, _run.attempts.size().toString() + " tentative(s)",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
