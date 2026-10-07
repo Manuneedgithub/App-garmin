@@ -131,6 +131,14 @@ class PhysicalRun {
         return attempts.size() > 0;
     }
 
+    function finishPendingAttempt() as Void {
+        if (phase == PHYS_ENTERING_REPS) {
+            attempts.add({ "reps" => repsInput });
+            repsInput = 0;
+            phase = PHYS_IDLE;
+        }
+    }
+
     function toDictionary() as Dictionary {
         return {
             "type"         => "physicalSession",
@@ -253,6 +261,7 @@ class PhysicalRunDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() as Boolean {
+        _run.finishPendingAttempt();
         if (_run.hasAttempts()) {
             var dict = _run.toDictionary();
             Communications.transmit(dict, null, new TransmitListener(dict));

@@ -48,7 +48,7 @@ struct PhysicalRunView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Quitter") {
-                        if attempts.isEmpty || phase == .summary { dismiss() } else { showQuitConfirm = true }
+                        if attempts.isEmpty { dismiss() } else { showQuitConfirm = true }
                     }
                     .foregroundStyle(.orange)
                 }
