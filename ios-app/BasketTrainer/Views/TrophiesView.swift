@@ -1,22 +1,30 @@
 import SwiftUI
 
+// Regroupe les pistes par activité pour garder la liste lisible.
+private let shootingCategories: [TrophyCategory] = [
+    .totalShots, .freeThrowVolume, .threePointVolume, .midRangeVolume,
+    .techniqueVolume, .sessionCount, .streakDays, .bestAccuracy, .makeStreak,
+]
+private let dribbleCategories:  [TrophyCategory] = [.dribbleVolume, .dribbleSessionCount]
+private let physicalCategories: [TrophyCategory] = [.physicalAttempts, .physicalSessionCount]
+
 struct TrophiesView: View {
     @EnvironmentObject var store: SessionStore
+    @EnvironmentObject var dribbleStore: DribbleStore
+    @EnvironmentObject var physicalStore: PhysicalStore
 
     var body: some View {
-        let progress = TrophyEngine.evaluate(sessions: store.sessions)
+        let progress = TrophyEngine.evaluate(sessions: store.sessions,
+                                              dribbleSessions: dribbleStore.sessions,
+                                              physicalSessions: physicalStore.sessions)
         NavigationStack {
             ZStack {
                 Color(.systemGroupedBackground).ignoresSafeArea()
                 ScrollView {
                     VStack(spacing: 16) {
-                        ForEach(TrophyCategory.allCases) { category in
-                            TrophyCategoryCard(
-                                category: category,
-                                currentValue: progress.currentValues[category] ?? 0,
-                                unlockedTrophies: store.unlockedTrophies
-                            )
-                        }
+                        section("Tir", shootingCategories, progress)
+                        section("Dribble", dribbleCategories, progress)
+                        section("Physique", physicalCategories, progress)
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 16)
@@ -24,6 +32,23 @@ struct TrophiesView: View {
             }
             .navigationTitle("Trophées")
             .navigationBarTitleDisplayMode(.large)
+        }
+    }
+
+    @ViewBuilder
+    private func section(_ title: String, _ categories: [TrophyCategory], _ progress: TrophyProgress) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(title)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.secondary)
+                .padding(.leading, 4)
+            ForEach(categories) { category in
+                TrophyCategoryCard(
+                    category: category,
+                    currentValue: progress.currentValues[category] ?? 0,
+                    unlockedTrophies: store.unlockedTrophies
+                )
+            }
         }
     }
 }

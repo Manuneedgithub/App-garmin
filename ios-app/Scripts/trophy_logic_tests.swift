@@ -133,5 +133,72 @@ struct TrophyTests {
         precondition(progress3.unlocks[TrophyID(category: .sessionCount, tierIndex: 0)] == date2026(4, 5))
 
         print("Task 4 assertions passed")
+
+        // MARK: - Task 5: Dribble/Physical trophy tracks
+
+        for category in [TrophyCategory.dribbleVolume, .dribbleSessionCount, .physicalAttempts, .physicalSessionCount] {
+            precondition(category.exerciseCategoryFilter == nil, "\(category) must not be a shooting-volume filter")
+        }
+        precondition(TrophyCategory.dribbleVolume.thresholds == [10, 30, 60, 150, 300, 600, 1200, 2500])
+        precondition(TrophyCategory.dribbleSessionCount.thresholds == [5, 15, 30, 50, 100, 200, 350, 500])
+        precondition(TrophyCategory.physicalAttempts.thresholds == [25, 75, 150, 300, 600, 1200, 2500, 5000])
+        precondition(TrophyCategory.physicalSessionCount.thresholds == [5, 15, 30, 50, 100, 200, 350, 500])
+        precondition(TrophyCategory.dribbleVolume.unitSuffix == " min")
+        precondition(TrophyCategory.dribbleSessionCount.unitSuffix == "")
+        precondition(TrophyCategory.physicalAttempts.unitSuffix == "")
+
+        // (a) Dribble volume accumulates totalSeconds -> minutes, dated to the session that crosses each tier.
+        let dribbleA = DribbleSession(routineName: "R1", date: date2026(5, 1), totalSeconds: 300,
+                                       drillTimes: [], sentFromWatch: false)              // 5 min total -> no tier yet (min 10)
+        let dribbleB = DribbleSession(routineName: "R2", date: date2026(5, 2), totalSeconds: 360,
+                                       drillTimes: [], sentFromWatch: false)              // +6 min -> 11 min total -> crosses tier0 (10)
+        let dribbleProgress = TrophyEngine.evaluate(sessions: [], dribbleSessions: [dribbleB, dribbleA])   // reversed order
+        precondition(dribbleProgress.currentValues[.dribbleVolume] == 11)
+        precondition(dribbleProgress.unlocks[TrophyID(category: .dribbleVolume, tierIndex: 0)] == date2026(5, 2),
+                     "tier0 (10 min) must be dated to the session that actually crosses 10 min, not the first one")
+        precondition(dribbleProgress.currentValues[.dribbleSessionCount] == 2)
+
+        // (b) dribbleSessionCount tier crossing at exact threshold.
+        var fiveDribbleSessions: [DribbleSession] = []
+        for i in 1...5 {
+            fiveDribbleSessions.append(DribbleSession(routineName: "R", date: date2026(6, i), totalSeconds: 1,
+                                                        drillTimes: [], sentFromWatch: false))
+        }
+        let dribbleProgress2 = TrophyEngine.evaluate(sessions: [], dribbleSessions: fiveDribbleSessions)
+        precondition(dribbleProgress2.unlocks[TrophyID(category: .dribbleSessionCount, tierIndex: 0)] == date2026(6, 5))
+
+        // (c) Physical attempts accumulate attempts.count across sessions, chrono and duration mixed.
+        let physicalA = PhysicalSession(exerciseName: "100m", kind: .chrono, date: date2026(7, 1),
+                                         attempts: [PhysicalAttempt(seconds: 14.2, reps: nil),
+                                                    PhysicalAttempt(seconds: 14.5, reps: nil)],   // 2 attempts
+                                         sentFromWatch: false)
+        let physicalB = PhysicalSession(exerciseName: "1 min aller-retour sprint", kind: .duration, date: date2026(7, 2),
+                                         attempts: [PhysicalAttempt(seconds: nil, reps: 8),
+                                                     PhysicalAttempt(seconds: nil, reps: 9),
+                                                     PhysicalAttempt(seconds: nil, reps: 7)],     // 3 attempts -> total 5
+                                         sentFromWatch: false)
+        let physicalProgress = TrophyEngine.evaluate(sessions: [], physicalSessions: [physicalB, physicalA])  // reversed order
+        precondition(physicalProgress.currentValues[.physicalAttempts] == 5)
+        precondition(physicalProgress.currentValues[.physicalSessionCount] == 2)
+
+        // (d) physicalSessionCount tier crossing at exact threshold.
+        var fivePhysicalSessions: [PhysicalSession] = []
+        for i in 1...5 {
+            fivePhysicalSessions.append(PhysicalSession(exerciseName: "25m", kind: .chrono, date: date2026(8, i),
+                                                          attempts: [PhysicalAttempt(seconds: 5.0, reps: nil)],
+                                                          sentFromWatch: false))
+        }
+        let physicalProgress2 = TrophyEngine.evaluate(sessions: [], physicalSessions: fivePhysicalSessions)
+        precondition(physicalProgress2.unlocks[TrophyID(category: .physicalSessionCount, tierIndex: 0)] == date2026(8, 5))
+
+        // (e) Isolation: shooting-only evaluation must not be affected by the new tracks' defaults being empty,
+        //     and dribble/physical data must not leak into shooting categories.
+        let shootingOnly = TrophyEngine.evaluate(sessions: [sessionA])
+        precondition(shootingOnly.currentValues[.dribbleVolume] == 0)
+        precondition(shootingOnly.currentValues[.physicalAttempts] == 0)
+        let mixed = TrophyEngine.evaluate(sessions: [sessionA], dribbleSessions: [dribbleA], physicalSessions: [physicalA])
+        precondition(mixed.currentValues[.totalShots] == 150, "dribble/physical data must not affect shooting totals")
+
+        print("Task 5 assertions passed")
     }
 }

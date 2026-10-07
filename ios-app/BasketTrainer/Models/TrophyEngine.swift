@@ -32,7 +32,9 @@ struct TrophyProgress {
 }
 
 extension TrophyEngine {
-    static func evaluate(sessions: [WorkoutSession]) -> TrophyProgress {
+    static func evaluate(sessions: [WorkoutSession],
+                          dribbleSessions: [DribbleSession] = [],
+                          physicalSessions: [PhysicalSession] = []) -> TrophyProgress {
         var unlocked: [TrophyID: Date] = [:]
         let cal = Calendar.current
 
@@ -78,16 +80,40 @@ extension TrophyEngine {
             record(.makeStreak, bestMakeStreak, session.date)
         }
 
+        // Dribble : temps cumulé (minutes, travail + repos) et nombre de séances.
+        var dribbleTotalSeconds = 0
+        var dribbleSessionCount = 0
+        for session in dribbleSessions.sorted(by: { $0.date < $1.date }) {
+            dribbleSessionCount += 1
+            dribbleTotalSeconds += session.totalSeconds
+            record(.dribbleSessionCount, dribbleSessionCount, session.date)
+            record(.dribbleVolume, dribbleTotalSeconds / 60, session.date)
+        }
+
+        // Physique : nombre total de tentatives (chrono + durée fixe) et nombre de séances.
+        var physicalAttemptCount = 0
+        var physicalSessionCount = 0
+        for session in physicalSessions.sorted(by: { $0.date < $1.date }) {
+            physicalSessionCount += 1
+            physicalAttemptCount += session.attempts.count
+            record(.physicalSessionCount, physicalSessionCount, session.date)
+            record(.physicalAttempts, physicalAttemptCount, session.date)
+        }
+
         let currentValues: [TrophyCategory: Int] = [
-            .totalShots:       totalShots,
-            .freeThrowVolume:  byCategory["Lancer Franc"] ?? 0,
-            .threePointVolume: byCategory["3 Points"] ?? 0,
-            .midRangeVolume:   byCategory["Mi-distance"] ?? 0,
-            .techniqueVolume:  byCategory["Technique"] ?? 0,
-            .sessionCount:     sessionCount,
-            .streakDays:       longestConsecutiveDayRun(trainingDays, cal: cal),
-            .bestAccuracy:     bestAccuracyPct,
-            .makeStreak:       bestMakeStreak,
+            .totalShots:           totalShots,
+            .freeThrowVolume:      byCategory["Lancer Franc"] ?? 0,
+            .threePointVolume:     byCategory["3 Points"] ?? 0,
+            .midRangeVolume:       byCategory["Mi-distance"] ?? 0,
+            .techniqueVolume:      byCategory["Technique"] ?? 0,
+            .sessionCount:         sessionCount,
+            .streakDays:           longestConsecutiveDayRun(trainingDays, cal: cal),
+            .bestAccuracy:         bestAccuracyPct,
+            .makeStreak:           bestMakeStreak,
+            .dribbleVolume:        dribbleTotalSeconds / 60,
+            .dribbleSessionCount:  dribbleSessionCount,
+            .physicalAttempts:     physicalAttemptCount,
+            .physicalSessionCount: physicalSessionCount,
         ]
 
         return TrophyProgress(unlocks: unlocked, currentValues: currentValues)

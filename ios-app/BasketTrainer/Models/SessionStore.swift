@@ -22,6 +22,9 @@ class SessionStore: ObservableObject {
     private let customSpotsKey   = "basket_custom_spots"
     private let trophiesKey = "basket_unlocked_trophies"
 
+    // Garde les abonnements Dribble/Physique en vie (voir init()).
+    private var cancellables = Set<AnyCancellable>()
+
     static let maxWatchSlots  = 5
     static let maxCustomSpots = 10
 
@@ -37,7 +40,22 @@ class SessionStore: ObservableObject {
         // and deadlock at app launch. evaluateTrophies() -> shotSegments ->
         // ExerciseType.category is currently safe only because `.category`
         // never reads `customDefinition` (see the comment on `.category` below).
+        // Accessing DribbleStore.shared/PhysicalStore.shared here is safe : ce sont
+        // des singletons distincts dont l'init() ne touche jamais SessionStore.shared.
         evaluateTrophies(announceNew: false)
+
+        // Les séances dribble/physique vivent dans leurs propres stores — on s'y
+        // abonne pour relancer l'évaluation des trophées sans que ces stores aient
+        // besoin de connaître SessionStore (dropFirst ignore la valeur déjà prise
+        // en compte ci-dessus, on ne veut que les changements futurs).
+        DribbleStore.shared.$sessions
+            .dropFirst()
+            .sink { [weak self] _ in self?.evaluateTrophies(announceNew: true) }
+            .store(in: &cancellables)
+        PhysicalStore.shared.$sessions
+            .dropFirst()
+            .sink { [weak self] _ in self?.evaluateTrophies(announceNew: true) }
+            .store(in: &cancellables)
     }
 
     // ── Lecture ──
@@ -261,7 +279,9 @@ class SessionStore: ObservableObject {
     // ── Trophies ──
 
     private func evaluateTrophies(announceNew: Bool) {
-        let progress = TrophyEngine.evaluate(sessions: sessions)
+        let progress = TrophyEngine.evaluate(sessions: sessions,
+                                              dribbleSessions: DribbleStore.shared.sessions,
+                                              physicalSessions: PhysicalStore.shared.sessions)
         var newlyUnlocked: [TrophyID] = []
         for (id, date) in progress.unlocks where unlockedTrophies[id.storageKey] == nil {
             unlockedTrophies[id.storageKey] = date
