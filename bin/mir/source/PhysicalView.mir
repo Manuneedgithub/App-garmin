@@ -1,0 +1,1650 @@
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; ]
+import Toybox.Time;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Timer,5,14,19]; ]
+import Toybox.Timer;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [System,6,14,20]; ]
+import Toybox.System;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 7; @symbol_importdef<0> = [Toybox,7,7,13]; @symbol_importdef<1> = [Attention,7,14,23]; ]
+import Toybox.Attention;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 8; @symbol_importdef<0> = [Toybox,8,7,13]; @symbol_importdef<1> = [Communications,8,14,28]; ]
+import Toybox.Communications;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 16; @position = 6; @symbol_constdef = [PHYS_IDLE,16,6,15]; ]
+const PHYS_IDLE = 0;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 17; @position = 6; @symbol_constdef = [PHYS_RUNNING,17,6,18]; ]
+const PHYS_RUNNING = 1;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 18; @position = 6; @symbol_constdef = [PHYS_COUNTDOWN,18,6,20]; ]
+const PHYS_COUNTDOWN = 2;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 19; @position = 6; @symbol_constdef = [PHYS_ENTERING_REPS,19,6,24]; ]
+const PHYS_ENTERING_REPS = 3;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 20; @position = 6; @symbol_constdef = [PHYS_MAX_REPS,20,6,19]; ]
+const PHYS_MAX_REPS = 50;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 22; @symbol_functiondef = [physicalVibe,22,9,21]; @symbol_param<0> = [durationMs,22,22,32]; @symbol_param<0>_type<0> = [Number,22,36,42]; ]
+function physicalVibe(durationMs as Number) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_22_52_26_0_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 23 4 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_23_4_25_4_if_stmt:
+    symbol [ Attention %tmp.1 23 8 17 ];
+    %tmp.1 = getm $.Toybox.Attention;
+    %tmp.3 = const :vibrate;
+    symbol [ vibrate %tmp.3 23 23 30 const ];
+    %tmp.4 = canhazplz %tmp.1 %tmp.3;
+    bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_23_4_25_4_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_23_4_25_4_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_23_32_25_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 24 8 ]
+    symbol [ Attention %tmp.5 24 8 17 ];
+    %tmp.5 = getm $.Toybox.Attention;
+    symbol [ vibrate %tmp.6 24 18 25 ];
+    %tmp.6 = getv function %tmp.5 :vibrate;
+    %tmp.7 = newa 1;
+    symbol [ Attention %tmp.10 24 31 40 ];
+    %tmp.10 = getm $.Toybox.Attention;
+    symbol [ VibeProfile %tmp.11 24 41 52 ];
+    %tmp.11 = getv function ? %tmp.10 :VibeProfile;
+    %tmp.12 = 100;
+    %tmp.13 = lgetv %durationMs;
+    symbol [ durationMs %tmp.13 24 58 68 ];
+    %tmp.8 = newc %tmp.11 (%tmp.12, %tmp.13);
+    %tmp.14 = dup %tmp.7;
+    %tmp.15 = aputv %tmp.14 0 %tmp.8;
+    invoke %tmp.5 %tmp.6(%tmp.15);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_23_32_25_4_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_23_4_25_4_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_23_4_25_4_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_22_52_26_0_stop:
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 29; @symbol_functiondef = [physicalFit,29,9,20]; @symbol_param<0> = [dc,29,21,23]; @symbol_param<0>_type<0> = [Graphics,29,27,35]; @symbol_param<0>_type<1> = [Dc,29,36,38]; @symbol_param<1> = [text,29,40,44]; @symbol_param<1>_type<0> = [String,29,48,54]; @symbol_param<2> = [font,29,56,60]; @symbol_param<2>_type<0> = [Graphics,29,64,72]; @symbol_param<2>_type<1> = [FontType,29,73,81]; @symbol_param<3> = [maxWidth,30,22,30]; @symbol_param<3>_type<0> = [Number,30,34,40]; @symbol_return<0> = [String,30,45,51]; ]
+function physicalFit(dc as Graphics.Dc, text as String, font as Graphics.FontType, maxWidth as Number) as String {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_30_52_39_0_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 31 4 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_31_4_31_72_if_stmt:
+    %tmp.1 = lgetv %dc;
+    symbol [ dc %tmp.1 31 8 10 ];
+    symbol [ getTextWidthInPixels %tmp.2 31 11 31 ];
+    %tmp.2 = getv function %tmp.1 :getTextWidthInPixels;
+    %tmp.3 = lgetv %text;
+    symbol [ text %tmp.3 31 32 36 ];
+    %tmp.4 = lgetv %font;
+    symbol [ font %tmp.4 31 38 42 ];
+    %tmp.5 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+    %tmp.6 = lgetv %maxWidth;
+    symbol [ maxWidth %tmp.6 31 47 55 ];
+    %tmp.7 = lte %tmp.5 %tmp.6;
+    bf %tmp.7 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_31_4_31_72_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_31_4_31_72_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_31_57_31_72_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 31 59 ]
+    %tmp.8 = lgetv %text;
+    symbol [ text %tmp.8 31 66 70 ];
+    ret %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_31_57_31_72_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_31_4_31_72_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_31_4_31_72_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 32 4 ]
+    [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_30_52_39_0_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_30_52_39_0_stop" ]
+    %len.1 = local;
+    symbol [ len %len.1 32 8 11 ];
+    %tmp.9 = lgetv %text;
+    symbol [ text %tmp.9 32 14 18 ];
+    symbol [ length %tmp.10 32 19 25 ];
+    %tmp.10 = getv function %tmp.9 :length;
+    %tmp.11 = invoke %tmp.9 %tmp.10();
+    lputv %len.1 %tmp.11;
+    symbol [ len %len.1 32 8 11 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 33 4 ]
+    while @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_4_37_4_while_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_4_37_4_while_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_4_37_4_while_test:
+    %tmp.12 = lgetv %len.1;
+    symbol [ len %tmp.12 33 11 14 ];
+    %tmp.13 = 0;
+    %tmp.14 = gt %tmp.12 %tmp.13;
+    bf %tmp.14 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_4_37_4_while_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_4_37_4_while_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_20_37_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 34 8 ]
+    %tmp.17 = lgetv %len.1;
+    symbol [ len %tmp.17 34 8 11 ];
+    %tmp.18 = sub %tmp.17 1;
+    lputv %len.1 %tmp.18;
+    symbol [ len %len.1 34 8 11 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 35 8 ]
+    [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_20_37_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_20_37_4_stop" ]
+    %candidate.2 = local;
+    symbol [ candidate %candidate.2 35 12 21 ];
+    %tmp.19 = lgetv %text;
+    symbol [ text %tmp.19 35 24 28 ];
+    symbol [ substring %tmp.20 35 29 38 ];
+    %tmp.20 = getv function %tmp.19 :substring;
+    %tmp.21 = 0;
+    %tmp.22 = lgetv %len.1;
+    symbol [ len %tmp.22 35 42 45 ];
+    %tmp.23 = invoke %tmp.19 %tmp.20(%tmp.21, %tmp.22);
+    %tmp.24 = "..";
+    %tmp.25 = add %tmp.23 %tmp.24;
+    lputv %candidate.2 %tmp.25;
+    symbol [ candidate %candidate.2 35 12 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 36 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_36_8_36_86_if_stmt:
+    %tmp.26 = lgetv %dc;
+    symbol [ dc %tmp.26 36 12 14 ];
+    symbol [ getTextWidthInPixels %tmp.27 36 15 35 ];
+    %tmp.27 = getv function %tmp.26 :getTextWidthInPixels;
+    %tmp.28 = lgetv %candidate.2;
+    symbol [ candidate %tmp.28 36 36 45 ];
+    %tmp.29 = lgetv %font;
+    symbol [ font %tmp.29 36 47 51 ];
+    %tmp.30 = invoke %tmp.26 %tmp.27(%tmp.28, %tmp.29);
+    %tmp.31 = lgetv %maxWidth;
+    symbol [ maxWidth %tmp.31 36 56 64 ];
+    %tmp.32 = lte %tmp.30 %tmp.31;
+    bf %tmp.32 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_36_8_36_86_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_36_8_36_86_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_36_66_36_86_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 36 68 ]
+    %tmp.33 = lgetv %candidate.2;
+    symbol [ candidate %tmp.33 36 75 84 ];
+    ret %tmp.33;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_36_66_36_86_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_36_8_36_86_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_36_8_36_86_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_20_37_4_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_4_37_4_while_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_33_4_37_4_while_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 38 4 ]
+    %tmp.34 = "..";
+    ret %tmp.34;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_30_52_39_0_stop:
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 42; @symbol_functiondef = [physicalClock,42,9,22]; @symbol_param<0> = [elapsed,42,23,30]; @symbol_param<0>_type<0> = [Double,42,34,40]; @symbol_return<0> = [String,42,45,51]; ]
+function physicalClock(elapsed as Double) as String {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 43 4 ]
+    [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_stop" ]
+    %t.1 = local;
+    symbol [ t %t.1 43 8 9 ];
+    %tmp.1 = lgetv %elapsed;
+    symbol [ elapsed %tmp.1 43 12 19 ];
+    symbol [ toNumber %tmp.2 43 20 28 ];
+    %tmp.2 = getv function %tmp.1 :toNumber;
+    %tmp.3 = invoke %tmp.1 %tmp.2();
+    lputv %t.1 %tmp.3;
+    symbol [ t %t.1 43 8 9 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 44 4 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_44_4_44_24_if_stmt:
+    %tmp.4 = lgetv %t.1;
+    symbol [ t %tmp.4 44 8 9 ];
+    %tmp.5 = 0;
+    %tmp.6 = lt %tmp.4 %tmp.5;
+    bf %tmp.6 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_44_4_44_24_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_44_4_44_24_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_44_15_44_24_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 44 17 ]
+    %tmp.7 = 0;
+    lputv %t.1 %tmp.7;
+    symbol [ t %t.1 44 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_44_15_44_24_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_44_4_44_24_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_44_4_44_24_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 45 4 ]
+    [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_stop" ]
+    %m.2 = local;
+    symbol [ m %m.2 45 8 9 ];
+    %tmp.8 = lgetv %t.1;
+    symbol [ t %tmp.8 45 12 13 ];
+    %tmp.9 = 60;
+    %tmp.10 = div %tmp.8 %tmp.9;
+    lputv %m.2 %tmp.10;
+    symbol [ m %m.2 45 8 9 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 46 4 ]
+    [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_stop" ]
+    %s.3 = local;
+    symbol [ s %s.3 46 8 9 ];
+    %tmp.11 = lgetv %t.1;
+    symbol [ t %tmp.11 46 12 13 ];
+    %tmp.12 = 60;
+    %tmp.13 = mod %tmp.11 %tmp.12;
+    lputv %s.3 %tmp.13;
+    symbol [ s %s.3 46 8 9 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 47 4 ]
+    %tmp.14 = lgetv %m.2;
+    symbol [ m %tmp.14 47 11 12 ];
+    symbol [ toString %tmp.15 47 13 21 ];
+    %tmp.15 = getv function %tmp.14 :toString;
+    %tmp.16 = invoke %tmp.14 %tmp.15();
+    %tmp.17 = ":";
+    %tmp.18 = add %tmp.16 %tmp.17;
+    %tmp.19 = lgetv %s.3;
+    symbol [ s %tmp.19 47 32 33 ];
+    symbol [ format %tmp.20 47 34 40 ];
+    %tmp.20 = getv function %tmp.19 :format;
+    %tmp.21 = "%02d";
+    %tmp.22 = invoke %tmp.19 %tmp.20(%tmp.21);
+    %tmp.23 = add %tmp.18 %tmp.22;
+    ret %tmp.23;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_42_52_48_0_stop:
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 50; @symbol_classdef = [PhysicalRun,50,6,17]; ]
+class PhysicalRun {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 50; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 50; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 51; @position = 8; @symbol_vardef = [name,51,8,12]; @symbol_type<0> = [String,51,24,30]; ]
+    var name as String;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 52; @position = 8; @symbol_vardef = [kind,52,8,12]; @symbol_type<0> = [String,52,24,30]; ]
+    var kind as String;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 53; @position = 8; @symbol_vardef = [fixedSeconds,53,8,20]; @symbol_type<0> = [Number,53,24,30]; ]
+    var fixedSeconds as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 54; @position = 8; @symbol_vardef = [startTime,54,8,17]; @symbol_type<0> = [Number,54,24,30]; ]
+    var startTime as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 55; @position = 8; @symbol_vardef = [attempts,55,8,16]; @symbol_type<0> = [Array,55,24,29]; ]
+    var attempts as Array;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 57; @position = 8; @symbol_vardef = [phase,57,8,13]; @symbol_type<0> = [Number,57,26,32]; ]
+    var phase as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 58; @position = 8; @symbol_vardef = [attemptStart,58,8,20]; @symbol_type<0> = [Number,58,26,32]; ]
+    var attemptStart as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 59; @position = 8; @symbol_vardef = [attemptStartMs,59,8,22]; @symbol_type<0> = [Number,59,26,32]; ]
+    var attemptStartMs as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 60; @position = 8; @symbol_vardef = [repsInput,60,8,17]; @symbol_type<0> = [Number,60,26,32]; ]
+    var repsInput as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 62; @symbol_functiondef = [initialize,62,13,23]; @symbol_param<0> = [def,62,24,27]; @symbol_param<0>_type<0> = [Dictionary,62,31,41]; ]
+    function initialize(def as Dictionary) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_62_43_72_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 63 8 ]
+        %tmp.1 = lgetv %def;
+        symbol [ def %tmp.1 63 23 26 ];
+        %tmp.2 = "name";
+        %tmp.3 = agetv %tmp.1 %tmp.2;
+        %tmp.4 = as %tmp.3 String;
+        symbol [ String %tmp.4 63 38 44 ];
+        symbol [ name ? 63 8 12 ];
+        putv self :name %tmp.4;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 64 8 ]
+        %tmp.5 = lgetv %def;
+        symbol [ def %tmp.5 64 23 26 ];
+        %tmp.6 = "kind";
+        %tmp.7 = agetv %tmp.5 %tmp.6;
+        %tmp.8 = as %tmp.7 String;
+        symbol [ String %tmp.8 64 38 44 ];
+        symbol [ kind ? 64 8 12 ];
+        putv self :kind %tmp.8;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 65 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_begin:
+        %tmp.9 = lgetv %def;
+        symbol [ def %tmp.9 65 24 27 ];
+        %tmp.10 = "seconds";
+        %tmp.11 = agetv %tmp.9 %tmp.10;
+        symbol [ Number %tmp.13 65 50 56 ];
+        %tmp.13 = getv ? :Number;
+        %tmp.14 = isa %tmp.11 %tmp.13;
+        bf %tmp.14 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_true:
+        %tmp.15 = lgetv %def;
+        symbol [ def %tmp.15 65 60 63 ];
+        %tmp.16 = "seconds";
+        %tmp.17 = agetv %tmp.15 %tmp.16;
+        %tmp.18 = as %tmp.17 Number;
+        symbol [ Number %tmp.18 65 78 84 ];
+        push %tmp.18;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_else_false:
+        %tmp.19 = 0;
+        push %tmp.19;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_end:
+        %tmp.20 = phi [%tmp.14 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_begin] [%tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_true] [%tmp.19 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_else_false] [%tmp.20 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_65_23_65_87_end];
+        symbol [ fixedSeconds ? 65 8 20 ];
+        putv self :fixedSeconds %tmp.20;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 66 8 ]
+        symbol [ Time %tmp.21 66 23 27 ];
+        %tmp.21 = getm $.Toybox.Time;
+        symbol [ now %tmp.22 66 28 31 ];
+        %tmp.22 = getv function %tmp.21 :now;
+        %tmp.23 = invoke %tmp.21 %tmp.22();
+        symbol [ value %tmp.24 66 34 39 ];
+        %tmp.24 = getv function %tmp.23 :value;
+        %tmp.25 = invoke %tmp.23 %tmp.24();
+        symbol [ startTime ? 66 8 17 ];
+        putv self :startTime %tmp.25;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 67 8 ]
+        %tmp.26 = newa 0;
+        symbol [ attempts ? 67 8 16 ];
+        putv self :attempts %tmp.26;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 68 8 ]
+        symbol [ PHYS_IDLE %tmp.28 68 25 34 ];
+        %tmp.28 = getv ? :PHYS_IDLE;
+        symbol [ phase ? 68 8 13 ];
+        putv self :phase %tmp.28;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 69 8 ]
+        %tmp.29 = 0;
+        symbol [ attemptStart ? 69 8 20 ];
+        putv self :attemptStart %tmp.29;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 70 8 ]
+        %tmp.30 = 0;
+        symbol [ attemptStartMs ? 70 8 22 ];
+        putv self :attemptStartMs %tmp.30;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 71 8 ]
+        %tmp.31 = 0;
+        symbol [ repsInput ? 71 8 17 ];
+        putv self :repsInput %tmp.31;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_62_43_72_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 74; @symbol_functiondef = [elapsedInAttempt,74,13,29]; @symbol_return<0> = [Double,74,35,41]; ]
+    function elapsedInAttempt() as Double {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_74_42_77_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 75 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_74_42_77_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_74_42_77_4_stop" ]
+        %e.1 = local;
+        symbol [ e %e.1 75 12 13 ];
+        symbol [ System %tmp.1 75 16 22 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.2 75 23 31 ];
+        %tmp.2 = getv function %tmp.1 :getTimer;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ attemptStartMs %tmp.5 75 36 50 ];
+        %tmp.5 = getv ? :attemptStartMs;
+        %tmp.6 = sub %tmp.3 %tmp.5;
+        lputv %e.1 %tmp.6;
+        symbol [ e %e.1 75 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 76 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_begin:
+        %tmp.7 = lgetv %e.1;
+        symbol [ e %tmp.7 76 16 17 ];
+        %tmp.8 = 0;
+        %tmp.9 = lt %tmp.7 %tmp.8;
+        bf %tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_true:
+        %tmp.10 = 0.0;
+        push %tmp.10;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_else_false:
+        %tmp.11 = lgetv %e.1;
+        symbol [ e %tmp.11 76 31 32 ];
+        symbol [ toDouble %tmp.12 76 33 41 ];
+        %tmp.12 = getv function %tmp.11 :toDouble;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        %tmp.14 = 1000.0;
+        %tmp.15 = div %tmp.13 %tmp.14;
+        push %tmp.15;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_end:
+        %tmp.16 = phi [%tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_begin] [%tmp.10 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_true] [%tmp.15 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_else_false] [%tmp.16 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_76_15_76_46_end];
+        ret %tmp.16;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_74_42_77_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 80; @symbol_functiondef = [onUp,80,13,17]; ]
+    function onUp() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_80_28_92_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 81 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_8_90_8_if_stmt:
+        symbol [ phase %tmp.2 81 12 17 ];
+        %tmp.2 = getv ? :phase;
+        symbol [ PHYS_IDLE %tmp.4 81 21 30 ];
+        %tmp.4 = getv ? :PHYS_IDLE;
+        %tmp.5 = eq %tmp.2 %tmp.4;
+        bf %tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_8_90_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_8_90_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_32_85_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 82 12 ]
+        symbol [ Time %tmp.6 82 29 33 ];
+        %tmp.6 = getm $.Toybox.Time;
+        symbol [ now %tmp.7 82 34 37 ];
+        %tmp.7 = getv function %tmp.6 :now;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        symbol [ value %tmp.9 82 40 45 ];
+        %tmp.9 = getv function %tmp.8 :value;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        symbol [ attemptStart ? 82 12 24 ];
+        putv self :attemptStart %tmp.10;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 83 12 ]
+        symbol [ System %tmp.11 83 29 35 ];
+        %tmp.11 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.12 83 36 44 ];
+        %tmp.12 = getv function %tmp.11 :getTimer;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        symbol [ attemptStartMs ? 83 12 26 ];
+        putv self :attemptStartMs %tmp.13;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 84 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_begin:
+        symbol [ kind %tmp.15 84 20 24 ];
+        %tmp.15 = getv ? :kind;
+        symbol [ equals %tmp.16 84 25 31 ];
+        %tmp.16 = getv function %tmp.15 :equals;
+        %tmp.17 = "duration";
+        %tmp.18 = invoke %tmp.15 %tmp.16(%tmp.17);
+        bf %tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_true:
+        symbol [ PHYS_COUNTDOWN %tmp.20 84 46 60 ];
+        %tmp.20 = getv ? :PHYS_COUNTDOWN;
+        push %tmp.20;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_else_false:
+        symbol [ PHYS_RUNNING %tmp.22 84 63 75 ];
+        %tmp.22 = getv ? :PHYS_RUNNING;
+        push %tmp.22;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_end:
+        %tmp.23 = phi [%tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_begin] [%tmp.20 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_true] [%tmp.22 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_else_false] [%tmp.23 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_84_20_84_63_end];
+        symbol [ phase ? 84 12 17 ];
+        putv self :phase %tmp.23;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_32_85_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_8_90_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_8_90_8_if_false:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 85 15 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_15_90_8_if_stmt:
+        symbol [ phase %tmp.25 85 19 24 ];
+        %tmp.25 = getv ? :phase;
+        symbol [ PHYS_RUNNING %tmp.27 85 28 40 ];
+        %tmp.27 = getv ? :PHYS_RUNNING;
+        %tmp.28 = eq %tmp.25 %tmp.27;
+        bf %tmp.28 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_15_90_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_15_90_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_42_88_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 86 12 ]
+        symbol [ attempts %tmp.30 86 12 20 ];
+        %tmp.30 = getv ? :attempts;
+        symbol [ add %tmp.31 86 21 24 ];
+        %tmp.31 = getv function %tmp.30 :add;
+        %tmp.32 = newd 1;
+        %tmp.33 = "seconds";
+        %tmp.34 = self;
+        symbol [ elapsedInAttempt %tmp.35 86 40 56 ];
+        %tmp.35 = getv function %tmp.34 :elapsedInAttempt;
+        %tmp.36 = invoke %tmp.34 %tmp.35();
+        %tmp.37 = dup %tmp.32;
+        %tmp.38 = aputv %tmp.37 %tmp.33 %tmp.36;
+        invoke %tmp.30 %tmp.31(%tmp.38);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 87 12 ]
+        symbol [ PHYS_IDLE %tmp.40 87 20 29 ];
+        %tmp.40 = getv ? :PHYS_IDLE;
+        symbol [ phase ? 87 12 17 ];
+        putv self :phase %tmp.40;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_42_88_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_15_90_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_15_90_8_if_false:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 88 15 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_88_15_90_8_if_stmt:
+        symbol [ phase %tmp.42 88 19 24 ];
+        %tmp.42 = getv ? :phase;
+        symbol [ PHYS_ENTERING_REPS %tmp.44 88 28 46 ];
+        %tmp.44 = getv ? :PHYS_ENTERING_REPS;
+        %tmp.45 = eq %tmp.42 %tmp.44;
+        bf %tmp.45 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_88_15_90_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_88_15_90_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_88_48_90_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 89 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_89_12_89_58_if_stmt:
+        symbol [ repsInput %tmp.47 89 16 25 ];
+        %tmp.47 = getv ? :repsInput;
+        symbol [ PHYS_MAX_REPS %tmp.49 89 28 41 ];
+        %tmp.49 = getv ? :PHYS_MAX_REPS;
+        %tmp.50 = lt %tmp.47 %tmp.49;
+        bf %tmp.50 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_89_12_89_58_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_89_12_89_58_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_89_43_89_58_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 89 45 ]
+        symbol [ repsInput %tmp.53 89 45 54 ];
+        %tmp.53 = getv ? :repsInput;
+        %tmp.54 = add %tmp.53 1;
+        symbol [ repsInput ? 89 45 54 ];
+        putv self :repsInput dup %tmp.54;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_89_43_89_58_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_89_12_89_58_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_89_12_89_58_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_88_48_90_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_88_15_90_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_88_15_90_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_85_15_90_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_81_8_90_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_80_28_92_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 95; @symbol_functiondef = [onDown,95,13,19]; ]
+    function onDown() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_95_30_99_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 96 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_8_98_8_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_12_96_55_begin:
+        symbol [ phase %tmp.2 96 12 17 ];
+        %tmp.2 = getv ? :phase;
+        symbol [ PHYS_ENTERING_REPS %tmp.4 96 21 39 ];
+        %tmp.4 = getv ? :PHYS_ENTERING_REPS;
+        %tmp.5 = eq %tmp.2 %tmp.4;
+        bf %tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_8_98_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_43_96_55_true:
+        symbol [ repsInput %tmp.7 96 43 52 ];
+        %tmp.7 = getv ? :repsInput;
+        %tmp.8 = 0;
+        %tmp.9 = gt %tmp.7 %tmp.8;
+        push %tmp.9;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_43_96_55_end:
+        %tmp.10 = phi [%tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_12_96_55_begin] [%tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_43_96_55_true] [%tmp.10 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_43_96_55_end];
+        bf %tmp.10 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_8_98_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_8_98_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_58_98_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 97 12 ]
+        symbol [ repsInput %tmp.13 97 12 21 ];
+        %tmp.13 = getv ? :repsInput;
+        %tmp.14 = sub %tmp.13 1;
+        symbol [ repsInput ? 97 12 21 ];
+        putv self :repsInput dup %tmp.14;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_58_98_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_8_98_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_96_8_98_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_95_30_99_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 102; @symbol_functiondef = [onConfirm,102,13,22]; ]
+    function onConfirm() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_102_33_109_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 103 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_103_8_103_51_if_stmt:
+        symbol [ phase %tmp.2 103 12 17 ];
+        %tmp.2 = getv ? :phase;
+        symbol [ PHYS_ENTERING_REPS %tmp.4 103 21 39 ];
+        %tmp.4 = getv ? :PHYS_ENTERING_REPS;
+        %tmp.5 = ne %tmp.2 %tmp.4;
+        bf %tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_103_8_103_51_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_103_8_103_51_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_103_41_103_51_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 103 43 ]
+        ret ?;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_103_41_103_51_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_103_8_103_51_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_103_8_103_51_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 104 8 ]
+        symbol [ attempts %tmp.7 104 8 16 ];
+        %tmp.7 = getv ? :attempts;
+        symbol [ add %tmp.8 104 17 20 ];
+        %tmp.8 = getv function %tmp.7 :add;
+        %tmp.9 = newd 1;
+        %tmp.10 = "reps";
+        symbol [ repsInput %tmp.12 104 33 42 ];
+        %tmp.12 = getv ? :repsInput;
+        %tmp.13 = dup %tmp.9;
+        %tmp.14 = aputv %tmp.13 %tmp.10 %tmp.12;
+        invoke %tmp.7 %tmp.8(%tmp.14);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 105 8 ]
+        %tmp.15 = 0;
+        symbol [ repsInput ? 105 8 17 ];
+        putv self :repsInput %tmp.15;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 106 8 ]
+        symbol [ Time %tmp.16 106 25 29 ];
+        %tmp.16 = getm $.Toybox.Time;
+        symbol [ now %tmp.17 106 30 33 ];
+        %tmp.17 = getv function %tmp.16 :now;
+        %tmp.18 = invoke %tmp.16 %tmp.17();
+        symbol [ value %tmp.19 106 36 41 ];
+        %tmp.19 = getv function %tmp.18 :value;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        symbol [ attemptStart ? 106 8 20 ];
+        putv self :attemptStart %tmp.20;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 107 8 ]
+        symbol [ System %tmp.21 107 25 31 ];
+        %tmp.21 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.22 107 32 40 ];
+        %tmp.22 = getv function %tmp.21 :getTimer;
+        %tmp.23 = invoke %tmp.21 %tmp.22();
+        symbol [ attemptStartMs ? 107 8 22 ];
+        putv self :attemptStartMs %tmp.23;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 108 8 ]
+        symbol [ PHYS_COUNTDOWN %tmp.25 108 25 39 ];
+        %tmp.25 = getv ? :PHYS_COUNTDOWN;
+        symbol [ phase ? 108 8 13 ];
+        putv self :phase %tmp.25;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_102_33_109_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 113; @symbol_functiondef = [tick,113,13,17]; @symbol_return<0> = [Boolean,113,23,30]; ]
+    function tick() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_113_31_119_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 114 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_8_117_8_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_12_114_61_begin:
+        symbol [ phase %tmp.2 114 12 17 ];
+        %tmp.2 = getv ? :phase;
+        symbol [ PHYS_COUNTDOWN %tmp.4 114 21 35 ];
+        %tmp.4 = getv ? :PHYS_COUNTDOWN;
+        %tmp.5 = eq %tmp.2 %tmp.4;
+        bf %tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_8_117_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_39_114_61_true:
+        %tmp.6 = self;
+        symbol [ elapsedInAttempt %tmp.7 114 39 55 ];
+        %tmp.7 = getv function %tmp.6 :elapsedInAttempt;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        symbol [ fixedSeconds %tmp.10 114 61 73 ];
+        %tmp.10 = getv ? :fixedSeconds;
+        %tmp.11 = gte %tmp.8 %tmp.10;
+        push %tmp.11;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_39_114_61_end:
+        %tmp.12 = phi [%tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_12_114_61_begin] [%tmp.11 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_39_114_61_true] [%tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_39_114_61_end];
+        bf %tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_8_117_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_8_117_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_75_117_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 115 12 ]
+        symbol [ PHYS_ENTERING_REPS %tmp.14 115 20 38 ];
+        %tmp.14 = getv ? :PHYS_ENTERING_REPS;
+        symbol [ phase ? 115 12 17 ];
+        putv self :phase %tmp.14;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 116 12 ]
+        %tmp.15 = true;
+        ret %tmp.15;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_75_117_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_8_117_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_114_8_117_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 118 8 ]
+        %tmp.16 = false;
+        ret %tmp.16;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_113_31_119_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 122; @symbol_functiondef = [secondsLeft,122,13,24]; @symbol_return<0> = [Number,122,30,36]; ]
+    function secondsLeft() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_122_37_128_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 123 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_122_37_128_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_122_37_128_4_stop" ]
+        %remaining.1 = local;
+        symbol [ remaining %remaining.1 123 12 21 ];
+        symbol [ fixedSeconds %tmp.2 123 24 36 ];
+        %tmp.2 = getv ? :fixedSeconds;
+        symbol [ toDouble %tmp.3 123 37 45 ];
+        %tmp.3 = getv function %tmp.2 :toDouble;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        %tmp.5 = self;
+        symbol [ elapsedInAttempt %tmp.6 123 50 66 ];
+        %tmp.6 = getv function %tmp.5 :elapsedInAttempt;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = sub %tmp.4 %tmp.7;
+        lputv %remaining.1 %tmp.8;
+        symbol [ remaining %remaining.1 123 12 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 124 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_124_8_124_40_if_stmt:
+        %tmp.9 = lgetv %remaining.1;
+        symbol [ remaining %tmp.9 124 12 21 ];
+        %tmp.10 = 0;
+        %tmp.11 = lte %tmp.9 %tmp.10;
+        bf %tmp.11 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_124_8_124_40_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_124_8_124_40_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_124_28_124_40_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 124 30 ]
+        %tmp.12 = 0;
+        ret %tmp.12;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_124_28_124_40_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_124_8_124_40_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_124_8_124_40_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 125 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_122_37_128_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_122_37_128_4_stop" ]
+        %whole.2 = local;
+        symbol [ whole %whole.2 125 12 17 ];
+        %tmp.13 = lgetv %remaining.1;
+        symbol [ remaining %tmp.13 125 20 29 ];
+        symbol [ toNumber %tmp.14 125 30 38 ];
+        %tmp.14 = getv function %tmp.13 :toNumber;
+        %tmp.15 = invoke %tmp.13 %tmp.14();
+        lputv %whole.2 %tmp.15;
+        symbol [ whole %whole.2 125 12 17 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 126 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_126_8_126_52_if_stmt:
+        %tmp.16 = lgetv %remaining.1;
+        symbol [ remaining %tmp.16 126 12 21 ];
+        %tmp.17 = lgetv %whole.2;
+        symbol [ whole %tmp.17 126 24 29 ];
+        %tmp.18 = gt %tmp.16 %tmp.17;
+        bf %tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_126_8_126_52_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_126_8_126_52_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_126_31_126_52_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 126 33 ]
+        %tmp.19 = lgetv %whole.2;
+        symbol [ whole %tmp.19 126 41 46 ];
+        %tmp.20 = 1;
+        %tmp.21 = add %tmp.19 %tmp.20;
+        lputv %whole.2 %tmp.21;
+        symbol [ whole %whole.2 126 33 38 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_126_31_126_52_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_126_8_126_52_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_126_8_126_52_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 127 8 ]
+        %tmp.22 = lgetv %whole.2;
+        symbol [ whole %tmp.22 127 15 20 ];
+        ret %tmp.22;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_122_37_128_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 130; @symbol_functiondef = [hasAttempts,130,13,24]; @symbol_return<0> = [Boolean,130,30,37]; ]
+    function hasAttempts() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_130_38_132_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 131 8 ]
+        symbol [ attempts %tmp.2 131 15 23 ];
+        %tmp.2 = getv ? :attempts;
+        symbol [ size %tmp.3 131 24 28 ];
+        %tmp.3 = getv function %tmp.2 :size;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        %tmp.5 = 0;
+        %tmp.6 = gt %tmp.4 %tmp.5;
+        ret %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_130_38_132_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 134; @symbol_functiondef = [finishPendingAttempt,134,13,33]; ]
+    function finishPendingAttempt() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_134_44_140_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 135 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_135_8_139_8_if_stmt:
+        symbol [ phase %tmp.2 135 12 17 ];
+        %tmp.2 = getv ? :phase;
+        symbol [ PHYS_ENTERING_REPS %tmp.4 135 21 39 ];
+        %tmp.4 = getv ? :PHYS_ENTERING_REPS;
+        %tmp.5 = eq %tmp.2 %tmp.4;
+        bf %tmp.5 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_135_8_139_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_135_8_139_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_135_41_139_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 136 12 ]
+        symbol [ attempts %tmp.7 136 12 20 ];
+        %tmp.7 = getv ? :attempts;
+        symbol [ add %tmp.8 136 21 24 ];
+        %tmp.8 = getv function %tmp.7 :add;
+        %tmp.9 = newd 1;
+        %tmp.10 = "reps";
+        symbol [ repsInput %tmp.12 136 37 46 ];
+        %tmp.12 = getv ? :repsInput;
+        %tmp.13 = dup %tmp.9;
+        %tmp.14 = aputv %tmp.13 %tmp.10 %tmp.12;
+        invoke %tmp.7 %tmp.8(%tmp.14);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 137 12 ]
+        %tmp.15 = 0;
+        symbol [ repsInput ? 137 12 21 ];
+        putv self :repsInput %tmp.15;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 138 12 ]
+        symbol [ PHYS_IDLE %tmp.17 138 20 29 ];
+        %tmp.17 = getv ? :PHYS_IDLE;
+        symbol [ phase ? 138 12 17 ];
+        putv self :phase %tmp.17;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_135_41_139_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_135_8_139_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_135_8_139_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_134_44_140_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 142; @symbol_functiondef = [toDictionary,142,13,25]; @symbol_return<0> = [Dictionary,142,31,41]; ]
+    function toDictionary() as Dictionary {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_142_42_150_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 143 8 ]
+        %tmp.1 = newd 5;
+        %tmp.2 = "type";
+        %tmp.3 = "physicalSession";
+        %tmp.4 = dup %tmp.1;
+        %tmp.5 = aputv %tmp.4 %tmp.2 %tmp.3;
+        %tmp.6 = "exerciseName";
+        symbol [ name %tmp.8 145 30 34 ];
+        %tmp.8 = getv ? :name;
+        %tmp.9 = dup %tmp.5;
+        %tmp.10 = aputv %tmp.9 %tmp.6 %tmp.8;
+        %tmp.11 = "kind";
+        symbol [ kind %tmp.13 146 30 34 ];
+        %tmp.13 = getv ? :kind;
+        %tmp.14 = dup %tmp.10;
+        %tmp.15 = aputv %tmp.14 %tmp.11 %tmp.13;
+        %tmp.16 = "startTime";
+        symbol [ startTime %tmp.18 147 30 39 ];
+        %tmp.18 = getv ? :startTime;
+        %tmp.19 = dup %tmp.15;
+        %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+        %tmp.21 = "attempts";
+        symbol [ attempts %tmp.23 148 30 38 ];
+        %tmp.23 = getv ? :attempts;
+        %tmp.24 = dup %tmp.20;
+        %tmp.25 = aputv %tmp.24 %tmp.21 %tmp.23;
+        ret %tmp.25;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_142_42_150_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 153; @symbol_classdef = [PhysicalRunView,153,6,21]; @symbol_extends<0> = [WatchUi,153,30,37]; @symbol_extends<1> = [View,153,38,42]; ]
+class PhysicalRunView extends WatchUi.View {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 153; ]
+    <init> {
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 157 18 ]
+        symbol [ Graphics %tmp.26 157 33 41 ];
+        %tmp.26 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.27 157 42 53 ];
+        %tmp.27 = getv %tmp.26 :COLOR_BLACK;
+        putv self :COLOR_BG %tmp.27;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 158 18 ]
+        symbol [ Graphics %tmp.28 158 33 41 ];
+        %tmp.28 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.29 158 42 53 ];
+        %tmp.29 = getv %tmp.28 :COLOR_WHITE;
+        putv self :COLOR_WHITE %tmp.29;
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 153; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 154; @position = 16; @symbol_vardef = [_run,154,16,20]; @symbol_type<0> = [PhysicalRun,154,26,37]; ]
+    private
+    var _run as PhysicalRun;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 155; @position = 16; @symbol_vardef = [_timer,155,16,22]; @symbol_type<0> = [Timer,155,26,31]; @symbol_type<1> = [Timer,155,32,37]; ]
+    private
+    var _timer as Timer.Timer or Null;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 157; @position = 18; @symbol_constdef = [COLOR_BG,157,18,26]; ]
+    private
+    const COLOR_BG;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 158; @position = 18; @symbol_constdef = [COLOR_WHITE,158,18,29]; ]
+    private
+    const COLOR_WHITE;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 159; @position = 18; @symbol_constdef = [COLOR_ORANGE,159,18,30]; ]
+    private
+    const COLOR_ORANGE = 0xFF6600;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 160; @position = 18; @symbol_constdef = [COLOR_RED,160,18,27]; ]
+    private
+    const COLOR_RED = 0xFF3333;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 161; @position = 18; @symbol_constdef = [COLOR_GRAY,161,18,28]; ]
+    private
+    const COLOR_GRAY = 0x888888;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 163; @symbol_functiondef = [initialize,163,13,23]; @symbol_param<0> = [run,163,24,27]; @symbol_param<0>_type<0> = [PhysicalRun,163,31,42]; ]
+    function initialize(run as PhysicalRun) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_163_44_166_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 164 8 ]
+        symbol [ View %tmp.2 164 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 164 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 165 8 ]
+        %tmp.4 = lgetv %run;
+        symbol [ run %tmp.4 165 15 18 ];
+        symbol [ _run ? 165 8 12 ];
+        putv self :_run %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_163_44_166_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 168; @symbol_functiondef = [onShow,168,13,19]; ]
+    function onShow() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_168_30_173_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 169 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_169_8_172_8_if_stmt:
+        symbol [ _timer %tmp.2 169 12 18 ];
+        %tmp.2 = getv ? :_timer;
+        %tmp.3 = null;
+        %tmp.4 = eq %tmp.2 %tmp.3;
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_169_8_172_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_169_8_172_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_169_28_172_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 170 12 ]
+        symbol [ Timer %tmp.7 170 25 30 ];
+        %tmp.7 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.8 170 31 36 ];
+        %tmp.8 = getv function ? %tmp.7 :Timer;
+        %tmp.5 = newc %tmp.8 ();
+        symbol [ _timer ? 170 12 18 ];
+        putv self :_timer %tmp.5;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 171 12 ]
+        symbol [ _timer %tmp.10 171 13 19 ];
+        %tmp.10 = getv ? :_timer;
+        %tmp.11 = as %tmp.10 Timer.Timer;
+        symbol [ Timer %tmp.11 171 23 28 ];
+        symbol [ Timer %tmp.11 171 29 34 ];
+        symbol [ start %tmp.12 171 36 41 ];
+        %tmp.12 = getv function %tmp.11 :start;
+        %tmp.13 = self;
+        symbol [ method %tmp.14 171 42 48 ];
+        %tmp.14 = getv function %tmp.13 :method;
+        %tmp.16 = const :onTick;
+        symbol [ onTick %tmp.16 171 50 56 const ];
+        %tmp.17 = invoke %tmp.13 %tmp.14(%tmp.16);
+        %tmp.18 = 1000;
+        %tmp.19 = true;
+        invoke %tmp.11 %tmp.12(%tmp.17, %tmp.18, %tmp.19);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_169_28_172_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_169_8_172_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_169_8_172_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_168_30_173_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 175; @symbol_functiondef = [onHide,175,13,19]; ]
+    function onHide() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_175_30_180_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 176 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_176_8_179_8_if_stmt:
+        symbol [ _timer %tmp.2 176 12 18 ];
+        %tmp.2 = getv ? :_timer;
+        %tmp.3 = null;
+        %tmp.4 = ne %tmp.2 %tmp.3;
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_176_8_179_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_176_8_179_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_176_28_179_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 177 12 ]
+        symbol [ _timer %tmp.6 177 13 19 ];
+        %tmp.6 = getv ? :_timer;
+        %tmp.7 = as %tmp.6 { (!Null) };
+        %tmp.8 = as %tmp.7 Timer.Timer;
+        symbol [ Timer %tmp.8 177 23 28 ];
+        symbol [ Timer %tmp.8 177 29 34 ];
+        symbol [ stop %tmp.9 177 36 40 ];
+        %tmp.9 = getv function %tmp.8 :stop;
+        invoke %tmp.8 %tmp.9();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 178 12 ]
+        %tmp.10 = null;
+        symbol [ _timer ? 178 12 18 ];
+        putv self :_timer %tmp.10;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_176_28_179_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_176_8_179_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_176_8_179_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_175_30_180_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 182; @symbol_functiondef = [onTick,182,13,19]; ]
+    function onTick() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_182_30_187_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 183 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_183_8_185_8_if_stmt:
+        symbol [ _run %tmp.2 183 12 16 ];
+        %tmp.2 = getv ? :_run;
+        symbol [ tick %tmp.3 183 17 21 ];
+        %tmp.3 = getv function %tmp.2 :tick;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_183_8_185_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_183_8_185_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_183_25_185_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 184 12 ]
+        %tmp.5 = self;
+        symbol [ physicalVibe %tmp.6 184 12 24 ];
+        %tmp.6 = getv function %tmp.5 :physicalVibe;
+        %tmp.7 = 400;
+        invoke %tmp.5 %tmp.6(%tmp.7);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_183_25_185_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_183_8_185_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_183_8_185_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 186 8 ]
+        symbol [ WatchUi %tmp.8 186 8 15 ];
+        %tmp.8 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.9 186 16 29 ];
+        %tmp.9 = getv function %tmp.8 :requestUpdate;
+        invoke %tmp.8 %tmp.9();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_182_30_187_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 189; @symbol_functiondef = [onUpdate,189,13,21]; @symbol_param<0> = [dc,189,22,24]; @symbol_param<0>_type<0> = [Graphics,189,28,36]; @symbol_param<0>_type<1> = [Dc,189,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_189_49_234_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 190 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_189_49_234_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_189_49_234_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 190 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 190 17 19 ];
+        symbol [ getWidth %tmp.2 190 20 28 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %w.1 %tmp.3;
+        symbol [ w %w.1 190 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 191 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_189_49_234_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_189_49_234_4_stop" ]
+        %cx.2 = local;
+        symbol [ cx %cx.2 191 12 14 ];
+        %tmp.4 = lgetv %w.1;
+        symbol [ w %tmp.4 191 17 18 ];
+        %tmp.5 = 2;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        lputv %cx.2 %tmp.6;
+        symbol [ cx %cx.2 191 12 14 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 192 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 192 8 10 ];
+        symbol [ setColor %tmp.8 192 11 19 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ COLOR_BG %tmp.10 192 20 28 ];
+        %tmp.10 = getv ? :COLOR_BG;
+        symbol [ COLOR_BG %tmp.12 192 30 38 ];
+        %tmp.12 = getv ? :COLOR_BG;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 193 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 193 8 10 ];
+        symbol [ clear %tmp.14 193 11 16 ];
+        %tmp.14 = getv function %tmp.13 :clear;
+        invoke %tmp.13 %tmp.14();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 195 8 ]
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 195 8 10 ];
+        symbol [ setColor %tmp.16 195 11 19 ];
+        %tmp.16 = getv function %tmp.15 :setColor;
+        symbol [ COLOR_GRAY %tmp.18 195 20 30 ];
+        %tmp.18 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.19 195 32 40 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.20 195 41 58 ];
+        %tmp.20 = getv %tmp.19 :COLOR_TRANSPARENT;
+        invoke %tmp.15 %tmp.16(%tmp.18, %tmp.20);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 196 8 ]
+        %tmp.21 = lgetv %dc;
+        symbol [ dc %tmp.21 196 8 10 ];
+        symbol [ drawText %tmp.22 196 11 19 ];
+        %tmp.22 = getv function %tmp.21 :drawText;
+        %tmp.23 = lgetv %cx.2;
+        symbol [ cx %tmp.23 196 20 22 ];
+        %tmp.24 = 24;
+        symbol [ Graphics %tmp.25 196 28 36 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.26 196 37 47 ];
+        %tmp.26 = getv %tmp.25 :FONT_XTINY;
+        %tmp.27 = self;
+        symbol [ physicalFit %tmp.28 196 49 60 ];
+        %tmp.28 = getv function %tmp.27 :physicalFit;
+        %tmp.29 = lgetv %dc;
+        symbol [ dc %tmp.29 196 61 63 ];
+        symbol [ _run %tmp.31 196 65 69 ];
+        %tmp.31 = getv ? :_run;
+        symbol [ name %tmp.32 196 70 74 ];
+        %tmp.32 = getv %tmp.31 :name;
+        symbol [ Graphics %tmp.33 196 76 84 ];
+        %tmp.33 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.34 196 85 95 ];
+        %tmp.34 = getv %tmp.33 :FONT_XTINY;
+        %tmp.35 = 150;
+        %tmp.36 = invoke %tmp.27 %tmp.28(%tmp.29, %tmp.32, %tmp.34, %tmp.35);
+        symbol [ Graphics %tmp.37 197 20 28 ];
+        %tmp.37 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.38 197 29 48 ];
+        %tmp.38 = getv %tmp.37 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.39 197 51 59 ];
+        %tmp.39 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.40 197 60 80 ];
+        %tmp.40 = getv %tmp.39 :TEXT_JUSTIFY_VCENTER;
+        %tmp.41 = bitor %tmp.38 %tmp.40;
+        invoke %tmp.21 %tmp.22(%tmp.23, %tmp.24, %tmp.26, %tmp.36, %tmp.41);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 198 8 ]
+        %tmp.42 = lgetv %dc;
+        symbol [ dc %tmp.42 198 8 10 ];
+        symbol [ drawText %tmp.43 198 11 19 ];
+        %tmp.43 = getv function %tmp.42 :drawText;
+        %tmp.44 = lgetv %cx.2;
+        symbol [ cx %tmp.44 198 20 22 ];
+        %tmp.45 = 48;
+        symbol [ Graphics %tmp.46 198 28 36 ];
+        %tmp.46 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.47 198 37 47 ];
+        %tmp.47 = getv %tmp.46 :FONT_XTINY;
+        symbol [ _run %tmp.49 198 49 53 ];
+        %tmp.49 = getv ? :_run;
+        symbol [ attempts %tmp.50 198 54 62 ];
+        %tmp.50 = getv %tmp.49 :attempts;
+        symbol [ size %tmp.51 198 63 67 ];
+        %tmp.51 = getv function %tmp.50 :size;
+        %tmp.52 = invoke %tmp.50 %tmp.51();
+        symbol [ toString %tmp.53 198 70 78 ];
+        %tmp.53 = getv function %tmp.52 :toString;
+        %tmp.54 = invoke %tmp.52 %tmp.53();
+        %tmp.55 = " tentative(s)";
+        %tmp.56 = add %tmp.54 %tmp.55;
+        symbol [ Graphics %tmp.57 199 20 28 ];
+        %tmp.57 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.58 199 29 48 ];
+        %tmp.58 = getv %tmp.57 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.59 199 51 59 ];
+        %tmp.59 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.60 199 60 80 ];
+        %tmp.60 = getv %tmp.59 :TEXT_JUSTIFY_VCENTER;
+        %tmp.61 = bitor %tmp.58 %tmp.60;
+        invoke %tmp.42 %tmp.43(%tmp.44, %tmp.45, %tmp.47, %tmp.56, %tmp.61);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 201 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_8_229_8_if_stmt:
+        symbol [ _run %tmp.63 201 12 16 ];
+        %tmp.63 = getv ? :_run;
+        symbol [ phase %tmp.64 201 17 22 ];
+        %tmp.64 = getv %tmp.63 :phase;
+        symbol [ PHYS_IDLE %tmp.66 201 26 35 ];
+        %tmp.66 = getv ? :PHYS_IDLE;
+        %tmp.67 = eq %tmp.64 %tmp.66;
+        bf %tmp.67 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_8_229_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_8_229_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_37_208_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 202 12 ]
+        %tmp.68 = lgetv %dc;
+        symbol [ dc %tmp.68 202 12 14 ];
+        symbol [ setColor %tmp.69 202 15 23 ];
+        %tmp.69 = getv function %tmp.68 :setColor;
+        symbol [ COLOR_WHITE %tmp.71 202 24 35 ];
+        %tmp.71 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.72 202 37 45 ];
+        %tmp.72 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.73 202 46 63 ];
+        %tmp.73 = getv %tmp.72 :COLOR_TRANSPARENT;
+        invoke %tmp.68 %tmp.69(%tmp.71, %tmp.73);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 203 12 ]
+        %tmp.74 = lgetv %dc;
+        symbol [ dc %tmp.74 203 12 14 ];
+        symbol [ drawText %tmp.75 203 15 23 ];
+        %tmp.75 = getv function %tmp.74 :drawText;
+        %tmp.76 = lgetv %cx.2;
+        symbol [ cx %tmp.76 203 24 26 ];
+        %tmp.77 = 120;
+        symbol [ Graphics %tmp.78 203 33 41 ];
+        %tmp.78 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.79 203 42 53 ];
+        %tmp.79 = getv %tmp.78 :FONT_MEDIUM;
+        %tmp.80 = "Prêt ?";
+        symbol [ Graphics %tmp.81 204 24 32 ];
+        %tmp.81 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.82 204 33 52 ];
+        %tmp.82 = getv %tmp.81 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.83 204 55 63 ];
+        %tmp.83 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.84 204 64 84 ];
+        %tmp.84 = getv %tmp.83 :TEXT_JUSTIFY_VCENTER;
+        %tmp.85 = bitor %tmp.82 %tmp.84;
+        invoke %tmp.74 %tmp.75(%tmp.76, %tmp.77, %tmp.79, %tmp.80, %tmp.85);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 205 12 ]
+        %tmp.86 = lgetv %dc;
+        symbol [ dc %tmp.86 205 12 14 ];
+        symbol [ setColor %tmp.87 205 15 23 ];
+        %tmp.87 = getv function %tmp.86 :setColor;
+        symbol [ COLOR_ORANGE %tmp.89 205 24 36 ];
+        %tmp.89 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.90 205 38 46 ];
+        %tmp.90 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.91 205 47 64 ];
+        %tmp.91 = getv %tmp.90 :COLOR_TRANSPARENT;
+        invoke %tmp.86 %tmp.87(%tmp.89, %tmp.91);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 206 12 ]
+        %tmp.92 = lgetv %dc;
+        symbol [ dc %tmp.92 206 12 14 ];
+        symbol [ drawText %tmp.93 206 15 23 ];
+        %tmp.93 = getv function %tmp.92 :drawText;
+        %tmp.94 = lgetv %cx.2;
+        symbol [ cx %tmp.94 206 24 26 ];
+        %tmp.95 = 160;
+        symbol [ Graphics %tmp.96 206 33 41 ];
+        %tmp.96 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.97 206 42 52 ];
+        %tmp.97 = getv %tmp.96 :FONT_XTINY;
+        %tmp.98 = "↑ Démarrer";
+        symbol [ Graphics %tmp.99 207 24 32 ];
+        %tmp.99 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.100 207 33 52 ];
+        %tmp.100 = getv %tmp.99 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.101 207 55 63 ];
+        %tmp.101 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.102 207 64 84 ];
+        %tmp.102 = getv %tmp.101 :TEXT_JUSTIFY_VCENTER;
+        %tmp.103 = bitor %tmp.100 %tmp.102;
+        invoke %tmp.92 %tmp.93(%tmp.94, %tmp.95, %tmp.97, %tmp.98, %tmp.103);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_37_208_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_8_229_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_8_229_8_if_false:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 208 15 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_15_229_8_if_stmt:
+        symbol [ _run %tmp.105 208 19 23 ];
+        %tmp.105 = getv ? :_run;
+        symbol [ phase %tmp.106 208 24 29 ];
+        %tmp.106 = getv %tmp.105 :phase;
+        symbol [ PHYS_RUNNING %tmp.108 208 33 45 ];
+        %tmp.108 = getv ? :PHYS_RUNNING;
+        %tmp.109 = eq %tmp.106 %tmp.108;
+        bf %tmp.109 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_15_229_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_15_229_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_47_215_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 209 12 ]
+        %tmp.110 = lgetv %dc;
+        symbol [ dc %tmp.110 209 12 14 ];
+        symbol [ setColor %tmp.111 209 15 23 ];
+        %tmp.111 = getv function %tmp.110 :setColor;
+        symbol [ COLOR_WHITE %tmp.113 209 24 35 ];
+        %tmp.113 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.114 209 37 45 ];
+        %tmp.114 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.115 209 46 63 ];
+        %tmp.115 = getv %tmp.114 :COLOR_TRANSPARENT;
+        invoke %tmp.110 %tmp.111(%tmp.113, %tmp.115);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 210 12 ]
+        %tmp.116 = lgetv %dc;
+        symbol [ dc %tmp.116 210 12 14 ];
+        symbol [ drawText %tmp.117 210 15 23 ];
+        %tmp.117 = getv function %tmp.116 :drawText;
+        %tmp.118 = lgetv %cx.2;
+        symbol [ cx %tmp.118 210 24 26 ];
+        %tmp.119 = 120;
+        symbol [ Graphics %tmp.120 210 33 41 ];
+        %tmp.120 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.121 210 42 60 ];
+        %tmp.121 = getv %tmp.120 :FONT_NUMBER_MEDIUM;
+        %tmp.122 = self;
+        symbol [ physicalClock %tmp.123 210 62 75 ];
+        %tmp.123 = getv function %tmp.122 :physicalClock;
+        symbol [ _run %tmp.125 210 76 80 ];
+        %tmp.125 = getv ? :_run;
+        symbol [ elapsedInAttempt %tmp.126 210 81 97 ];
+        %tmp.126 = getv function %tmp.125 :elapsedInAttempt;
+        %tmp.127 = invoke %tmp.125 %tmp.126();
+        %tmp.128 = invoke %tmp.122 %tmp.123(%tmp.127);
+        symbol [ Graphics %tmp.129 211 24 32 ];
+        %tmp.129 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.130 211 33 52 ];
+        %tmp.130 = getv %tmp.129 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.131 211 55 63 ];
+        %tmp.131 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.132 211 64 84 ];
+        %tmp.132 = getv %tmp.131 :TEXT_JUSTIFY_VCENTER;
+        %tmp.133 = bitor %tmp.130 %tmp.132;
+        invoke %tmp.116 %tmp.117(%tmp.118, %tmp.119, %tmp.121, %tmp.128, %tmp.133);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 212 12 ]
+        %tmp.134 = lgetv %dc;
+        symbol [ dc %tmp.134 212 12 14 ];
+        symbol [ setColor %tmp.135 212 15 23 ];
+        %tmp.135 = getv function %tmp.134 :setColor;
+        symbol [ COLOR_ORANGE %tmp.137 212 24 36 ];
+        %tmp.137 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.138 212 38 46 ];
+        %tmp.138 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.139 212 47 64 ];
+        %tmp.139 = getv %tmp.138 :COLOR_TRANSPARENT;
+        invoke %tmp.134 %tmp.135(%tmp.137, %tmp.139);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 213 12 ]
+        %tmp.140 = lgetv %dc;
+        symbol [ dc %tmp.140 213 12 14 ];
+        symbol [ drawText %tmp.141 213 15 23 ];
+        %tmp.141 = getv function %tmp.140 :drawText;
+        %tmp.142 = lgetv %cx.2;
+        symbol [ cx %tmp.142 213 24 26 ];
+        %tmp.143 = 160;
+        symbol [ Graphics %tmp.144 213 33 41 ];
+        %tmp.144 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.145 213 42 52 ];
+        %tmp.145 = getv %tmp.144 :FONT_XTINY;
+        %tmp.146 = "↑ Arrêter";
+        symbol [ Graphics %tmp.147 214 24 32 ];
+        %tmp.147 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.148 214 33 52 ];
+        %tmp.148 = getv %tmp.147 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.149 214 55 63 ];
+        %tmp.149 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.150 214 64 84 ];
+        %tmp.150 = getv %tmp.149 :TEXT_JUSTIFY_VCENTER;
+        %tmp.151 = bitor %tmp.148 %tmp.150;
+        invoke %tmp.140 %tmp.141(%tmp.142, %tmp.143, %tmp.145, %tmp.146, %tmp.151);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_47_215_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_15_229_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_15_229_8_if_false:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 215 15 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_15_229_8_if_stmt:
+        symbol [ _run %tmp.153 215 19 23 ];
+        %tmp.153 = getv ? :_run;
+        symbol [ phase %tmp.154 215 24 29 ];
+        %tmp.154 = getv %tmp.153 :phase;
+        symbol [ PHYS_COUNTDOWN %tmp.156 215 33 47 ];
+        %tmp.156 = getv ? :PHYS_COUNTDOWN;
+        %tmp.157 = eq %tmp.154 %tmp.156;
+        bf %tmp.157 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_15_229_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_15_229_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_49_220_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 216 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_49_220_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_49_220_8_stop" ]
+        %left.3 = local;
+        symbol [ left %left.3 216 16 20 ];
+        symbol [ _run %tmp.159 216 23 27 ];
+        %tmp.159 = getv ? :_run;
+        symbol [ secondsLeft %tmp.160 216 28 39 ];
+        %tmp.160 = getv function %tmp.159 :secondsLeft;
+        %tmp.161 = invoke %tmp.159 %tmp.160();
+        lputv %left.3 %tmp.161;
+        symbol [ left %left.3 216 16 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 217 12 ]
+        %tmp.162 = lgetv %dc;
+        symbol [ dc %tmp.162 217 12 14 ];
+        symbol [ setColor %tmp.163 217 15 23 ];
+        %tmp.163 = getv function %tmp.162 :setColor;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_begin:
+        %tmp.164 = lgetv %left.3;
+        symbol [ left %tmp.164 217 24 28 ];
+        %tmp.165 = 3;
+        %tmp.166 = lte %tmp.164 %tmp.165;
+        bf %tmp.166 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_true:
+        symbol [ COLOR_RED %tmp.168 217 36 45 ];
+        %tmp.168 = getv ? :COLOR_RED;
+        push %tmp.168;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_else_false:
+        symbol [ COLOR_WHITE %tmp.170 217 48 59 ];
+        %tmp.170 = getv ? :COLOR_WHITE;
+        push %tmp.170;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_end:
+        %tmp.171 = phi [%tmp.166 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_begin] [%tmp.168 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_true] [%tmp.170 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_else_false] [%tmp.171 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_217_24_217_48_end];
+        symbol [ Graphics %tmp.172 217 61 69 ];
+        %tmp.172 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.173 217 70 87 ];
+        %tmp.173 = getv %tmp.172 :COLOR_TRANSPARENT;
+        invoke %tmp.162 %tmp.163(%tmp.171, %tmp.173);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 218 12 ]
+        %tmp.174 = lgetv %dc;
+        symbol [ dc %tmp.174 218 12 14 ];
+        symbol [ drawText %tmp.175 218 15 23 ];
+        %tmp.175 = getv function %tmp.174 :drawText;
+        %tmp.176 = lgetv %cx.2;
+        symbol [ cx %tmp.176 218 24 26 ];
+        %tmp.177 = 120;
+        symbol [ Graphics %tmp.178 218 33 41 ];
+        %tmp.178 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.179 218 42 60 ];
+        %tmp.179 = getv %tmp.178 :FONT_NUMBER_MEDIUM;
+        %tmp.180 = lgetv %left.3;
+        symbol [ left %tmp.180 218 62 66 ];
+        symbol [ toString %tmp.181 218 67 75 ];
+        %tmp.181 = getv function %tmp.180 :toString;
+        %tmp.182 = invoke %tmp.180 %tmp.181();
+        symbol [ Graphics %tmp.183 219 24 32 ];
+        %tmp.183 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.184 219 33 52 ];
+        %tmp.184 = getv %tmp.183 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.185 219 55 63 ];
+        %tmp.185 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.186 219 64 84 ];
+        %tmp.186 = getv %tmp.185 :TEXT_JUSTIFY_VCENTER;
+        %tmp.187 = bitor %tmp.184 %tmp.186;
+        invoke %tmp.174 %tmp.175(%tmp.176, %tmp.177, %tmp.179, %tmp.182, %tmp.187);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_49_220_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_15_229_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_15_229_8_if_false:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 220 15 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_220_15_229_8_if_stmt:
+        symbol [ _run %tmp.189 220 19 23 ];
+        %tmp.189 = getv ? :_run;
+        symbol [ phase %tmp.190 220 24 29 ];
+        %tmp.190 = getv %tmp.189 :phase;
+        symbol [ PHYS_ENTERING_REPS %tmp.192 220 33 51 ];
+        %tmp.192 = getv ? :PHYS_ENTERING_REPS;
+        %tmp.193 = eq %tmp.190 %tmp.192;
+        bf %tmp.193 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_220_15_229_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_220_15_229_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_220_53_229_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 221 12 ]
+        %tmp.194 = lgetv %dc;
+        symbol [ dc %tmp.194 221 12 14 ];
+        symbol [ setColor %tmp.195 221 15 23 ];
+        %tmp.195 = getv function %tmp.194 :setColor;
+        symbol [ COLOR_WHITE %tmp.197 221 24 35 ];
+        %tmp.197 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.198 221 37 45 ];
+        %tmp.198 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.199 221 46 63 ];
+        %tmp.199 = getv %tmp.198 :COLOR_TRANSPARENT;
+        invoke %tmp.194 %tmp.195(%tmp.197, %tmp.199);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 222 12 ]
+        %tmp.200 = lgetv %dc;
+        symbol [ dc %tmp.200 222 12 14 ];
+        symbol [ drawText %tmp.201 222 15 23 ];
+        %tmp.201 = getv function %tmp.200 :drawText;
+        %tmp.202 = lgetv %cx.2;
+        symbol [ cx %tmp.202 222 24 26 ];
+        %tmp.203 = 90;
+        symbol [ Graphics %tmp.204 222 32 40 ];
+        %tmp.204 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.205 222 41 51 ];
+        %tmp.205 = getv %tmp.204 :FONT_XTINY;
+        %tmp.206 = "Répétitions ?";
+        symbol [ Graphics %tmp.207 223 24 32 ];
+        %tmp.207 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.208 223 33 52 ];
+        %tmp.208 = getv %tmp.207 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.209 223 55 63 ];
+        %tmp.209 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.210 223 64 84 ];
+        %tmp.210 = getv %tmp.209 :TEXT_JUSTIFY_VCENTER;
+        %tmp.211 = bitor %tmp.208 %tmp.210;
+        invoke %tmp.200 %tmp.201(%tmp.202, %tmp.203, %tmp.205, %tmp.206, %tmp.211);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 224 12 ]
+        %tmp.212 = lgetv %dc;
+        symbol [ dc %tmp.212 224 12 14 ];
+        symbol [ drawText %tmp.213 224 15 23 ];
+        %tmp.213 = getv function %tmp.212 :drawText;
+        %tmp.214 = lgetv %cx.2;
+        symbol [ cx %tmp.214 224 24 26 ];
+        %tmp.215 = 130;
+        symbol [ Graphics %tmp.216 224 33 41 ];
+        %tmp.216 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.217 224 42 60 ];
+        %tmp.217 = getv %tmp.216 :FONT_NUMBER_MEDIUM;
+        symbol [ _run %tmp.219 224 62 66 ];
+        %tmp.219 = getv ? :_run;
+        symbol [ repsInput %tmp.220 224 67 76 ];
+        %tmp.220 = getv %tmp.219 :repsInput;
+        symbol [ toString %tmp.221 224 77 85 ];
+        %tmp.221 = getv function %tmp.220 :toString;
+        %tmp.222 = invoke %tmp.220 %tmp.221();
+        symbol [ Graphics %tmp.223 225 24 32 ];
+        %tmp.223 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.224 225 33 52 ];
+        %tmp.224 = getv %tmp.223 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.225 225 55 63 ];
+        %tmp.225 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.226 225 64 84 ];
+        %tmp.226 = getv %tmp.225 :TEXT_JUSTIFY_VCENTER;
+        %tmp.227 = bitor %tmp.224 %tmp.226;
+        invoke %tmp.212 %tmp.213(%tmp.214, %tmp.215, %tmp.217, %tmp.222, %tmp.227);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 226 12 ]
+        %tmp.228 = lgetv %dc;
+        symbol [ dc %tmp.228 226 12 14 ];
+        symbol [ setColor %tmp.229 226 15 23 ];
+        %tmp.229 = getv function %tmp.228 :setColor;
+        symbol [ COLOR_ORANGE %tmp.231 226 24 36 ];
+        %tmp.231 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.232 226 38 46 ];
+        %tmp.232 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.233 226 47 64 ];
+        %tmp.233 = getv %tmp.232 :COLOR_TRANSPARENT;
+        invoke %tmp.228 %tmp.229(%tmp.231, %tmp.233);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 227 12 ]
+        %tmp.234 = lgetv %dc;
+        symbol [ dc %tmp.234 227 12 14 ];
+        symbol [ drawText %tmp.235 227 15 23 ];
+        %tmp.235 = getv function %tmp.234 :drawText;
+        %tmp.236 = lgetv %cx.2;
+        symbol [ cx %tmp.236 227 24 26 ];
+        %tmp.237 = 170;
+        symbol [ Graphics %tmp.238 227 33 41 ];
+        %tmp.238 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.239 227 42 52 ];
+        %tmp.239 = getv %tmp.238 :FONT_XTINY;
+        %tmp.240 = "↑/↓  ● Valider";
+        symbol [ Graphics %tmp.241 228 24 32 ];
+        %tmp.241 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.242 228 33 52 ];
+        %tmp.242 = getv %tmp.241 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.243 228 55 63 ];
+        %tmp.243 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.244 228 64 84 ];
+        %tmp.244 = getv %tmp.243 :TEXT_JUSTIFY_VCENTER;
+        %tmp.245 = bitor %tmp.242 %tmp.244;
+        invoke %tmp.234 %tmp.235(%tmp.236, %tmp.237, %tmp.239, %tmp.240, %tmp.245);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_220_53_229_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_220_15_229_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_220_15_229_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_215_15_229_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_208_15_229_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_201_8_229_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 231 8 ]
+        %tmp.246 = lgetv %dc;
+        symbol [ dc %tmp.246 231 8 10 ];
+        symbol [ setColor %tmp.247 231 11 19 ];
+        %tmp.247 = getv function %tmp.246 :setColor;
+        symbol [ COLOR_GRAY %tmp.249 231 20 30 ];
+        %tmp.249 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.250 231 32 40 ];
+        %tmp.250 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.251 231 41 58 ];
+        %tmp.251 = getv %tmp.250 :COLOR_TRANSPARENT;
+        invoke %tmp.246 %tmp.247(%tmp.249, %tmp.251);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 232 8 ]
+        %tmp.252 = lgetv %dc;
+        symbol [ dc %tmp.252 232 8 10 ];
+        symbol [ drawText %tmp.253 232 11 19 ];
+        %tmp.253 = getv function %tmp.252 :drawText;
+        %tmp.254 = lgetv %cx.2;
+        symbol [ cx %tmp.254 232 20 22 ];
+        %tmp.255 = 222;
+        symbol [ Graphics %tmp.256 232 29 37 ];
+        %tmp.256 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.257 232 38 48 ];
+        %tmp.257 = getv %tmp.256 :FONT_XTINY;
+        %tmp.258 = "↩ Terminer";
+        symbol [ Graphics %tmp.259 233 20 28 ];
+        %tmp.259 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.260 233 29 48 ];
+        %tmp.260 = getv %tmp.259 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.261 233 51 59 ];
+        %tmp.261 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.262 233 60 80 ];
+        %tmp.262 = getv %tmp.261 :TEXT_JUSTIFY_VCENTER;
+        %tmp.263 = bitor %tmp.260 %tmp.262;
+        invoke %tmp.252 %tmp.253(%tmp.254, %tmp.255, %tmp.257, %tmp.258, %tmp.263);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_189_49_234_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 237; @symbol_classdef = [PhysicalRunDelegate,237,6,25]; @symbol_extends<0> = [WatchUi,237,34,41]; @symbol_extends<1> = [BehaviorDelegate,237,42,58]; ]
+class PhysicalRunDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 237; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 237; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 238; @position = 16; @symbol_vardef = [_run,238,16,20]; @symbol_type<0> = [PhysicalRun,238,24,35]; ]
+    private
+    var _run as PhysicalRun;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 240; @symbol_functiondef = [initialize,240,13,23]; @symbol_param<0> = [run,240,24,27]; @symbol_param<0>_type<0> = [PhysicalRun,240,31,42]; ]
+    function initialize(run as PhysicalRun) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_240_44_243_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 241 8 ]
+        symbol [ BehaviorDelegate %tmp.2 241 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 241 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 242 8 ]
+        %tmp.4 = lgetv %run;
+        symbol [ run %tmp.4 242 15 18 ];
+        symbol [ _run ? 242 8 12 ];
+        putv self :_run %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_240_44_243_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 245; @symbol_functiondef = [onNextPage,245,13,23]; @symbol_return<0> = [Boolean,245,29,36]; ]
+    function onNextPage() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_245_37_249_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 246 8 ]
+        symbol [ _run %tmp.2 246 8 12 ];
+        %tmp.2 = getv ? :_run;
+        symbol [ onUp %tmp.3 246 13 17 ];
+        %tmp.3 = getv function %tmp.2 :onUp;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 247 8 ]
+        symbol [ WatchUi %tmp.4 247 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.5 247 16 29 ];
+        %tmp.5 = getv function %tmp.4 :requestUpdate;
+        invoke %tmp.4 %tmp.5();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 248 8 ]
+        %tmp.6 = true;
+        ret %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_245_37_249_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 251; @symbol_functiondef = [onPreviousPage,251,13,27]; @symbol_return<0> = [Boolean,251,33,40]; ]
+    function onPreviousPage() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_251_41_255_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 252 8 ]
+        symbol [ _run %tmp.2 252 8 12 ];
+        %tmp.2 = getv ? :_run;
+        symbol [ onDown %tmp.3 252 13 19 ];
+        %tmp.3 = getv function %tmp.2 :onDown;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 253 8 ]
+        symbol [ WatchUi %tmp.4 253 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.5 253 16 29 ];
+        %tmp.5 = getv function %tmp.4 :requestUpdate;
+        invoke %tmp.4 %tmp.5();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 254 8 ]
+        %tmp.6 = true;
+        ret %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_251_41_255_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 257; @symbol_functiondef = [onSelect,257,13,21]; @symbol_return<0> = [Boolean,257,27,34]; ]
+    function onSelect() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_257_35_261_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 258 8 ]
+        symbol [ _run %tmp.2 258 8 12 ];
+        %tmp.2 = getv ? :_run;
+        symbol [ onConfirm %tmp.3 258 13 22 ];
+        %tmp.3 = getv function %tmp.2 :onConfirm;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 259 8 ]
+        symbol [ WatchUi %tmp.4 259 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.5 259 16 29 ];
+        %tmp.5 = getv function %tmp.4 :requestUpdate;
+        invoke %tmp.4 %tmp.5();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 260 8 ]
+        %tmp.6 = true;
+        ret %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_257_35_261_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 263; @symbol_functiondef = [onBack,263,13,19]; @symbol_return<0> = [Boolean,263,25,32]; ]
+    function onBack() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_263_33_271_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 264 8 ]
+        symbol [ _run %tmp.2 264 8 12 ];
+        %tmp.2 = getv ? :_run;
+        symbol [ finishPendingAttempt %tmp.3 264 13 33 ];
+        %tmp.3 = getv function %tmp.2 :finishPendingAttempt;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 265 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_8_268_8_if_stmt:
+        symbol [ _run %tmp.5 265 12 16 ];
+        %tmp.5 = getv ? :_run;
+        symbol [ hasAttempts %tmp.6 265 17 28 ];
+        %tmp.6 = getv function %tmp.5 :hasAttempts;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        bf %tmp.7 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_8_268_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_8_268_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_32_268_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 266 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_32_268_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_32_268_8_stop" ]
+        %dict.1 = local;
+        symbol [ dict %dict.1 266 16 20 ];
+        symbol [ _run %tmp.9 266 23 27 ];
+        %tmp.9 = getv ? :_run;
+        symbol [ toDictionary %tmp.10 266 28 40 ];
+        %tmp.10 = getv function %tmp.9 :toDictionary;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        lputv %dict.1 %tmp.11;
+        symbol [ dict %dict.1 266 16 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 267 12 ]
+        symbol [ Communications %tmp.12 267 12 26 ];
+        %tmp.12 = getm $.Toybox.Communications;
+        symbol [ transmit %tmp.13 267 27 35 ];
+        %tmp.13 = getv function %tmp.12 :transmit;
+        %tmp.14 = lgetv %dict.1;
+        symbol [ dict %tmp.14 267 36 40 ];
+        %tmp.15 = null;
+        symbol [ TransmitListener %tmp.19 267 52 68 ];
+        %tmp.19 = getv ? :TransmitListener;
+        %tmp.20 = lgetv %dict.1;
+        symbol [ dict %tmp.20 267 69 73 ];
+        %tmp.16 = newc %tmp.19 (%tmp.20);
+        invoke %tmp.12 %tmp.13(%tmp.14, %tmp.15, %tmp.16);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_32_268_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_8_268_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_265_8_268_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 269 8 ]
+        symbol [ WatchUi %tmp.21 269 8 15 ];
+        %tmp.21 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.22 269 16 23 ];
+        %tmp.22 = getv function %tmp.21 :popView;
+        symbol [ WatchUi %tmp.23 269 24 31 ];
+        %tmp.23 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.24 269 32 43 ];
+        %tmp.24 = getv %tmp.23 :SLIDE_RIGHT;
+        invoke %tmp.21 %tmp.22(%tmp.24);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc" 270 8 ]
+        %tmp.25 = true;
+        ret %tmp.25;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalView_mc_263_33_271_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalView.mc"; @line = 1; ]
+<init> {
+}

@@ -1,0 +1,1958 @@
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Graphics,2,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; ]
+import Toybox.Time;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Timer,5,14,19]; ]
+import Toybox.Timer;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [Attention,6,14,23]; ]
+import Toybox.Attention;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 7; @symbol_importdef<0> = [Toybox,7,7,13]; @symbol_importdef<1> = [Communications,7,14,28]; ]
+import Toybox.Communications;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 15; @symbol_functiondef = [dribbleVibe,15,9,20]; @symbol_param<0> = [durationMs,15,21,31]; @symbol_param<0>_type<0> = [Number,15,35,41]; ]
+function dribbleVibe(durationMs as Number) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_15_51_19_0_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 16 4 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_16_4_18_4_if_stmt:
+    symbol [ Attention %tmp.1 16 8 17 ];
+    %tmp.1 = getm $.Toybox.Attention;
+    %tmp.3 = const :vibrate;
+    symbol [ vibrate %tmp.3 16 23 30 const ];
+    %tmp.4 = canhazplz %tmp.1 %tmp.3;
+    bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_16_4_18_4_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_16_4_18_4_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_16_32_18_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 17 8 ]
+    symbol [ Attention %tmp.5 17 8 17 ];
+    %tmp.5 = getm $.Toybox.Attention;
+    symbol [ vibrate %tmp.6 17 18 25 ];
+    %tmp.6 = getv function %tmp.5 :vibrate;
+    %tmp.7 = newa 1;
+    symbol [ Attention %tmp.10 17 31 40 ];
+    %tmp.10 = getm $.Toybox.Attention;
+    symbol [ VibeProfile %tmp.11 17 41 52 ];
+    %tmp.11 = getv function ? %tmp.10 :VibeProfile;
+    %tmp.12 = 100;
+    %tmp.13 = lgetv %durationMs;
+    symbol [ durationMs %tmp.13 17 58 68 ];
+    %tmp.8 = newc %tmp.11 (%tmp.12, %tmp.13);
+    %tmp.14 = dup %tmp.7;
+    %tmp.15 = aputv %tmp.14 0 %tmp.8;
+    invoke %tmp.5 %tmp.6(%tmp.15);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_16_32_18_4_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_16_4_18_4_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_16_4_18_4_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_15_51_19_0_stop:
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 22; @symbol_functiondef = [dribbleFit,22,9,19]; @symbol_param<0> = [dc,22,20,22]; @symbol_param<0>_type<0> = [Graphics,22,26,34]; @symbol_param<0>_type<1> = [Dc,22,35,37]; @symbol_param<1> = [text,22,39,43]; @symbol_param<1>_type<0> = [String,22,47,53]; @symbol_param<2> = [font,22,55,59]; @symbol_param<2>_type<0> = [Graphics,22,63,71]; @symbol_param<2>_type<1> = [FontType,22,72,80]; @symbol_param<3> = [maxWidth,23,20,28]; @symbol_param<3>_type<0> = [Number,23,32,38]; @symbol_return<0> = [String,23,43,49]; ]
+function dribbleFit(dc as Graphics.Dc, text as String, font as Graphics.FontType, maxWidth as Number) as String {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_23_50_32_0_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 24 4 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_24_4_24_72_if_stmt:
+    %tmp.1 = lgetv %dc;
+    symbol [ dc %tmp.1 24 8 10 ];
+    symbol [ getTextWidthInPixels %tmp.2 24 11 31 ];
+    %tmp.2 = getv function %tmp.1 :getTextWidthInPixels;
+    %tmp.3 = lgetv %text;
+    symbol [ text %tmp.3 24 32 36 ];
+    %tmp.4 = lgetv %font;
+    symbol [ font %tmp.4 24 38 42 ];
+    %tmp.5 = invoke %tmp.1 %tmp.2(%tmp.3, %tmp.4);
+    %tmp.6 = lgetv %maxWidth;
+    symbol [ maxWidth %tmp.6 24 47 55 ];
+    %tmp.7 = lte %tmp.5 %tmp.6;
+    bf %tmp.7 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_24_4_24_72_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_24_4_24_72_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_24_57_24_72_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 24 59 ]
+    %tmp.8 = lgetv %text;
+    symbol [ text %tmp.8 24 66 70 ];
+    ret %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_24_57_24_72_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_24_4_24_72_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_24_4_24_72_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 25 4 ]
+    [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_23_50_32_0_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_23_50_32_0_stop" ]
+    %len.1 = local;
+    symbol [ len %len.1 25 8 11 ];
+    %tmp.9 = lgetv %text;
+    symbol [ text %tmp.9 25 14 18 ];
+    symbol [ length %tmp.10 25 19 25 ];
+    %tmp.10 = getv function %tmp.9 :length;
+    %tmp.11 = invoke %tmp.9 %tmp.10();
+    lputv %len.1 %tmp.11;
+    symbol [ len %len.1 25 8 11 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 26 4 ]
+    while @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_4_30_4_while_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_4_30_4_while_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_4_30_4_while_test:
+    %tmp.12 = lgetv %len.1;
+    symbol [ len %tmp.12 26 11 14 ];
+    %tmp.13 = 0;
+    %tmp.14 = gt %tmp.12 %tmp.13;
+    bf %tmp.14 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_4_30_4_while_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_4_30_4_while_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_20_30_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 27 8 ]
+    %tmp.17 = lgetv %len.1;
+    symbol [ len %tmp.17 27 8 11 ];
+    %tmp.18 = sub %tmp.17 1;
+    lputv %len.1 %tmp.18;
+    symbol [ len %len.1 27 8 11 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 28 8 ]
+    [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_20_30_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_20_30_4_stop" ]
+    %candidate.2 = local;
+    symbol [ candidate %candidate.2 28 12 21 ];
+    %tmp.19 = lgetv %text;
+    symbol [ text %tmp.19 28 24 28 ];
+    symbol [ substring %tmp.20 28 29 38 ];
+    %tmp.20 = getv function %tmp.19 :substring;
+    %tmp.21 = 0;
+    %tmp.22 = lgetv %len.1;
+    symbol [ len %tmp.22 28 42 45 ];
+    %tmp.23 = invoke %tmp.19 %tmp.20(%tmp.21, %tmp.22);
+    %tmp.24 = "..";
+    %tmp.25 = add %tmp.23 %tmp.24;
+    lputv %candidate.2 %tmp.25;
+    symbol [ candidate %candidate.2 28 12 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 29 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_29_8_29_86_if_stmt:
+    %tmp.26 = lgetv %dc;
+    symbol [ dc %tmp.26 29 12 14 ];
+    symbol [ getTextWidthInPixels %tmp.27 29 15 35 ];
+    %tmp.27 = getv function %tmp.26 :getTextWidthInPixels;
+    %tmp.28 = lgetv %candidate.2;
+    symbol [ candidate %tmp.28 29 36 45 ];
+    %tmp.29 = lgetv %font;
+    symbol [ font %tmp.29 29 47 51 ];
+    %tmp.30 = invoke %tmp.26 %tmp.27(%tmp.28, %tmp.29);
+    %tmp.31 = lgetv %maxWidth;
+    symbol [ maxWidth %tmp.31 29 56 64 ];
+    %tmp.32 = lte %tmp.30 %tmp.31;
+    bf %tmp.32 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_29_8_29_86_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_29_8_29_86_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_29_66_29_86_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 29 68 ]
+    %tmp.33 = lgetv %candidate.2;
+    symbol [ candidate %tmp.33 29 75 84 ];
+    ret %tmp.33;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_29_66_29_86_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_29_8_29_86_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_29_8_29_86_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_20_30_4_stop:
+    goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_4_30_4_while_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_26_4_30_4_while_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 31 4 ]
+    %tmp.34 = "..";
+    ret %tmp.34;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_23_50_32_0_stop:
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 34; @symbol_classdef = [DribbleRun,34,6,16]; ]
+class DribbleRun {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 34; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 34; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 35; @position = 8; @symbol_vardef = [name,35,8,12]; @symbol_type<0> = [String,35,21,27]; ]
+    var name as String;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 36; @position = 8; @symbol_vardef = [steps,36,8,13]; @symbol_type<0> = [Array,36,21,26]; ]
+    var steps as Array;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 37; @position = 8; @symbol_vardef = [startTime,37,8,17]; @symbol_type<0> = [Number,37,21,27]; ]
+    var startTime as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 38; @position = 8; @symbol_vardef = [lastT,38,8,13]; @symbol_type<0> = [Number,38,21,27]; ]
+    var lastT as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 39; @position = 8; @symbol_vardef = [total,39,8,13]; @symbol_type<0> = [Number,39,21,27]; ]
+    var total as Number;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 40; @position = 8; @symbol_vardef = [finished,40,8,16]; @symbol_type<0> = [Boolean,40,21,28]; ]
+    var finished as Boolean;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 42; @symbol_functiondef = [initialize,42,13,23]; @symbol_param<0> = [def,42,24,27]; @symbol_param<0>_type<0> = [Dictionary,42,31,41]; ]
+    function initialize(def as Dictionary) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_42_43_49_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 43 8 ]
+        %tmp.1 = lgetv %def;
+        symbol [ def %tmp.1 43 20 23 ];
+        %tmp.2 = "name";
+        %tmp.3 = agetv %tmp.1 %tmp.2;
+        %tmp.4 = as %tmp.3 String;
+        symbol [ String %tmp.4 43 35 41 ];
+        symbol [ name ? 43 8 12 ];
+        putv self :name %tmp.4;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 44 8 ]
+        %tmp.5 = lgetv %def;
+        symbol [ def %tmp.5 44 20 23 ];
+        %tmp.6 = "steps";
+        %tmp.7 = agetv %tmp.5 %tmp.6;
+        %tmp.8 = as %tmp.7 Array;
+        symbol [ Array %tmp.8 44 36 41 ];
+        symbol [ steps ? 44 8 13 ];
+        putv self :steps %tmp.8;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 45 8 ]
+        symbol [ Time %tmp.9 45 20 24 ];
+        %tmp.9 = getm $.Toybox.Time;
+        symbol [ now %tmp.10 45 25 28 ];
+        %tmp.10 = getv function %tmp.9 :now;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        symbol [ value %tmp.12 45 31 36 ];
+        %tmp.12 = getv function %tmp.11 :value;
+        %tmp.13 = invoke %tmp.11 %tmp.12();
+        symbol [ startTime ? 45 8 17 ];
+        putv self :startTime %tmp.13;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 46 8 ]
+        %tmp.14 = 0;
+        symbol [ lastT ? 46 8 13 ];
+        putv self :lastT %tmp.14;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 47 8 ]
+        %tmp.15 = self;
+        symbol [ dribbleTotalSeconds %tmp.16 47 20 39 ];
+        %tmp.16 = getv function %tmp.15 :dribbleTotalSeconds;
+        symbol [ steps %tmp.18 47 40 45 ];
+        %tmp.18 = getv ? :steps;
+        %tmp.19 = invoke %tmp.15 %tmp.16(%tmp.18);
+        symbol [ total ? 47 8 13 ];
+        putv self :total %tmp.19;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 48 8 ]
+        %tmp.20 = false;
+        symbol [ finished ? 48 8 16 ];
+        putv self :finished %tmp.20;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_42_43_49_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 51; @symbol_functiondef = [elapsed,51,13,20]; @symbol_return<0> = [Number,51,26,32]; ]
+    function elapsed() as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_51_33_54_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 52 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_51_33_54_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_51_33_54_4_stop" ]
+        %e.1 = local;
+        symbol [ e %e.1 52 12 13 ];
+        symbol [ Time %tmp.1 52 16 20 ];
+        %tmp.1 = getm $.Toybox.Time;
+        symbol [ now %tmp.2 52 21 24 ];
+        %tmp.2 = getv function %tmp.1 :now;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ value %tmp.4 52 27 32 ];
+        %tmp.4 = getv function %tmp.3 :value;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        symbol [ startTime %tmp.7 52 37 46 ];
+        %tmp.7 = getv ? :startTime;
+        %tmp.8 = sub %tmp.5 %tmp.7;
+        lputv %e.1 %tmp.8;
+        symbol [ e %e.1 52 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 53 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_begin:
+        %tmp.9 = lgetv %e.1;
+        symbol [ e %tmp.9 53 16 17 ];
+        %tmp.10 = 0;
+        %tmp.11 = lt %tmp.9 %tmp.10;
+        bf %tmp.11 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_true:
+        %tmp.12 = 0;
+        push %tmp.12;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_else_false:
+        %tmp.13 = lgetv %e.1;
+        symbol [ e %tmp.13 53 29 30 ];
+        push %tmp.13;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_end:
+        %tmp.14 = phi [%tmp.11 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_begin] [%tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_true] [%tmp.13 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_else_false] [%tmp.14 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_53_15_53_29_end];
+        ret %tmp.14;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_51_33_54_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 56; @symbol_functiondef = [secondsAt,56,13,22]; @symbol_param<0> = [i,56,23,24]; @symbol_param<0>_type<0> = [Number,56,28,34]; @symbol_return<0> = [Number,56,39,45]; ]
+    function secondsAt(i as Number) as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_56_46_58_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 57 8 ]
+        symbol [ steps %tmp.2 57 16 21 ];
+        %tmp.2 = getv ? :steps;
+        %tmp.3 = lgetv %i;
+        symbol [ i %tmp.3 57 22 23 ];
+        %tmp.4 = agetv %tmp.2 %tmp.3;
+        %tmp.5 = as %tmp.4 Dictionary;
+        symbol [ Dictionary %tmp.5 57 28 38 ];
+        %tmp.6 = "seconds";
+        %tmp.7 = agetv %tmp.5 %tmp.6;
+        %tmp.8 = as %tmp.7 Number;
+        symbol [ Number %tmp.8 57 54 60 ];
+        ret %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_56_46_58_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 60; @symbol_functiondef = [drillAt,60,13,20]; @symbol_param<0> = [i,60,21,22]; @symbol_param<0>_type<0> = [Number,60,26,32]; @symbol_return<0> = [String,60,37,43]; ]
+    function drillAt(i as Number) as String {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_60_44_62_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 61 8 ]
+        symbol [ steps %tmp.2 61 16 21 ];
+        %tmp.2 = getv ? :steps;
+        %tmp.3 = lgetv %i;
+        symbol [ i %tmp.3 61 22 23 ];
+        %tmp.4 = agetv %tmp.2 %tmp.3;
+        %tmp.5 = as %tmp.4 Dictionary;
+        symbol [ Dictionary %tmp.5 61 28 38 ];
+        %tmp.6 = "drill";
+        %tmp.7 = agetv %tmp.5 %tmp.6;
+        %tmp.8 = as %tmp.7 String;
+        symbol [ String %tmp.8 61 52 58 ];
+        ret %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_60_44_62_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 65; @symbol_functiondef = [stepIndexAt,65,13,24]; @symbol_param<0> = [t,65,25,26]; @symbol_param<0>_type<0> = [Number,65,30,36]; @symbol_return<0> = [Number,65,41,47]; ]
+    function stepIndexAt(t as Number) as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_65_48_72_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 66 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_65_48_72_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_65_48_72_4_stop" ]
+        %end.1 = local;
+        symbol [ end %end.1 66 12 15 ];
+        %tmp.1 = 0;
+        lputv %end.1 %tmp.1;
+        symbol [ end %end.1 66 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 67 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 67 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 67 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 67 24 25 ];
+        symbol [ steps %tmp.5 67 28 33 ];
+        %tmp.5 = getv ? :steps;
+        symbol [ size %tmp.6 67 34 38 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_47_70_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 68 12 ]
+        %tmp.9 = lgetv %end.1;
+        symbol [ end %tmp.9 68 12 15 ];
+        %tmp.10 = self;
+        symbol [ secondsAt %tmp.11 68 19 28 ];
+        %tmp.11 = getv function %tmp.10 :secondsAt;
+        %tmp.12 = lgetv %i.2;
+        symbol [ i %tmp.12 68 29 30 ];
+        %tmp.13 = invoke %tmp.10 %tmp.11(%tmp.12);
+        %tmp.14 = add %tmp.9 %tmp.13;
+        lputv %end.1 %tmp.14;
+        symbol [ end %end.1 68 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 69 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_69_12_69_37_if_stmt:
+        %tmp.15 = lgetv %t;
+        symbol [ t %tmp.15 69 16 17 ];
+        %tmp.16 = lgetv %end.1;
+        symbol [ end %tmp.16 69 20 23 ];
+        %tmp.17 = lt %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_69_12_69_37_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_69_12_69_37_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_69_25_69_37_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 69 27 ]
+        %tmp.18 = lgetv %i.2;
+        symbol [ i %tmp.18 69 34 35 ];
+        ret %tmp.18;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_69_25_69_37_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_69_12_69_37_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_69_12_69_37_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_47_70_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 67 ]
+        %tmp.21 = lgetv %i.2;
+        symbol [ i %tmp.21 67 42 43 ];
+        %tmp.22 = add %tmp.21 1;
+        lputv %i.2 %tmp.22;
+        symbol [ i %i.2 67 42 43 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_67_8_70_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 71 8 ]
+        symbol [ steps %tmp.24 71 15 20 ];
+        %tmp.24 = getv ? :steps;
+        symbol [ size %tmp.25 71 21 25 ];
+        %tmp.25 = getv function %tmp.24 :size;
+        %tmp.26 = invoke %tmp.24 %tmp.25();
+        ret %tmp.26;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_65_48_72_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 74; @symbol_functiondef = [secondsLeftAt,74,13,26]; @symbol_param<0> = [t,74,27,28]; @symbol_param<0>_type<0> = [Number,74,32,38]; @symbol_return<0> = [Number,74,43,49]; ]
+    function secondsLeftAt(t as Number) as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_74_50_81_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 75 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_74_50_81_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_74_50_81_4_stop" ]
+        %end.1 = local;
+        symbol [ end %end.1 75 12 15 ];
+        %tmp.1 = 0;
+        lputv %end.1 %tmp.1;
+        symbol [ end %end.1 75 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 76 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 76 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 76 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 76 24 25 ];
+        symbol [ steps %tmp.5 76 28 33 ];
+        %tmp.5 = getv ? :steps;
+        symbol [ size %tmp.6 76 34 38 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_47_79_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 77 12 ]
+        %tmp.9 = lgetv %end.1;
+        symbol [ end %tmp.9 77 12 15 ];
+        %tmp.10 = self;
+        symbol [ secondsAt %tmp.11 77 19 28 ];
+        %tmp.11 = getv function %tmp.10 :secondsAt;
+        %tmp.12 = lgetv %i.2;
+        symbol [ i %tmp.12 77 29 30 ];
+        %tmp.13 = invoke %tmp.10 %tmp.11(%tmp.12);
+        %tmp.14 = add %tmp.9 %tmp.13;
+        lputv %end.1 %tmp.14;
+        symbol [ end %end.1 77 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 78 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_78_12_78_43_if_stmt:
+        %tmp.15 = lgetv %t;
+        symbol [ t %tmp.15 78 16 17 ];
+        %tmp.16 = lgetv %end.1;
+        symbol [ end %tmp.16 78 20 23 ];
+        %tmp.17 = lt %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_78_12_78_43_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_78_12_78_43_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_78_25_78_43_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 78 27 ]
+        %tmp.18 = lgetv %end.1;
+        symbol [ end %tmp.18 78 34 37 ];
+        %tmp.19 = lgetv %t;
+        symbol [ t %tmp.19 78 40 41 ];
+        %tmp.20 = sub %tmp.18 %tmp.19;
+        ret %tmp.20;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_78_25_78_43_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_78_12_78_43_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_78_12_78_43_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_47_79_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 76 ]
+        %tmp.23 = lgetv %i.2;
+        symbol [ i %tmp.23 76 42 43 ];
+        %tmp.24 = add %tmp.23 1;
+        lputv %i.2 %tmp.24;
+        symbol [ i %i.2 76 42 43 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_76_8_79_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 80 8 ]
+        %tmp.25 = 0;
+        ret %tmp.25;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_74_50_81_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 86; @symbol_functiondef = [alertAt,86,13,20]; @symbol_param<0> = [t,86,21,22]; @symbol_param<0>_type<0> = [Number,86,26,32]; @symbol_return<0> = [Number,86,37,43]; ]
+    function alertAt(t as Number) as Number {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_86_44_94_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 87 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_86_44_94_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_86_44_94_4_stop" ]
+        %end.1 = local;
+        symbol [ end %end.1 87 12 15 ];
+        %tmp.1 = 0;
+        lputv %end.1 %tmp.1;
+        symbol [ end %end.1 87 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 88 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 88 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 88 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 88 24 25 ];
+        symbol [ steps %tmp.5 88 28 33 ];
+        %tmp.5 = getv ? :steps;
+        symbol [ size %tmp.6 88 34 38 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_47_92_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 89 12 ]
+        %tmp.9 = lgetv %end.1;
+        symbol [ end %tmp.9 89 12 15 ];
+        %tmp.10 = self;
+        symbol [ secondsAt %tmp.11 89 19 28 ];
+        %tmp.11 = getv function %tmp.10 :secondsAt;
+        %tmp.12 = lgetv %i.2;
+        symbol [ i %tmp.12 89 29 30 ];
+        %tmp.13 = invoke %tmp.10 %tmp.11(%tmp.12);
+        %tmp.14 = add %tmp.9 %tmp.13;
+        lputv %end.1 %tmp.14;
+        symbol [ end %end.1 89 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 90 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_90_12_90_38_if_stmt:
+        %tmp.15 = lgetv %t;
+        symbol [ t %tmp.15 90 16 17 ];
+        %tmp.16 = lgetv %end.1;
+        symbol [ end %tmp.16 90 21 24 ];
+        %tmp.17 = eq %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_90_12_90_38_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_90_12_90_38_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_90_26_90_38_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 90 28 ]
+        %tmp.18 = 2;
+        ret %tmp.18;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_90_26_90_38_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_90_12_90_38_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_90_12_90_38_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 91 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_12_91_73_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_16_91_56_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_16_91_47_begin:
+        %tmp.19 = self;
+        symbol [ secondsAt %tmp.20 91 16 25 ];
+        %tmp.20 = getv function %tmp.19 :secondsAt;
+        %tmp.21 = lgetv %i.2;
+        symbol [ i %tmp.21 91 26 27 ];
+        %tmp.22 = invoke %tmp.19 %tmp.20(%tmp.21);
+        %tmp.23 = 3;
+        %tmp.24 = gt %tmp.22 %tmp.23;
+        bf %tmp.24 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_12_91_73_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_36_91_47_true:
+        %tmp.25 = lgetv %t;
+        symbol [ t %tmp.25 91 36 37 ];
+        %tmp.26 = lgetv %end.1;
+        symbol [ end %tmp.26 91 41 44 ];
+        %tmp.27 = 3;
+        %tmp.28 = sub %tmp.26 %tmp.27;
+        %tmp.29 = gte %tmp.25 %tmp.28;
+        push %tmp.29;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_36_91_47_end:
+        %tmp.30 = phi [%tmp.24 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_16_91_47_begin] [%tmp.29 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_36_91_47_true] [%tmp.30 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_36_91_47_end];
+        bf %tmp.30 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_12_91_73_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_52_91_56_true:
+        %tmp.31 = lgetv %t;
+        symbol [ t %tmp.31 91 52 53 ];
+        %tmp.32 = lgetv %end.1;
+        symbol [ end %tmp.32 91 56 59 ];
+        %tmp.33 = lt %tmp.31 %tmp.32;
+        push %tmp.33;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_52_91_56_end:
+        %tmp.34 = phi [%tmp.30 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_16_91_56_begin] [%tmp.33 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_52_91_56_true] [%tmp.34 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_52_91_56_end];
+        bf %tmp.34 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_12_91_73_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_12_91_73_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_61_91_73_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 91 63 ]
+        %tmp.35 = 1;
+        ret %tmp.35;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_61_91_73_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_12_91_73_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_91_12_91_73_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_47_92_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 88 ]
+        %tmp.38 = lgetv %i.2;
+        symbol [ i %tmp.38 88 42 43 ];
+        %tmp.39 = add %tmp.38 1;
+        lputv %i.2 %tmp.39;
+        symbol [ i %i.2 88 42 43 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_88_8_92_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 93 8 ]
+        %tmp.40 = 0;
+        ret %tmp.40;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_86_44_94_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 97; @symbol_functiondef = [advance,97,13,20]; @symbol_return<0> = [Boolean,97,26,33]; ]
+    function advance() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_97_34_112_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 98 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_97_34_112_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_97_34_112_4_stop" ]
+        %e.1 = local;
+        symbol [ e %e.1 98 12 13 ];
+        %tmp.1 = self;
+        symbol [ elapsed %tmp.2 98 16 23 ];
+        %tmp.2 = getv function %tmp.1 :elapsed;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %e.1 %tmp.3;
+        symbol [ e %e.1 98 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 99 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_97_34_112_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_97_34_112_4_stop" ]
+        %strongest.2 = local;
+        symbol [ strongest %strongest.2 99 12 21 ];
+        %tmp.4 = 0;
+        lputv %strongest.2 %tmp.4;
+        symbol [ strongest %strongest.2 99 12 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 100 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_end" ]
+        %t.3 = local;
+        symbol [ t %t.3 100 17 18 ];
+        symbol [ lastT %tmp.6 100 21 26 ];
+        %tmp.6 = getv ? :lastT;
+        %tmp.7 = 1;
+        %tmp.8 = add %tmp.6 %tmp.7;
+        lputv %t.3 %tmp.8;
+        symbol [ t %t.3 100 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_test:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_32_100_47_begin:
+        %tmp.9 = lgetv %t.3;
+        symbol [ t %tmp.9 100 32 33 ];
+        %tmp.10 = lgetv %e.1;
+        symbol [ e %tmp.10 100 37 38 ];
+        %tmp.11 = lte %tmp.9 %tmp.10;
+        %tmp.12 = dup %tmp.11;
+        bf %tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_42_100_47_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_42_100_47_true:
+        %tmp.13 = lgetv %t.3;
+        symbol [ t %tmp.13 100 42 43 ];
+        symbol [ total %tmp.15 100 47 52 ];
+        %tmp.15 = getv ? :total;
+        %tmp.16 = lte %tmp.13 %tmp.15;
+        %tmp.17 = and %tmp.11 %tmp.16;
+        push %tmp.17;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_42_100_47_end:
+        %tmp.18 = phi [%tmp.12 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_32_100_47_begin] [%tmp.17 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_42_100_47_true] [%tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_42_100_47_end];
+        bf %tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_59_103_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 101 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_59_103_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_59_103_8_stop" ]
+        %a.4 = local;
+        symbol [ a %a.4 101 16 17 ];
+        %tmp.19 = self;
+        symbol [ alertAt %tmp.20 101 20 27 ];
+        %tmp.20 = getv function %tmp.19 :alertAt;
+        %tmp.21 = lgetv %t.3;
+        symbol [ t %tmp.21 101 28 29 ];
+        %tmp.22 = invoke %tmp.19 %tmp.20(%tmp.21);
+        lputv %a.4 %tmp.22;
+        symbol [ a %a.4 101 16 17 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 102 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_102_12_102_48_if_stmt:
+        %tmp.23 = lgetv %a.4;
+        symbol [ a %tmp.23 102 16 17 ];
+        %tmp.24 = lgetv %strongest.2;
+        symbol [ strongest %tmp.24 102 20 29 ];
+        %tmp.25 = gt %tmp.23 %tmp.24;
+        bf %tmp.25 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_102_12_102_48_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_102_12_102_48_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_102_31_102_48_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 102 33 ]
+        %tmp.26 = lgetv %a.4;
+        symbol [ a %tmp.26 102 45 46 ];
+        lputv %strongest.2 %tmp.26;
+        symbol [ strongest %strongest.2 102 33 42 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_102_31_102_48_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_102_12_102_48_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_102_12_102_48_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_59_103_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 100 ]
+        %tmp.29 = lgetv %t.3;
+        symbol [ t %tmp.29 100 54 55 ];
+        %tmp.30 = add %tmp.29 1;
+        lputv %t.3 %tmp.30;
+        symbol [ t %t.3 100 54 55 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_100_8_103_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 104 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_begin:
+        %tmp.31 = lgetv %e.1;
+        symbol [ e %tmp.31 104 17 18 ];
+        symbol [ total %tmp.33 104 21 26 ];
+        %tmp.33 = getv ? :total;
+        %tmp.34 = gt %tmp.31 %tmp.33;
+        bf %tmp.34 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_true:
+        symbol [ total %tmp.36 104 30 35 ];
+        %tmp.36 = getv ? :total;
+        push %tmp.36;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_else_false:
+        %tmp.37 = lgetv %e.1;
+        symbol [ e %tmp.37 104 38 39 ];
+        push %tmp.37;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_end:
+        %tmp.38 = phi [%tmp.34 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_begin] [%tmp.36 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_true] [%tmp.37 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_else_false] [%tmp.38 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_104_16_104_38_end];
+        symbol [ lastT ? 104 8 13 ];
+        putv self :lastT %tmp.38;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 105 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_8_109_8_if_stmt:
+        %tmp.39 = lgetv %strongest.2;
+        symbol [ strongest %tmp.39 105 12 21 ];
+        %tmp.40 = 2;
+        %tmp.41 = eq %tmp.39 %tmp.40;
+        bf %tmp.41 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_8_109_8_if_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_8_109_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_28_107_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 106 12 ]
+        %tmp.42 = self;
+        symbol [ dribbleVibe %tmp.43 106 12 23 ];
+        %tmp.43 = getv function %tmp.42 :dribbleVibe;
+        %tmp.44 = 400;
+        invoke %tmp.42 %tmp.43(%tmp.44);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_28_107_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_8_109_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_8_109_8_if_false:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 107 15 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_107_15_109_8_if_stmt:
+        %tmp.45 = lgetv %strongest.2;
+        symbol [ strongest %tmp.45 107 19 28 ];
+        %tmp.46 = 1;
+        %tmp.47 = eq %tmp.45 %tmp.46;
+        bf %tmp.47 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_107_15_109_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_107_15_109_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_107_35_109_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 108 12 ]
+        %tmp.48 = self;
+        symbol [ dribbleVibe %tmp.49 108 12 23 ];
+        %tmp.49 = getv function %tmp.48 :dribbleVibe;
+        %tmp.50 = 120;
+        invoke %tmp.48 %tmp.49(%tmp.50);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_107_35_109_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_107_15_109_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_107_15_109_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_105_8_109_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 110 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_110_8_110_43_if_stmt:
+        %tmp.51 = lgetv %e.1;
+        symbol [ e %tmp.51 110 12 13 ];
+        symbol [ total %tmp.53 110 17 22 ];
+        %tmp.53 = getv ? :total;
+        %tmp.54 = gte %tmp.51 %tmp.53;
+        bf %tmp.54 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_110_8_110_43_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_110_8_110_43_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_110_24_110_43_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 110 26 ]
+        %tmp.55 = true;
+        symbol [ finished ? 110 26 34 ];
+        putv self :finished %tmp.55;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_110_24_110_43_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_110_8_110_43_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_110_8_110_43_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 111 8 ]
+        symbol [ finished %tmp.57 111 15 23 ];
+        %tmp.57 = getv ? :finished;
+        ret %tmp.57;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_97_34_112_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 115; @symbol_functiondef = [drillTimes,115,13,23]; @symbol_return<0> = [Array,115,29,34]; ]
+    function drillTimes() as Array {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_115_35_134_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 116 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_115_35_134_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_115_35_134_4_stop" ]
+        %out.1 = local;
+        symbol [ out %out.1 116 12 15 ];
+        %tmp.1 = newa 0;
+        lputv %out.1 %tmp.1;
+        symbol [ out %out.1 116 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 117 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 117 17 18 ];
+        %tmp.2 = 0;
+        lputv %i.2 %tmp.2;
+        symbol [ i %i.2 117 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_test:
+        %tmp.3 = lgetv %i.2;
+        symbol [ i %tmp.3 117 24 25 ];
+        symbol [ steps %tmp.5 117 28 33 ];
+        %tmp.5 = getv ? :steps;
+        symbol [ size %tmp.6 117 34 38 ];
+        %tmp.6 = getv function %tmp.5 :size;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = lt %tmp.3 %tmp.7;
+        bf %tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_47_132_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 118 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_47_132_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_47_132_8_stop" ]
+        %drill.3 = local;
+        symbol [ drill %drill.3 118 16 21 ];
+        %tmp.9 = self;
+        symbol [ drillAt %tmp.10 118 24 31 ];
+        %tmp.10 = getv function %tmp.9 :drillAt;
+        %tmp.11 = lgetv %i.2;
+        symbol [ i %tmp.11 118 32 33 ];
+        %tmp.12 = invoke %tmp.9 %tmp.10(%tmp.11);
+        lputv %drill.3 %tmp.12;
+        symbol [ drill %drill.3 118 16 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 119 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_119_12_119_46_if_stmt:
+        %tmp.13 = lgetv %drill.3;
+        symbol [ drill %tmp.13 119 16 21 ];
+        symbol [ equals %tmp.14 119 22 28 ];
+        %tmp.14 = getv function %tmp.13 :equals;
+        %tmp.15 = "";
+        %tmp.16 = invoke %tmp.13 %tmp.14(%tmp.15);
+        bf %tmp.16 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_119_12_119_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_119_12_119_46_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_119_34_119_46_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 119 36 ]
+        goto break @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_incr;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_119_34_119_46_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_119_12_119_46_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_119_12_119_46_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 120 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_47_132_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_47_132_8_stop" ]
+        %found.4 = local;
+        symbol [ found %found.4 120 16 21 ];
+        %tmp.17 = false;
+        lputv %found.4 %tmp.17;
+        symbol [ found %found.4 120 16 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 121 12 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_end" ]
+        %j.5 = local;
+        symbol [ j %j.5 121 21 22 ];
+        %tmp.18 = 0;
+        lputv %j.5 %tmp.18;
+        symbol [ j %j.5 121 21 22 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_test:
+        %tmp.19 = lgetv %j.5;
+        symbol [ j %tmp.19 121 28 29 ];
+        %tmp.20 = lgetv %out.1;
+        symbol [ out %tmp.20 121 32 35 ];
+        symbol [ size %tmp.21 121 36 40 ];
+        %tmp.21 = getv function %tmp.20 :size;
+        %tmp.22 = invoke %tmp.20 %tmp.21();
+        %tmp.23 = lt %tmp.19 %tmp.22;
+        bf %tmp.23 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_49_128_12_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 122 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_49_128_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_49_128_12_stop" ]
+        %d.6 = local;
+        symbol [ d %d.6 122 20 21 ];
+        %tmp.24 = lgetv %out.1;
+        symbol [ out %tmp.24 122 24 27 ];
+        %tmp.25 = lgetv %j.5;
+        symbol [ j %tmp.25 122 28 29 ];
+        %tmp.26 = agetv %tmp.24 %tmp.25;
+        %tmp.27 = as %tmp.26 Dictionary;
+        symbol [ Dictionary %tmp.27 122 34 44 ];
+        lputv %d.6 %tmp.27;
+        symbol [ d %d.6 122 20 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 123 16 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_123_16_127_16_if_stmt:
+        %tmp.28 = lgetv %d.6;
+        symbol [ d %tmp.28 123 21 22 ];
+        %tmp.29 = "drill";
+        %tmp.30 = agetv %tmp.28 %tmp.29;
+        %tmp.31 = as %tmp.30 String;
+        symbol [ String %tmp.31 123 35 41 ];
+        symbol [ equals %tmp.32 123 43 49 ];
+        %tmp.32 = getv function %tmp.31 :equals;
+        %tmp.33 = lgetv %drill.3;
+        symbol [ drill %tmp.33 123 50 55 ];
+        %tmp.34 = invoke %tmp.31 %tmp.32(%tmp.33);
+        bf %tmp.34 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_123_16_127_16_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_123_16_127_16_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_123_58_127_16_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 124 20 ]
+        %tmp.35 = lgetv %d.6;
+        symbol [ d %tmp.35 124 20 21 ];
+        %tmp.36 = lgetv %d.6;
+        symbol [ d %tmp.36 124 36 37 ];
+        %tmp.37 = "seconds";
+        %tmp.38 = agetv %tmp.36 %tmp.37;
+        %tmp.39 = as %tmp.38 Number;
+        symbol [ Number %tmp.39 124 52 58 ];
+        %tmp.40 = self;
+        symbol [ secondsAt %tmp.41 124 62 71 ];
+        %tmp.41 = getv function %tmp.40 :secondsAt;
+        %tmp.42 = lgetv %i.2;
+        symbol [ i %tmp.42 124 72 73 ];
+        %tmp.43 = invoke %tmp.40 %tmp.41(%tmp.42);
+        %tmp.44 = add %tmp.39 %tmp.43;
+        %tmp.45 = "seconds";
+        aputv %tmp.35 %tmp.45 %tmp.44;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 125 20 ]
+        %tmp.46 = true;
+        lputv %found.4 %tmp.46;
+        symbol [ found %found.4 125 20 25 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 126 20 ]
+        goto break @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_123_58_127_16_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_123_16_127_16_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_123_16_127_16_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_49_128_12_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 121 ]
+        %tmp.49 = lgetv %j.5;
+        symbol [ j %tmp.49 121 44 45 ];
+        %tmp.50 = add %tmp.49 1;
+        lputv %j.5 %tmp.50;
+        symbol [ j %j.5 121 44 45 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_121_12_128_12_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 129 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_129_12_131_12_if_stmt:
+        %tmp.51 = lgetv %found.4;
+        symbol [ found %tmp.51 129 17 22 ];
+        %tmp.52 = not %tmp.51;
+        bf %tmp.52 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_129_12_131_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_129_12_131_12_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_129_24_131_12_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 130 16 ]
+        %tmp.53 = lgetv %out.1;
+        symbol [ out %tmp.53 130 16 19 ];
+        symbol [ add %tmp.54 130 20 23 ];
+        %tmp.54 = getv function %tmp.53 :add;
+        %tmp.55 = newd 2;
+        %tmp.56 = "drill";
+        %tmp.57 = lgetv %drill.3;
+        symbol [ drill %tmp.57 130 37 42 ];
+        %tmp.58 = dup %tmp.55;
+        %tmp.59 = aputv %tmp.58 %tmp.56 %tmp.57;
+        %tmp.60 = "seconds";
+        %tmp.61 = self;
+        symbol [ secondsAt %tmp.62 130 57 66 ];
+        %tmp.62 = getv function %tmp.61 :secondsAt;
+        %tmp.63 = lgetv %i.2;
+        symbol [ i %tmp.63 130 67 68 ];
+        %tmp.64 = invoke %tmp.61 %tmp.62(%tmp.63);
+        %tmp.65 = dup %tmp.59;
+        %tmp.66 = aputv %tmp.65 %tmp.60 %tmp.64;
+        invoke %tmp.53 %tmp.54(%tmp.66);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_129_24_131_12_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_129_12_131_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_129_12_131_12_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_47_132_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 117 ]
+        %tmp.69 = lgetv %i.2;
+        symbol [ i %tmp.69 117 42 43 ];
+        %tmp.70 = add %tmp.69 1;
+        lputv %i.2 %tmp.70;
+        symbol [ i %i.2 117 42 43 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_117_8_132_8_for_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 133 8 ]
+        %tmp.71 = lgetv %out.1;
+        symbol [ out %tmp.71 133 15 18 ];
+        ret %tmp.71;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_115_35_134_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 136; @symbol_functiondef = [toDictionary,136,13,25]; @symbol_return<0> = [Dictionary,136,31,41]; ]
+    function toDictionary() as Dictionary {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_136_42_144_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 137 8 ]
+        %tmp.1 = newd 5;
+        %tmp.2 = "type";
+        %tmp.3 = "dribbleSession";
+        %tmp.4 = dup %tmp.1;
+        %tmp.5 = aputv %tmp.4 %tmp.2 %tmp.3;
+        %tmp.6 = "routineName";
+        symbol [ name %tmp.8 139 30 34 ];
+        %tmp.8 = getv ? :name;
+        %tmp.9 = dup %tmp.5;
+        %tmp.10 = aputv %tmp.9 %tmp.6 %tmp.8;
+        %tmp.11 = "startTime";
+        symbol [ startTime %tmp.13 140 30 39 ];
+        %tmp.13 = getv ? :startTime;
+        %tmp.14 = dup %tmp.10;
+        %tmp.15 = aputv %tmp.14 %tmp.11 %tmp.13;
+        %tmp.16 = "totalSeconds";
+        symbol [ total %tmp.18 141 30 35 ];
+        %tmp.18 = getv ? :total;
+        %tmp.19 = dup %tmp.15;
+        %tmp.20 = aputv %tmp.19 %tmp.16 %tmp.18;
+        %tmp.21 = "drillTimes";
+        %tmp.22 = self;
+        symbol [ drillTimes %tmp.23 142 30 40 ];
+        %tmp.23 = getv function %tmp.22 :drillTimes;
+        %tmp.24 = invoke %tmp.22 %tmp.23();
+        %tmp.25 = dup %tmp.20;
+        %tmp.26 = aputv %tmp.25 %tmp.21 %tmp.24;
+        ret %tmp.26;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_136_42_144_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 147; @symbol_classdef = [DribbleRunView,147,6,20]; @symbol_extends<0> = [WatchUi,147,29,36]; @symbol_extends<1> = [View,147,37,41]; ]
+class DribbleRunView extends WatchUi.View {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 147; ]
+    <init> {
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 152 18 ]
+        symbol [ Graphics %tmp.27 152 33 41 ];
+        %tmp.27 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.28 152 42 53 ];
+        %tmp.28 = getv %tmp.27 :COLOR_BLACK;
+        putv self :COLOR_BG %tmp.28;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 153 18 ]
+        symbol [ Graphics %tmp.29 153 33 41 ];
+        %tmp.29 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.30 153 42 53 ];
+        %tmp.30 = getv %tmp.29 :COLOR_WHITE;
+        putv self :COLOR_WHITE %tmp.30;
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 147; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 148; @position = 16; @symbol_vardef = [_run,148,16,20]; @symbol_type<0> = [DribbleRun,148,26,36]; ]
+    private
+    var _run as DribbleRun;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 149; @position = 16; @symbol_vardef = [_timer,149,16,22]; @symbol_type<0> = [Timer,149,26,31]; @symbol_type<1> = [Timer,149,32,37]; ]
+    private
+    var _timer as Timer.Timer or Null;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 150; @position = 16; @symbol_vardef = [_sent,150,16,21]; @symbol_type<0> = [Boolean,150,26,33]; ]
+    private
+    var _sent as Boolean;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 152; @position = 18; @symbol_constdef = [COLOR_BG,152,18,26]; ]
+    private
+    const COLOR_BG;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 153; @position = 18; @symbol_constdef = [COLOR_WHITE,153,18,29]; ]
+    private
+    const COLOR_WHITE;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 154; @position = 18; @symbol_constdef = [COLOR_ORANGE,154,18,30]; ]
+    private
+    const COLOR_ORANGE = 0xFF6600;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 155; @position = 18; @symbol_constdef = [COLOR_BLUE,155,18,28]; ]
+    private
+    const COLOR_BLUE = 0x3399FF;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 156; @position = 18; @symbol_constdef = [COLOR_GREEN,156,18,29]; ]
+    private
+    const COLOR_GREEN = 0x33CC66;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 157; @position = 18; @symbol_constdef = [COLOR_GRAY,157,18,28]; ]
+    private
+    const COLOR_GRAY = 0x888888;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 159; @symbol_functiondef = [initialize,159,13,23]; @symbol_param<0> = [run,159,24,27]; @symbol_param<0>_type<0> = [DribbleRun,159,31,41]; ]
+    function initialize(run as DribbleRun) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_159_43_164_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 160 8 ]
+        symbol [ View %tmp.2 160 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 160 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 161 8 ]
+        %tmp.4 = lgetv %run;
+        symbol [ run %tmp.4 161 17 20 ];
+        symbol [ _run ? 161 8 12 ];
+        putv self :_run %tmp.4;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 162 8 ]
+        %tmp.5 = null;
+        symbol [ _timer ? 162 8 14 ];
+        putv self :_timer %tmp.5;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 163 8 ]
+        %tmp.6 = false;
+        symbol [ _sent ? 163 8 13 ];
+        putv self :_sent %tmp.6;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_159_43_164_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 166; @symbol_functiondef = [onShow,166,13,19]; ]
+    function onShow() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_166_30_171_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 167 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_8_170_8_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_12_167_36_begin:
+        symbol [ _timer %tmp.2 167 12 18 ];
+        %tmp.2 = getv ? :_timer;
+        %tmp.3 = null;
+        %tmp.4 = eq %tmp.2 %tmp.3;
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_8_170_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_30_167_36_true:
+        symbol [ _run %tmp.6 167 31 35 ];
+        %tmp.6 = getv ? :_run;
+        symbol [ finished %tmp.7 167 36 44 ];
+        %tmp.7 = getv %tmp.6 :finished;
+        %tmp.8 = not %tmp.7;
+        push %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_30_167_36_end:
+        %tmp.9 = phi [%tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_12_167_36_begin] [%tmp.8 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_30_167_36_true] [%tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_30_167_36_end];
+        bf %tmp.9 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_8_170_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_8_170_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_46_170_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 168 12 ]
+        symbol [ Timer %tmp.12 168 25 30 ];
+        %tmp.12 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.13 168 31 36 ];
+        %tmp.13 = getv function ? %tmp.12 :Timer;
+        %tmp.10 = newc %tmp.13 ();
+        symbol [ _timer ? 168 12 18 ];
+        putv self :_timer %tmp.10;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 169 12 ]
+        symbol [ _timer %tmp.15 169 13 19 ];
+        %tmp.15 = getv ? :_timer;
+        %tmp.16 = as %tmp.15 Timer.Timer;
+        symbol [ Timer %tmp.16 169 23 28 ];
+        symbol [ Timer %tmp.16 169 29 34 ];
+        symbol [ start %tmp.17 169 36 41 ];
+        %tmp.17 = getv function %tmp.16 :start;
+        %tmp.18 = self;
+        symbol [ method %tmp.19 169 42 48 ];
+        %tmp.19 = getv function %tmp.18 :method;
+        %tmp.21 = const :onTick;
+        symbol [ onTick %tmp.21 169 50 56 const ];
+        %tmp.22 = invoke %tmp.18 %tmp.19(%tmp.21);
+        %tmp.23 = 1000;
+        %tmp.24 = true;
+        invoke %tmp.16 %tmp.17(%tmp.22, %tmp.23, %tmp.24);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_46_170_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_8_170_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_167_8_170_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_166_30_171_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 173; @symbol_functiondef = [onHide,173,13,19]; ]
+    function onHide() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_173_30_175_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 174 8 ]
+        %tmp.1 = self;
+        symbol [ stopTimer %tmp.2 174 8 17 ];
+        %tmp.2 = getv function %tmp.1 :stopTimer;
+        invoke %tmp.1 %tmp.2();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_173_30_175_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 177; @symbol_functiondef = [onTick,177,13,19]; ]
+    function onTick() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_177_30_183_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 178 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_178_8_181_8_if_stmt:
+        symbol [ _run %tmp.2 178 12 16 ];
+        %tmp.2 = getv ? :_run;
+        symbol [ advance %tmp.3 178 17 24 ];
+        %tmp.3 = getv function %tmp.2 :advance;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_178_8_181_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_178_8_181_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_178_28_181_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 179 12 ]
+        %tmp.5 = self;
+        symbol [ stopTimer %tmp.6 179 12 21 ];
+        %tmp.6 = getv function %tmp.5 :stopTimer;
+        invoke %tmp.5 %tmp.6();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 180 12 ]
+        %tmp.7 = self;
+        symbol [ sendResult %tmp.8 180 12 22 ];
+        %tmp.8 = getv function %tmp.7 :sendResult;
+        invoke %tmp.7 %tmp.8();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_178_28_181_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_178_8_181_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_178_8_181_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 182 8 ]
+        symbol [ WatchUi %tmp.9 182 8 15 ];
+        %tmp.9 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.10 182 16 29 ];
+        %tmp.10 = getv function %tmp.9 :requestUpdate;
+        invoke %tmp.9 %tmp.10();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_177_30_183_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 185; @symbol_functiondef = [stopTimer,185,21,30]; ]
+    private
+    function stopTimer() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_185_41_190_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 186 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_186_8_189_8_if_stmt:
+        symbol [ _timer %tmp.2 186 12 18 ];
+        %tmp.2 = getv ? :_timer;
+        %tmp.3 = null;
+        %tmp.4 = ne %tmp.2 %tmp.3;
+        bf %tmp.4 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_186_8_189_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_186_8_189_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_186_28_189_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 187 12 ]
+        symbol [ _timer %tmp.6 187 13 19 ];
+        %tmp.6 = getv ? :_timer;
+        %tmp.7 = as %tmp.6 { (!Null) };
+        %tmp.8 = as %tmp.7 Timer.Timer;
+        symbol [ Timer %tmp.8 187 23 28 ];
+        symbol [ Timer %tmp.8 187 29 34 ];
+        symbol [ stop %tmp.9 187 36 40 ];
+        %tmp.9 = getv function %tmp.8 :stop;
+        invoke %tmp.8 %tmp.9();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 188 12 ]
+        %tmp.10 = null;
+        symbol [ _timer ? 188 12 18 ];
+        putv self :_timer %tmp.10;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_186_28_189_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_186_8_189_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_186_8_189_8_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_185_41_190_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 192; @symbol_functiondef = [sendResult,192,21,31]; ]
+    private
+    function sendResult() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_192_42_198_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 193 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_193_8_193_29_if_stmt:
+        symbol [ _sent %tmp.2 193 12 17 ];
+        %tmp.2 = getv ? :_sent;
+        bf %tmp.2 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_193_8_193_29_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_193_8_193_29_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_193_19_193_29_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 193 21 ]
+        ret ?;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_193_19_193_29_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_193_8_193_29_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_193_8_193_29_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 194 8 ]
+        %tmp.3 = true;
+        symbol [ _sent ? 194 8 13 ];
+        putv self :_sent %tmp.3;
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 195 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_192_42_198_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_192_42_198_4_stop" ]
+        %dict.1 = local;
+        symbol [ dict %dict.1 195 12 16 ];
+        symbol [ _run %tmp.5 195 19 23 ];
+        %tmp.5 = getv ? :_run;
+        symbol [ toDictionary %tmp.6 195 24 36 ];
+        %tmp.6 = getv function %tmp.5 :toDictionary;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %dict.1 %tmp.7;
+        symbol [ dict %dict.1 195 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 197 8 ]
+        symbol [ Communications %tmp.8 197 8 22 ];
+        %tmp.8 = getm $.Toybox.Communications;
+        symbol [ transmit %tmp.9 197 23 31 ];
+        %tmp.9 = getv function %tmp.8 :transmit;
+        %tmp.10 = lgetv %dict.1;
+        symbol [ dict %tmp.10 197 32 36 ];
+        %tmp.11 = null;
+        symbol [ TransmitListener %tmp.15 197 48 64 ];
+        %tmp.15 = getv ? :TransmitListener;
+        %tmp.16 = lgetv %dict.1;
+        symbol [ dict %tmp.16 197 65 69 ];
+        %tmp.12 = newc %tmp.15 (%tmp.16);
+        invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11, %tmp.12);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_192_42_198_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 200; @symbol_functiondef = [onUpdate,200,13,21]; @symbol_param<0> = [dc,200,22,24]; @symbol_param<0>_type<0> = [Graphics,200,28,36]; @symbol_param<0>_type<1> = [Dc,200,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 201 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %w.1 = local;
+        symbol [ w %w.1 201 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 201 17 19 ];
+        symbol [ getWidth %tmp.2 201 20 28 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %w.1 %tmp.3;
+        symbol [ w %w.1 201 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 202 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %cx.2 = local;
+        symbol [ cx %cx.2 202 12 14 ];
+        %tmp.4 = lgetv %w.1;
+        symbol [ w %tmp.4 202 17 18 ];
+        %tmp.5 = 2;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        lputv %cx.2 %tmp.6;
+        symbol [ cx %cx.2 202 12 14 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 203 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 203 8 10 ];
+        symbol [ setColor %tmp.8 203 11 19 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ COLOR_BG %tmp.10 203 20 28 ];
+        %tmp.10 = getv ? :COLOR_BG;
+        symbol [ COLOR_BG %tmp.12 203 30 38 ];
+        %tmp.12 = getv ? :COLOR_BG;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 204 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 204 8 10 ];
+        symbol [ clear %tmp.14 204 11 16 ];
+        %tmp.14 = getv function %tmp.13 :clear;
+        invoke %tmp.13 %tmp.14();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 206 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_206_8_219_8_if_stmt:
+        symbol [ _run %tmp.16 206 12 16 ];
+        %tmp.16 = getv ? :_run;
+        symbol [ finished %tmp.17 206 17 25 ];
+        %tmp.17 = getv %tmp.16 :finished;
+        bf %tmp.17 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_206_8_219_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_206_8_219_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_206_27_219_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 207 12 ]
+        %tmp.18 = lgetv %dc;
+        symbol [ dc %tmp.18 207 12 14 ];
+        symbol [ setColor %tmp.19 207 15 23 ];
+        %tmp.19 = getv function %tmp.18 :setColor;
+        symbol [ COLOR_GREEN %tmp.21 207 24 35 ];
+        %tmp.21 = getv ? :COLOR_GREEN;
+        symbol [ Graphics %tmp.22 207 37 45 ];
+        %tmp.22 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.23 207 46 63 ];
+        %tmp.23 = getv %tmp.22 :COLOR_TRANSPARENT;
+        invoke %tmp.18 %tmp.19(%tmp.21, %tmp.23);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 208 12 ]
+        %tmp.24 = lgetv %dc;
+        symbol [ dc %tmp.24 208 12 14 ];
+        symbol [ drawText %tmp.25 208 15 23 ];
+        %tmp.25 = getv function %tmp.24 :drawText;
+        %tmp.26 = lgetv %cx.2;
+        symbol [ cx %tmp.26 208 24 26 ];
+        %tmp.27 = 60;
+        symbol [ Graphics %tmp.28 208 32 40 ];
+        %tmp.28 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.29 208 41 51 ];
+        %tmp.29 = getv %tmp.28 :FONT_SMALL;
+        %tmp.30 = "Routine terminée";
+        symbol [ Graphics %tmp.31 209 24 32 ];
+        %tmp.31 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.32 209 33 52 ];
+        %tmp.32 = getv %tmp.31 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.33 209 55 63 ];
+        %tmp.33 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.34 209 64 84 ];
+        %tmp.34 = getv %tmp.33 :TEXT_JUSTIFY_VCENTER;
+        %tmp.35 = bitor %tmp.32 %tmp.34;
+        invoke %tmp.24 %tmp.25(%tmp.26, %tmp.27, %tmp.29, %tmp.30, %tmp.35);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 210 12 ]
+        %tmp.36 = lgetv %dc;
+        symbol [ dc %tmp.36 210 12 14 ];
+        symbol [ setColor %tmp.37 210 15 23 ];
+        %tmp.37 = getv function %tmp.36 :setColor;
+        symbol [ COLOR_WHITE %tmp.39 210 24 35 ];
+        %tmp.39 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.40 210 37 45 ];
+        %tmp.40 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.41 210 46 63 ];
+        %tmp.41 = getv %tmp.40 :COLOR_TRANSPARENT;
+        invoke %tmp.36 %tmp.37(%tmp.39, %tmp.41);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 211 12 ]
+        %tmp.42 = lgetv %dc;
+        symbol [ dc %tmp.42 211 12 14 ];
+        symbol [ drawText %tmp.43 211 15 23 ];
+        %tmp.43 = getv function %tmp.42 :drawText;
+        %tmp.44 = lgetv %cx.2;
+        symbol [ cx %tmp.44 211 24 26 ];
+        %tmp.45 = 100;
+        symbol [ Graphics %tmp.46 211 33 41 ];
+        %tmp.46 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.47 211 42 51 ];
+        %tmp.47 = getv %tmp.46 :FONT_TINY;
+        %tmp.48 = self;
+        symbol [ dribbleFit %tmp.49 211 53 63 ];
+        %tmp.49 = getv function %tmp.48 :dribbleFit;
+        %tmp.50 = lgetv %dc;
+        symbol [ dc %tmp.50 211 64 66 ];
+        symbol [ _run %tmp.52 211 68 72 ];
+        %tmp.52 = getv ? :_run;
+        symbol [ name %tmp.53 211 73 77 ];
+        %tmp.53 = getv %tmp.52 :name;
+        symbol [ Graphics %tmp.54 211 79 87 ];
+        %tmp.54 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.55 211 88 97 ];
+        %tmp.55 = getv %tmp.54 :FONT_TINY;
+        %tmp.56 = 220;
+        %tmp.57 = invoke %tmp.48 %tmp.49(%tmp.50, %tmp.53, %tmp.55, %tmp.56);
+        symbol [ Graphics %tmp.58 212 24 32 ];
+        %tmp.58 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.59 212 33 52 ];
+        %tmp.59 = getv %tmp.58 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.60 212 55 63 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.61 212 64 84 ];
+        %tmp.61 = getv %tmp.60 :TEXT_JUSTIFY_VCENTER;
+        %tmp.62 = bitor %tmp.59 %tmp.61;
+        invoke %tmp.42 %tmp.43(%tmp.44, %tmp.45, %tmp.47, %tmp.57, %tmp.62);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 213 12 ]
+        %tmp.63 = lgetv %dc;
+        symbol [ dc %tmp.63 213 12 14 ];
+        symbol [ drawText %tmp.64 213 15 23 ];
+        %tmp.64 = getv function %tmp.63 :drawText;
+        %tmp.65 = lgetv %cx.2;
+        symbol [ cx %tmp.65 213 24 26 ];
+        %tmp.66 = 140;
+        symbol [ Graphics %tmp.67 213 33 41 ];
+        %tmp.67 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.68 213 42 60 ];
+        %tmp.68 = getv %tmp.67 :FONT_NUMBER_MEDIUM;
+        %tmp.69 = self;
+        symbol [ dribbleClock %tmp.70 213 62 74 ];
+        %tmp.70 = getv function %tmp.69 :dribbleClock;
+        symbol [ _run %tmp.72 213 75 79 ];
+        %tmp.72 = getv ? :_run;
+        symbol [ total %tmp.73 213 80 85 ];
+        %tmp.73 = getv %tmp.72 :total;
+        %tmp.74 = invoke %tmp.69 %tmp.70(%tmp.73);
+        symbol [ Graphics %tmp.75 214 24 32 ];
+        %tmp.75 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.76 214 33 52 ];
+        %tmp.76 = getv %tmp.75 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.77 214 55 63 ];
+        %tmp.77 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.78 214 64 84 ];
+        %tmp.78 = getv %tmp.77 :TEXT_JUSTIFY_VCENTER;
+        %tmp.79 = bitor %tmp.76 %tmp.78;
+        invoke %tmp.63 %tmp.64(%tmp.65, %tmp.66, %tmp.68, %tmp.74, %tmp.79);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 215 12 ]
+        %tmp.80 = lgetv %dc;
+        symbol [ dc %tmp.80 215 12 14 ];
+        symbol [ setColor %tmp.81 215 15 23 ];
+        %tmp.81 = getv function %tmp.80 :setColor;
+        symbol [ COLOR_ORANGE %tmp.83 215 24 36 ];
+        %tmp.83 = getv ? :COLOR_ORANGE;
+        symbol [ Graphics %tmp.84 215 38 46 ];
+        %tmp.84 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.85 215 47 64 ];
+        %tmp.85 = getv %tmp.84 :COLOR_TRANSPARENT;
+        invoke %tmp.80 %tmp.81(%tmp.83, %tmp.85);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 216 12 ]
+        %tmp.86 = lgetv %dc;
+        symbol [ dc %tmp.86 216 12 14 ];
+        symbol [ drawText %tmp.87 216 15 23 ];
+        %tmp.87 = getv function %tmp.86 :drawText;
+        %tmp.88 = lgetv %cx.2;
+        symbol [ cx %tmp.88 216 24 26 ];
+        %tmp.89 = 208;
+        symbol [ Graphics %tmp.90 216 33 41 ];
+        %tmp.90 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.91 216 42 52 ];
+        %tmp.91 = getv %tmp.90 :FONT_XTINY;
+        %tmp.92 = "▶ Terminer";
+        symbol [ Graphics %tmp.93 217 24 32 ];
+        %tmp.93 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.94 217 33 52 ];
+        %tmp.94 = getv %tmp.93 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.95 217 55 63 ];
+        %tmp.95 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.96 217 64 84 ];
+        %tmp.96 = getv %tmp.95 :TEXT_JUSTIFY_VCENTER;
+        %tmp.97 = bitor %tmp.94 %tmp.96;
+        invoke %tmp.86 %tmp.87(%tmp.88, %tmp.89, %tmp.91, %tmp.92, %tmp.97);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 218 12 ]
+        ret ?;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_206_27_219_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_206_8_219_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_206_8_219_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 221 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %t.3 = local;
+        symbol [ t %t.3 221 12 13 ];
+        symbol [ _run %tmp.99 221 18 22 ];
+        %tmp.99 = getv ? :_run;
+        symbol [ elapsed %tmp.100 221 23 30 ];
+        %tmp.100 = getv function %tmp.99 :elapsed;
+        %tmp.101 = invoke %tmp.99 %tmp.100();
+        lputv %t.3 %tmp.101;
+        symbol [ t %t.3 221 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 222 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %idx.4 = local;
+        symbol [ idx %idx.4 222 12 15 ];
+        symbol [ _run %tmp.103 222 18 22 ];
+        %tmp.103 = getv ? :_run;
+        symbol [ stepIndexAt %tmp.104 222 23 34 ];
+        %tmp.104 = getv function %tmp.103 :stepIndexAt;
+        %tmp.105 = lgetv %t.3;
+        symbol [ t %tmp.105 222 35 36 ];
+        %tmp.106 = invoke %tmp.103 %tmp.104(%tmp.105);
+        lputv %idx.4 %tmp.106;
+        symbol [ idx %idx.4 222 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 223 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %n.5 = local;
+        symbol [ n %n.5 223 12 13 ];
+        symbol [ _run %tmp.108 223 18 22 ];
+        %tmp.108 = getv ? :_run;
+        symbol [ steps %tmp.109 223 23 28 ];
+        %tmp.109 = getv %tmp.108 :steps;
+        symbol [ size %tmp.110 223 29 33 ];
+        %tmp.110 = getv function %tmp.109 :size;
+        %tmp.111 = invoke %tmp.109 %tmp.110();
+        lputv %n.5 %tmp.111;
+        symbol [ n %n.5 223 12 13 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 224 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_224_8_224_37_if_stmt:
+        %tmp.112 = lgetv %idx.4;
+        symbol [ idx %tmp.112 224 12 15 ];
+        %tmp.113 = lgetv %n.5;
+        symbol [ n %tmp.113 224 19 20 ];
+        %tmp.114 = gte %tmp.112 %tmp.113;
+        bf %tmp.114 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_224_8_224_37_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_224_8_224_37_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_224_22_224_37_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 224 24 ]
+        %tmp.115 = lgetv %n.5;
+        symbol [ n %tmp.115 224 30 31 ];
+        %tmp.116 = 1;
+        %tmp.117 = sub %tmp.115 %tmp.116;
+        lputv %idx.4 %tmp.117;
+        symbol [ idx %idx.4 224 24 27 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_224_22_224_37_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_224_8_224_37_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_224_8_224_37_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 226 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %drill.6 = local;
+        symbol [ drill %drill.6 226 12 17 ];
+        symbol [ _run %tmp.119 226 21 25 ];
+        %tmp.119 = getv ? :_run;
+        symbol [ drillAt %tmp.120 226 26 33 ];
+        %tmp.120 = getv function %tmp.119 :drillAt;
+        %tmp.121 = lgetv %idx.4;
+        symbol [ idx %tmp.121 226 34 37 ];
+        %tmp.122 = invoke %tmp.119 %tmp.120(%tmp.121);
+        lputv %drill.6 %tmp.122;
+        symbol [ drill %drill.6 226 12 17 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 227 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %isRest.7 = local;
+        symbol [ isRest %isRest.7 227 12 18 ];
+        %tmp.123 = lgetv %drill.6;
+        symbol [ drill %tmp.123 227 21 26 ];
+        symbol [ equals %tmp.124 227 27 33 ];
+        %tmp.124 = getv function %tmp.123 :equals;
+        %tmp.125 = "";
+        %tmp.126 = invoke %tmp.123 %tmp.124(%tmp.125);
+        lputv %isRest.7 %tmp.126;
+        symbol [ isRest %isRest.7 227 12 18 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 228 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %label.8 = local;
+        symbol [ label %label.8 228 12 17 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_begin:
+        %tmp.127 = lgetv %isRest.7;
+        symbol [ isRest %tmp.127 228 21 27 ];
+        bf %tmp.127 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_true:
+        %tmp.128 = "Repos";
+        push %tmp.128;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_else_false:
+        %tmp.129 = lgetv %drill.6;
+        symbol [ drill %tmp.129 228 40 45 ];
+        push %tmp.129;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_end:
+        %tmp.130 = phi [%tmp.127 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_begin] [%tmp.128 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_true] [%tmp.129 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_else_false] [%tmp.130 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_228_21_228_40_end];
+        lputv %label.8 %tmp.130;
+        symbol [ label %label.8 228 12 17 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 231 8 ]
+        %tmp.131 = lgetv %dc;
+        symbol [ dc %tmp.131 231 8 10 ];
+        symbol [ setColor %tmp.132 231 11 19 ];
+        %tmp.132 = getv function %tmp.131 :setColor;
+        symbol [ COLOR_GRAY %tmp.134 231 20 30 ];
+        %tmp.134 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.135 231 32 40 ];
+        %tmp.135 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.136 231 41 58 ];
+        %tmp.136 = getv %tmp.135 :COLOR_TRANSPARENT;
+        invoke %tmp.131 %tmp.132(%tmp.134, %tmp.136);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 232 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %counter.9 = local;
+        symbol [ counter %counter.9 232 12 19 ];
+        %tmp.137 = "  ";
+        %tmp.138 = lgetv %idx.4;
+        symbol [ idx %tmp.138 232 30 33 ];
+        %tmp.139 = 1;
+        %tmp.140 = add %tmp.138 %tmp.139;
+        symbol [ toString %tmp.141 232 39 47 ];
+        %tmp.141 = getv function %tmp.140 :toString;
+        %tmp.142 = invoke %tmp.140 %tmp.141();
+        %tmp.143 = add %tmp.137 %tmp.142;
+        %tmp.144 = "/";
+        %tmp.145 = add %tmp.143 %tmp.144;
+        %tmp.146 = lgetv %n.5;
+        symbol [ n %tmp.146 232 58 59 ];
+        symbol [ toString %tmp.147 232 60 68 ];
+        %tmp.147 = getv function %tmp.146 :toString;
+        %tmp.148 = invoke %tmp.146 %tmp.147();
+        %tmp.149 = add %tmp.145 %tmp.148;
+        lputv %counter.9 %tmp.149;
+        symbol [ counter %counter.9 232 12 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 233 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %counterW.10 = local;
+        symbol [ counterW %counterW.10 233 12 20 ];
+        %tmp.150 = lgetv %dc;
+        symbol [ dc %tmp.150 233 23 25 ];
+        symbol [ getTextWidthInPixels %tmp.151 233 26 46 ];
+        %tmp.151 = getv function %tmp.150 :getTextWidthInPixels;
+        %tmp.152 = lgetv %counter.9;
+        symbol [ counter %tmp.152 233 47 54 ];
+        symbol [ Graphics %tmp.153 233 56 64 ];
+        %tmp.153 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.154 233 65 75 ];
+        %tmp.154 = getv %tmp.153 :FONT_XTINY;
+        %tmp.155 = invoke %tmp.150 %tmp.151(%tmp.152, %tmp.154);
+        lputv %counterW.10 %tmp.155;
+        symbol [ counterW %counterW.10 233 12 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 234 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %headerName.11 = local;
+        symbol [ headerName %headerName.11 234 12 22 ];
+        %tmp.156 = self;
+        symbol [ dribbleFit %tmp.157 234 25 35 ];
+        %tmp.157 = getv function %tmp.156 :dribbleFit;
+        %tmp.158 = lgetv %dc;
+        symbol [ dc %tmp.158 234 36 38 ];
+        symbol [ _run %tmp.160 234 40 44 ];
+        %tmp.160 = getv ? :_run;
+        symbol [ name %tmp.161 234 45 49 ];
+        %tmp.161 = getv %tmp.160 :name;
+        symbol [ Graphics %tmp.162 234 51 59 ];
+        %tmp.162 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.163 234 60 70 ];
+        %tmp.163 = getv %tmp.162 :FONT_XTINY;
+        %tmp.164 = 150;
+        %tmp.165 = lgetv %counterW.10;
+        symbol [ counterW %tmp.165 234 78 86 ];
+        %tmp.166 = sub %tmp.164 %tmp.165;
+        %tmp.167 = invoke %tmp.156 %tmp.157(%tmp.158, %tmp.161, %tmp.163, %tmp.166);
+        lputv %headerName.11 %tmp.167;
+        symbol [ headerName %headerName.11 234 12 22 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 235 8 ]
+        %tmp.168 = lgetv %dc;
+        symbol [ dc %tmp.168 235 8 10 ];
+        symbol [ drawText %tmp.169 235 11 19 ];
+        %tmp.169 = getv function %tmp.168 :drawText;
+        %tmp.170 = lgetv %cx.2;
+        symbol [ cx %tmp.170 235 20 22 ];
+        %tmp.171 = 28;
+        symbol [ Graphics %tmp.172 235 28 36 ];
+        %tmp.172 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.173 235 37 47 ];
+        %tmp.173 = getv %tmp.172 :FONT_XTINY;
+        %tmp.174 = lgetv %headerName.11;
+        symbol [ headerName %tmp.174 235 49 59 ];
+        %tmp.175 = lgetv %counter.9;
+        symbol [ counter %tmp.175 235 62 69 ];
+        %tmp.176 = add %tmp.174 %tmp.175;
+        symbol [ Graphics %tmp.177 236 20 28 ];
+        %tmp.177 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.178 236 29 48 ];
+        %tmp.178 = getv %tmp.177 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.179 236 51 59 ];
+        %tmp.179 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.180 236 60 80 ];
+        %tmp.180 = getv %tmp.179 :TEXT_JUSTIFY_VCENTER;
+        %tmp.181 = bitor %tmp.178 %tmp.180;
+        invoke %tmp.168 %tmp.169(%tmp.170, %tmp.171, %tmp.173, %tmp.176, %tmp.181);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 239 8 ]
+        %tmp.182 = lgetv %dc;
+        symbol [ dc %tmp.182 239 8 10 ];
+        symbol [ setColor %tmp.183 239 11 19 ];
+        %tmp.183 = getv function %tmp.182 :setColor;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_begin:
+        %tmp.184 = lgetv %isRest.7;
+        symbol [ isRest %tmp.184 239 20 26 ];
+        bf %tmp.184 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_true:
+        symbol [ COLOR_BLUE %tmp.186 239 29 39 ];
+        %tmp.186 = getv ? :COLOR_BLUE;
+        push %tmp.186;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_else_false:
+        symbol [ COLOR_ORANGE %tmp.188 239 42 54 ];
+        %tmp.188 = getv ? :COLOR_ORANGE;
+        push %tmp.188;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_end:
+        %tmp.189 = phi [%tmp.184 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_begin] [%tmp.186 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_true] [%tmp.188 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_else_false] [%tmp.189 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_239_20_239_42_end];
+        symbol [ Graphics %tmp.190 239 56 64 ];
+        %tmp.190 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.191 239 65 82 ];
+        %tmp.191 = getv %tmp.190 :COLOR_TRANSPARENT;
+        invoke %tmp.182 %tmp.183(%tmp.189, %tmp.191);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 240 8 ]
+        %tmp.192 = lgetv %dc;
+        symbol [ dc %tmp.192 240 8 10 ];
+        symbol [ drawText %tmp.193 240 11 19 ];
+        %tmp.193 = getv function %tmp.192 :drawText;
+        %tmp.194 = lgetv %cx.2;
+        symbol [ cx %tmp.194 240 20 22 ];
+        %tmp.195 = 64;
+        symbol [ Graphics %tmp.196 240 28 36 ];
+        %tmp.196 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.197 240 37 47 ];
+        %tmp.197 = getv %tmp.196 :FONT_SMALL;
+        %tmp.198 = self;
+        symbol [ dribbleFit %tmp.199 240 49 59 ];
+        %tmp.199 = getv function %tmp.198 :dribbleFit;
+        %tmp.200 = lgetv %dc;
+        symbol [ dc %tmp.200 240 60 62 ];
+        %tmp.201 = lgetv %label.8;
+        symbol [ label %tmp.201 240 64 69 ];
+        symbol [ Graphics %tmp.202 240 71 79 ];
+        %tmp.202 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.203 240 80 90 ];
+        %tmp.203 = getv %tmp.202 :FONT_SMALL;
+        %tmp.204 = 200;
+        %tmp.205 = invoke %tmp.198 %tmp.199(%tmp.200, %tmp.201, %tmp.203, %tmp.204);
+        symbol [ Graphics %tmp.206 241 20 28 ];
+        %tmp.206 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.207 241 29 48 ];
+        %tmp.207 = getv %tmp.206 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.208 241 51 59 ];
+        %tmp.208 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.209 241 60 80 ];
+        %tmp.209 = getv %tmp.208 :TEXT_JUSTIFY_VCENTER;
+        %tmp.210 = bitor %tmp.207 %tmp.209;
+        invoke %tmp.192 %tmp.193(%tmp.194, %tmp.195, %tmp.197, %tmp.205, %tmp.210);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 244 8 ]
+        %tmp.211 = lgetv %dc;
+        symbol [ dc %tmp.211 244 8 10 ];
+        symbol [ setColor %tmp.212 244 11 19 ];
+        %tmp.212 = getv function %tmp.211 :setColor;
+        symbol [ COLOR_WHITE %tmp.214 244 20 31 ];
+        %tmp.214 = getv ? :COLOR_WHITE;
+        symbol [ Graphics %tmp.215 244 33 41 ];
+        %tmp.215 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.216 244 42 59 ];
+        %tmp.216 = getv %tmp.215 :COLOR_TRANSPARENT;
+        invoke %tmp.211 %tmp.212(%tmp.214, %tmp.216);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 245 8 ]
+        %tmp.217 = lgetv %dc;
+        symbol [ dc %tmp.217 245 8 10 ];
+        symbol [ drawText %tmp.218 245 11 19 ];
+        %tmp.218 = getv function %tmp.217 :drawText;
+        %tmp.219 = lgetv %cx.2;
+        symbol [ cx %tmp.219 245 20 22 ];
+        %tmp.220 = 122;
+        symbol [ Graphics %tmp.221 245 29 37 ];
+        %tmp.221 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_MEDIUM %tmp.222 245 38 56 ];
+        %tmp.222 = getv %tmp.221 :FONT_NUMBER_MEDIUM;
+        %tmp.223 = self;
+        symbol [ dribbleClock %tmp.224 245 58 70 ];
+        %tmp.224 = getv function %tmp.223 :dribbleClock;
+        symbol [ _run %tmp.226 245 71 75 ];
+        %tmp.226 = getv ? :_run;
+        symbol [ secondsLeftAt %tmp.227 245 76 89 ];
+        %tmp.227 = getv function %tmp.226 :secondsLeftAt;
+        %tmp.228 = lgetv %t.3;
+        symbol [ t %tmp.228 245 90 91 ];
+        %tmp.229 = invoke %tmp.226 %tmp.227(%tmp.228);
+        %tmp.230 = invoke %tmp.223 %tmp.224(%tmp.229);
+        symbol [ Graphics %tmp.231 246 20 28 ];
+        %tmp.231 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.232 246 29 48 ];
+        %tmp.232 = getv %tmp.231 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.233 246 51 59 ];
+        %tmp.233 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.234 246 60 80 ];
+        %tmp.234 = getv %tmp.233 :TEXT_JUSTIFY_VCENTER;
+        %tmp.235 = bitor %tmp.232 %tmp.234;
+        invoke %tmp.217 %tmp.218(%tmp.219, %tmp.220, %tmp.222, %tmp.230, %tmp.235);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 249 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop" ]
+        %nextText.12 = local;
+        symbol [ nextText %nextText.12 249 12 20 ];
+        %tmp.236 = "Fin";
+        lputv %nextText.12 %tmp.236;
+        symbol [ nextText %nextText.12 249 12 20 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 250 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_8_253_8_if_stmt:
+        %tmp.237 = lgetv %idx.4;
+        symbol [ idx %tmp.237 250 12 15 ];
+        %tmp.238 = 1;
+        %tmp.239 = add %tmp.237 %tmp.238;
+        %tmp.240 = lgetv %n.5;
+        symbol [ n %tmp.240 250 22 23 ];
+        %tmp.241 = lt %tmp.239 %tmp.240;
+        bf %tmp.241 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_8_253_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_8_253_8_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_25_253_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 251 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_25_253_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_25_253_8_stop" ]
+        %nd.13 = local;
+        symbol [ nd %nd.13 251 16 18 ];
+        symbol [ _run %tmp.243 251 21 25 ];
+        %tmp.243 = getv ? :_run;
+        symbol [ drillAt %tmp.244 251 26 33 ];
+        %tmp.244 = getv function %tmp.243 :drillAt;
+        %tmp.245 = lgetv %idx.4;
+        symbol [ idx %tmp.245 251 34 37 ];
+        %tmp.246 = 1;
+        %tmp.247 = add %tmp.245 %tmp.246;
+        %tmp.248 = invoke %tmp.243 %tmp.244(%tmp.247);
+        lputv %nd.13 %tmp.248;
+        symbol [ nd %nd.13 251 16 18 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 252 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_begin:
+        %tmp.249 = lgetv %nd.13;
+        symbol [ nd %tmp.249 252 23 25 ];
+        symbol [ equals %tmp.250 252 26 32 ];
+        %tmp.250 = getv function %tmp.249 :equals;
+        %tmp.251 = "";
+        %tmp.252 = invoke %tmp.249 %tmp.250(%tmp.251);
+        bf %tmp.252 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_true:
+        %tmp.253 = "Repos";
+        push %tmp.253;
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_else_false:
+        %tmp.254 = lgetv %nd.13;
+        symbol [ nd %tmp.254 252 49 51 ];
+        push %tmp.254;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_end:
+        %tmp.255 = phi [%tmp.252 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_begin] [%tmp.253 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_true] [%tmp.254 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_else_false] [%tmp.255 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_252_23_252_49_end];
+        lputv %nextText.12 %tmp.255;
+        symbol [ nextText %nextText.12 252 12 20 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_25_253_8_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_8_253_8_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_250_8_253_8_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 254 8 ]
+        %tmp.256 = lgetv %dc;
+        symbol [ dc %tmp.256 254 8 10 ];
+        symbol [ setColor %tmp.257 254 11 19 ];
+        %tmp.257 = getv function %tmp.256 :setColor;
+        symbol [ COLOR_GRAY %tmp.259 254 20 30 ];
+        %tmp.259 = getv ? :COLOR_GRAY;
+        symbol [ Graphics %tmp.260 254 32 40 ];
+        %tmp.260 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.261 254 41 58 ];
+        %tmp.261 = getv %tmp.260 :COLOR_TRANSPARENT;
+        invoke %tmp.256 %tmp.257(%tmp.259, %tmp.261);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 255 8 ]
+        %tmp.262 = lgetv %dc;
+        symbol [ dc %tmp.262 255 8 10 ];
+        symbol [ drawText %tmp.263 255 11 19 ];
+        %tmp.263 = getv function %tmp.262 :drawText;
+        %tmp.264 = lgetv %cx.2;
+        symbol [ cx %tmp.264 255 20 22 ];
+        %tmp.265 = 188;
+        symbol [ Graphics %tmp.266 255 29 37 ];
+        %tmp.266 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.267 255 38 48 ];
+        %tmp.267 = getv %tmp.266 :FONT_XTINY;
+        %tmp.268 = self;
+        symbol [ dribbleFit %tmp.269 256 20 30 ];
+        %tmp.269 = getv function %tmp.268 :dribbleFit;
+        %tmp.270 = lgetv %dc;
+        symbol [ dc %tmp.270 256 31 33 ];
+        %tmp.271 = "Ensuite : ";
+        %tmp.272 = lgetv %nextText.12;
+        symbol [ nextText %tmp.272 256 50 58 ];
+        %tmp.273 = add %tmp.271 %tmp.272;
+        symbol [ Graphics %tmp.274 256 60 68 ];
+        %tmp.274 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.275 256 69 79 ];
+        %tmp.275 = getv %tmp.274 :FONT_XTINY;
+        %tmp.276 = 200;
+        %tmp.277 = invoke %tmp.268 %tmp.269(%tmp.270, %tmp.273, %tmp.275, %tmp.276);
+        symbol [ Graphics %tmp.278 257 20 28 ];
+        %tmp.278 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.279 257 29 48 ];
+        %tmp.279 = getv %tmp.278 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.280 257 51 59 ];
+        %tmp.280 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.281 257 60 80 ];
+        %tmp.281 = getv %tmp.280 :TEXT_JUSTIFY_VCENTER;
+        %tmp.282 = bitor %tmp.279 %tmp.281;
+        invoke %tmp.262 %tmp.263(%tmp.264, %tmp.265, %tmp.267, %tmp.277, %tmp.282);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 258 8 ]
+        %tmp.283 = lgetv %dc;
+        symbol [ dc %tmp.283 258 8 10 ];
+        symbol [ drawText %tmp.284 258 11 19 ];
+        %tmp.284 = getv function %tmp.283 :drawText;
+        %tmp.285 = lgetv %cx.2;
+        symbol [ cx %tmp.285 258 20 22 ];
+        %tmp.286 = 222;
+        symbol [ Graphics %tmp.287 258 29 37 ];
+        %tmp.287 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.288 258 38 48 ];
+        %tmp.288 = getv %tmp.287 :FONT_XTINY;
+        %tmp.289 = "↩ Abandonner";
+        symbol [ Graphics %tmp.290 259 20 28 ];
+        %tmp.290 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.291 259 29 48 ];
+        %tmp.291 = getv %tmp.290 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.292 259 51 59 ];
+        %tmp.292 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.293 259 60 80 ];
+        %tmp.293 = getv %tmp.292 :TEXT_JUSTIFY_VCENTER;
+        %tmp.294 = bitor %tmp.291 %tmp.293;
+        invoke %tmp.283 %tmp.284(%tmp.285, %tmp.286, %tmp.288, %tmp.289, %tmp.294);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_200_49_260_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 263; @symbol_classdef = [DribbleRunDelegate,263,6,24]; @symbol_extends<0> = [WatchUi,263,33,40]; @symbol_extends<1> = [BehaviorDelegate,263,41,57]; ]
+class DribbleRunDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 263; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 263; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 264; @position = 16; @symbol_vardef = [_run,264,16,20]; @symbol_type<0> = [DribbleRun,264,24,34]; ]
+    private
+    var _run as DribbleRun;
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 266; @symbol_functiondef = [initialize,266,13,23]; @symbol_param<0> = [run,266,24,27]; @symbol_param<0>_type<0> = [DribbleRun,266,31,41]; ]
+    function initialize(run as DribbleRun) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_266_43_269_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 267 8 ]
+        symbol [ BehaviorDelegate %tmp.2 267 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 267 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 268 8 ]
+        %tmp.4 = lgetv %run;
+        symbol [ run %tmp.4 268 15 18 ];
+        symbol [ _run ? 268 8 12 ];
+        putv self :_run %tmp.4;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_266_43_269_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 272; @symbol_functiondef = [onSelect,272,13,21]; @symbol_return<0> = [Boolean,272,27,34]; ]
+    function onSelect() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_272_35_275_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 273 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_273_8_273_67_if_stmt:
+        symbol [ _run %tmp.2 273 12 16 ];
+        %tmp.2 = getv ? :_run;
+        symbol [ finished %tmp.3 273 17 25 ];
+        %tmp.3 = getv %tmp.2 :finished;
+        bf %tmp.3 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_273_8_273_67_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_273_8_273_67_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_273_27_273_67_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 273 29 ]
+        symbol [ WatchUi %tmp.4 273 29 36 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.5 273 37 44 ];
+        %tmp.5 = getv function %tmp.4 :popView;
+        symbol [ WatchUi %tmp.6 273 45 52 ];
+        %tmp.6 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.7 273 53 64 ];
+        %tmp.7 = getv %tmp.6 :SLIDE_RIGHT;
+        invoke %tmp.4 %tmp.5(%tmp.7);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_273_27_273_67_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_273_8_273_67_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_273_8_273_67_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 274 8 ]
+        %tmp.8 = true;
+        ret %tmp.8;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_272_35_275_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 278; @symbol_functiondef = [onBack,278,13,19]; @symbol_return<0> = [Boolean,278,25,32]; ]
+    function onBack() as Boolean {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_278_33_281_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 279 8 ]
+        symbol [ WatchUi %tmp.1 279 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 279 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 279 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 279 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc" 280 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_DribbleView_mc_278_33_281_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/DribbleView.mc"; @line = 1; ]
+<init> {
+}

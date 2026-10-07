@@ -1,0 +1,392 @@
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Application,3,14,25]; ]
+import Toybox.Application;
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 9; @symbol_classdef = [PhysicalSlotMenuView,9,6,26]; @symbol_extends<0> = [WatchUi,9,35,42]; @symbol_extends<1> = [Menu2,9,43,48]; ]
+class PhysicalSlotMenuView extends WatchUi.Menu2 {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 9; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; ]
+    function initialize() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_10_26_27_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 11 8 ]
+        symbol [ Menu2 %tmp.2 11 8 13 ];
+        %tmp.2 = getv ? :Menu2;
+        symbol [ initialize %tmp.3 11 14 24 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        %tmp.4 = newd 1;
+        %tmp.6 = const :title;
+        symbol [ title %tmp.6 11 27 32 const ];
+        %tmp.7 = "Physique";
+        %tmp.8 = dup %tmp.4;
+        %tmp.9 = aputv %tmp.8 %tmp.6 %tmp.7;
+        invoke %tmp.2 %tmp.3(%tmp.9);
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 12 8 ]
+        for @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_test @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_incr @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_init:
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_begin" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_end" ]
+        %i.1 = local;
+        symbol [ i %i.1 12 17 18 ];
+        %tmp.10 = 0;
+        lputv %i.1 %tmp.10;
+        symbol [ i %i.1 12 17 18 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_test:
+        %tmp.11 = lgetv %i.1;
+        symbol [ i %tmp.11 12 24 25 ];
+        %tmp.12 = 5;
+        %tmp.13 = lt %tmp.11 %tmp.12;
+        bf %tmp.13 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 13 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_stop" ]
+        %def.2 = local;
+        symbol [ def %def.2 13 16 19 ];
+        symbol [ Application %tmp.14 13 24 35 ];
+        %tmp.14 = getm $.Toybox.Application;
+        symbol [ Storage %tmp.15 13 36 43 ];
+        %tmp.15 = getv %tmp.14 :Storage;
+        symbol [ getValue %tmp.16 13 44 52 ];
+        %tmp.16 = getv function %tmp.15 :getValue;
+        %tmp.17 = "physicalSlot_";
+        %tmp.18 = lgetv %i.1;
+        symbol [ i %tmp.18 13 71 72 ];
+        symbol [ toString %tmp.19 13 73 81 ];
+        %tmp.19 = getv function %tmp.18 :toString;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        %tmp.21 = add %tmp.17 %tmp.20;
+        %tmp.22 = invoke %tmp.15 %tmp.16(%tmp.21);
+        lputv %def.2 %tmp.22;
+        symbol [ def %def.2 13 16 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 14 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_stop" ]
+        %label.3 = local;
+        symbol [ label %label.3 14 16 21 ];
+        %tmp.23 = "Exercice ";
+        %tmp.24 = lgetv %i.1;
+        symbol [ i %tmp.24 14 39 40 ];
+        %tmp.25 = 1;
+        %tmp.26 = add %tmp.24 %tmp.25;
+        symbol [ toString %tmp.27 14 46 54 ];
+        %tmp.27 = getv function %tmp.26 :toString;
+        %tmp.28 = invoke %tmp.26 %tmp.27();
+        %tmp.29 = add %tmp.23 %tmp.28;
+        lputv %label.3 %tmp.29;
+        symbol [ label %label.3 14 16 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 15 12 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_stop" ]
+        %sub.4 = local;
+        symbol [ sub %sub.4 15 16 19 ];
+        %tmp.30 = "vide";
+        lputv %sub.4 %tmp.30;
+        symbol [ sub %sub.4 15 16 19 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 16 12 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_12_24_12_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_16_16_101_begin:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_16_16_68_begin:
+        %tmp.31 = lgetv %def.2;
+        symbol [ def %tmp.31 16 16 19 ];
+        symbol [ Dictionary %tmp.33 16 31 41 ];
+        %tmp.33 = getv ? :Dictionary;
+        %tmp.34 = isa %tmp.31 %tmp.33;
+        bf %tmp.34 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_12_24_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_45_16_68_true:
+        %tmp.35 = lgetv %def.2;
+        symbol [ def %tmp.35 16 45 48 ];
+        %tmp.36 = as %tmp.35 { (Dictionary) };
+        %tmp.37 = "name";
+        %tmp.38 = agetv %tmp.36 %tmp.37;
+        symbol [ String %tmp.40 16 68 74 ];
+        %tmp.40 = getv ? :String;
+        %tmp.41 = isa %tmp.38 %tmp.40;
+        push %tmp.41;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_45_16_68_end:
+        %tmp.42 = phi [%tmp.34 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_16_16_68_begin] [%tmp.41 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_45_16_68_true] [%tmp.42 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_45_16_68_end];
+        bf %tmp.42 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_12_24_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_78_16_101_true:
+        %tmp.43 = lgetv %def.2;
+        symbol [ def %tmp.43 16 78 81 ];
+        %tmp.44 = as %tmp.43 { (Dictionary) };
+        %tmp.45 = "kind";
+        %tmp.46 = agetv %tmp.44 %tmp.45;
+        symbol [ String %tmp.48 16 101 107 ];
+        %tmp.48 = getv ? :String;
+        %tmp.49 = isa %tmp.46 %tmp.48;
+        push %tmp.49;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_78_16_101_end:
+        %tmp.50 = phi [%tmp.42 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_16_16_101_begin] [%tmp.49 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_78_16_101_true] [%tmp.50 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_78_16_101_end];
+        bf %tmp.50 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_12_24_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_12_24_12_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_109_24_12_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 17 16 ]
+        %tmp.51 = lgetv %def.2;
+        symbol [ def %tmp.51 17 24 27 ];
+        %tmp.52 = as %tmp.51 { (Dictionary) };
+        %tmp.53 = "name";
+        %tmp.54 = agetv %tmp.52 %tmp.53;
+        %tmp.55 = as %tmp.54 String;
+        symbol [ String %tmp.55 17 39 45 ];
+        lputv %label.3 %tmp.55;
+        symbol [ label %label.3 17 16 21 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 18 16 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_109_24_12_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_109_24_12_stop" ]
+        %kind.5 = local;
+        symbol [ kind %kind.5 18 20 24 ];
+        %tmp.56 = lgetv %def.2;
+        symbol [ def %tmp.56 18 27 30 ];
+        %tmp.57 = as %tmp.56 { (Dictionary) };
+        %tmp.58 = "kind";
+        %tmp.59 = agetv %tmp.57 %tmp.58;
+        %tmp.60 = as %tmp.59 String;
+        symbol [ String %tmp.60 18 42 48 ];
+        lputv %kind.5 %tmp.60;
+        symbol [ kind %kind.5 18 20 24 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 19 16 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_16_23_16_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_20_19_73_begin:
+        %tmp.61 = lgetv %kind.5;
+        symbol [ kind %tmp.61 19 20 24 ];
+        symbol [ equals %tmp.62 19 25 31 ];
+        %tmp.62 = getv function %tmp.61 :equals;
+        %tmp.63 = "duration";
+        %tmp.64 = invoke %tmp.61 %tmp.62(%tmp.63);
+        bf %tmp.64 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_16_23_16_if_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_47_19_73_true:
+        %tmp.65 = lgetv %def.2;
+        symbol [ def %tmp.65 19 47 50 ];
+        %tmp.66 = as %tmp.65 { (Dictionary) };
+        %tmp.67 = "seconds";
+        %tmp.68 = agetv %tmp.66 %tmp.67;
+        symbol [ Number %tmp.70 19 73 79 ];
+        %tmp.70 = getv ? :Number;
+        %tmp.71 = isa %tmp.68 %tmp.70;
+        push %tmp.71;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_47_19_73_end:
+        %tmp.72 = phi [%tmp.64 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_20_19_73_begin] [%tmp.71 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_47_19_73_true] [%tmp.72 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_47_19_73_end];
+        bf %tmp.72 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_16_23_16_if_else_false;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_16_23_16_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_81_21_16_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 20 20 ]
+        %tmp.73 = "Duree fixe ";
+        %tmp.74 = lgetv %def.2;
+        symbol [ def %tmp.74 20 43 46 ];
+        %tmp.75 = as %tmp.74 { (Dictionary) };
+        %tmp.76 = "seconds";
+        %tmp.77 = agetv %tmp.75 %tmp.76;
+        %tmp.78 = as %tmp.77 Number;
+        symbol [ Number %tmp.78 20 61 67 ];
+        symbol [ toString %tmp.79 20 69 77 ];
+        %tmp.79 = getv function %tmp.78 :toString;
+        %tmp.80 = invoke %tmp.78 %tmp.79();
+        %tmp.81 = add %tmp.73 %tmp.80;
+        %tmp.82 = "s";
+        %tmp.83 = add %tmp.81 %tmp.82;
+        lputv %sub.4 %tmp.83;
+        symbol [ sub %sub.4 20 20 23 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_81_21_16_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_16_23_16_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_16_23_16_if_else_false:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_21_23_23_16_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 22 20 ]
+        %tmp.84 = "Chrono";
+        lputv %sub.4 %tmp.84;
+        symbol [ sub %sub.4 22 20 23 ];
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_21_23_23_16_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_19_16_23_16_if_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_109_24_12_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_12_24_12_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_16_12_24_12_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 25 12 ]
+        %tmp.85 = self;
+        symbol [ addItem %tmp.86 25 12 19 ];
+        %tmp.86 = getv function %tmp.85 :addItem;
+        symbol [ WatchUi %tmp.89 25 24 31 ];
+        %tmp.89 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.90 25 32 40 ];
+        %tmp.90 = getv function ? %tmp.89 :MenuItem;
+        %tmp.91 = lgetv %label.3;
+        symbol [ label %tmp.91 25 41 46 ];
+        %tmp.92 = lgetv %sub.4;
+        symbol [ sub %tmp.92 25 48 51 ];
+        %tmp.93 = lgetv %i.1;
+        symbol [ i %tmp.93 25 53 54 ];
+        %tmp.94 = null;
+        %tmp.87 = newc %tmp.90 (%tmp.91, %tmp.92, %tmp.93, %tmp.94);
+        invoke %tmp.85 %tmp.86(%tmp.87);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_36_26_8_stop:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_incr:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 12 ]
+        %tmp.97 = lgetv %i.1;
+        symbol [ i %tmp.97 12 31 32 ];
+        %tmp.98 = add %tmp.97 1;
+        lputv %i.1 %tmp.98;
+        symbol [ i %i.1 12 31 32 ];
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_test;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_12_8_26_8_for_end:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_10_26_27_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 30; @symbol_classdef = [PhysicalSlotMenuDelegate,30,6,30]; @symbol_extends<0> = [WatchUi,30,39,46]; @symbol_extends<1> = [Menu2InputDelegate,30,47,65]; ]
+class PhysicalSlotMenuDelegate extends WatchUi.Menu2InputDelegate {
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 30; ]
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 30; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 31; @symbol_functiondef = [initialize,31,13,23]; ]
+    function initialize() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_31_26_33_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 32 8 ]
+        symbol [ Menu2InputDelegate %tmp.2 32 8 26 ];
+        %tmp.2 = getv ? :Menu2InputDelegate;
+        symbol [ initialize %tmp.3 32 27 37 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_31_26_33_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 35; @symbol_functiondef = [onSelect,35,13,21]; @symbol_param<0> = [item,35,22,26]; @symbol_param<0>_type<0> = [WatchUi,35,30,37]; @symbol_param<0>_type<1> = [MenuItem,35,38,46]; ]
+    function onSelect(item as WatchUi.MenuItem) as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 36 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_stop" ]
+        %index.1 = local;
+        symbol [ index %index.1 36 12 17 ];
+        %tmp.1 = lgetv %item;
+        symbol [ item %tmp.1 36 20 24 ];
+        symbol [ getId %tmp.2 36 25 30 ];
+        %tmp.2 = getv function %tmp.1 :getId;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = as %tmp.3 Number;
+        symbol [ Number %tmp.4 36 36 42 ];
+        lputv %index.1 %tmp.4;
+        symbol [ index %index.1 36 12 17 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 37 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_stop" ]
+        %def.2 = local;
+        symbol [ def %def.2 37 12 15 ];
+        symbol [ Application %tmp.5 37 20 31 ];
+        %tmp.5 = getm $.Toybox.Application;
+        symbol [ Storage %tmp.6 37 32 39 ];
+        %tmp.6 = getv %tmp.5 :Storage;
+        symbol [ getValue %tmp.7 37 40 48 ];
+        %tmp.7 = getv function %tmp.6 :getValue;
+        %tmp.8 = "physicalSlot_";
+        %tmp.9 = lgetv %index.1;
+        symbol [ index %tmp.9 37 67 72 ];
+        symbol [ toString %tmp.10 37 73 81 ];
+        %tmp.10 = getv function %tmp.9 :toString;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        %tmp.12 = add %tmp.8 %tmp.11;
+        %tmp.13 = invoke %tmp.6 %tmp.7(%tmp.12);
+        lputv %def.2 %tmp.13;
+        symbol [ def %def.2 37 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 38 8 ]
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_8_38_88_if_stmt:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_12_38_75_begin:
+        %tmp.14 = lgetv %def.2;
+        symbol [ def %tmp.14 38 14 17 ];
+        symbol [ Dictionary %tmp.16 38 29 39 ];
+        %tmp.16 = getv ? :Dictionary;
+        %tmp.17 = isa %tmp.14 %tmp.16;
+        %tmp.18 = not %tmp.17;
+        bt %tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_8_38_88_if_true;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_44_38_75_false:
+        %tmp.19 = lgetv %def.2;
+        symbol [ def %tmp.19 38 46 49 ];
+        %tmp.20 = as %tmp.19 { (Dictionary) };
+        %tmp.21 = "kind";
+        %tmp.22 = agetv %tmp.20 %tmp.21;
+        symbol [ String %tmp.24 38 69 75 ];
+        %tmp.24 = getv ? :String;
+        %tmp.25 = isa %tmp.22 %tmp.24;
+        %tmp.26 = not %tmp.25;
+        push %tmp.26;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_44_38_75_end:
+        %tmp.27 = phi [%tmp.18 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_12_38_75_begin] [%tmp.26 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_44_38_75_false] [%tmp.27 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_44_38_75_end];
+        bf %tmp.27 @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_8_38_88_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_8_38_88_if_true:
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_78_38_88_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 38 80 ]
+        ret ?;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_78_38_88_stop:
+        goto @_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_8_38_88_if_end;
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_38_8_38_88_if_end:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 39 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_stop" ]
+        %run.3 = local;
+        symbol [ run %run.3 39 12 15 ];
+        symbol [ PhysicalRun %tmp.31 39 23 34 ];
+        %tmp.31 = getv ? :PhysicalRun;
+        %tmp.32 = lgetv %def.2;
+        symbol [ def %tmp.32 39 35 38 ];
+        %tmp.33 = as %tmp.32 Dictionary;
+        symbol [ Dictionary %tmp.33 39 42 52 ];
+        %tmp.28 = newc %tmp.31 (%tmp.33);
+        lputv %run.3 %tmp.28;
+        symbol [ run %run.3 39 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 40 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_stop" ]
+        %view.4 = local;
+        symbol [ view %view.4 40 12 16 ];
+        symbol [ PhysicalRunView %tmp.37 40 23 38 ];
+        %tmp.37 = getv ? :PhysicalRunView;
+        %tmp.38 = lgetv %run.3;
+        symbol [ run %tmp.38 40 39 42 ];
+        %tmp.34 = newc %tmp.37 (%tmp.38);
+        lputv %view.4 %tmp.34;
+        symbol [ view %view.4 40 12 16 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 41 8 ]
+        [ "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_start" "_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_stop" ]
+        %del.5 = local;
+        symbol [ del %del.5 41 12 15 ];
+        symbol [ PhysicalRunDelegate %tmp.42 41 23 42 ];
+        %tmp.42 = getv ? :PhysicalRunDelegate;
+        %tmp.43 = lgetv %run.3;
+        symbol [ run %tmp.43 41 43 46 ];
+        %tmp.39 = newc %tmp.42 (%tmp.43);
+        lputv %del.5 %tmp.39;
+        symbol [ del %del.5 41 12 15 ];
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 42 8 ]
+        symbol [ WatchUi %tmp.44 42 8 15 ];
+        %tmp.44 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.45 42 16 24 ];
+        %tmp.45 = getv function %tmp.44 :pushView;
+        %tmp.46 = lgetv %view.4;
+        symbol [ view %tmp.46 42 25 29 ];
+        %tmp.47 = lgetv %del.5;
+        symbol [ del %tmp.47 42 31 34 ];
+        symbol [ WatchUi %tmp.48 42 36 43 ];
+        %tmp.48 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.49 42 44 54 ];
+        %tmp.49 = getv %tmp.48 :SLIDE_LEFT;
+        invoke %tmp.44 %tmp.45(%tmp.46, %tmp.47, %tmp.49);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_35_56_43_4_stop:
+    }
+    [ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 45; @symbol_functiondef = [onBack,45,13,19]; ]
+    function onBack() as Void {
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_45_30_47_4_start:
+[ "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc" 46 8 ]
+        symbol [ WatchUi %tmp.1 46 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 46 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 46 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 46 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+_Users_manu_Documents_GitHub_App_garmin_garmin_app_source_PhysicalMenu_mc_45_30_47_4_stop:
+    }
+}
+[ @file = "/Users/manu/Documents/GitHub/App-garmin/garmin-app/source/PhysicalMenu.mc"; @line = 1; ]
+<init> {
+}
