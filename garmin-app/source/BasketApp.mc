@@ -62,6 +62,22 @@ class BasketApp extends Application.AppBase {
                     { "name" => dict["name"], "steps" => dClean });
             }
         }
+        if (dict["type"] instanceof String && (dict["type"] as String).equals("physicalSlot")) {
+            var pSlot = dict["index"];
+            if (!(pSlot instanceof Number || pSlot instanceof Long) || pSlot < 0 || pSlot > 4) { return; }
+            if (!(dict["name"] instanceof String) || !(dict["kind"] instanceof String)) { return; }
+            var pKind = dict["kind"] as String;
+            if (!pKind.equals("chrono") && !pKind.equals("duration")) { return; }
+            if (pKind.equals("duration")) {
+                var pSeconds = dict["seconds"];
+                if (!(pSeconds instanceof Number || pSeconds instanceof Long) || pSeconds < 5) { return; }
+                Application.Storage.setValue("physicalSlot_" + pSlot.toString(),
+                    { "name" => dict["name"], "kind" => pKind, "seconds" => pSeconds.toNumber() });
+            } else {
+                Application.Storage.setValue("physicalSlot_" + pSlot.toString(),
+                    { "name" => dict["name"], "kind" => pKind, "seconds" => null });
+            }
+        }
         if (dict["type"] instanceof String && (dict["type"] as String).equals("customSpots")) {
             if (!(dict["spots"] instanceof Array)) { return; }
             var spots = dict["spots"] as Array;
